@@ -5,15 +5,19 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import com.melnykov.fab.DividerItemDecoration;
 import com.melnykov.fab.FloatingActionButton;
+import com.mercy.babycare.MainActivity;
 import com.mercy.babycare.R;
 
 public class TimelineFragment extends Fragment {
+	String LOG_TAG = TimelineFragment.class.getName();
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,8 +29,9 @@ public class TimelineFragment extends Fragment {
 		recyclerView.setHasFixedSize(true);
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
 		recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-		recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),
-				DividerItemDecoration.VERTICAL_LIST));
+		// recyclerView.addItemDecoration(new
+		// DividerItemDecoration(getActivity(),
+		// DividerItemDecoration.VERTICAL_LIST));
 
 		TimelineAdapter adapter = new TimelineAdapter(getActivity(),
 				getResources().getStringArray(R.array.nav_array));
@@ -35,7 +40,6 @@ public class TimelineFragment extends Fragment {
 		FloatingActionButton fab = (FloatingActionButton) root
 				.findViewById(R.id.fab);
 		fab.attachToRecyclerView(recyclerView);
-
 		return root;
 	}
 
@@ -43,4 +47,5 @@ public class TimelineFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 	}
+	
 }

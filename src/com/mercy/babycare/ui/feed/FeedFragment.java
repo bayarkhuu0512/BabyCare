@@ -2,6 +2,8 @@ package com.mercy.babycare.ui.feed;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +11,7 @@ import android.view.ViewGroup;
 import com.mercy.babycare.R;
 
 public class FeedFragment extends Fragment {
-
+	
 	public FeedFragment() {
 		// Empty constructor required for fragment subclasses
 	}

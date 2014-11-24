@@ -1,68 +1,51 @@
 package com.mercy.babycare;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mercy.babycare.ui.feed.FeedFragment;
 import com.mercy.babycare.ui.timeline.TimelineFragment;
+import com.idunnololz.widgets.AnimatedExpandableListView;
+import com.idunnololz.widgets.AnimatedExpandableListView.AnimatedExpandableListAdapter;
 
-/**
- * This example illustrates a common usage of the DrawerLayout widget in the
- * Android support library.
- * <p/>
- * <p>
- * When a navigation (left) drawer is present, the host activity should detect
- * presses of the action bar's Up affordance as a signal to open and close the
- * navigation drawer. The ActionBarDrawerToggle facilitates this behavior. Items
- * within the drawer should fall into one of two categories:
- * </p>
- * <p/>
- * <ul>
- * <li><strong>View switches</strong>. A view switch follows the same basic
- * policies as list or tab navigation in that a view switch does not create
- * navigation history. This pattern should only be used at the root activity of
- * a task, leaving some form of Up navigation active for activities further down
- * the navigation hierarchy.</li>
- * <li><strong>Selective Up</strong>. The drawer allows the user to choose an
- * alternate parent for Up navigation. This allows a user to jump across an
- * app's navigation hierarchy at will. The application should treat this as it
- * treats Up navigation from a different task, replacing the current task stack
- * using TaskStackBuilder or similar. This is the only form of navigation drawer
- * that should be used outside of the root activity of a task.</li>
- * </ul>
- * <p/>
- * <p>
- * Right side drawers should be used for actions, not navigation. This follows
- * the pattern established by the Action Bar that navigation should be to the
- * left and actions to the right. An action should be an operation performed on
- * the current contents of the window, for example enabling or disabling a data
- * overlay on top of the current content.
- * </p>
- */
 public class MainActivity extends Activity {
+	String LOG_TAG = MainActivity.class.getName();
+
 	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerList;
+	private AnimatedExpandableListView listView;
+
 	private ActionBarDrawerToggle mDrawerToggle;
 
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
-	private String[] mPlanetTitles;
+	private ExampleAdapter adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,18 +53,11 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		mTitle = mDrawerTitle = getTitle();
-		mPlanetTitles = getResources().getStringArray(R.array.nav_array);
+		// mPlanetTitles = getResources().getStringArray(R.array.nav_array);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
-		// set a custom shadow that overlays the main content when the drawer
-		// opens
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
 				GravityCompat.START);
-		// set up the drawer's list view with items and click listener
-		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-				R.layout.drawer_list_item, mPlanetTitles));
-		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+		listView = (AnimatedExpandableListView) findViewById(R.id.listView);
 
 		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -109,8 +85,47 @@ public class MainActivity extends Activity {
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
+		List<GroupItem> items = new ArrayList<GroupItem>();
+
+		// Populate our list with groups and it's children
+		for (int i = 1; i < 10; i++) {
+			GroupItem item = new GroupItem();
+
+			item.title = "Group " + i;
+
+			for (int j = 0; j < i; j++) {
+				ChildItem child = new ChildItem();
+				child.title = "Awesome item " + j;
+				child.hint = "Too awesome";
+
+				item.items.add(child);
+			}
+
+			items.add(item);
+		}
+
+		adapter = new ExampleAdapter(this);
+		adapter.setData(items);
+
+		listView = (AnimatedExpandableListView) findViewById(R.id.listView);
+		listView.setAdapter(adapter);
+		listView.setOnChildClickListener(new DrawerItemClickListener());
+		listView.setOnGroupClickListener(new OnGroupClickListener() {
+
+			@Override
+			public boolean onGroupClick(ExpandableListView parent, View v,
+					int groupPosition, long id) {
+				if (listView.isGroupExpanded(groupPosition)) {
+					listView.collapseGroupWithAnimation(groupPosition);
+				} else {
+					listView.expandGroupWithAnimation(groupPosition);
+				}
+				return true;
+			}
+		});
+
 		if (savedInstanceState == null) {
-			selectItem(0);
+			selectItem(0, 0);
 		}
 	}
 
@@ -126,7 +141,7 @@ public class MainActivity extends Activity {
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// If the nav drawer is open, hide action items related to the content
 		// view
-		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+		boolean drawerOpen = mDrawerLayout.isDrawerOpen(listView);
 		menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
@@ -158,18 +173,18 @@ public class MainActivity extends Activity {
 	}
 
 	/* The click listner for ListView in the navigation drawer */
-	private class DrawerItemClickListener implements
-			ListView.OnItemClickListener {
+	private class DrawerItemClickListener implements OnChildClickListener {
 		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			selectItem(position);
+		public boolean onChildClick(ExpandableListView parent, View v,
+				int groupPosition, int childPosition, long id) {
+			selectItem(groupPosition, childPosition);
+			return false;
 		}
 	}
 
-	private void selectItem(int position) {
+	private void selectItem(int groupPos, int childPos) {
 		Fragment fragment = null;
-		switch (position) {
+		switch (childPos) {
 		case 0:
 			// update the main content by replacing fragments
 			fragment = new TimelineFragment();
@@ -193,9 +208,9 @@ public class MainActivity extends Activity {
 				.replace(R.id.content_frame, fragment).commit();
 
 		// update selected item and title, then close the drawer
-		mDrawerList.setItemChecked(position, true);
-		setTitle(mPlanetTitles[position]);
-		mDrawerLayout.closeDrawer(mDrawerList);
+		listView.setItemChecked(childPos, true);
+		setTitle("Group " + groupPos + " Child " + childPos);
+		mDrawerLayout.closeDrawer(listView);
 	}
 
 	@Override
@@ -221,5 +236,130 @@ public class MainActivity extends Activity {
 		super.onConfigurationChanged(newConfig);
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	private static class GroupItem {
+		String title;
+		List<ChildItem> items = new ArrayList<ChildItem>();
+	}
+
+	private static class ChildItem {
+		String title;
+		String hint;
+	}
+
+	private static class ChildHolder {
+		TextView title;
+		TextView hint;
+	}
+
+	private static class GroupHolder {
+		TextView title;
+	}
+
+	/**
+	 * Adapter for our list of {@link GroupItem}s.
+	 */
+	private class ExampleAdapter extends AnimatedExpandableListAdapter {
+		private LayoutInflater inflater;
+
+		private List<GroupItem> items;
+
+		public ExampleAdapter(Context context) {
+			inflater = LayoutInflater.from(context);
+		}
+
+		public void setData(List<GroupItem> items) {
+			this.items = items;
+		}
+
+		@Override
+		public ChildItem getChild(int groupPosition, int childPosition) {
+			return items.get(groupPosition).items.get(childPosition);
+		}
+
+		@Override
+		public long getChildId(int groupPosition, int childPosition) {
+			return childPosition;
+		}
+
+		@Override
+		public View getRealChildView(int groupPosition, int childPosition,
+				boolean isLastChild, View convertView, ViewGroup parent) {
+			ChildHolder holder;
+			ChildItem item = getChild(groupPosition, childPosition);
+			if (convertView == null) {
+				holder = new ChildHolder();
+				convertView = inflater.inflate(R.layout.nav_list_item, parent,
+						false);
+				holder.title = (TextView) convertView
+						.findViewById(R.id.textTitle);
+				holder.hint = (TextView) convertView
+						.findViewById(R.id.textHint);
+				convertView.setTag(holder);
+			} else {
+				holder = (ChildHolder) convertView.getTag();
+			}
+
+			holder.title.setText(item.title);
+			holder.hint.setText(item.hint);
+
+			return convertView;
+		}
+
+		@Override
+		public int getRealChildrenCount(int groupPosition) {
+			return items.get(groupPosition).items.size();
+		}
+
+		@Override
+		public GroupItem getGroup(int groupPosition) {
+			return items.get(groupPosition);
+		}
+
+		@Override
+		public int getGroupCount() {
+			return items.size();
+		}
+
+		@Override
+		public long getGroupId(int groupPosition) {
+			return groupPosition;
+		}
+
+		@Override
+		public View getGroupView(int groupPosition, boolean isExpanded,
+				View convertView, ViewGroup parent) {
+			GroupHolder holder;
+			GroupItem item = getGroup(groupPosition);
+			if (convertView == null) {
+				holder = new GroupHolder();
+				convertView = inflater.inflate(R.layout.nav_group_item, parent,
+						false);
+				holder.title = (TextView) convertView
+						.findViewById(R.id.textTitle);
+				convertView.setTag(holder);
+			} else {
+				holder = (GroupHolder) convertView.getTag();
+			}
+
+			holder.title.setText(item.title);
+
+			return convertView;
+		}
+
+		@Override
+		public boolean hasStableIds() {
+			return true;
+		}
+
+		@Override
+		public boolean isChildSelectable(int arg0, int arg1) {
+			return true;
+		}
+	}
+
+	public void floatingActionButtonOnClick(View v) {
+		Log.d(LOG_TAG, "Onclicked");
 	}
 }
