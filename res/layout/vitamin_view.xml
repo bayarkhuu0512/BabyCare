@@ -8,6 +8,6 @@
         android:id="@+id/childName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ayduu" />
+        android:text="VitaminView" />
 
 </LinearLayout>

@@ -30,8 +30,26 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mercy.babycare.ui.activeoperation.ActiveOperationFragment;
+import com.mercy.babycare.ui.baby.BabyFragment;
+import com.mercy.babycare.ui.breast.BreastFragment;
+import com.mercy.babycare.ui.changediaper.ChangeDiaperFragment;
+import com.mercy.babycare.ui.drink.DrinkFragment;
 import com.mercy.babycare.ui.feed.FeedFragment;
+import com.mercy.babycare.ui.formula.FormulaFragment;
+import com.mercy.babycare.ui.health.HealthFragment;
+import com.mercy.babycare.ui.helpcenter.HelpCenterFragment;
+import com.mercy.babycare.ui.learn.LearnFragment;
+import com.mercy.babycare.ui.medcheck.MedCheckFragment;
+import com.mercy.babycare.ui.milkingbreast.MilkingBreastFragment;
+import com.mercy.babycare.ui.pain.PainFragment;
+import com.mercy.babycare.ui.purchase.PurchaseFragment;
+import com.mercy.babycare.ui.settings.SettingsFragment;
+import com.mercy.babycare.ui.takemedicine.TakeMedicineFragment;
 import com.mercy.babycare.ui.timeline.TimelineFragment;
+import com.mercy.babycare.ui.tooth.ToothFragment;
+import com.mercy.babycare.ui.vaccine.VaccineFragment;
+import com.mercy.babycare.ui.vitamin.VitaminFragment;
 import com.idunnololz.widgets.AnimatedExpandableListView;
 import com.idunnololz.widgets.AnimatedExpandableListView.AnimatedExpandableListAdapter;
 
@@ -94,7 +112,7 @@ public class MainActivity extends Activity {
 			item.title = "Group " + i;
 
 			for (int j = 0; j < i; j++) {
-				ChildItem child = new ChildItem();
+				Item child = new Item();
 				child.title = "Awesome item " + j;
 				child.hint = "Too awesome";
 
@@ -195,7 +213,25 @@ public class MainActivity extends Activity {
 			break;
 
 		default:
-			fragment = new TimelineFragment();
+			fragment = new ActiveOperationFragment();
+			fragment = new BabyFragment();
+			fragment = new BreastFragment();
+			fragment = new ChangeDiaperFragment();
+			fragment = new DrinkFragment();
+			fragment = new FeedFragment();
+			fragment = new FormulaFragment();
+			fragment = new HealthFragment();
+			fragment = new HelpCenterFragment();
+			fragment = new LearnFragment();
+			fragment = new MedCheckFragment();
+			fragment = new MilkingBreastFragment();
+			fragment = new PainFragment();
+			fragment = new PurchaseFragment();
+			fragment = new SettingsFragment();
+			fragment = new TakeMedicineFragment();
+			fragment = new ToothFragment();
+			fragment = new VaccineFragment();
+			fragment = new VitaminFragment();
 
 			break;
 		}
@@ -240,20 +276,20 @@ public class MainActivity extends Activity {
 
 	private static class GroupItem {
 		String title;
-		List<ChildItem> items = new ArrayList<ChildItem>();
+		List<Item> items = new ArrayList<Item>();
 	}
 
-	private static class ChildItem {
+	private static class Item {
 		String title;
 		String hint;
 	}
 
-	private static class ChildHolder {
+	private static class ItemHolder {
 		TextView title;
 		TextView hint;
 	}
 
-	private static class GroupHolder {
+	private static class Group {
 		TextView title;
 	}
 
@@ -274,7 +310,7 @@ public class MainActivity extends Activity {
 		}
 
 		@Override
-		public ChildItem getChild(int groupPosition, int childPosition) {
+		public Item getChild(int groupPosition, int childPosition) {
 			return items.get(groupPosition).items.get(childPosition);
 		}
 
@@ -286,10 +322,10 @@ public class MainActivity extends Activity {
 		@Override
 		public View getRealChildView(int groupPosition, int childPosition,
 				boolean isLastChild, View convertView, ViewGroup parent) {
-			ChildHolder holder;
-			ChildItem item = getChild(groupPosition, childPosition);
+			ItemHolder holder;
+			Item item = getChild(groupPosition, childPosition);
 			if (convertView == null) {
-				holder = new ChildHolder();
+				holder = new ItemHolder();
 				convertView = inflater.inflate(R.layout.nav_list_item, parent,
 						false);
 				holder.title = (TextView) convertView
@@ -298,7 +334,7 @@ public class MainActivity extends Activity {
 						.findViewById(R.id.textHint);
 				convertView.setTag(holder);
 			} else {
-				holder = (ChildHolder) convertView.getTag();
+				holder = (ItemHolder) convertView.getTag();
 			}
 
 			holder.title.setText(item.title);
@@ -330,17 +366,17 @@ public class MainActivity extends Activity {
 		@Override
 		public View getGroupView(int groupPosition, boolean isExpanded,
 				View convertView, ViewGroup parent) {
-			GroupHolder holder;
+			Group holder;
 			GroupItem item = getGroup(groupPosition);
 			if (convertView == null) {
-				holder = new GroupHolder();
+				holder = new Group();
 				convertView = inflater.inflate(R.layout.nav_group_item, parent,
 						false);
 				holder.title = (TextView) convertView
 						.findViewById(R.id.textTitle);
 				convertView.setTag(holder);
 			} else {
-				holder = (GroupHolder) convertView.getTag();
+				holder = (Group) convertView.getTag();
 			}
 
 			holder.title.setText(item.title);

@@ -6,7 +6,7 @@
 
     <!--
          Per the design guidelines, navigation drawers should be between 240dp and 320dp:
-         https://developer.android.com/design/patterns/navigation-drawer.html
+         https://developer.android.com/design/patterns/navigation-drawer.html
     -->
     <dimen name="navigation_drawer_width">240dp</dimen>
 
@@ -17,5 +17,7 @@
     <dimen name="fab_mini_shadow_size">6dp</dimen>
     <dimen name="fab_scroll_threshold">4dp</dimen>
     <dimen name="fab_elevation_lollipop">8dp</dimen>
+    <!-- Circular progress button -->
+    <dimen name="cpb_stroke_width">4dp</dimen>
 
 </resources>

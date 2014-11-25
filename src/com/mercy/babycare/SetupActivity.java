@@ -6,6 +6,7 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.babycare.db.DatabaseHelper;
 import com.mercy.babycare.entities.Baby;
+import com.mercy.babycare.entities.Timeline;
 import com.mercy.babycare.utils.PrefManager;
 
 import android.content.Intent;
@@ -21,9 +22,10 @@ public class SetupActivity extends FragmentActivity {
 	private PrefManager prefManager;
 	private DatabaseHelper databaseHelper = null;
 	private Intent intent;
-	private TextView childName;
-	private Baby child;
-	private Dao<Baby, Integer> childDAO;
+	private TextView babyName;
+	private Timeline timeline;
+	private Baby baby;
+	private Dao<Timeline, Integer> timelineDAO;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -34,17 +36,20 @@ public class SetupActivity extends FragmentActivity {
 		} else {
 			setContentView(R.layout.fragment_setup);
 			// Init UIs
-			childName = (TextView) findViewById(R.id.childName);
+			babyName = (TextView) findViewById(R.id.childName);
 		}
 	}
 
 	public void nextOnClick(View v) {
 		prefManager.setHasSetup(true);
-		child = new Baby();
-		child.setFirstName(childName.getText().toString());
+		baby = new Baby();
+		baby.setFirstName(babyName.getText().toString());
+
+		timeline = new Timeline();
+		timeline.setBaby(baby);
 		try {
-			childDAO = getHelper().getChildDao();
-			childDAO.create(child);
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timeline);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
