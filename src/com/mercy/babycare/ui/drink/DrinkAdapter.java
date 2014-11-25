@@ -1,10 +1,6 @@
-package com.mercy.babycare.ui.timeline;
+package com.mercy.babycare.ui.drink;
 
-import java.util.List;
-
-import com.j256.ormlite.dao.Dao;
 import com.mercy.babycare.R;
-import com.mercy.babycare.entities.Timeline;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,14 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class TimelineAdapter extends
-		RecyclerView.Adapter<TimelineAdapter.ViewHolder> {
+public class DrinkAdapter extends
+		RecyclerView.Adapter<DrinkAdapter.ViewHolder> {
 	private final Context mContext;
-	List<Timeline> mList;
+	private final String[] mDataset;
 
-	public TimelineAdapter(Context context, List<Timeline> list) {
+	public DrinkAdapter(Context context, String[] dataset) {
 		mContext = context;
-		mList = list;
+		mDataset = dataset;
 	}
 
 	@Override
@@ -32,13 +28,14 @@ public class TimelineAdapter extends
 
 	@Override
 	public void onBindViewHolder(ViewHolder viewHolder, int position) {
-		viewHolder.mTextView.setText(mList.get(position).getBaby()
-				.getFirstName());
+		String[] values = mDataset[position].split(",");
+		String countryName = values[0];
+		viewHolder.mTextView.setText(countryName);
 	}
 
 	@Override
 	public int getItemCount() {
-		return mList.size();
+		return mDataset.length;
 	}
 
 	public static class ViewHolder extends RecyclerView.ViewHolder {

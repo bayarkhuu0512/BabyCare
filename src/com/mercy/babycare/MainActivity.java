@@ -20,9 +20,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
@@ -42,16 +44,21 @@ import com.mercy.babycare.ui.helpcenter.HelpCenterFragment;
 import com.mercy.babycare.ui.learn.LearnFragment;
 import com.mercy.babycare.ui.medcheck.MedCheckFragment;
 import com.mercy.babycare.ui.milkingbreast.MilkingBreastFragment;
+import com.mercy.babycare.ui.others.AboutFragment;
+import com.mercy.babycare.ui.others.ProfileFragment;
 import com.mercy.babycare.ui.pain.PainFragment;
 import com.mercy.babycare.ui.purchase.PurchaseFragment;
 import com.mercy.babycare.ui.settings.SettingsFragment;
 import com.mercy.babycare.ui.takemedicine.TakeMedicineFragment;
+import com.mercy.babycare.ui.timeline.TimelineCreateFragment;
 import com.mercy.babycare.ui.timeline.TimelineFragment;
 import com.mercy.babycare.ui.tooth.ToothFragment;
 import com.mercy.babycare.ui.vaccine.VaccineFragment;
 import com.mercy.babycare.ui.vitamin.VitaminFragment;
 import com.idunnololz.widgets.AnimatedExpandableListView;
 import com.idunnololz.widgets.AnimatedExpandableListView.AnimatedExpandableListAdapter;
+
+import dreamers.graphics.RippleDrawable;
 
 public class MainActivity extends Activity {
 	String LOG_TAG = MainActivity.class.getName();
@@ -63,7 +70,7 @@ public class MainActivity extends Activity {
 
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
-	private ExampleAdapter adapter;
+	private LeftNavMenuAdapter adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +78,6 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		mTitle = mDrawerTitle = getTitle();
-		// mPlanetTitles = getResources().getStringArray(R.array.nav_array);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
 				GravityCompat.START);
@@ -103,47 +109,35 @@ public class MainActivity extends Activity {
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-		List<GroupItem> items = new ArrayList<GroupItem>();
-
-		// Populate our list with groups and it's children
-		for (int i = 1; i < 10; i++) {
-			GroupItem item = new GroupItem();
-
-			item.title = "Group " + i;
-
-			for (int j = 0; j < i; j++) {
-				Item child = new Item();
-				child.title = "Awesome item " + j;
-				child.hint = "Too awesome";
-
-				item.items.add(child);
-			}
-
-			items.add(item);
-		}
-
-		adapter = new ExampleAdapter(this);
-		adapter.setData(items);
+		adapter = new LeftNavMenuAdapter(this);
+		adapter.setData(fillLeftMenuItems());
 
 		listView = (AnimatedExpandableListView) findViewById(R.id.listView);
 		listView.setAdapter(adapter);
 		listView.setOnChildClickListener(new DrawerItemClickListener());
+		listView.expandGroupWithAnimation(1);
+		listView.expandGroupWithAnimation(2);
+
 		listView.setOnGroupClickListener(new OnGroupClickListener() {
 
 			@Override
 			public boolean onGroupClick(ExpandableListView parent, View v,
 					int groupPosition, long id) {
-				if (listView.isGroupExpanded(groupPosition)) {
-					listView.collapseGroupWithAnimation(groupPosition);
+				if (groupPosition == 1 || groupPosition == 2) {
+					if (listView.isGroupExpanded(groupPosition)) {
+						listView.collapseGroupWithAnimation(groupPosition);
+					} else {
+						listView.expandGroupWithAnimation(groupPosition);
+					}
 				} else {
-					listView.expandGroupWithAnimation(groupPosition);
+					selectItem(groupPosition);
 				}
 				return true;
 			}
 		});
 
 		if (savedInstanceState == null) {
-			selectItem(0, 0);
+			selectItem(0);
 		}
 	}
 
@@ -190,6 +184,104 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	private List<GroupItem> fillLeftMenuItems() {
+		List<GroupItem> items = new ArrayList<GroupItem>();
+		GroupItem timeline_menu = new GroupItem();
+		timeline_menu.title = getResources().getString(R.string.timeline_menu);
+		items.add(timeline_menu);
+
+		// Feed
+		GroupItem feed_menu = new GroupItem();
+		feed_menu.title = getResources().getString(R.string.feed_menu);
+		items.add(feed_menu);
+
+		Item feed_menu_breast = new Item();
+		feed_menu_breast.title = getResources().getString(
+				R.string.feed_menu_breast);
+		feed_menu.items.add(feed_menu_breast);
+
+		Item feed_menu_drink = new Item();
+		feed_menu_drink.title = getResources().getString(
+				R.string.feed_menu_drink);
+		feed_menu.items.add(feed_menu_drink);
+
+		Item feed_menu_formula = new Item();
+		feed_menu_formula.title = getResources().getString(
+				R.string.feed_menu_formula);
+		feed_menu.items.add(feed_menu_formula);
+
+		Item feed_menu_extrafood = new Item();
+		feed_menu_extrafood.title = getResources().getString(
+				R.string.feed_menu_extrafood);
+		feed_menu.items.add(feed_menu_extrafood);
+
+		// Health
+		GroupItem health_menu = new GroupItem();
+		health_menu.title = getResources().getString(R.string.health_menu);
+		items.add(health_menu);
+
+		Item health_menu_vaccine = new Item();
+		health_menu_vaccine.title = getResources().getString(
+				R.string.health_menu_vaccine);
+		health_menu.items.add(health_menu_vaccine);
+
+		Item health_menu_vitamin = new Item();
+		health_menu_vitamin.title = getResources().getString(
+				R.string.health_menu_vitamin);
+		health_menu.items.add(health_menu_vitamin);
+
+		Item health_menu_medcheck = new Item();
+		health_menu_medcheck.title = getResources().getString(
+				R.string.health_menu_medcheck);
+		health_menu.items.add(health_menu_medcheck);
+
+		Item health_menu_takemedicine = new Item();
+		health_menu_takemedicine.title = getResources().getString(
+				R.string.health_menu_takemedicine);
+		health_menu.items.add(health_menu_takemedicine);
+
+		GroupItem diaperchange_menu = new GroupItem();
+		diaperchange_menu.title = getResources().getString(
+				R.string.diaperchange_menu);
+		items.add(diaperchange_menu);
+
+		GroupItem activeoperation_menu = new GroupItem();
+		activeoperation_menu.title = getResources().getString(
+				R.string.activeoperation_menu);
+		items.add(activeoperation_menu);
+
+		GroupItem learn_menu = new GroupItem();
+		learn_menu.title = getResources().getString(R.string.learn_menu);
+		items.add(learn_menu);
+
+		GroupItem purchase_menu = new GroupItem();
+		purchase_menu.title = getResources().getString(R.string.purchase_menu);
+		items.add(purchase_menu);
+
+		GroupItem tooth_menu = new GroupItem();
+		tooth_menu.title = getResources().getString(R.string.tooth_menu);
+		items.add(tooth_menu);
+
+		GroupItem helpcenter_menu = new GroupItem();
+		helpcenter_menu.title = getResources().getString(
+				R.string.helpcenter_menu);
+		items.add(helpcenter_menu);
+
+		GroupItem profile_menu = new GroupItem();
+		profile_menu.title = getResources().getString(R.string.profile_menu);
+		items.add(profile_menu);
+
+		GroupItem settings_menu = new GroupItem();
+		settings_menu.title = getResources().getString(R.string.settings_menu);
+		items.add(settings_menu);
+
+		GroupItem about_menu = new GroupItem();
+		about_menu.title = getResources().getString(R.string.about_menu);
+		items.add(about_menu);
+
+		return items;
+	}
+
 	/* The click listner for ListView in the navigation drawer */
 	private class DrawerItemClickListener implements OnChildClickListener {
 		@Override
@@ -200,52 +292,103 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	private void selectItem(int groupPos, int childPos) {
+	private void selectItem(int groupPos) {
 		Fragment fragment = null;
-		switch (childPos) {
+		switch (groupPos) {
 		case 0:
-			// update the main content by replacing fragments
 			fragment = new TimelineFragment();
-			break;
-		case 1:
-			// update the main content by replacing fragments
-			fragment = new FeedFragment();
+			setTitle(getResources().getString(R.string.timeline_menu));
+			listView.setItemChecked(0, true);
 			break;
 
-		default:
-			fragment = new ActiveOperationFragment();
-			fragment = new BabyFragment();
-			fragment = new BreastFragment();
+		case 3:
 			fragment = new ChangeDiaperFragment();
-			fragment = new DrinkFragment();
-			fragment = new FeedFragment();
-			fragment = new FormulaFragment();
-			fragment = new HealthFragment();
-			fragment = new HelpCenterFragment();
-			fragment = new LearnFragment();
-			fragment = new MedCheckFragment();
-			fragment = new MilkingBreastFragment();
-			fragment = new PainFragment();
-			fragment = new PurchaseFragment();
-			fragment = new SettingsFragment();
-			fragment = new TakeMedicineFragment();
-			fragment = new ToothFragment();
-			fragment = new VaccineFragment();
-			fragment = new VitaminFragment();
+			setTitle(getResources().getString(R.string.diaperchange_menu));
+			listView.setItemChecked(3, true);
+			break;
 
+		case 4:
+			fragment = new ActiveOperationFragment();
+			setTitle(getResources().getString(R.string.activeoperation_menu));
+			listView.setItemChecked(4, true);
+			break;
+		case 5:
+			fragment = new LearnFragment();
+			setTitle(getResources().getString(R.string.learn_menu));
+			listView.setItemChecked(5, true);
+			break;
+		case 6:
+			fragment = new PurchaseFragment();
+			setTitle(getResources().getString(R.string.purchase_menu));
+			listView.setItemChecked(6, true);
+			break;
+		case 7:
+			fragment = new ToothFragment();
+			setTitle(getResources().getString(R.string.tooth_menu));
+			listView.setItemChecked(7, true);
+			break;
+		case 8:
+			fragment = new HelpCenterFragment();
+			setTitle(getResources().getString(R.string.helpcenter_menu));
+			listView.setItemChecked(8, true);
+			break;
+		case 9:
+			fragment = new ProfileFragment();
+			setTitle(getResources().getString(R.string.profile_menu));
+			listView.setItemChecked(9, true);
+			break;
+		case 10:
+			fragment = new AboutFragment();
+			setTitle(getResources().getString(R.string.about_menu));
+			listView.setItemChecked(10, true);
+			break;
+		default:
+			fragment = new TimelineFragment();
+			setTitle(getResources().getString(R.string.timeline_menu));
+			listView.setItemChecked(0, true);
 			break;
 		}
-		Bundle args = new Bundle();
-		// args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-		fragment.setArguments(args);
-
 		FragmentManager fragmentManager = getFragmentManager();
 		fragmentManager.beginTransaction()
 				.replace(R.id.content_frame, fragment).commit();
+		mDrawerLayout.closeDrawer(listView);
 
-		// update selected item and title, then close the drawer
-		listView.setItemChecked(childPos, true);
-		setTitle("Group " + groupPos + " Child " + childPos);
+	}
+
+	private void selectItem(int groupPos, int childPos) {
+		Fragment fragment = null;
+		if (groupPos == 1) {
+			if (childPos == 0) {
+				fragment = new FeedFragment();
+				setTitle("Group " + groupPos + " Child " + childPos);
+				listView.setItemChecked(childPos, true);
+			}
+			if (childPos == 1) {
+				fragment = new FeedFragment();
+			}
+			if (childPos == 2) {
+				fragment = new FeedFragment();
+			}
+			if (childPos == 3) {
+				fragment = new FeedFragment();
+			}
+		} else if (groupPos == 2) {
+			if (childPos == 0) {
+				fragment = new HealthFragment();
+			}
+			if (childPos == 1) {
+				fragment = new HealthFragment();
+			}
+			if (childPos == 2) {
+				fragment = new HealthFragment();
+			}
+			if (childPos == 3) {
+				fragment = new HealthFragment();
+			}
+		}
+		FragmentManager fragmentManager = getFragmentManager();
+		fragmentManager.beginTransaction()
+				.replace(R.id.content_frame, fragment).commit();
 		mDrawerLayout.closeDrawer(listView);
 	}
 
@@ -286,7 +429,6 @@ public class MainActivity extends Activity {
 
 	private static class ItemHolder {
 		TextView title;
-		TextView hint;
 	}
 
 	private static class Group {
@@ -296,12 +438,12 @@ public class MainActivity extends Activity {
 	/**
 	 * Adapter for our list of {@link GroupItem}s.
 	 */
-	private class ExampleAdapter extends AnimatedExpandableListAdapter {
+	private class LeftNavMenuAdapter extends AnimatedExpandableListAdapter {
 		private LayoutInflater inflater;
 
 		private List<GroupItem> items;
 
-		public ExampleAdapter(Context context) {
+		public LeftNavMenuAdapter(Context context) {
 			inflater = LayoutInflater.from(context);
 		}
 
@@ -330,15 +472,12 @@ public class MainActivity extends Activity {
 						false);
 				holder.title = (TextView) convertView
 						.findViewById(R.id.textTitle);
-				holder.hint = (TextView) convertView
-						.findViewById(R.id.textHint);
 				convertView.setTag(holder);
 			} else {
 				holder = (ItemHolder) convertView.getTag();
 			}
 
 			holder.title.setText(item.title);
-			holder.hint.setText(item.hint);
 
 			return convertView;
 		}
@@ -397,5 +536,16 @@ public class MainActivity extends Activity {
 
 	public void floatingActionButtonOnClick(View v) {
 		Log.d(LOG_TAG, "Onclicked");
+		Fragment fragment = new TimelineCreateFragment();
+		FragmentManager fragmentManager = getFragmentManager();
+		fragmentManager.beginTransaction()
+				.replace(R.id.content_frame, fragment).commit();
+	}
+
+	public void cancelButtonOnClick(View v) {
+		Fragment fragment = new TimelineFragment();
+		FragmentManager fragmentManager = getFragmentManager();
+		fragmentManager.beginTransaction()
+				.replace(R.id.content_frame, fragment).commit();
 	}
 }

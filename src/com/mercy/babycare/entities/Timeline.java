@@ -9,62 +9,66 @@ public class Timeline implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -322850474008290255L;
+	private static final long serialVersionUID = 5317446034636916461L;
+
+	/**
+	 * 
+	 */
 	@DatabaseField(generatedId = true)
 	int id;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = false, foreign = true)
 	private Baby baby;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private ActiveOperation activeOperation;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Breast breast;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private ChangeDiaper changeDiaper;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Drink drink;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Feed feed;
-	
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Formula formula;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Health health;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private HelpCenter helpCenter;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Learn learn;
-	
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private MedCheck medCheck;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private MilkingBreast milkingBreast;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Pain pain;
-	
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Purchase purchase;
-	
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private TakeMedicine takeMedicine;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Tooth tooth;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Vaccine vaccine;
 
-	@DatabaseField(foreign = true, foreignAutoRefresh = true,foreignAutoCreate=true)
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Vitamin vitamin;
 
 	public int getId() {
@@ -218,8 +222,5 @@ public class Timeline implements Serializable {
 	public void setVitamin(Vitamin vitamin) {
 		this.vitamin = vitamin;
 	}
-	
-	
-	
 
 }

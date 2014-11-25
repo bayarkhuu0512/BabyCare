@@ -1,6 +1,7 @@
 package com.mercy.babycare;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
@@ -26,6 +27,7 @@ public class SetupActivity extends FragmentActivity {
 	private Timeline timeline;
 	private Baby baby;
 	private Dao<Timeline, Integer> timelineDAO;
+	private Dao<Baby, Integer> babyDAO;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,20 +44,30 @@ public class SetupActivity extends FragmentActivity {
 
 	public void nextOnClick(View v) {
 		prefManager.setHasSetup(true);
-		baby = new Baby();
-		baby.setFirstName(babyName.getText().toString());
-
-		timeline = new Timeline();
-		timeline.setBaby(baby);
 		try {
+			baby = new Baby();
+			baby.setFirstName(babyName.getText().toString());
+			baby.setLastName("Bayarkhuu");
+			babyDAO = getHelper().getBabyDao();
+			babyDAO.create(baby);
+
+			timeline = new Timeline();
+			timeline.setBaby(baby);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timeline);
+			
+			List<Baby> babyList = babyDAO.queryForAll();
+			Log.d(LOG_TAG, "babyList size " + babyList.size());
+			
+			List<Timeline> list = timelineDAO.queryForAll();
+			Log.d(LOG_TAG, "List size " + list.size());
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		launchMainActivity();
+		// launchMainActivity();
 	}
 
 	private void launchMainActivity() {

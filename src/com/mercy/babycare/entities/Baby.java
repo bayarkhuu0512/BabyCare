@@ -9,46 +9,47 @@ public class Baby implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1520211660202532355L;
+
+	private static final long serialVersionUID = -2874694476835632257L;
 	@DatabaseField(generatedId = true)
 	int id;
 
-	@DatabaseField
+	@DatabaseField(canBeNull = true)
 	String firstName;
 
-	@DatabaseField
+	@DatabaseField(canBeNull = true)
 	String lastName;
 
-	@DatabaseField
+	@DatabaseField(canBeNull = true)
 	String gender;
 
-	@DatabaseField
+	@DatabaseField(canBeNull = true)
 	Date birthDate;
 
-	@DatabaseField
+	@DatabaseField(canBeNull = true)
 	String hospitalName;
 
-	@DatabaseField
+	@DatabaseField(canBeNull = true)
 	String doctorName;
 
-	@DatabaseField
+	@DatabaseField(canBeNull = true)
 	float birthHeight;
 
-	@DatabaseField
+	@DatabaseField(canBeNull = true)
 	float birthWeight;
-	
-	@DatabaseField
+
+	@DatabaseField(canBeNull = true)
 	float birthHeadCirc;
 
-	@DatabaseField
+	@DatabaseField(canBeNull = true)
 	float currentHeight;
 
-	@DatabaseField
+	@DatabaseField(canBeNull = true)
 	float currentWeight;
 
-	@DatabaseField
+	@DatabaseField(canBeNull = true)
 	float currentHeadCirc;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -152,6 +153,5 @@ public class Baby implements Serializable {
 	public void setCurrentHeadCirc(float currentHeadCirc) {
 		this.currentHeadCirc = currentHeadCirc;
 	}
-	
-	
+
 }
