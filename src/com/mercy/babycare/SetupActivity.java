@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.babycare.db.DatabaseHelper;
-import com.mercy.babycare.entities.Child;
+import com.mercy.babycare.entities.Baby;
 import com.mercy.babycare.utils.PrefManager;
 
 import android.content.Intent;
@@ -22,8 +22,8 @@ public class SetupActivity extends FragmentActivity {
 	private DatabaseHelper databaseHelper = null;
 	private Intent intent;
 	private TextView childName;
-	private Child child;
-	private Dao<Child, Integer> childDAO;
+	private Baby child;
+	private Dao<Baby, Integer> childDAO;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class SetupActivity extends FragmentActivity {
 
 	public void nextOnClick(View v) {
 		prefManager.setHasSetup(true);
-		child = new Child();
+		child = new Baby();
 		child.setFirstName(childName.getText().toString());
 		try {
 			childDAO = getHelper().getChildDao();

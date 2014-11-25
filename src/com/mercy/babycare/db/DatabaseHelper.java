@@ -10,7 +10,7 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import com.mercy.babycare.entities.Child;
+import com.mercy.babycare.entities.Baby;
 import com.mercy.babycare.entities.Feed;
 
 public class DatabaseHelper  extends OrmLiteSqliteOpenHelper {
@@ -19,7 +19,7 @@ public class DatabaseHelper  extends OrmLiteSqliteOpenHelper {
 	private static final int DATABASE_VERSION = 1;
 
 	// DAO objects
-	private Dao<Child, Integer> childDao = null;
+	private Dao<Baby, Integer> childDao = null;
 	private Dao<Feed, Integer> feedDao = null;
 	
 
@@ -35,7 +35,7 @@ public class DatabaseHelper  extends OrmLiteSqliteOpenHelper {
 	public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
 		try {
 			Log.i(DatabaseHelper.class.getName(), "onCreate");
-			TableUtils.createTable(connectionSource, Child.class);
+			TableUtils.createTable(connectionSource, Baby.class);
 			TableUtils.createTable(connectionSource, Feed.class);
 
 			// here we try inserting data in the on-create as a test
@@ -62,7 +62,7 @@ public class DatabaseHelper  extends OrmLiteSqliteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
 		try {
 			Log.i(DatabaseHelper.class.getName(), "onUpgrade");
-			TableUtils.dropTable(connectionSource, Child.class, true);
+			TableUtils.dropTable(connectionSource, Baby.class, true);
 			TableUtils.dropTable(connectionSource, Feed.class, true);
 			// after we drop the old databases, we create the new ones
 			onCreate(db, connectionSource);
@@ -76,9 +76,9 @@ public class DatabaseHelper  extends OrmLiteSqliteOpenHelper {
 	 * Returns the Database Access Object (DAO) for our SimpleData class. It will create it or just give the cached
 	 * value.
 	 */
-	public Dao<Child, Integer> getChildDao() throws SQLException {
+	public Dao<Baby, Integer> getChildDao() throws SQLException {
 		if (childDao == null) {
-			childDao = getDao(Child.class);
+			childDao = getDao(Baby.class);
 		}
 		return childDao;
 	}

@@ -6,7 +6,7 @@ import java.util.Date;
 
 import com.j256.ormlite.field.DatabaseField;
 
-public class Feed implements Serializable {
+public class Vitamin implements Serializable {
 	/**
 	 * 
 	 */
