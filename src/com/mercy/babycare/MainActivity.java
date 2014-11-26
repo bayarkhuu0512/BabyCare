@@ -30,6 +30,7 @@ import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.utils.Utils;
 import com.idunnololz.widgets.AnimatedExpandableListView;
 import com.idunnololz.widgets.AnimatedExpandableListView.AnimatedExpandableListAdapter;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -40,6 +41,7 @@ import com.mercy.babycare.entities.Timeline;
 import com.mercy.babycare.ui.activeoperation.ActiveOperationFragment;
 import com.mercy.babycare.ui.breast.BreastFragment;
 import com.mercy.babycare.ui.changediaper.ChangeDiaperFragment;
+import com.mercy.babycare.ui.chart.ChartFragment;
 import com.mercy.babycare.ui.feed.FeedFragment;
 import com.mercy.babycare.ui.health.HealthFragment;
 import com.mercy.babycare.ui.helpcenter.HelpCenterFragment;
@@ -70,6 +72,9 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+        Utils.init(getResources());
+
 		try {
 			timelineDAO = getHelper().getTimelineDao();
 		} catch (SQLException e) {
@@ -123,7 +128,7 @@ public class MainActivity extends Activity {
 			@Override
 			public boolean onGroupClick(ExpandableListView parent, View v,
 					int groupPosition, long id) {
-				if (groupPosition == 1 || groupPosition == 2) {
+				if (groupPosition == 2 || groupPosition == 4) {
 					if (listView.isGroupExpanded(groupPosition)) {
 						listView.collapseGroupWithAnimation(groupPosition);
 					} else {
@@ -190,6 +195,11 @@ public class MainActivity extends Activity {
 		timeline_menu.title = getResources().getString(R.string.timeline_menu);
 		items.add(timeline_menu);
 
+		// Chart
+		GroupItem chart_menu = new GroupItem();
+		chart_menu.title = getResources().getString(R.string.chart_menu);
+		items.add(chart_menu);
+
 		// Feed
 		GroupItem feed_menu = new GroupItem();
 		feed_menu.title = getResources().getString(R.string.feed_menu);
@@ -215,6 +225,12 @@ public class MainActivity extends Activity {
 				R.string.feed_menu_extrafood);
 		feed_menu.items.add(feed_menu_extrafood);
 
+		// ChangeDiaper
+		GroupItem diaperchange_menu = new GroupItem();
+		diaperchange_menu.title = getResources().getString(
+				R.string.diaperchange_menu);
+		items.add(diaperchange_menu);
+
 		// Health
 		GroupItem health_menu = new GroupItem();
 		health_menu.title = getResources().getString(R.string.health_menu);
@@ -239,11 +255,6 @@ public class MainActivity extends Activity {
 		health_menu_takemedicine.title = getResources().getString(
 				R.string.health_menu_takemedicine);
 		health_menu.items.add(health_menu_takemedicine);
-
-		GroupItem diaperchange_menu = new GroupItem();
-		diaperchange_menu.title = getResources().getString(
-				R.string.diaperchange_menu);
-		items.add(diaperchange_menu);
 
 		GroupItem activeoperation_menu = new GroupItem();
 		activeoperation_menu.title = getResources().getString(
@@ -301,46 +312,52 @@ public class MainActivity extends Activity {
 			listView.setItemChecked(0, true);
 			break;
 
+		case 1:
+			fragment = new ChartFragment();
+			setTitle(getResources().getString(R.string.chart_menu));
+			listView.setItemChecked(1, true);
+			break;
+
 		case 3:
 			fragment = new ChangeDiaperFragment();
 			setTitle(getResources().getString(R.string.diaperchange_menu));
 			listView.setItemChecked(3, true);
 			break;
 
-		case 4:
+		case 5:
 			fragment = new ActiveOperationFragment();
 			setTitle(getResources().getString(R.string.activeoperation_menu));
-			listView.setItemChecked(4, true);
-			break;
-		case 5:
-			fragment = new LearnFragment();
-			setTitle(getResources().getString(R.string.learn_menu));
 			listView.setItemChecked(5, true);
 			break;
 		case 6:
-			fragment = new PurchaseFragment();
-			setTitle(getResources().getString(R.string.purchase_menu));
+			fragment = new LearnFragment();
+			setTitle(getResources().getString(R.string.learn_menu));
 			listView.setItemChecked(6, true);
 			break;
 		case 7:
-			fragment = new ToothFragment();
-			setTitle(getResources().getString(R.string.tooth_menu));
+			fragment = new PurchaseFragment();
+			setTitle(getResources().getString(R.string.purchase_menu));
 			listView.setItemChecked(7, true);
 			break;
 		case 8:
-			fragment = new HelpCenterFragment();
-			setTitle(getResources().getString(R.string.helpcenter_menu));
+			fragment = new ToothFragment();
+			setTitle(getResources().getString(R.string.tooth_menu));
 			listView.setItemChecked(8, true);
 			break;
 		case 9:
-			fragment = new ProfileFragment();
-			setTitle(getResources().getString(R.string.profile_menu));
+			fragment = new HelpCenterFragment();
+			setTitle(getResources().getString(R.string.helpcenter_menu));
 			listView.setItemChecked(9, true);
 			break;
 		case 10:
+			fragment = new ProfileFragment();
+			setTitle(getResources().getString(R.string.profile_menu));
+			listView.setItemChecked(10, true);
+			break;
+		case 11:
 			fragment = new AboutFragment();
 			setTitle(getResources().getString(R.string.about_menu));
-			listView.setItemChecked(10, true);
+			listView.setItemChecked(11, true);
 			break;
 		default:
 			fragment = new TimelineFragment();
@@ -357,7 +374,7 @@ public class MainActivity extends Activity {
 
 	private void selectItem(int groupPos, int childPos) {
 		Fragment fragment = null;
-		if (groupPos == 1) {
+		if (groupPos == 2) {
 			if (childPos == 0) {
 				fragment = new BreastFragment();
 				setTitle(getResources().getString(R.string.feed_menu_breast));
@@ -372,7 +389,7 @@ public class MainActivity extends Activity {
 			if (childPos == 3) {
 				fragment = new FeedFragment();
 			}
-		} else if (groupPos == 2) {
+		} else if (groupPos == 4) {
 			if (childPos == 0) {
 				fragment = new HealthFragment();
 			}
@@ -535,7 +552,6 @@ public class MainActivity extends Activity {
 	}
 
 	public void floatingActionButtonOnClick(View v) {
-		Log.d(LOG_TAG, "Onclicked");
 		Fragment fragment = new TimelineCreateFragment();
 		FragmentManager fragmentManager = getFragmentManager();
 		fragmentManager.beginTransaction()
@@ -543,9 +559,9 @@ public class MainActivity extends Activity {
 	}
 
 	public void cancelButtonOnClick(View v) {
-		
+
 		gotoTimeine();
-		
+
 	}
 
 	public void addBreastOnClick(View v) {

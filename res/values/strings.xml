@@ -40,7 +40,8 @@
     <string name="profile_menu">Профайл</string>
     <string name="settings_menu">Тохиргоо</string>
     <string name="about_menu">Апп-н тухай</string>
-
+    <string name="chart_menu">График чарт</string>
+    
     <string-array name="feed_array">
         <item>Бантан</item>
         <item>Каш</item>
