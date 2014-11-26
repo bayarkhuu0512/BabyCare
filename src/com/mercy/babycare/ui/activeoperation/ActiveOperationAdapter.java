@@ -1,4 +1,4 @@
-package com.mercy.babycare.ui.takemedicine;
+package com.mercy.babycare.ui.activeoperation;
 
 import com.mercy.babycare.R;
 
@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class TakeMedicineAdapter extends
-		RecyclerView.Adapter<TakeMedicineAdapter.ViewHolder> {
+public class ActiveOperationAdapter extends
+		RecyclerView.Adapter<ActiveOperationAdapter.ViewHolder> {
 	private final Context mContext;
 	private final String[] mDataset;
 
-	public TakeMedicineAdapter(Context context, String[] dataset) {
+	public ActiveOperationAdapter(Context context, String[] dataset) {
 		mContext = context;
 		mDataset = dataset;
 	}
@@ -22,7 +22,7 @@ public class TakeMedicineAdapter extends
 	@Override
 	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 		View v = LayoutInflater.from(parent.getContext()).inflate(
-				R.layout.takemedicine_row, parent, false);
+				R.layout.activeoperation_row, parent, false);
 		return new ViewHolder(v);
 	}
 

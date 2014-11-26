@@ -22,7 +22,7 @@ public class ChangeDiaperAdapter extends
 	@Override
 	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 		View v = LayoutInflater.from(parent.getContext()).inflate(
-				R.layout.timeline_row, parent, false);
+				R.layout.changediaper_row, parent, false);
 		return new ViewHolder(v);
 	}
 

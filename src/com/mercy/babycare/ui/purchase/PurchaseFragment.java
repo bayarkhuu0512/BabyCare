@@ -22,7 +22,7 @@ public class PurchaseFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View root = inflater.inflate(R.layout.timeline_view, container, false);
+		View root = inflater.inflate(R.layout.purchase_view, container, false);
 
 		RecyclerView recyclerView = (RecyclerView) root
 				.findViewById(R.id.recycler_view);
