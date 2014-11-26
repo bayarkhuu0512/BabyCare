@@ -23,7 +23,7 @@ public class TimelineCreateFragment extends Fragment {
 		Button cancelButton = (Button) root.findViewById(
 				R.id.cancelButton);
 		RippleDrawable.createRipple(cancelButton,
-				getResources().getColor(R.color.material_blue_600));
+				getResources().getColor(R.color.mainColor));
 		cancelButton.setOnClickListener(new OnClickListener() {
 
 			@Override

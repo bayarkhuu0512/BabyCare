@@ -29,8 +29,8 @@ public class TimelineAdapter extends
 	public TimelineAdapter(Context context, List<Timeline> list) {
 		mContext = context;
 		roboto_light= Typeface.createFromAsset(mContext.getAssets(), Constants.ROBOTO_LIGHT);
-		roboto_thin= Typeface.createFromAsset(mContext.getAssets(), Constants.ROBOTO_THIN);
 		mList = list;
+		roboto_thin= Typeface.createFromAsset(mContext.getAssets(), Constants.ROBOTO_THIN);
 	}
 
 	@Override
@@ -110,9 +110,9 @@ public class TimelineAdapter extends
 					}
 				}
 			}
-			viewHolder.timelineIcon.setBackgroundDrawable(mContext
+			viewHolder.icon.setBackgroundDrawable(mContext
 					.getResources().getDrawable(R.drawable.breast_oval));
-			viewHolder.timelineIcon.setImageDrawable(mContext.getResources()
+			viewHolder.icon.setImageDrawable(mContext.getResources()
 					.getDrawable(R.drawable.icon_breast));
 			viewHolder.mFirst.setVisibility(View.VISIBLE);
 			viewHolder.mFirst.setText(mContext.getResources().getString(
@@ -150,7 +150,7 @@ public class TimelineAdapter extends
 		public TextView mSixth;
 		public TextView calMonth;
 		public TextView calDay;
-		public ImageView timelineIcon;
+		public ImageView icon;
 
 		public ViewHolder(View v) {
 			super(v);
@@ -162,7 +162,7 @@ public class TimelineAdapter extends
 			mSixth = (TextView) v.findViewById(R.id.sixth);
 			calMonth = (TextView) v.findViewById(R.id.calMonth);
 			calDay = (TextView) v.findViewById(R.id.calDay);
-			timelineIcon = (ImageView) v.findViewById(R.id.timeline_icon);
+			icon = (ImageView) v.findViewById(R.id.icon);
 		}
 	}
 }

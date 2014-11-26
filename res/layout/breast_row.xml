@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:descendantFocusability="beforeDescendants"
-    android:padding="10dp" >
+    android:padding="5dp" >
 
     <com.andexert.library.RippleView
         android:id="@+id/rippleView"
@@ -25,17 +25,17 @@
                     android:id="@+id/calMonth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="11 сар"
-                    android:textColor="@color/cal_grey" />
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/fontCalendar"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/calDay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="11 да"
-                    android:textColor="@color/cal_grey" />
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/fontCalendar"
+                    android:textSize="23sp" />
             </LinearLayout>
 
             <RelativeLayout
@@ -70,6 +70,8 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="First"
+                            android:textColor="@color/fontFirst"
+                            android:textSize="16sp"
                             android:visibility="gone" />
 
                         <TextView
@@ -79,6 +81,7 @@
                             android:layout_alignParentRight="true"
                             android:padding="10dp"
                             android:text="Second"
+                            android:textColor="@color/fontSecond"
                             android:visibility="gone" />
                     </RelativeLayout>
 
@@ -93,6 +96,7 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="Third"
+                            android:textColor="@color/fontSecond"
                             android:visibility="gone" />
 
                         <TextView
@@ -101,6 +105,7 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="Fourth"
+                            android:textColor="@color/fontSecond"
                             android:visibility="gone" />
                     </LinearLayout>
 
@@ -115,6 +120,7 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="Fifth"
+                            android:textColor="@color/fontSecond"
                             android:visibility="gone" />
 
                         <TextView
@@ -123,6 +129,7 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="Sixth"
+                            android:textColor="@color/fontSecond"
                             android:visibility="gone" />
                     </LinearLayout>
                 </LinearLayout>

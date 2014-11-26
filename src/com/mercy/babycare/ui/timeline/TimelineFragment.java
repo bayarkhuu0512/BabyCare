@@ -21,6 +21,8 @@ import com.mercy.babycare.R;
 import com.mercy.babycare.db.DatabaseHelper;
 import com.mercy.babycare.entities.Timeline;
 
+import dreamers.graphics.RippleDrawable;
+
 public class TimelineFragment extends Fragment {
 	String LOG_TAG = TimelineFragment.class.getName();
 
@@ -37,7 +39,7 @@ public class TimelineFragment extends Fragment {
 					.queryBuilder();
 			timelineQb.orderBy("createdDate", false);
 			list = timelineQb.query();
-			
+
 			Log.d(LOG_TAG, "List " + list.size());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

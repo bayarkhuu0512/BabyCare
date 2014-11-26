@@ -543,7 +543,9 @@ public class MainActivity extends Activity {
 	}
 
 	public void cancelButtonOnClick(View v) {
+		
 		gotoTimeine();
+		
 	}
 
 	public void addBreastOnClick(View v) {
