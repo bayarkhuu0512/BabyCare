@@ -19,6 +19,28 @@
         <item>Зөвлөгөө</item>
         <item>Тохиргоо</item>
     </string-array>
+
+    <string name="timeline_menu">Таймлайн</string>
+    <string name="feed_menu">Хооллолт</string>
+    <string name="feed_menu_breast">Хөхүүлэх</string>
+    <string name="feed_menu_drink">Шингэн уух</string>
+    <string name="feed_menu_formula">Нэмэгдэл сүү</string>
+    <string name="feed_menu_extrafood">Нэмэгдэл хоол</string>
+    <string name="health_menu">Эрүүл мэнд</string>
+    <string name="health_menu_vaccine">Вакцин</string>
+    <string name="health_menu_vitamin">Витамин</string>
+    <string name="health_menu_medcheck">Ээлжит үзлэг</string>
+    <string name="health_menu_takemedicine">Эмчид үзүүлэх</string>
+    <string name="diaperchange_menu">Живх солих</string>
+    <string name="activeoperation_menu">Идэвхитэй үйл ажиллагаа</string>
+    <string name="learn_menu">Шинээр сурсан зүйл</string>
+    <string name="purchase_menu">Худалдан авалт</string>
+    <string name="tooth_menu">Шүдлэлт</string>
+    <string name="helpcenter_menu">Зөвлөгөө</string>
+    <string name="profile_menu">Профайл</string>
+    <string name="settings_menu">Тохиргоо</string>
+    <string name="about_menu">Апп-н тухай</string>
+
     <string-array name="feed_array">
         <item>Бантан</item>
         <item>Каш</item>

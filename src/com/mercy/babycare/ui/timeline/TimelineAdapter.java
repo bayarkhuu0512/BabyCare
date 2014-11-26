@@ -1,6 +1,10 @@
 package com.mercy.babycare.ui.timeline;
 
+import java.util.List;
+
+import com.j256.ormlite.dao.Dao;
 import com.mercy.babycare.R;
+import com.mercy.babycare.entities.Timeline;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,11 +16,11 @@ import android.widget.TextView;
 public class TimelineAdapter extends
 		RecyclerView.Adapter<TimelineAdapter.ViewHolder> {
 	private final Context mContext;
-	private final String[] mDataset;
+	List<Timeline> mList;
 
-	public TimelineAdapter(Context context, String[] dataset) {
+	public TimelineAdapter(Context context, List<Timeline> list) {
 		mContext = context;
-		mDataset = dataset;
+		mList = list;
 	}
 
 	@Override
@@ -28,14 +32,13 @@ public class TimelineAdapter extends
 
 	@Override
 	public void onBindViewHolder(ViewHolder viewHolder, int position) {
-		String[] values = mDataset[position].split(",");
-		String countryName = values[0];
-		viewHolder.mTextView.setText(countryName);
+		viewHolder.mTextView.setText(mList.get(position).getBaby()
+				.getFirstName());
 	}
 
 	@Override
 	public int getItemCount() {
-		return mDataset.length;
+		return mList.size();
 	}
 
 	public static class ViewHolder extends RecyclerView.ViewHolder {

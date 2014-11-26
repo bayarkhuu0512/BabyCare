@@ -22,7 +22,11 @@ public class DrinkAdapter extends
 	@Override
 	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 		View v = LayoutInflater.from(parent.getContext()).inflate(
+<<<<<<< HEAD
 				R.layout.drink_row, parent, false);
+=======
+				R.layout.timeline_row, parent, false);
+>>>>>>> origin/master
 		return new ViewHolder(v);
 	}
 
