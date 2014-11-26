@@ -1,6 +1,7 @@
 package com.mercy.babycare.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import com.j256.ormlite.field.DatabaseField;
 
@@ -16,6 +17,9 @@ public class Timeline implements Serializable {
 	 */
 	@DatabaseField(generatedId = true)
 	int id;
+
+	@DatabaseField(canBeNull = false)
+	Date createdDate;
 
 	@DatabaseField(foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Baby baby;
@@ -221,6 +225,14 @@ public class Timeline implements Serializable {
 
 	public void setVitamin(Vitamin vitamin) {
 		this.vitamin = vitamin;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
 }

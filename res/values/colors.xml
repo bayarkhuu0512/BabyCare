@@ -40,5 +40,8 @@
     <color name="entity_learn">#e91e63</color>
     <color name="entity_tooth">#e040fb</color>
     <color name="entity_purchase">#9c27b0</color>
-
+    <color name="fontCalendar">#616161</color>
+    <color name="fontFirst">#424242</color>
+    <color name="fontSecond">#bdbdbd</color>
+    
 </resources>

@@ -46,4 +46,20 @@
         <item>Каш</item>
     </string-array>
 
+    <string name="month">сар</string>
+    <string name="mon">да</string>
+    <string name="tue">мя</string>
+    <string name="wed">лх</string>
+    <string name="thu">пү</string>
+    <string name="fri">ба</string>
+    <string name="sat">бя</string>
+    <string name="sun">ня</string>
+    <string name="num">удаа</string>
+    <string name="right">Баруун</string>
+    <string name="left">Зүүн</string>
+    <string name="gender_girl">Охин</string>
+    <string name="gender_boy">Хүү</string>
+    <string name="hospital_name">1 төрөх</string>
+    <string name="breast">Мээмээ хөхлөө</string>
+
 </resources>

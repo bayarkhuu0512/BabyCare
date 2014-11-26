@@ -1,6 +1,8 @@
 package com.mercy.babycare;
 
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -27,7 +29,6 @@ public class SetupActivity extends FragmentActivity {
 	private Timeline timeline;
 	private Baby baby;
 	private Dao<Timeline, Integer> timelineDAO;
-	private Dao<Baby, Integer> babyDAO;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -48,16 +49,23 @@ public class SetupActivity extends FragmentActivity {
 			baby = new Baby();
 			baby.setFirstName(babyName.getText().toString());
 			baby.setLastName("Bayarkhuu");
-//			babyDAO = getHelper().getBabyDao();
-//			babyDAO.create(baby);
+			
+			Calendar cal = Calendar.getInstance();
+			cal.set(2014, 1, 5,8,38);
+			baby.setBirthDate(cal.getTime());
+			baby.setBirthTime(cal.getTime());
+			baby.setBirthHeadCirc(35f);
+			baby.setBirthHeight(51f);
+			baby.setBirthWeight(3500f);
+			baby.setDoctorName("Oyungerel");
+			baby.setGender(getResources().getString(R.string.gender_girl));
+			baby.setHospitalName(getResources().getString(R.string.hospital_name));
 
 			timeline = new Timeline();
 			timeline.setBaby(baby);
+			timeline.setCreatedDate(Calendar.getInstance().getTime());
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timeline);
-			
-			List<Baby> babyList = babyDAO.queryForAll();
-			Log.d(LOG_TAG, "babyList size " + babyList.size());
 			
 			List<Timeline> list = timelineDAO.queryForAll();
 			Log.d(LOG_TAG, "List size " + list.size());
@@ -67,7 +75,7 @@ public class SetupActivity extends FragmentActivity {
 			e.printStackTrace();
 		}
 
-		// launchMainActivity();
+		launchMainActivity();
 	}
 
 	private void launchMainActivity() {

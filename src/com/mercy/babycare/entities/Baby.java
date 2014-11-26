@@ -1,7 +1,7 @@
 package com.mercy.babycare.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import com.j256.ormlite.field.DatabaseField;
 
@@ -25,6 +25,9 @@ public class Baby implements Serializable {
 
 	@DatabaseField(canBeNull = true)
 	Date birthDate;
+
+	@DatabaseField(canBeNull = true)
+	Date birthTime;
 
 	@DatabaseField(canBeNull = true)
 	String hospitalName;
@@ -152,6 +155,14 @@ public class Baby implements Serializable {
 
 	public void setCurrentHeadCirc(float currentHeadCirc) {
 		this.currentHeadCirc = currentHeadCirc;
+	}
+
+	public Date getBirthTime() {
+		return birthTime;
+	}
+
+	public void setBirthTime(Date birthTime) {
+		this.birthTime = birthTime;
 	}
 
 }

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:descendantFocusability="beforeDescendants"
-    android:padding="10dp" >
+    android:padding="5dp" >
 
     <com.andexert.library.RippleView
         android:id="@+id/rippleView"
@@ -23,19 +23,19 @@
 
                 <TextView
                     android:id="@+id/calMonth"
+                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="11 сар"
-                    android:textColor="@color/cal_grey" />
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/fontCalendar" />
 
                 <TextView
                     android:id="@+id/calDay"
+                   android:textSize="23sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="11 да"
-                    android:textColor="@color/cal_grey" />
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/fontCalendar" />
             </LinearLayout>
 
             <RelativeLayout
@@ -50,17 +50,89 @@
                     android:id="@+id/timeline_icon"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_centerVertical="true"
                     android:background="@drawable/timeline_oval" />
 
-                <TextView
-                    android:id="@+id/line1"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/timeline_icon"
-                    android:padding="10dp"
-                    android:text="Text line 1" />
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/first"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:text="First"
+                            android:textColor="@color/fontFirst"
+                            android:textSize="16sp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/second"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:padding="10dp"
+                            android:text="Second"
+                            android:textColor="@color/fontSecond"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/third"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:text="Third"
+                            android:textColor="@color/fontSecond"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/fourth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:text="Fourth"
+                            android:textColor="@color/fontSecond"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/fifth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:text="Fifth"
+                            android:textColor="@color/fontSecond"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/sixth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:text="Sixth"
+                            android:textColor="@color/fontSecond"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
     </com.andexert.library.RippleView>
