@@ -48,8 +48,8 @@ public class SetupActivity extends FragmentActivity {
 			baby = new Baby();
 			baby.setFirstName(babyName.getText().toString());
 			baby.setLastName("Bayarkhuu");
-			babyDAO = getHelper().getBabyDao();
-			babyDAO.create(baby);
+//			babyDAO = getHelper().getBabyDao();
+//			babyDAO.create(baby);
 
 			timeline = new Timeline();
 			timeline.setBaby(baby);

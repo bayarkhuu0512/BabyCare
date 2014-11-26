@@ -139,7 +139,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	 */
 	public Dao<Timeline, Integer> getTimelineDao() throws SQLException {
 		if (timelineDAO == null) {
-			timelineDAO = getDao(Baby.class);
+			timelineDAO = getDao(Timeline.class);
 		}
 		return timelineDAO;
 	}

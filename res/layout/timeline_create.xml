@@ -21,24 +21,28 @@
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#ff5722"
-                android:src="@drawable/ic_add_white_24dp" >
+                android:background="@color/entity_breast"
+                android:padding="20dp"
+                android:src="@drawable/icon_breast" >
             </ImageButton>
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#ff9800" />
+                android:background="@color/entity_feed"
+                android:src="@drawable/icon_extrafood" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#ffc107" />
+                android:background="@color/entity_formula"
+                android:src="@drawable/icon_formula" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#ffeb3b" />
+                android:background="@color/entity_drink"
+                android:src="@drawable/icon_drink" />
         </LinearLayout>
         <!-- Second Row -->
 
@@ -50,22 +54,26 @@
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#259b24" />
+                android:background="@color/entity_medcheck"
+                android:src="@drawable/icon_gohospital" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#8bc34a" />
+                android:background="@color/entity_takemedicine"
+                android:src="@drawable/icon_medcheck" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#cddc39" />
+                android:background="@color/entity_vitamin"
+                android:src="@drawable/icon_vitamin" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#b2ff59" />
+                android:background="@color/entity_vaccine"
+                android:src="@drawable/icon_vaccine" />
         </LinearLayout>
         <!-- Third Row -->
 
@@ -77,22 +85,26 @@
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#3f51b5" />
+                android:background="@color/entity_ao_shower"
+                android:src="@drawable/icon_bath" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#5677fc" />
+                android:background="@color/entity_ao_sleep"
+                android:src="@drawable/icon_sleep" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#03a9f4" />
+                android:background="@color/entity_ao_play"
+                android:src="@drawable/icon_toy" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#00bcd4" />
+                android:background="@color/entity_ao_out"
+                android:src="@drawable/icon_out" />
         </LinearLayout>
         <!-- Fourth Row -->
 
@@ -104,22 +116,26 @@
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#18ffff" />
+                android:background="@color/entity_ao_massage"
+                android:src="@drawable/icon_massage" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#00bcd4" />
+                android:background="@color/entity_ao_ear"
+                android:src="@drawable/icon_ear" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#5677fc" />
+                android:background="@color/entity_ao_nose"
+                android:src="@drawable/icon_nose" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#7c4dff" />
+                android:background="@color/entity_changediaper"
+                android:src="@drawable/icon_diaperchange" />
         </LinearLayout>
         <!-- Fifth Row -->
 
@@ -131,22 +147,26 @@
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#ff5177" />
+                android:background="@color/entity_anniversary"
+                android:src="@drawable/icon_birthmonth" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#e91e63" />
+                android:background="@color/entity_learn"
+                android:src="@drawable/icon_learn" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#e040fb" />
+                android:background="@color/entity_tooth"
+                android:src="@drawable/icon_teeth" />
 
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="#9c27b0" />
+                android:background="@color/entity_purchase"
+                android:src="@drawable/icon_purchase" />
         </LinearLayout>
     </LinearLayout>
 
@@ -155,7 +175,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-/>
+        android:layout_margin="16dp" />
 
 </FrameLayout>

@@ -17,7 +17,7 @@ public class Timeline implements Serializable {
 	@DatabaseField(generatedId = true)
 	int id;
 
-	@DatabaseField(canBeNull = false, foreign = true)
+	@DatabaseField(foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Baby baby;
 
 	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)

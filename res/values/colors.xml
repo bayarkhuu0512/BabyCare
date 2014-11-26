@@ -19,5 +19,26 @@
     <color name="cpb_white">@android:color/white</color>
     <color name="rippelColor">#ffc107</color>
     <color name="mainColor">#ffc107</color>
-    
+    <color name="cal_grey">#555555</color>
+    <color name="entity_breast">#ff5722</color>
+    <color name="entity_feed">#ff9800</color>
+    <color name="entity_formula">#ffc107</color>
+    <color name="entity_drink">#ffeb3b</color>
+    <color name="entity_medcheck">#259b24</color>
+    <color name="entity_takemedicine">#8bc34a</color>
+    <color name="entity_vitamin">#cddc39</color>
+    <color name="entity_vaccine">#b2ff59</color>
+    <color name="entity_ao_shower">#3f51b5</color>
+    <color name="entity_ao_sleep">#5677fc</color>
+    <color name="entity_ao_play">#03a9f4</color>
+    <color name="entity_ao_out">#00bcd4</color>
+    <color name="entity_ao_massage">#18ffff</color>
+    <color name="entity_ao_ear">#00bcd4</color>
+    <color name="entity_ao_nose">#5677fc</color>
+    <color name="entity_changediaper">#7c4dff</color>
+    <color name="entity_anniversary">#ff5177</color>
+    <color name="entity_learn">#e91e63</color>
+    <color name="entity_tooth">#e040fb</color>
+    <color name="entity_purchase">#9c27b0</color>
+
 </resources>
