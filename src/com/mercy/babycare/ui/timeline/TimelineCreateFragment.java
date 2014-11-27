@@ -40,6 +40,7 @@ public class TimelineCreateFragment extends Fragment {
 						.replace(R.id.content_frame, fragment).commit();
 			}
 		});
+		
 		return root;
 	}
 }

@@ -23,6 +23,7 @@
                 android:orientation="horizontal" >
 
                 <ImageButton
+                    android:id="@+id/addBreast"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_breast"
@@ -32,18 +33,21 @@
                 </ImageButton>
 
                 <ImageButton
+                    android:id="@+id/extraFood"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_feed"
                     android:src="@drawable/icon_extrafood" />
 
                 <ImageButton
+                    android:id="@+id/formula"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_formula"
                     android:src="@drawable/icon_formula" />
 
                 <ImageButton
+                    android:id="@+id/drink"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_drink"
@@ -57,24 +61,28 @@
                 android:orientation="horizontal" >
 
                 <ImageButton
+                    android:id="@+id/medcheck"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_medcheck"
                     android:src="@drawable/icon_gohospital" />
 
                 <ImageButton
+                    android:id="@+id/takemedicine"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_takemedicine"
                     android:src="@drawable/icon_medcheck" />
 
                 <ImageButton
+                    android:id="@+id/vitamin"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_vitamin"
                     android:src="@drawable/icon_vitamin" />
 
                 <ImageButton
+                    android:id="@+id/vaccine"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_vaccine"
@@ -88,24 +96,28 @@
                 android:orientation="horizontal" >
 
                 <ImageButton
+                    android:id="@+id/shower"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_ao_shower"
                     android:src="@drawable/icon_bath" />
 
                 <ImageButton
+                    android:id="@+id/sleep"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_ao_sleep"
                     android:src="@drawable/icon_sleep" />
 
                 <ImageButton
+                    android:id="@+id/play"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_ao_play"
                     android:src="@drawable/icon_toy" />
 
                 <ImageButton
+                    android:id="@+id/out"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_ao_out"
@@ -119,24 +131,28 @@
                 android:orientation="horizontal" >
 
                 <ImageButton
+                    android:id="@+id/massage"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_ao_massage"
                     android:src="@drawable/icon_massage" />
 
                 <ImageButton
+                    android:id="@+id/ear"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_ao_ear"
                     android:src="@drawable/icon_ear" />
 
                 <ImageButton
+                    android:id="@+id/nose"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_ao_nose"
                     android:src="@drawable/icon_nose" />
 
                 <ImageButton
+                    android:id="@+id/changediaper"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_changediaper"
@@ -150,6 +166,7 @@
                 android:orientation="horizontal" >
 
                 <ImageButton
+                    android:id="@+id/annniversary"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_anniversary"
@@ -162,16 +179,30 @@
                     android:src="@drawable/icon_learn" />
 
                 <ImageButton
+                    android:id="@+id/tooth"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_tooth"
                     android:src="@drawable/icon_teeth" />
 
-                <ImageButton
+                <RelativeLayout
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:background="@color/entity_purchase"
-                    android:src="@drawable/icon_purchase" />
+                    android:background="@color/entity_purchase" >
+
+                    <Button
+                        android:id="@+id/purchase"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:background="@drawable/icon_purchase" />
+                    <TextView 
+                        android:layout_below="@id/purchase"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="aa"
+                        />
+                </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
 
