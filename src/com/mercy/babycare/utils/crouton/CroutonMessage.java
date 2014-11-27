@@ -10,7 +10,7 @@ public class CroutonMessage implements OnClickListener {
 	private static final Style INFINITE = new Style.Builder()
 			.setBackgroundColorValue(Style.holoGreenLight).build();
 	private static final Configuration CONFIGURATION_INFINITE = new Configuration.Builder()
-			.setDuration(Configuration.DURATION_LONG).build();
+			.setDuration(Configuration.DURATION_SHORT).build();
 
 	public CroutonMessage(Activity a) {
 		activity = a;

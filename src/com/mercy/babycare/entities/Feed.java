@@ -17,6 +17,9 @@ public class Feed implements Serializable {
 	@DatabaseField
 	String feedName;
 
+	@DatabaseField
+	int ml;
+	
 	public int getId() {
 		return id;
 	}
@@ -32,4 +35,14 @@ public class Feed implements Serializable {
 	public void setFeedName(String feedName) {
 		this.feedName = feedName;
 	}
+
+	public int getMl() {
+		return ml;
+	}
+
+	public void setMl(int ml) {
+		this.ml = ml;
+	}
+	
+	
 }

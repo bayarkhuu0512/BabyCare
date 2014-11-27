@@ -1,47 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BabyCare</string>
+    <string name="app_name">Happy Baby Beta</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_websearch">Web search</string>
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
 
     <string-array name="nav_array">
-        <item>Home</item>
-        <item>Хооллолт</item>
-        <item>Живх солих</item>
-        <item>Эрүүл мэнд</item>
-        <item>Идэвхтэй мама</item>
-        <item>Шинийг сурья</item>
-        <item>Худалдан авалт</item>
-        <item>Шүдлэлт</item>
-        <item>Зөвлөгөө</item>
-        <item>Тохиргоо</item>
+        <item>Happy Baby Beta</item>
+        <item>График</item>
+        <item>Хоолондоо</item>
+        <item>Живхээ солъё</item>
+        <item>Эрүүл байя</item>
+        <item>Миний хэмнэл</item>
+        <item>Би чадна</item>
+        <item>Миний шүд</item>
+        <item>Хэд вэ?</item>
+        <item>ХэХэЯа</item>
+        <item>Яах уу ээжээ?</item>
+        <item>Happy Baby бол..</item>
     </string-array>
 
-    <string name="timeline_menu">Таймлайн</string>
-    <string name="feed_menu">Хооллолт</string>
-    <string name="feed_menu_breast">Хөхүүлэх</string>
-    <string name="feed_menu_drink">Шингэн уух</string>
-    <string name="feed_menu_formula">Нэмэгдэл сүү</string>
-    <string name="feed_menu_extrafood">Нэмэгдэл хоол</string>
-    <string name="health_menu">Эрүүл мэнд</string>
-    <string name="health_menu_vaccine">Вакцин</string>
-    <string name="health_menu_vitamin">Витамин</string>
-    <string name="health_menu_medcheck">Ээлжит үзлэг</string>
-    <string name="health_menu_takemedicine">Эмчид үзүүлэх</string>
-    <string name="diaperchange_menu">Живх солих</string>
-    <string name="activeoperation_menu">Идэвхитэй үйл ажиллагаа</string>
-    <string name="learn_menu">Шинээр сурсан зүйл</string>
-    <string name="purchase_menu">Худалдан авалт</string>
-    <string name="tooth_menu">Шүдлэлт</string>
-    <string name="helpcenter_menu">Зөвлөгөө</string>
-    <string name="profile_menu">Профайл</string>
-    <string name="settings_menu">Тохиргоо</string>
-    <string name="about_menu">Апп-н тухай</string>
-    <string name="chart_menu">График чарт</string>
-    
     <string-array name="feed_array">
         <item>Бантан</item>
         <item>Каш</item>
@@ -62,8 +42,13 @@
     <string name="gender_boy">Хүү</string>
     <string name="hospital_name">1 төрөх</string>
     <string name="breast">Мээмээ хөхлөө</string>
-    
+
     <!-- Crouton -->
-    <string name="success">Амжилттай хадгалагдлаа</string>
+    <string name="success">Аз жаргалтай мөчийг хадгалан авлаа :)</string>
+        <string name="notavailable">Уучлаарай, Beta хувилбар дээр ажиллах боломжгүй : )</string>
+    
+    <string name="tooth">Шүд</string>
+    <string name="tooth_grow">цухуйлаа</string>
+    <string name="congrats">Баяр хүргэе</string>
     
 </resources>

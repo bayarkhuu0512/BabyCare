@@ -15,7 +15,10 @@ public class ActiveOperation implements Serializable {
 	@DatabaseField(generatedId = true)
 	int id;
 	@DatabaseField
-	String feedName;
+	String activeName;
+	
+	@DatabaseField(canBeNull = false)
+	Date createdDate;
 
 	public int getId() {
 		return id;
@@ -25,11 +28,20 @@ public class ActiveOperation implements Serializable {
 		this.id = id;
 	}
 
-	public String getFeedName() {
-		return feedName;
+	public String getActiveName() {
+		return activeName;
 	}
 
-	public void setFeedName(String feedName) {
-		this.feedName = feedName;
+	public void setActiveName(String activeName) {
+		this.activeName = activeName;
 	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
 }

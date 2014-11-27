@@ -9,30 +9,21 @@ import java.util.Random;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.SearchManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnChildClickListener;
-import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.utils.Utils;
-import com.idunnololz.widgets.AnimatedExpandableListView;
-import com.idunnololz.widgets.AnimatedExpandableListView.AnimatedExpandableListAdapter;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.babycare.db.DatabaseHelper;
@@ -60,13 +51,13 @@ public class MainActivity extends Activity {
 	String LOG_TAG = MainActivity.class.getName();
 
 	private DrawerLayout mDrawerLayout;
-	private AnimatedExpandableListView listView;
+	private ListView mDrawerList;
 
 	private ActionBarDrawerToggle mDrawerToggle;
 
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
-	private LeftNavMenuAdapter adapter;
+	private String[] mTitles;
 
 	private DatabaseHelper databaseHelper = null;
 	private Dao<Timeline, Integer> timelineDAO;
@@ -74,6 +65,7 @@ public class MainActivity extends Activity {
 	private CroutonMessage crtnMsg = null;
 
 	private Context context;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -81,6 +73,7 @@ public class MainActivity extends Activity {
 		context = this;
 		Utils.init(getResources());
 		crtnMsg = new CroutonMessage(this);
+		mTitles = getResources().getStringArray(R.array.nav_array);
 
 		try {
 			timelineDAO = getHelper().getTimelineDao();
@@ -93,9 +86,10 @@ public class MainActivity extends Activity {
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
 				GravityCompat.START);
-		listView = (AnimatedExpandableListView) findViewById(R.id.listView);
+		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
 		// enable ActionBar app icon to behave as action to toggle nav drawer
+		getActionBar().setIcon(getResources().getDrawable(R.drawable.baby67));
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 
@@ -121,53 +115,23 @@ public class MainActivity extends Activity {
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-		adapter = new LeftNavMenuAdapter(this);
-		adapter.setData(fillLeftMenuItems());
-
-		listView = (AnimatedExpandableListView) findViewById(R.id.listView);
-		listView.setAdapter(adapter);
-		listView.setOnChildClickListener(new DrawerItemClickListener());
-		listView.expandGroupWithAnimation(1);
-		listView.expandGroupWithAnimation(2);
-
-		listView.setOnGroupClickListener(new OnGroupClickListener() {
-
-			@Override
-			public boolean onGroupClick(ExpandableListView parent, View v,
-					int groupPosition, long id) {
-				if (groupPosition == 2 || groupPosition == 4) {
-					if (listView.isGroupExpanded(groupPosition)) {
-						listView.collapseGroupWithAnimation(groupPosition);
-					} else {
-						listView.expandGroupWithAnimation(groupPosition);
-					}
-				} else {
-					selectItem(groupPosition);
-				}
-				return true;
-			}
-		});
+		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+				R.layout.drawer_list_item, mTitles));
+		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
 		if (savedInstanceState == null) {
 			selectItem(0);
 		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main, menu);
-		return super.onCreateOptionsMenu(menu);
-	}
-
-	/* Called whenever we call invalidateOptionsMenu() */
-	@Override
-	public boolean onPrepareOptionsMenu(Menu menu) {
-		// If the nav drawer is open, hide action items related to the content
-		// view
-		boolean drawerOpen = mDrawerLayout.isDrawerOpen(listView);
-		menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
-		return super.onPrepareOptionsMenu(menu);
+	/* The click listner for ListView in the navigation drawer */
+	private class DrawerItemClickListener implements
+			ListView.OnItemClickListener {
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			selectItem(position);
+		}
 	}
 
 	@Override
@@ -178,136 +142,8 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		// Handle action buttons
-		switch (item.getItemId()) {
-		case R.id.action_websearch:
-			// create intent to perform web search for this planet
-			Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-			intent.putExtra(SearchManager.QUERY, getActionBar().getTitle());
-			// catch event that there's no activity to handle intent
-			if (intent.resolveActivity(getPackageManager()) != null) {
-				startActivity(intent);
-			} else {
-				Toast.makeText(this, R.string.app_not_available,
-						Toast.LENGTH_LONG).show();
-			}
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-	}
+		return super.onOptionsItemSelected(item);
 
-	private List<GroupItem> fillLeftMenuItems() {
-		List<GroupItem> items = new ArrayList<GroupItem>();
-		GroupItem timeline_menu = new GroupItem();
-		timeline_menu.title = getResources().getString(R.string.timeline_menu);
-		items.add(timeline_menu);
-
-		// Chart
-		GroupItem chart_menu = new GroupItem();
-		chart_menu.title = getResources().getString(R.string.chart_menu);
-		items.add(chart_menu);
-
-		// Feed
-		GroupItem feed_menu = new GroupItem();
-		feed_menu.title = getResources().getString(R.string.feed_menu);
-		items.add(feed_menu);
-
-		Item feed_menu_breast = new Item();
-		feed_menu_breast.title = getResources().getString(
-				R.string.feed_menu_breast);
-		feed_menu.items.add(feed_menu_breast);
-
-		Item feed_menu_drink = new Item();
-		feed_menu_drink.title = getResources().getString(
-				R.string.feed_menu_drink);
-		feed_menu.items.add(feed_menu_drink);
-
-		Item feed_menu_formula = new Item();
-		feed_menu_formula.title = getResources().getString(
-				R.string.feed_menu_formula);
-		feed_menu.items.add(feed_menu_formula);
-
-		Item feed_menu_extrafood = new Item();
-		feed_menu_extrafood.title = getResources().getString(
-				R.string.feed_menu_extrafood);
-		feed_menu.items.add(feed_menu_extrafood);
-
-		// ChangeDiaper
-		GroupItem diaperchange_menu = new GroupItem();
-		diaperchange_menu.title = getResources().getString(
-				R.string.diaperchange_menu);
-		items.add(diaperchange_menu);
-
-		// Health
-		GroupItem health_menu = new GroupItem();
-		health_menu.title = getResources().getString(R.string.health_menu);
-		items.add(health_menu);
-
-		Item health_menu_vaccine = new Item();
-		health_menu_vaccine.title = getResources().getString(
-				R.string.health_menu_vaccine);
-		health_menu.items.add(health_menu_vaccine);
-
-		Item health_menu_vitamin = new Item();
-		health_menu_vitamin.title = getResources().getString(
-				R.string.health_menu_vitamin);
-		health_menu.items.add(health_menu_vitamin);
-
-		Item health_menu_medcheck = new Item();
-		health_menu_medcheck.title = getResources().getString(
-				R.string.health_menu_medcheck);
-		health_menu.items.add(health_menu_medcheck);
-
-		Item health_menu_takemedicine = new Item();
-		health_menu_takemedicine.title = getResources().getString(
-				R.string.health_menu_takemedicine);
-		health_menu.items.add(health_menu_takemedicine);
-
-		GroupItem activeoperation_menu = new GroupItem();
-		activeoperation_menu.title = getResources().getString(
-				R.string.activeoperation_menu);
-		items.add(activeoperation_menu);
-
-		GroupItem learn_menu = new GroupItem();
-		learn_menu.title = getResources().getString(R.string.learn_menu);
-		items.add(learn_menu);
-
-		GroupItem purchase_menu = new GroupItem();
-		purchase_menu.title = getResources().getString(R.string.purchase_menu);
-		items.add(purchase_menu);
-
-		GroupItem tooth_menu = new GroupItem();
-		tooth_menu.title = getResources().getString(R.string.tooth_menu);
-		items.add(tooth_menu);
-
-		GroupItem helpcenter_menu = new GroupItem();
-		helpcenter_menu.title = getResources().getString(
-				R.string.helpcenter_menu);
-		items.add(helpcenter_menu);
-
-		GroupItem profile_menu = new GroupItem();
-		profile_menu.title = getResources().getString(R.string.profile_menu);
-		items.add(profile_menu);
-
-		GroupItem settings_menu = new GroupItem();
-		settings_menu.title = getResources().getString(R.string.settings_menu);
-		items.add(settings_menu);
-
-		GroupItem about_menu = new GroupItem();
-		about_menu.title = getResources().getString(R.string.about_menu);
-		items.add(about_menu);
-
-		return items;
-	}
-
-	/* The click listner for ListView in the navigation drawer */
-	private class DrawerItemClickListener implements OnChildClickListener {
-		@Override
-		public boolean onChildClick(ExpandableListView parent, View v,
-				int groupPosition, int childPosition, long id) {
-			selectItem(groupPosition, childPosition);
-			return false;
-		}
 	}
 
 	private void selectItem(int groupPos) {
@@ -315,105 +151,86 @@ public class MainActivity extends Activity {
 		switch (groupPos) {
 		case 0:
 			fragment = new TimelineFragment();
-			setTitle(getResources().getString(R.string.timeline_menu));
-			listView.setItemChecked(0, true);
 			break;
-
 		case 1:
 			fragment = new ChartFragment();
-			setTitle(getResources().getString(R.string.chart_menu));
-			listView.setItemChecked(1, true);
 			break;
-
+		case 2:
+			fragment = new BreastFragment();
+			break;
 		case 3:
-			fragment = new ChangeDiaperFragment();
-			setTitle(getResources().getString(R.string.diaperchange_menu));
-			listView.setItemChecked(3, true);
-			break;
+//			fragment = new ChangeDiaperFragment();
+			fragment = new TimelineFragment();
+			crtnMsg.showCrouton(Style.CONFIRM,
+					context.getResources().getString(R.string.notavailable));
 
+			break;
+		case 4:
+//			fragment = new HealthFragment();
+			fragment = new TimelineFragment();
+			crtnMsg.showCrouton(Style.CONFIRM,
+					context.getResources().getString(R.string.notavailable));
+
+			break;
 		case 5:
-			fragment = new ActiveOperationFragment();
-			setTitle(getResources().getString(R.string.activeoperation_menu));
-			listView.setItemChecked(5, true);
+//			fragment = new ActiveOperationFragment();
+			fragment = new TimelineFragment();
+			crtnMsg.showCrouton(Style.CONFIRM,
+					context.getResources().getString(R.string.notavailable));
+
 			break;
 		case 6:
-			fragment = new LearnFragment();
-			setTitle(getResources().getString(R.string.learn_menu));
-			listView.setItemChecked(6, true);
+//			fragment = new LearnFragment();
+			fragment = new TimelineFragment();
+			crtnMsg.showCrouton(Style.CONFIRM,
+					context.getResources().getString(R.string.notavailable));
+
 			break;
 		case 7:
-			fragment = new PurchaseFragment();
-			setTitle(getResources().getString(R.string.purchase_menu));
-			listView.setItemChecked(7, true);
+//			fragment = new PurchaseFragment();
+			fragment = new TimelineFragment();
+			crtnMsg.showCrouton(Style.CONFIRM,
+					context.getResources().getString(R.string.notavailable));
+
 			break;
 		case 8:
-			fragment = new ToothFragment();
-			setTitle(getResources().getString(R.string.tooth_menu));
-			listView.setItemChecked(8, true);
+//			fragment = new ToothFragment();
+			fragment = new TimelineFragment();
+			crtnMsg.showCrouton(Style.CONFIRM,
+					context.getResources().getString(R.string.notavailable));
+
 			break;
 		case 9:
-			fragment = new HelpCenterFragment();
-			setTitle(getResources().getString(R.string.helpcenter_menu));
-			listView.setItemChecked(9, true);
+//			fragment = new HelpCenterFragment();
+			fragment = new TimelineFragment();
+			crtnMsg.showCrouton(Style.CONFIRM,
+					context.getResources().getString(R.string.notavailable));
+
 			break;
 		case 10:
-			fragment = new ProfileFragment();
-			setTitle(getResources().getString(R.string.profile_menu));
-			listView.setItemChecked(10, true);
+//			fragment = new ProfileFragment();
+			fragment = new TimelineFragment();
+			crtnMsg.showCrouton(Style.CONFIRM,
+					context.getResources().getString(R.string.notavailable));
+
 			break;
 		case 11:
-			fragment = new AboutFragment();
-			setTitle(getResources().getString(R.string.about_menu));
-			listView.setItemChecked(11, true);
+//			fragment = new AboutFragment();
+			fragment = new TimelineFragment();
+			crtnMsg.showCrouton(Style.CONFIRM,
+					context.getResources().getString(R.string.notavailable));
 			break;
 		default:
 			fragment = new TimelineFragment();
-			setTitle(getResources().getString(R.string.timeline_menu));
-			listView.setItemChecked(0, true);
 			break;
 		}
+		setTitle(mTitles[groupPos]);
+		mDrawerList.setItemChecked(groupPos, true);
 		FragmentManager fragmentManager = getFragmentManager();
 		fragmentManager.beginTransaction()
 				.replace(R.id.content_frame, fragment).commit();
-		mDrawerLayout.closeDrawer(listView);
+		mDrawerLayout.closeDrawer(mDrawerList);
 
-	}
-
-	private void selectItem(int groupPos, int childPos) {
-		Fragment fragment = null;
-		if (groupPos == 2) {
-			if (childPos == 0) {
-				fragment = new BreastFragment();
-				setTitle(getResources().getString(R.string.feed_menu_breast));
-				listView.setItemChecked(1, true);
-			}
-			if (childPos == 1) {
-				fragment = new FeedFragment();
-			}
-			if (childPos == 2) {
-				fragment = new FeedFragment();
-			}
-			if (childPos == 3) {
-				fragment = new FeedFragment();
-			}
-		} else if (groupPos == 4) {
-			if (childPos == 0) {
-				fragment = new HealthFragment();
-			}
-			if (childPos == 1) {
-				fragment = new HealthFragment();
-			}
-			if (childPos == 2) {
-				fragment = new HealthFragment();
-			}
-			if (childPos == 3) {
-				fragment = new HealthFragment();
-			}
-		}
-		FragmentManager fragmentManager = getFragmentManager();
-		fragmentManager.beginTransaction()
-				.replace(R.id.content_frame, fragment).commit();
-		mDrawerLayout.closeDrawer(listView);
 	}
 
 	@Override
@@ -441,123 +258,6 @@ public class MainActivity extends Activity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	private static class GroupItem {
-		String title;
-		List<Item> items = new ArrayList<Item>();
-	}
-
-	private static class Item {
-		String title;
-		String hint;
-	}
-
-	private static class ItemHolder {
-		TextView title;
-	}
-
-	private static class Group {
-		TextView title;
-	}
-
-	/**
-	 * Adapter for our list of {@link GroupItem}s.
-	 */
-	private class LeftNavMenuAdapter extends AnimatedExpandableListAdapter {
-		private LayoutInflater inflater;
-
-		private List<GroupItem> items;
-
-		public LeftNavMenuAdapter(Context context) {
-			inflater = LayoutInflater.from(context);
-		}
-
-		public void setData(List<GroupItem> items) {
-			this.items = items;
-		}
-
-		@Override
-		public Item getChild(int groupPosition, int childPosition) {
-			return items.get(groupPosition).items.get(childPosition);
-		}
-
-		@Override
-		public long getChildId(int groupPosition, int childPosition) {
-			return childPosition;
-		}
-
-		@Override
-		public View getRealChildView(int groupPosition, int childPosition,
-				boolean isLastChild, View convertView, ViewGroup parent) {
-			ItemHolder holder;
-			Item item = getChild(groupPosition, childPosition);
-			if (convertView == null) {
-				holder = new ItemHolder();
-				convertView = inflater.inflate(R.layout.nav_list_item, parent,
-						false);
-				holder.title = (TextView) convertView
-						.findViewById(R.id.textTitle);
-				convertView.setTag(holder);
-			} else {
-				holder = (ItemHolder) convertView.getTag();
-			}
-
-			holder.title.setText(item.title);
-
-			return convertView;
-		}
-
-		@Override
-		public int getRealChildrenCount(int groupPosition) {
-			return items.get(groupPosition).items.size();
-		}
-
-		@Override
-		public GroupItem getGroup(int groupPosition) {
-			return items.get(groupPosition);
-		}
-
-		@Override
-		public int getGroupCount() {
-			return items.size();
-		}
-
-		@Override
-		public long getGroupId(int groupPosition) {
-			return groupPosition;
-		}
-
-		@Override
-		public View getGroupView(int groupPosition, boolean isExpanded,
-				View convertView, ViewGroup parent) {
-			Group holder;
-			GroupItem item = getGroup(groupPosition);
-			if (convertView == null) {
-				holder = new Group();
-				convertView = inflater.inflate(R.layout.nav_group_item, parent,
-						false);
-				holder.title = (TextView) convertView
-						.findViewById(R.id.textTitle);
-				convertView.setTag(holder);
-			} else {
-				holder = (Group) convertView.getTag();
-			}
-
-			holder.title.setText(item.title);
-
-			return convertView;
-		}
-
-		@Override
-		public boolean hasStableIds() {
-			return true;
-		}
-
-		@Override
-		public boolean isChildSelectable(int arg0, int arg1) {
-			return true;
-		}
-	}
-
 	public void floatingActionButtonOnClick(View v) {
 
 		Fragment fragment = new TimelineCreateFragment();
@@ -578,7 +278,8 @@ public class MainActivity extends Activity {
 	}
 
 	public void addBreastOnClick(View v) {
-		crtnMsg.showCrouton(Style.INFO, context.getResources().getString(R.string.success));
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
 		Breast breast = new Breast();
 		breast.setRight(getRandomBoolean());
 		Calendar cal = Calendar.getInstance();
@@ -613,8 +314,8 @@ public class MainActivity extends Activity {
 						R.animator.slide_down, R.animator.slide_up,
 						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
-		setTitle(getResources().getString(R.string.timeline_menu));
-		listView.setItemChecked(0, true);
+		setTitle(mTitles[0]);
+		mDrawerList.setItemChecked(0, true);
 	}
 
 	private DatabaseHelper getHelper() {
@@ -624,6 +325,7 @@ public class MainActivity extends Activity {
 		}
 		return databaseHelper;
 	}
+
 	@Override
 	public void onDestroy() {
 		Log.d(LOG_TAG, "OnDestroy");

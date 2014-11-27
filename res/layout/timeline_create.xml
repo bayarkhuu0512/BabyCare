@@ -28,7 +28,6 @@
                     android:layout_height="75dp"
                     android:background="@color/entity_breast"
                     android:onClick="addBreastOnClick"
-                    android:padding="20dp"
                     android:src="@drawable/icon_breast" >
                 </ImageButton>
 
@@ -173,6 +172,7 @@
                     android:src="@drawable/icon_birthmonth" />
 
                 <ImageButton
+                    android:id="@+id/learn"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_learn"
@@ -185,35 +185,23 @@
                     android:background="@color/entity_tooth"
                     android:src="@drawable/icon_teeth" />
 
-                <RelativeLayout
+                <ImageButton
+                    android:id="@+id/purchase"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:background="@color/entity_purchase" >
-
-                    <Button
-                        android:id="@+id/purchase"
-                        android:layout_width="65dp"
-                        android:layout_height="76dp"
-                        android:background="@drawable/icon_purchase" />
-                    <TextView 
-                        android:layout_below="@id/purchase"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:text="aa"
-                        />
-                </RelativeLayout>
+                    android:background="@color/entity_purchase"
+                    android:src="@drawable/icon_purchase" />
             </LinearLayout>
         </LinearLayout>
 
         <ImageButton
             android:id="@+id/cancelButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
-            android:background="@color/accent"
-            android:src="@drawable/ic_add_white_24dp" />
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:layout_margin="10dp"
+            android:background="@color/mainColor"
+            android:src="@drawable/ic_close_white_24dp" />
     </FrameLayout>
 
 </com.trickyandroid.fragmenttranslate.app.view.SlidingRelativeLayout>

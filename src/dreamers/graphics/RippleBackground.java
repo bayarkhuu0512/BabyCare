@@ -159,7 +159,7 @@ class RippleBackground {
 
         final int outerDuration = (int) (1000 * 1.0f / WAVE_OUTER_OPACITY_ENTER_VELOCITY);
         final ObjectAnimator outer = ObjectAnimator.ofFloat(this, "outerOpacity", 0, 1);
-   //     outer.setAutoCancel(true);
+        outer.setAutoCancel(true);
         outer.setDuration(outerDuration);
         outer.setInterpolator(LINEAR_INTERPOLATOR);
 
@@ -229,7 +229,7 @@ class RippleBackground {
             // Outer opacity continues to increase for a bit.
             outerOpacityAnim = ObjectAnimator.ofFloat(this,
                     "outerOpacity", inflectionOpacity / 255.0f);
-     //       outerOpacityAnim.setAutoCancel(true);
+            outerOpacityAnim.setAutoCancel(true);
             outerOpacityAnim.setDuration(inflectionDuration);
             outerOpacityAnim.setInterpolator(LINEAR_INTERPOLATOR);
 
@@ -241,7 +241,7 @@ class RippleBackground {
                     public void onAnimationEnd(Animator animation) {
                         final ObjectAnimator outerFadeOutAnim = ObjectAnimator.ofFloat(
                                 RippleBackground.this, "outerOpacity", 0);
-                  //      outerFadeOutAnim.setAutoCancel(true);
+                        outerFadeOutAnim.setAutoCancel(true);
                         outerFadeOutAnim.setDuration(outerDuration);
                         outerFadeOutAnim.setInterpolator(LINEAR_INTERPOLATOR);
                         outerFadeOutAnim.addListener(mAnimationListener);
@@ -261,7 +261,7 @@ class RippleBackground {
             }
         } else {
             outerOpacityAnim = ObjectAnimator.ofFloat(this, "outerOpacity", 0);
-        //    outerOpacityAnim.setAutoCancel(true);
+            outerOpacityAnim.setAutoCancel(true);
             outerOpacityAnim.setDuration(opacityDuration);
             outerOpacityAnim.addListener(mAnimationListener);
         }

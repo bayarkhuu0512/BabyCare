@@ -15,7 +15,7 @@ public class Formula implements Serializable {
 	@DatabaseField(generatedId = true)
 	int id;
 	@DatabaseField
-	String feedName;
+	String formulaName;
 
 	public int getId() {
 		return id;
@@ -25,11 +25,11 @@ public class Formula implements Serializable {
 		this.id = id;
 	}
 
-	public String getFeedName() {
-		return feedName;
+	public String getFormulaName() {
+		return formulaName;
 	}
 
-	public void setFeedName(String feedName) {
-		this.feedName = feedName;
+	public void setFormulaName(String formulaName) {
+		this.formulaName = formulaName;
 	}
 }

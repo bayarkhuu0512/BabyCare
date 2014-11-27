@@ -17,6 +17,7 @@ import com.mercy.babycare.entities.ChangeDiaper;
 import com.mercy.babycare.entities.Drink;
 import com.mercy.babycare.entities.Feed;
 import com.mercy.babycare.entities.Formula;
+import com.mercy.babycare.entities.Growth;
 import com.mercy.babycare.entities.Health;
 import com.mercy.babycare.entities.HelpCenter;
 import com.mercy.babycare.entities.Learn;
@@ -56,6 +57,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	private Dao<Tooth, Integer> toothDAO = null;
 	private Dao<Vaccine, Integer> vaccineDAO = null;
 	private Dao<Vitamin, Integer> vitaminDAO = null;
+	private Dao<Growth, Integer> growthDAO = null;
 
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -89,6 +91,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 			TableUtils.createTable(connectionSource, Tooth.class);
 			TableUtils.createTable(connectionSource, Vaccine.class);
 			TableUtils.createTable(connectionSource, Vitamin.class);
+			TableUtils.createTable(connectionSource, Growth.class);
 
 		} catch (SQLException e) {
 			Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
@@ -125,6 +128,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 			TableUtils.dropTable(connectionSource, Tooth.class, true);
 			TableUtils.dropTable(connectionSource, Vaccine.class, true);
 			TableUtils.dropTable(connectionSource, Vitamin.class, true);
+			TableUtils.dropTable(connectionSource, Growth.class, true);
 			// after we drop the old databases, we create the new ones
 			onCreate(db, connectionSource);
 		} catch (SQLException e) {
@@ -272,12 +276,20 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		return vitaminDAO;
 	}
 
+	public Dao<Growth, Integer> getGrowthDao() throws SQLException {
+		if (growthDAO == null) {
+			growthDAO = getDao(Growth.class);
+		}
+		return growthDAO;
+	}
+
 	/**
 	 * Close the database connections and clear any cached DAOs.
 	 */
 	@Override
 	public void close() {
 		super.close();
+		growthDAO = null;
 		timelineDAO = null;
 		feedDAO = null;
 		babyDAO = null;

@@ -15,7 +15,10 @@ public class Tooth implements Serializable {
 	@DatabaseField(generatedId = true)
 	int id;
 	@DatabaseField
-	String feedName;
+	int toothNum;
+
+	@DatabaseField(canBeNull = false)
+	Date createdDate;
 
 	public int getId() {
 		return id;
@@ -25,11 +28,20 @@ public class Tooth implements Serializable {
 		this.id = id;
 	}
 
-	public String getFeedName() {
-		return feedName;
+	public int getToothNum() {
+		return toothNum;
 	}
 
-	public void setFeedName(String feedName) {
-		this.feedName = feedName;
+	public void setToothNum(int toothNum) {
+		this.toothNum = toothNum;
 	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
 }

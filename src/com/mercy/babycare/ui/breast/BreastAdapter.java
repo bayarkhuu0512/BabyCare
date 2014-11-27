@@ -81,6 +81,9 @@ public class BreastAdapter extends
 		viewHolder.mSecond.setText(Constants.timeFormat.format(mList.get(
 				position).getBreastTime()));
 
+		viewHolder.mThird.setVisibility(View.VISIBLE);
+		viewHolder.mThird.setText("Мээмээ");
+
 	}
 
 	@Override

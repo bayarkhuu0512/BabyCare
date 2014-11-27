@@ -53,7 +53,7 @@ public class PieChartItem extends ChartItem {
         holder.chart.setDescription("");
         holder.chart.setHoleRadius(60f);
         holder.chart.setTransparentCircleRadius(65f);
-        holder.chart.setCenterText("MPChart\nAndroid");
+        holder.chart.setCenterText("Мээмээ");
         holder.chart.setCenterTextTypeface(mTf);
         holder.chart.setCenterTextSize(18f);
         holder.chart.setDrawXValues(false);
