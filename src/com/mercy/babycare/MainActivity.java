@@ -52,6 +52,9 @@ import com.mercy.babycare.ui.purchase.PurchaseFragment;
 import com.mercy.babycare.ui.timeline.TimelineCreateFragment;
 import com.mercy.babycare.ui.timeline.TimelineFragment;
 import com.mercy.babycare.ui.tooth.ToothFragment;
+import com.mercy.babycare.utils.crouton.Crouton;
+import com.mercy.babycare.utils.crouton.CroutonMessage;
+import com.mercy.babycare.utils.crouton.Style;
 
 public class MainActivity extends Activity {
 	String LOG_TAG = MainActivity.class.getName();
@@ -68,12 +71,16 @@ public class MainActivity extends Activity {
 	private DatabaseHelper databaseHelper = null;
 	private Dao<Timeline, Integer> timelineDAO;
 
+	private CroutonMessage crtnMsg = null;
+
+	private Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-        Utils.init(getResources());
+		context = this;
+		Utils.init(getResources());
+		crtnMsg = new CroutonMessage(this);
 
 		try {
 			timelineDAO = getHelper().getTimelineDao();
@@ -552,10 +559,16 @@ public class MainActivity extends Activity {
 	}
 
 	public void floatingActionButtonOnClick(View v) {
+
 		Fragment fragment = new TimelineCreateFragment();
 		FragmentManager fragmentManager = getFragmentManager();
-		fragmentManager.beginTransaction()
+		fragmentManager
+				.beginTransaction()
+				.setCustomAnimations(R.animator.slide_up,
+						R.animator.slide_down, R.animator.slide_up,
+						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
+
 	}
 
 	public void cancelButtonOnClick(View v) {
@@ -565,6 +578,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void addBreastOnClick(View v) {
+		crtnMsg.showCrouton(Style.INFO, context.getResources().getString(R.string.success));
 		Breast breast = new Breast();
 		breast.setRight(getRandomBoolean());
 		Calendar cal = Calendar.getInstance();
@@ -593,7 +607,11 @@ public class MainActivity extends Activity {
 	private void gotoTimeine() {
 		Fragment fragment = new TimelineFragment();
 		FragmentManager fragmentManager = getFragmentManager();
-		fragmentManager.beginTransaction()
+		fragmentManager
+				.beginTransaction()
+				.setCustomAnimations(R.animator.slide_up,
+						R.animator.slide_down, R.animator.slide_up,
+						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
 		setTitle(getResources().getString(R.string.timeline_menu));
 		listView.setItemChecked(0, true);
@@ -606,5 +624,12 @@ public class MainActivity extends Activity {
 		}
 		return databaseHelper;
 	}
-
+	@Override
+	public void onDestroy() {
+		Log.d(LOG_TAG, "OnDestroy");
+		crtnMsg = null;
+		Crouton.clearCroutonsForActivity(this);
+		// Must always call the super method at the end.
+		super.onDestroy();
+	}
 }
