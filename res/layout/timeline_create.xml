@@ -192,8 +192,8 @@
 
                     <Button
                         android:id="@+id/purchase"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
+                        android:layout_width="65dp"
+                        android:layout_height="76dp"
                         android:background="@drawable/icon_purchase" />
                     <TextView 
                         android:layout_below="@id/purchase"
