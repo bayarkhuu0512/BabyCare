@@ -28,7 +28,7 @@ public class ChartFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View root = inflater.inflate(R.layout.changediaper_view, container,
+		View root = inflater.inflate(R.layout.chart_view, container,
 				false);
 		ListView lv = (ListView) root.findViewById(R.id.listView1);
 

@@ -15,7 +15,10 @@ public class ChangeDiaper implements Serializable {
 	@DatabaseField(generatedId = true)
 	int id;
 	@DatabaseField
-	String feedName;
+	String diaperType;
+	
+	@DatabaseField(canBeNull = false)
+	Date createdDate;
 
 	public int getId() {
 		return id;
@@ -25,11 +28,19 @@ public class ChangeDiaper implements Serializable {
 		this.id = id;
 	}
 
-	public String getFeedName() {
-		return feedName;
+	public String getDiaperType() {
+		return diaperType;
 	}
 
-	public void setFeedName(String feedName) {
-		this.feedName = feedName;
+	public void setDiaperType(String diaperType) {
+		this.diaperType = diaperType;
+	}
+	
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 }
