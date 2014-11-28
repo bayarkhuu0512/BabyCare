@@ -73,10 +73,15 @@ public class LeftNavAdapter extends BaseAdapter {
 			viewHolder.underline.setVisibility(View.GONE);
 		}
 
-		if (position == 0 || position == 1 || position == 2 || position == 3) {
+		if (position == 0 || position == 1 || position == 2) {
 			viewHolder.rightChevron.setVisibility(View.VISIBLE);
+			viewHolder.mMenu.setTextColor(mContext.getResources().getColor(
+					R.color.mainColor));
 		} else {
 			viewHolder.rightChevron.setVisibility(View.INVISIBLE);
+			viewHolder.mMenu.setTextColor(mContext.getResources().getColor(
+					R.color.fontSecond));
+
 		}
 
 		return v;
