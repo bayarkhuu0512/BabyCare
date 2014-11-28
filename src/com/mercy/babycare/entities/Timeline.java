@@ -75,6 +75,9 @@ public class Timeline implements Serializable {
 	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Vitamin vitamin;
 
+	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
+	private Growth growth;
+
 	public int getId() {
 		return id;
 	}
@@ -235,4 +238,13 @@ public class Timeline implements Serializable {
 		this.createdDate = createdDate;
 	}
 
+	public Growth getGrowth() {
+		return growth;
+	}
+
+	public void setGrowth(Growth growth) {
+		this.growth = growth;
+	}
+
+	
 }

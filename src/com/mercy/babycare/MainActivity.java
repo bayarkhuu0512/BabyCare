@@ -114,9 +114,8 @@ public class MainActivity extends Activity {
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-				R.layout.drawer_list_item, mTitles));
+		LeftNavAdapter leftNavAdapter = new LeftNavAdapter(this, mTitles);
+		mDrawerList.setAdapter(leftNavAdapter);
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
 		if (savedInstanceState == null) {
@@ -132,6 +131,11 @@ public class MainActivity extends Activity {
 				long id) {
 			selectItem(position);
 		}
+	}
+
+	public void leftMenuClicked(View v) {
+		Log.d(LOG_TAG, "v " + v.getId());
+		selectItem(v.getId());
 	}
 
 	@Override
@@ -159,77 +163,65 @@ public class MainActivity extends Activity {
 			fragment = new BreastFragment();
 			break;
 		case 3:
-//			fragment = new ChangeDiaperFragment();
-			fragment = new TimelineFragment();
-			crtnMsg.showCrouton(Style.CONFIRM,
-					context.getResources().getString(R.string.notavailable));
-
+			// fragment = new ChangeDiaperFragment();
+			// fragment = new TimelineFragment();
 			break;
 		case 4:
-//			fragment = new HealthFragment();
-			fragment = new TimelineFragment();
-			crtnMsg.showCrouton(Style.CONFIRM,
-					context.getResources().getString(R.string.notavailable));
+			// fragment = new HealthFragment();
+			// fragment = new TimelineFragment();
 
 			break;
 		case 5:
-//			fragment = new ActiveOperationFragment();
-			fragment = new TimelineFragment();
-			crtnMsg.showCrouton(Style.CONFIRM,
-					context.getResources().getString(R.string.notavailable));
+			// fragment = new ActiveOperationFragment();
+			// fragment = new TimelineFragment();
 
 			break;
 		case 6:
-//			fragment = new LearnFragment();
-			fragment = new TimelineFragment();
-			crtnMsg.showCrouton(Style.CONFIRM,
-					context.getResources().getString(R.string.notavailable));
+			// fragment = new LearnFragment();
+			// fragment = new TimelineFragment();
 
 			break;
 		case 7:
-//			fragment = new PurchaseFragment();
-			fragment = new TimelineFragment();
-			crtnMsg.showCrouton(Style.CONFIRM,
-					context.getResources().getString(R.string.notavailable));
+			// fragment = new PurchaseFragment();
+			// fragment = new TimelineFragment();
 
 			break;
 		case 8:
-//			fragment = new ToothFragment();
-			fragment = new TimelineFragment();
-			crtnMsg.showCrouton(Style.CONFIRM,
-					context.getResources().getString(R.string.notavailable));
+			// fragment = new ToothFragment();
+			// fragment = new TimelineFragment();
 
 			break;
 		case 9:
-//			fragment = new HelpCenterFragment();
-			fragment = new TimelineFragment();
-			crtnMsg.showCrouton(Style.CONFIRM,
-					context.getResources().getString(R.string.notavailable));
+			// fragment = new HelpCenterFragment();
+			// fragment = new TimelineFragment();
 
 			break;
 		case 10:
-//			fragment = new ProfileFragment();
-			fragment = new TimelineFragment();
-			crtnMsg.showCrouton(Style.CONFIRM,
-					context.getResources().getString(R.string.notavailable));
+			// fragment = new ProfileFragment();
+			// fragment = new TimelineFragment();
 
 			break;
 		case 11:
-//			fragment = new AboutFragment();
-			fragment = new TimelineFragment();
-			crtnMsg.showCrouton(Style.CONFIRM,
-					context.getResources().getString(R.string.notavailable));
+			// fragment = new AboutFragment();
+			// fragment = new TimelineFragment();
+
 			break;
 		default:
 			fragment = new TimelineFragment();
 			break;
 		}
-		setTitle(mTitles[groupPos]);
-		mDrawerList.setItemChecked(groupPos, true);
-		FragmentManager fragmentManager = getFragmentManager();
-		fragmentManager.beginTransaction()
-				.replace(R.id.content_frame, fragment).commit();
-		mDrawerLayout.closeDrawer(mDrawerList);
+		if (fragment != null) {
+			setTitle(mTitles[groupPos]);
+			mDrawerList.setItemChecked(groupPos, true);
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.content_frame, fragment).commit();
+			mDrawerLayout.closeDrawer(mDrawerList);
+		} else {
+			crtnMsg.hide();
+			crtnMsg.showCrouton(Style.CONFIRM, context.getResources()
+					.getString(R.string.notavailable));
+		}
 
 	}
 
@@ -268,21 +260,20 @@ public class MainActivity extends Activity {
 						R.animator.slide_down, R.animator.slide_up,
 						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
-
 	}
 
 	public void cancelButtonOnClick(View v) {
-
 		gotoTimeine();
-
 	}
 
 	public void addBreastOnClick(View v) {
+		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
 		Breast breast = new Breast();
 		breast.setRight(getRandomBoolean());
 		Calendar cal = Calendar.getInstance();
+		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
 		breast.setBreastTime(cal.getTime());
 		breast.setCreatedDate(cal.getTime());
 		Timeline timeline = new Timeline();

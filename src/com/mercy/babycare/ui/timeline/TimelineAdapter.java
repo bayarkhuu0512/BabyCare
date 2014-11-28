@@ -49,7 +49,7 @@ public class TimelineAdapter extends
 		String dayOfWeekEN = Constants.rowDayOfWeekFormat.format(
 				timeline.getCreatedDate()).toString();
 		String dayOfWeekMN = "";
-		if (dayOfWeekEN.equals("mon")) {
+		if (dayOfWeekEN.equals("Mon")) {
 			dayOfWeekMN = mContext.getResources().getString(R.string.mon);
 		} else if (dayOfWeekEN.equals("Tue")) {
 			dayOfWeekMN = mContext.getResources().getString(R.string.tue);
@@ -79,6 +79,10 @@ public class TimelineAdapter extends
 
 		// Baby
 		if (timeline.getBaby() != null) {
+			viewHolder.icon.setImageDrawable(mContext.getResources()
+					.getDrawable(R.drawable.baby67));
+			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
+					.getDrawable(R.drawable.formula_oval));
 			viewHolder.calMonth.setText(Constants.rowMonthFormat.format(
 					timeline.getBaby().getBirthDate()).toString()
 					+ mContext.getResources().getString(R.string.month));
@@ -96,6 +100,13 @@ public class TimelineAdapter extends
 			viewHolder.mFourth.setVisibility(View.VISIBLE);
 			viewHolder.mFourth.setText(timeline.getBaby().getBirthWeight()
 					+ "гр");
+
+			viewHolder.mFifth.setVisibility(View.VISIBLE);
+			viewHolder.mFifth.setText(timeline.getBaby().getGender());
+
+			viewHolder.mSixth.setVisibility(View.VISIBLE);
+			viewHolder.mSixth.setText("төрлөө");
+
 		} else if (timeline.getBreast() != null) {
 			int num = 0;
 			int isRightNum = 0;
@@ -132,6 +143,9 @@ public class TimelineAdapter extends
 					R.string.left)
 					+ " " + isLeftNum);
 
+			viewHolder.mFifth.setVisibility(View.GONE);
+			viewHolder.mSixth.setVisibility(View.GONE);
+
 		} else if (timeline.getTooth() != null) {
 			viewHolder.calMonth.setText(Constants.rowMonthFormat.format(
 					timeline.getTooth().getCreatedDate()).toString()
@@ -139,6 +153,12 @@ public class TimelineAdapter extends
 			viewHolder.calDay.setText(Constants.rowDayFormat.format(
 					timeline.getTooth().getCreatedDate()).toString()
 					+ dayOfWeekMN);
+
+			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
+					.getDrawable(R.drawable.tooth_oval));
+			viewHolder.icon.setImageDrawable(mContext.getResources()
+					.getDrawable(R.drawable.icon_teeth));
+
 			viewHolder.mFirst.setVisibility(View.VISIBLE);
 			viewHolder.mFirst.setText(mContext.getResources().getString(
 					R.string.tooth)
@@ -148,7 +168,13 @@ public class TimelineAdapter extends
 					+ mContext.getResources().getString(R.string.tooth_grow));
 			viewHolder.mThird.setVisibility(View.VISIBLE);
 			viewHolder.mThird.setText(mContext.getResources().getString(
-					R.string.congrats));
+					R.string.hooray));
+
+			viewHolder.mSecond.setVisibility(View.GONE);
+			viewHolder.mFourth.setVisibility(View.GONE);
+			viewHolder.mFifth.setVisibility(View.GONE);
+			viewHolder.mSixth.setVisibility(View.GONE);
+
 		} else if (timeline.getActiveOperation() != null) {
 			viewHolder.calMonth.setText(Constants.rowMonthFormat.format(
 					timeline.getActiveOperation().getCreatedDate()).toString()
@@ -156,12 +182,53 @@ public class TimelineAdapter extends
 			viewHolder.calDay.setText(Constants.rowDayFormat.format(
 					timeline.getActiveOperation().getCreatedDate()).toString()
 					+ dayOfWeekMN);
+
+			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
+					.getDrawable(R.drawable.ao_oval));
+			viewHolder.icon.setImageDrawable(mContext.getResources()
+					.getDrawable(R.drawable.baby67));
+
 			viewHolder.mFirst.setVisibility(View.VISIBLE);
 			viewHolder.mFirst.setText(timeline.getActiveOperation()
 					.getActiveName());
 			viewHolder.mThird.setVisibility(View.VISIBLE);
 			viewHolder.mThird.setText(mContext.getResources().getString(
 					R.string.congrats));
+
+			viewHolder.mSecond.setVisibility(View.GONE);
+			viewHolder.mFourth.setVisibility(View.GONE);
+			viewHolder.mFifth.setVisibility(View.GONE);
+			viewHolder.mSixth.setVisibility(View.GONE);
+
+		} else if (timeline.getGrowth() != null) {
+			viewHolder.calMonth.setText(Constants.rowMonthFormat.format(
+					timeline.getGrowth().getCreatedDate()).toString()
+					+ mContext.getResources().getString(R.string.month));
+			viewHolder.calDay.setText(Constants.rowDayFormat.format(
+					timeline.getGrowth().getCreatedDate()).toString()
+					+ dayOfWeekMN);
+
+			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
+					.getDrawable(R.drawable.anniversary));
+			viewHolder.icon.setImageDrawable(mContext.getResources()
+					.getDrawable(R.drawable.icon_birthmonth));
+
+			viewHolder.mFirst.setVisibility(View.VISIBLE);
+			viewHolder.mFirst.setText(timeline.getGrowth().getBabyMonth()
+					+ " сар хүрлээ");
+			viewHolder.mThird.setVisibility(View.VISIBLE);
+			viewHolder.mThird.setText(timeline.getGrowth().getBabyHeight()
+					+ " см");
+			viewHolder.mFourth.setVisibility(View.VISIBLE);
+			viewHolder.mFourth.setText(timeline.getGrowth().getBabyWeight()
+					+ " гр");
+
+			viewHolder.mFifth.setVisibility(View.VISIBLE);
+			viewHolder.mFifth.setText(mContext.getResources().getString(
+					R.string.congrats));
+
+			viewHolder.mSecond.setVisibility(View.GONE);
+			viewHolder.mSixth.setVisibility(View.GONE);
 		}
 
 	}

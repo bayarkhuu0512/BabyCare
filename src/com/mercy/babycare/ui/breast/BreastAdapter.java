@@ -45,7 +45,7 @@ public class BreastAdapter extends
 		String dayOfWeekEN = Constants.rowDayOfWeekFormat.format(
 				mList.get(position).getCreatedDate()).toString();
 		String dayOfWeekMN = "";
-		if (dayOfWeekEN.equals("mon")) {
+		if (dayOfWeekEN.equals("Mon")) {
 			dayOfWeekMN = mContext.getResources().getString(R.string.mon);
 		} else if (dayOfWeekEN.equals("Tue")) {
 			dayOfWeekMN = mContext.getResources().getString(R.string.tue);
@@ -77,12 +77,14 @@ public class BreastAdapter extends
 			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
 					.getDrawable(R.drawable.formula_oval));
 		}
+		viewHolder.icon.setImageDrawable(mContext.getResources().getDrawable(
+				R.drawable.icon_breast));
 		viewHolder.mSecond.setVisibility(View.VISIBLE);
 		viewHolder.mSecond.setText(Constants.timeFormat.format(mList.get(
 				position).getBreastTime()));
 
 		viewHolder.mThird.setVisibility(View.VISIBLE);
-		viewHolder.mThird.setText("Мээмээ");
+		viewHolder.mThird.setText("Мээмээ хөхлөө");
 
 	}
 

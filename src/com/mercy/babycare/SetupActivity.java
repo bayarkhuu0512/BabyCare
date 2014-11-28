@@ -14,13 +14,17 @@ import com.mercy.babycare.entities.Breast;
 import com.mercy.babycare.entities.Growth;
 import com.mercy.babycare.entities.Timeline;
 import com.mercy.babycare.entities.Tooth;
+import com.mercy.babycare.utils.Constants;
 import com.mercy.babycare.utils.PrefManager;
 
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 
 public class SetupActivity extends FragmentActivity {
@@ -29,25 +33,55 @@ public class SetupActivity extends FragmentActivity {
 	private PrefManager prefManager;
 	private DatabaseHelper databaseHelper = null;
 	private Intent intent;
-	private TextView babyName;
 	private Timeline timeline;
 	private Baby baby;
 	private Tooth tooth1, tooth2, tooth3, tooth4;
 
 	private Dao<Timeline, Integer> timelineDAO;
-	private Dao<Growth, Integer> growthDAO;
+
+	// private Dao<Growth, Integer> growthDAO;
+
+	private TextView initTextView;
+	private Typeface roboto_light;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 		prefManager = new PrefManager(this);
 		if (prefManager.getHasSetup()) {
 			launchMainActivity();
 		} else {
 			setContentView(R.layout.fragment_setup);
+			initTextView = (TextView) findViewById(R.id.initTextView);
+			roboto_light = Typeface.createFromAsset(getAssets(),
+					Constants.ROBOTO_LIGHT);
+			initTextView.setTypeface(roboto_light);
 			// Init UIs
-			babyName = (TextView) findViewById(R.id.childName);
+			new LongOperation().execute("");
+		}
+	}
+
+	private class LongOperation extends AsyncTask<String, Void, String> {
+
+		@Override
+		protected String doInBackground(String... params) {
 			setDateData();
+			return "Executed";
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			prefManager.setHasSetup(true);
+			launchMainActivity();
+		}
+
+		@Override
+		protected void onPreExecute() {
+		}
+
+		@Override
+		protected void onProgressUpdate(Void... values) {
 		}
 	}
 
@@ -58,6 +92,7 @@ public class SetupActivity extends FragmentActivity {
 	private void launchMainActivity() {
 		intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
+		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 		finish();
 	}
 
@@ -83,11 +118,10 @@ public class SetupActivity extends FragmentActivity {
 	}
 
 	private void setDateData() {
-		prefManager.setHasSetup(true);
 		try {
 			// Baby
 			baby = new Baby();
-			baby.setFirstName(babyName.getText().toString());
+			baby.setFirstName("Ayduu");
 			baby.setLastName("Bayarkhuu");
 
 			Calendar cal = Calendar.getInstance();
@@ -110,7 +144,7 @@ public class SetupActivity extends FragmentActivity {
 			// Tooth
 			tooth1 = new Tooth();
 			Calendar cal1 = Calendar.getInstance();
-			cal1.set(2014, 8, 11, 8, 38);
+			cal1.set(2014, 7, 11, 8, 38);
 			tooth1.setCreatedDate(cal1.getTime());
 			tooth1.setToothNum(1);
 			Timeline timelineTooth1 = new Timeline();
@@ -121,7 +155,7 @@ public class SetupActivity extends FragmentActivity {
 
 			tooth2 = new Tooth();
 			Calendar cal2 = Calendar.getInstance();
-			cal1.set(2014, 7, 20, 8, 38);
+			cal2.set(2014, 6, 20, 8, 38);
 			tooth2.setCreatedDate(cal2.getTime());
 			tooth2.setToothNum(2);
 
@@ -133,7 +167,7 @@ public class SetupActivity extends FragmentActivity {
 
 			tooth3 = new Tooth();
 			Calendar cal3 = Calendar.getInstance();
-			cal3.set(2014, 10, 16, 8, 38);
+			cal3.set(2014, 9, 16, 8, 38);
 			tooth3.setCreatedDate(cal3.getTime());
 			tooth3.setToothNum(3);
 
@@ -145,7 +179,7 @@ public class SetupActivity extends FragmentActivity {
 
 			tooth4 = new Tooth();
 			Calendar cal4 = Calendar.getInstance();
-			cal4.set(2014, 10, 21, 8, 38);
+			cal4.set(2014, 9, 21, 8, 38);
 			tooth4.setCreatedDate(cal4.getTime());
 			tooth4.setToothNum(4);
 
@@ -210,6 +244,11 @@ public class SetupActivity extends FragmentActivity {
 			growth1.setBabyHeight(54);
 			growth1.setBabyWeight(4100);
 			growth1.setBabyMonth(1);
+			Timeline growthTimeline1 = new Timeline();
+			growthTimeline1.setGrowth(growth1);
+			growthTimeline1.setCreatedDate(growthCal1.getTime());
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(growthTimeline1);
 
 			Growth growth2 = new Growth();
 			Calendar growthCal2 = Calendar.getInstance();
@@ -218,6 +257,11 @@ public class SetupActivity extends FragmentActivity {
 			growth2.setBabyHeight(58);
 			growth2.setBabyWeight(5400);
 			growth2.setBabyMonth(2);
+			Timeline growthTimeline2 = new Timeline();
+			growthTimeline2.setGrowth(growth2);
+			growthTimeline2.setCreatedDate(growthCal2.getTime());
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(growthTimeline2);
 
 			Growth growth3 = new Growth();
 			Calendar growthCal3 = Calendar.getInstance();
@@ -226,6 +270,11 @@ public class SetupActivity extends FragmentActivity {
 			growth3.setBabyHeight(60);
 			growth3.setBabyWeight(6500);
 			growth3.setBabyMonth(3);
+			Timeline growthTimeline3 = new Timeline();
+			growthTimeline3.setGrowth(growth3);
+			growthTimeline3.setCreatedDate(growthCal3.getTime());
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(growthTimeline3);
 
 			Growth growth4 = new Growth();
 			Calendar growthCal4 = Calendar.getInstance();
@@ -234,6 +283,11 @@ public class SetupActivity extends FragmentActivity {
 			growth4.setBabyHeight(62);
 			growth4.setBabyWeight(7200);
 			growth4.setBabyMonth(4);
+			Timeline growthTimeline4 = new Timeline();
+			growthTimeline4.setGrowth(growth4);
+			growthTimeline4.setCreatedDate(growthCal4.getTime());
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(growthTimeline4);
 
 			Growth growth5 = new Growth();
 			Calendar growthCal5 = Calendar.getInstance();
@@ -242,6 +296,11 @@ public class SetupActivity extends FragmentActivity {
 			growth5.setBabyHeight(63);
 			growth5.setBabyWeight(7600);
 			growth5.setBabyMonth(5);
+			Timeline growthTimeline5 = new Timeline();
+			growthTimeline5.setGrowth(growth5);
+			growthTimeline5.setCreatedDate(growthCal5.getTime());
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(growthTimeline5);
 
 			Growth growth6 = new Growth();
 			Calendar growthCal6 = Calendar.getInstance();
@@ -250,6 +309,11 @@ public class SetupActivity extends FragmentActivity {
 			growth6.setBabyHeight(65);
 			growth6.setBabyWeight(7800);
 			growth6.setBabyMonth(6);
+			Timeline growthTimeline6 = new Timeline();
+			growthTimeline6.setGrowth(growth6);
+			growthTimeline6.setCreatedDate(growthCal6.getTime());
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(growthTimeline6);
 
 			Growth growth7 = new Growth();
 			Calendar growthCal7 = Calendar.getInstance();
@@ -258,6 +322,11 @@ public class SetupActivity extends FragmentActivity {
 			growth7.setBabyHeight(66);
 			growth7.setBabyWeight(8100);
 			growth7.setBabyMonth(7);
+			Timeline growthTimeline7 = new Timeline();
+			growthTimeline7.setGrowth(growth7);
+			growthTimeline7.setCreatedDate(growthCal7.getTime());
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(growthTimeline7);
 
 			Growth growth8 = new Growth();
 			Calendar growthCal8 = Calendar.getInstance();
@@ -266,6 +335,11 @@ public class SetupActivity extends FragmentActivity {
 			growth8.setBabyHeight(67);
 			growth8.setBabyWeight(8200);
 			growth8.setBabyMonth(8);
+			Timeline growthTimeline8 = new Timeline();
+			growthTimeline8.setGrowth(growth8);
+			growthTimeline8.setCreatedDate(growthCal8.getTime());
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(growthTimeline8);
 
 			Growth growth9 = new Growth();
 			Calendar growthCal9 = Calendar.getInstance();
@@ -274,35 +348,40 @@ public class SetupActivity extends FragmentActivity {
 			growth9.setBabyHeight(69);
 			growth9.setBabyWeight(8700);
 			growth9.setBabyMonth(9);
+			Timeline growthTimeline9 = new Timeline();
+			growthTimeline9.setGrowth(growth9);
+			growthTimeline9.setCreatedDate(growthCal9.getTime());
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(growthTimeline9);
 
-			growthDAO = getHelper().getGrowthDao();
-			growthDAO.create(growth1);
-			growthDAO.create(growth2);
-			growthDAO.create(growth3);
-			growthDAO.create(growth4);
-			growthDAO.create(growth5);
-			growthDAO.create(growth6);
-			growthDAO.create(growth7);
-			growthDAO.create(growth8);
-			growthDAO.create(growth9);
+			// growthDAO = getHelper().getGrowthDao();
+			// growthDAO.create(growth1);
+			// growthDAO.create(growth2);
+			// growthDAO.create(growth3);
+			// growthDAO.create(growth4);
+			// growthDAO.create(growth5);
+			// growthDAO.create(growth6);
+			// growthDAO.create(growth7);
+			// growthDAO.create(growth8);
+			// growthDAO.create(growth9);
 
 			Breast breast1 = new Breast();
 			Calendar breastCal1 = Calendar.getInstance();
-			breastCal1.set(2014, 3, 27, 12, 31);
+			breastCal1.set(2014, 3, 27, 12, 20);
 			breast1.setCreatedDate(breastCal1.getTime());
 			breast1.setBreastTime(breastCal1.getTime());
 			breast1.setRight(true);
 
 			Breast breast2 = new Breast();
 			Calendar breastCal2 = Calendar.getInstance();
-			breastCal2.set(2014, 11, 27, 14, 31);
+			breastCal2.set(2014, 9, 13, 14, 04);
 			breast2.setCreatedDate(breastCal2.getTime());
 			breast2.setBreastTime(breastCal2.getTime());
 			breast2.setRight(false);
 
 			Breast breast3 = new Breast();
 			Calendar breastCal3 = Calendar.getInstance();
-			breastCal3.set(2014, 11, 27, 18, 31);
+			breastCal3.set(2014, 10, 17, 18, 31);
 			breast3.setCreatedDate(breastCal3.getTime());
 			breast3.setBreastTime(breastCal3.getTime());
 			breast3.setRight(true);
@@ -312,7 +391,7 @@ public class SetupActivity extends FragmentActivity {
 			timelineBreast1.setCreatedDate(breastCal1.getTime());
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineBreast1);
-			
+
 			Timeline timelineBreast2 = new Timeline();
 			timelineBreast2.setBreast(breast2);
 			timelineBreast2.setCreatedDate(breastCal2.getTime());
@@ -330,6 +409,5 @@ public class SetupActivity extends FragmentActivity {
 			e.printStackTrace();
 		}
 
-		launchMainActivity();
 	}
 }

@@ -34,7 +34,7 @@ public class Configuration {
    */
   public static final int DURATION_INFINITE = -1;
   /** The default short display duration of a {@link Crouton}. */
-  public static final int DURATION_SHORT = 3000;
+  public static final int DURATION_SHORT = 2000;
   /** The default long display duration of a {@link Crouton}. */
   public static final int DURATION_LONG = 5000;
 

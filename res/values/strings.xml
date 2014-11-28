@@ -8,7 +8,7 @@
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
 
     <string-array name="nav_array">
-        <item>Happy Baby Beta</item>
+        <item>Happy Baby</item>
         <item>График</item>
         <item>Хоолондоо</item>
         <item>Живхээ солъё</item>
@@ -50,5 +50,6 @@
     <string name="tooth">Шүд</string>
     <string name="tooth_grow">цухуйлаа</string>
     <string name="congrats">Баяр хүргэе</string>
+        <string name="hooray">Хурай хурай</string>
     
 </resources>

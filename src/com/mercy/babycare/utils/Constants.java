@@ -21,5 +21,6 @@ public interface Constants {
 
 	String ROBOTO_LIGHT = "fonts/Roboto-Light.ttf";
 	String ROBOTO_THIN = "fonts/Roboto-Thin.ttf";
+	String ROBOTO_MEDIUM = "fonts/Roboto-Medium.ttf";
 
 }

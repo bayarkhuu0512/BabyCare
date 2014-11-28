@@ -43,5 +43,6 @@
     <color name="fontCalendar">#616161</color>
     <color name="fontFirst">#424242</color>
     <color name="fontSecond">#bdbdbd</color>
-    
+    <color name="underline">#f3f3f3</color>
+
 </resources>
