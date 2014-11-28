@@ -57,11 +57,12 @@ public class ChartFragment extends Fragment {
 			QueryBuilder<Growth, Integer> growthQb = growthDAO.queryBuilder();
 			mGrowthList = growthQb.query();
 
-//			QueryBuilder<Breast, Integer> breastDateQb = breastDAO.queryBuilder();
-//			mBreastDateCounterList = breastDateQb.query();
-//			
-//			Log.d(LOG_TAG,"mBreastDateCounterList "+mBreastDateCounterList.size());
-			
+			// QueryBuilder<Breast, Integer> breastDateQb =
+			// breastDAO.queryBuilder();
+			// mBreastDateCounterList = breastDateQb.query();
+			//
+			// Log.d(LOG_TAG,"mBreastDateCounterList "+mBreastDateCounterList.size());
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,6 +72,8 @@ public class ChartFragment extends Fragment {
 		if (mBreastList != null) {
 			list.add(new PieChartItem(generateDataBreastPie(), getActivity()));
 		}
+		list.add(new BarChartItem(generateDataBar(), getActivity()));
+
 		if (mGrowthList != null) {
 			list.add(new LineChartItem(generateGrowthWeightLine(),
 					getActivity()));
@@ -79,7 +82,7 @@ public class ChartFragment extends Fragment {
 			list.add(new LineChartItem(generateGrowthHeightLine(),
 					getActivity()));
 		}
-		
+
 		// for (int i = 0; i < 3; i++) {
 		//
 		// if (i % 3 == 0) {
@@ -186,22 +189,28 @@ public class ChartFragment extends Fragment {
 	 * 
 	 * @return
 	 */
-	// private BarData generateDataBar(int cnt) {
-	//
-	// ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
-	//
-	// for (int i = 0; i < 12; i++) {
-	// entries.add(new BarEntry((int) (Math.random() * 70) + 30, i));
-	// }
-	//
-	// BarDataSet d = new BarDataSet(entries, "New DataSet " + cnt);
-	// d.setBarSpacePercent(20f);
-	// d.setColors(ColorTemplate.VORDIPLOM_COLORS);
-	// d.setHighLightAlpha(255);
-	//
-	// BarData cd = new BarData(getMonths(), d);
-	// return cd;
-	// }
+	private BarData generateDataBar() {
+
+		ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
+
+		for (int i = 0; i < 12; i++) {
+			entries.add(new BarEntry((int) (Math.random() * 70) + 30, i));
+		}
+
+		BarDataSet d = new BarDataSet(entries, "Хооллолтын тоо ");
+		d.setBarSpacePercent(20f);
+		int[] VORDIPLOM_COLORS = {
+				getActivity().getResources().getColor(R.color.entity_breast),
+				getActivity().getResources().getColor(R.color.entity_feed),
+				getActivity().getResources().getColor(R.color.entity_formula),
+				getActivity().getResources().getColor(R.color.entity_drink) };
+
+		d.setColors(VORDIPLOM_COLORS);
+		d.setHighLightAlpha(255);
+
+		BarData cd = new BarData(getMonths(), d);
+		return cd;
+	}
 
 	/**
 	 * generates a random ChartData object with just one DataSet
@@ -258,6 +267,25 @@ public class ChartFragment extends Fragment {
 		 * m.add("Jul"); m.add("Aug"); m.add("Sep"); m.add("Okt"); m.add("Nov");
 		 * m.add("Dec");
 		 */
+		return m;
+	}
+
+	private ArrayList<String> getMonths() {
+
+		ArrayList<String> m = new ArrayList<String>();
+		m.add("Jan");
+		m.add("Feb");
+		m.add("Mar");
+		m.add("Apr");
+		m.add("May");
+		m.add("Jun");
+		m.add("Jul");
+		m.add("Aug");
+		m.add("Sep");
+		m.add("Oct");
+		m.add("Nov");
+		m.add("Dec");
+
 		return m;
 	}
 
