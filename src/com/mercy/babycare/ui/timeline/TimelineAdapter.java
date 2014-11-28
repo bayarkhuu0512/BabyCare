@@ -188,7 +188,7 @@ public class TimelineAdapter extends
 			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
 					.getDrawable(R.drawable.ao_oval));
 			viewHolder.icon.setImageDrawable(mContext.getResources()
-					.getDrawable(R.drawable.baby67));
+					.getDrawable(R.drawable.ao));
 
 			viewHolder.mFirst.setVisibility(View.VISIBLE);
 			viewHolder.mFirst.setText(timeline.getActiveOperation()
