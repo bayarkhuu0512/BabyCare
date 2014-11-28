@@ -121,8 +121,8 @@ public class SetupActivity extends FragmentActivity {
 		try {
 			// Baby
 			baby = new Baby();
-			baby.setFirstName("Ayduu");
-			baby.setLastName("Bayarkhuu");
+			baby.setFirstName("Аядуу");
+			baby.setLastName("Баярхүү");
 
 			Calendar cal = Calendar.getInstance();
 			cal.set(2014, 1, 5, 8, 38);

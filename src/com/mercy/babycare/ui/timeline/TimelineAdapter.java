@@ -90,7 +90,9 @@ public class TimelineAdapter extends
 					timeline.getBaby().getBirthDate()).toString()
 					+ dayOfWeekMN);
 			viewHolder.mFirst.setVisibility(View.VISIBLE);
-			viewHolder.mFirst.setText(timeline.getBaby().getFirstName());
+			viewHolder.mFirst.setText(timeline.getBaby().getLastName()
+					.substring(0, 1)
+					+ "." + timeline.getBaby().getFirstName());
 			viewHolder.mSecond.setVisibility(View.VISIBLE);
 			viewHolder.mSecond.setText(Constants.timeFormat.format(
 					timeline.getBaby().getBirthTime()).toString());
