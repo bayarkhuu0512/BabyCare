@@ -67,10 +67,10 @@
                     android:src="@drawable/icon_gohospital" />
 
                 <ImageButton
-                    android:id="@+id/takemedicine"
+                    android:id="@+id/hospital"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:background="@color/entity_takemedicine"
+                    android:background="@color/entity_hospital"
                     android:src="@drawable/icon_medcheck" />
 
                 <ImageButton

@@ -1,6 +1,6 @@
 package com.melnykov.fab;
 
-import com.mercy.babycare.R;
+import com.mercy.happybaby.R;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

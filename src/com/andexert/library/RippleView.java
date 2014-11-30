@@ -1,6 +1,6 @@
 package com.andexert.library;
 
-import com.mercy.babycare.R;
+import com.mercy.happybaby.R;
 
 import android.content.Context;
 import android.content.res.TypedArray;

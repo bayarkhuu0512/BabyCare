@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Happy Baby Beta</string>
+    <string name="app_name">Happy Baby</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_websearch">Web search</string>
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
 
     <string-array name="nav_array">
-        <item>Happy Baby Beta</item>
+        <item>Happy Baby</item>
         <item>График</item>
         <item>Хоолондоо</item>
         <item>Живхээ солъё</item>
@@ -21,7 +21,6 @@
         <item>Яах уу ээжээ?</item>
         <item>Happy Baby бол..</item>
     </string-array>
-
     <string-array name="feed_array">
         <item>Бантан</item>
         <item>Каш</item>
@@ -42,14 +41,22 @@
     <string name="gender_boy">Хүү</string>
     <string name="hospital_name">1 төрөх</string>
     <string name="breast">Мээмээ хөхлөө</string>
+    <string name="feed">Нэмэгдэл хоол</string>
+    <string name="formula">Нэмэгдэл сүү</string>
+    <string name="drink">Шингэн уух зүйл</string>
+    <string name="amount">ширхэг</string>
+    <string name="tugrug">төгрөг</string>
+    <string name="ml">мл</string>
+    <string name="total">нийт</string>
+    <string name="hospital">Эмчид үзүүлсэн</string>
+    <string name="purchase">авлаа</string>
 
     <!-- Crouton -->
     <string name="success">Аз жаргалтай мөчийг хадгалан авлаа :)</string>
-        <string name="notavailable">Уучлаарай, Beta хувилбар дээр ажиллах боломжгүй : )</string>
-    
+    <string name="notavailable">Уучлаарай, Beta хувилбар дээр ажиллах боломжгүй : )</string>
     <string name="tooth">Шүд</string>
     <string name="tooth_grow">цухуйлаа</string>
     <string name="congrats">Баяр хүргэе</string>
-        <string name="hooray">Хурай хурай</string>
-    
+    <string name="hooray">Хурай хурай</string>
+
 </resources>
