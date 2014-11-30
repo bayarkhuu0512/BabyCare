@@ -15,7 +15,13 @@ public class HelpCenter implements Serializable {
 	@DatabaseField(generatedId = true)
 	int id;
 	@DatabaseField
-	String feedName;
+	String helpCenterTitle;
+
+	@DatabaseField
+	String helpCenterContent;
+
+	@DatabaseField(canBeNull = false)
+	Date createdDate;
 
 	public int getId() {
 		return id;
@@ -25,11 +31,28 @@ public class HelpCenter implements Serializable {
 		this.id = id;
 	}
 
-	public String getFeedName() {
-		return feedName;
+	public String getHelpCenterTitle() {
+		return helpCenterTitle;
 	}
 
-	public void setFeedName(String feedName) {
-		this.feedName = feedName;
+	public void setHelpCenterTitle(String helpCenterTitle) {
+		this.helpCenterTitle = helpCenterTitle;
 	}
+
+	public String getHelpCenterContent() {
+		return helpCenterContent;
+	}
+
+	public void setHelpCenterContent(String helpCenterContent) {
+		this.helpCenterContent = helpCenterContent;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
 }

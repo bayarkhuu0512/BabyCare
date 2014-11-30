@@ -43,9 +43,6 @@ public class Timeline implements Serializable {
 	private Formula formula;
 
 	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
-	private HelpCenter helpCenter;
-
-	@DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Learn learn;
 
 	/*
@@ -136,14 +133,6 @@ public class Timeline implements Serializable {
 
 	public void setFormula(Formula formula) {
 		this.formula = formula;
-	}
-
-	public HelpCenter getHelpCenter() {
-		return helpCenter;
-	}
-
-	public void setHelpCenter(HelpCenter helpCenter) {
-		this.helpCenter = helpCenter;
 	}
 
 	public Learn getLearn() {

@@ -21,6 +21,7 @@ import com.melnykov.fab.FloatingActionButton;
 import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Timeline;
+import com.mercy.happybaby.ui.helpcenter.HelpCenterAdapter;
 
 public class HealthFragment extends Fragment {
 	String LOG_TAG = HealthFragment.class.getName();
@@ -37,13 +38,13 @@ public class HealthFragment extends Fragment {
 			QueryBuilder<Timeline, Integer> timelineQb = timelineDAO
 					.queryBuilder();
 			Where where = timelineQb.where();
-			where.isNotNull("growth_id");
-			where.or();
-			where.isNotNull("vaccine_id");
+			where.isNotNull("hospital_id");
 			where.or();
 			where.isNotNull("vitamin_id");
 			where.or();
-			where.isNotNull("hospital_id");
+			where.isNotNull("vaccine_id");
+			where.or();
+			where.isNotNull("growth_id");
 			timelineQb.orderBy("createdDate", false);
 			list = timelineQb.query();
 
@@ -53,7 +54,8 @@ public class HealthFragment extends Fragment {
 			e.printStackTrace();
 		}
 
-		View root = inflater.inflate(R.layout.health_view, container, false);
+		View root = inflater
+				.inflate(R.layout.helpcenter_view, container, false);
 
 		RecyclerView recyclerView = (RecyclerView) root
 				.findViewById(R.id.recycler_view);

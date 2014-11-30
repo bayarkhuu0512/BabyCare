@@ -23,6 +23,7 @@ import com.mercy.happybaby.entities.Drink;
 import com.mercy.happybaby.entities.Feed;
 import com.mercy.happybaby.entities.Formula;
 import com.mercy.happybaby.entities.Growth;
+import com.mercy.happybaby.entities.HelpCenter;
 import com.mercy.happybaby.entities.Hospital;
 import com.mercy.happybaby.entities.Learn;
 import com.mercy.happybaby.entities.Purchase;
@@ -39,9 +40,9 @@ public class SetupActivity extends FragmentActivity {
 	private Intent intent;
 	private Timeline timeline;
 	private Baby baby;
-	private Tooth tooth1, tooth2, tooth3, tooth4;
 
 	private Dao<Timeline, Integer> timelineDAO;
+	private Dao<HelpCenter, Integer> helpCenterDAO;
 
 	private TextView initTextView;
 	private Typeface roboto_light;
@@ -144,19 +145,19 @@ public class SetupActivity extends FragmentActivity {
 			timelineDAO.create(timeline);
 
 			// Tooth
-			tooth1 = new Tooth();
+			Tooth tooth1 = new Tooth();
 			Calendar cal1 = Calendar.getInstance();
 			cal1.set(2014, 6, 11, 2, 38);
 			tooth1.setCreatedDate(cal1.getTime());
 			tooth1.setToothNum(1);
-			
+
 			Timeline timelineTooth1 = new Timeline();
 			timelineTooth1.setTooth(tooth1);
 			timelineTooth1.setCreatedDate(cal1.getTime());
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineTooth1);
 
-			tooth2 = new Tooth();
+			Tooth tooth2 = new Tooth();
 			Calendar cal2 = Calendar.getInstance();
 			cal2.set(2014, 6, 20, 8, 38);
 			tooth2.setCreatedDate(cal2.getTime());
@@ -168,7 +169,7 @@ public class SetupActivity extends FragmentActivity {
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineTooth2);
 
-			tooth3 = new Tooth();
+			Tooth tooth3 = new Tooth();
 			Calendar cal3 = Calendar.getInstance();
 			cal3.set(2014, 9, 16, 8, 38);
 			tooth3.setCreatedDate(cal3.getTime());
@@ -180,7 +181,7 @@ public class SetupActivity extends FragmentActivity {
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineTooth3);
 
-			tooth4 = new Tooth();
+			Tooth tooth4 = new Tooth();
 			Calendar cal4 = Calendar.getInstance();
 			cal4.set(2014, 9, 21, 8, 38);
 			tooth4.setCreatedDate(cal4.getTime());
@@ -508,6 +509,55 @@ public class SetupActivity extends FragmentActivity {
 			timelineAo1.setCreatedDate(aoCal1.getTime());
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineAo1);
+
+			HelpCenter helpCenter1 = new HelpCenter();
+			helpCenter1
+					.setHelpCenterTitle("Хэзээ яаралтай эмнэлэгт хандах вэ?");
+			StringBuilder content = new StringBuilder();
+			content.append("- Хөхөхдөө идэвхи муудах");
+			content.append("\n");
+			content.append("- Өвчин хүндрэх");
+			content.append("\n");
+			content.append("- Татах");
+			content.append("\n");
+			content.append("- Хөдөлгөөн муудах");
+			content.append("\n");
+			content.append("- Халуурах");
+			content.append("\n");
+			content.append("- Бие нь хөрөх");
+			content.append("\n");
+			content.append("- Амьсгал олшрох");
+			content.append("\n");
+			content.append("- Амьсгал саадтай болох");
+			content.append("\n");
+			content.append("- Баас цустай болох");
+			content.append("\n");
+			content.append("- Гарын алга ба хөлийн ул шарлах");
+			content.append("\n");
+			content.append("- Жин нэмэгдэхгүй байх");
+			content.append("\n");
+			helpCenter1.setHelpCenterContent(content.toString());
+			helpCenter1.setCreatedDate(Calendar.getInstance().getTime());
+			helpCenterDAO = getHelper().getHelpCenterDao();
+			helpCenterDAO.create(helpCenter1);
+
+			HelpCenter helpCenter2 = new HelpCenter();
+			helpCenter2.setHelpCenterTitle("Халууны шил");
+			StringBuilder content2 = new StringBuilder();
+			content2.append("Та гэртээ халууны шил байнга байлгаарай. Хэрвээ хүүхэд тань халуурвал халууныг нь заавал хэмжиж үзээрэй. 38.5C хэмээс дээш халуурвал халуун буулгах эмийг зөвхөн эмчийн заавраар наад зах нь 6 цагийн  зайтай хэрэглэнэ.");
+			helpCenter2.setHelpCenterContent(content2.toString());
+			helpCenter2.setCreatedDate(Calendar.getInstance().getTime());
+			helpCenterDAO = getHelper().getHelpCenterDao();
+			helpCenterDAO.create(helpCenter2);
+
+			HelpCenter helpCenter3 = new HelpCenter();
+			helpCenter3.setHelpCenterTitle("Хүүхдэд тохиромжтой хоол хүнс");
+			StringBuilder content3 = new StringBuilder();
+			content3.append("Гол нэрийн хүнсний бүтээгдэхүүн нь хүүхдэд илчлэг өгдөг. Гол нэрийн хүнсэнд мах, төмс, лууван, байцаа, сүү, цагаан идээ - ааруул, аарц, бяслаг, ээдэм, алим болон бусад жимс жимсгэнэ орно.");
+			helpCenter3.setHelpCenterContent(content3.toString());
+			helpCenter3.setCreatedDate(Calendar.getInstance().getTime());
+			helpCenterDAO = getHelper().getHelpCenterDao();
+			helpCenterDAO.create(helpCenter3);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

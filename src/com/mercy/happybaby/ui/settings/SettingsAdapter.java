@@ -42,7 +42,7 @@ public class SettingsAdapter extends
 
 		public ViewHolder(View v) {
 			super(v);
-			mTextView = (TextView) v.findViewById(R.id.line1);
+//			mTextView = (TextView) v.findViewById(R.id.line1);
 		}
 	}
 }

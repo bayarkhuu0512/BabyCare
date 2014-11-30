@@ -1,22 +1,31 @@
 package com.mercy.happybaby.ui.helpcenter;
 
-import com.mercy.happybaby.R;
+import java.util.List;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.mercy.happybaby.R;
+import com.mercy.happybaby.entities.HelpCenter;
+import com.mercy.happybaby.utils.Constants;
+
 public class HelpCenterAdapter extends
 		RecyclerView.Adapter<HelpCenterAdapter.ViewHolder> {
-	private final Context mContext;
-	private final String[] mDataset;
+	String LOG_TAG = HelpCenterAdapter.class.getName();
+	private Context mContext;
+	private List<HelpCenter> mList;
+	private Typeface roboto_light;
 
-	public HelpCenterAdapter(Context context, String[] dataset) {
+	public HelpCenterAdapter(Context context, List<HelpCenter> list) {
 		mContext = context;
-		mDataset = dataset;
+		roboto_light = Typeface.createFromAsset(mContext.getAssets(),
+				Constants.ROBOTO_LIGHT);
+		mList = list;
 	}
 
 	@Override
@@ -28,22 +37,31 @@ public class HelpCenterAdapter extends
 
 	@Override
 	public void onBindViewHolder(ViewHolder viewHolder, int position) {
-		String[] values = mDataset[position].split(",");
-		String countryName = values[0];
-		viewHolder.mTextView.setText(countryName);
+		HelpCenter helpCenter = mList.get(position);
+		viewHolder.helpCenter.setTypeface(roboto_light);
+		viewHolder.title.setTypeface(roboto_light);
+		viewHolder.content.setTypeface(roboto_light);
+		viewHolder.helpCenter.setText("Зөвлөгөө" + " " + helpCenter.getId());
+		viewHolder.title.setText(helpCenter.getHelpCenterTitle());
+		viewHolder.content.setText(helpCenter.getHelpCenterContent());
 	}
 
 	@Override
 	public int getItemCount() {
-		return mDataset.length;
+		return mList.size();
 	}
 
 	public static class ViewHolder extends RecyclerView.ViewHolder {
-		public TextView mTextView;
+		public TextView helpCenter;
+		public TextView title;
+		public TextView content;
 
 		public ViewHolder(View v) {
 			super(v);
-			mTextView = (TextView) v.findViewById(R.id.line1);
+			helpCenter = (TextView) v.findViewById(R.id.helpCenter);
+			title = (TextView) v.findViewById(R.id.title);
+			content = (TextView) v.findViewById(R.id.content);
+
 		}
 	}
 }
