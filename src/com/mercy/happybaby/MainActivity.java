@@ -35,6 +35,7 @@ import com.mercy.happybaby.ui.learn.LearnFragment;
 import com.mercy.happybaby.ui.meal.MealFragment;
 import com.mercy.happybaby.ui.others.AboutFragment;
 import com.mercy.happybaby.ui.others.ProfileFragment;
+import com.mercy.happybaby.ui.others.SettingsFragment;
 import com.mercy.happybaby.ui.purchase.PurchaseFragment;
 import com.mercy.happybaby.ui.timeline.TimelineCreateFragment;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
@@ -182,7 +183,7 @@ public class MainActivity extends Activity {
 			fragment = new HelpCenterFragment();
 			break;
 		case 10:
-			fragment = new ProfileFragment();
+			fragment = new SettingsFragment();
 			break;
 		case 11:
 			fragment = new AboutFragment();
@@ -312,7 +313,7 @@ public class MainActivity extends Activity {
 			fragment = new HelpCenterFragment();
 			break;
 		case 10:
-			fragment = new ProfileFragment();
+			fragment = new SettingsFragment();
 			break;
 		case 11:
 			fragment = new AboutFragment();
@@ -329,8 +330,8 @@ public class MainActivity extends Activity {
 						R.animator.slide_down, R.animator.slide_up,
 						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
-		setTitle(mTitles[0]);
-		mDrawerList.setItemChecked(0, true);
+		setTitle(mTitles[defaultFragment]);
+		mDrawerList.setItemChecked(defaultFragment, true);
 	}
 
 	private DatabaseHelper getHelper() {
