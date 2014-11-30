@@ -59,4 +59,10 @@
     <string name="congrats">Баяр хүргэе</string>
     <string name="hooray">Хурай хурай</string>
 
+    <!-- Settings -->
+    <string name="isReminderSet">Сануулга оруулах эсэх</string>
+    <string name="monthlyAdvise">Сар бүрийн зөвлөгөө</string>
+    <string name="vaccineReminder">Вакцин хийх сануулга</string>
+    <string name="monthReminder">Сарын ойн сануулга</string>
+
 </resources>
