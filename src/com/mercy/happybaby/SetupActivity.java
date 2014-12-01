@@ -122,6 +122,13 @@ public class SetupActivity extends FragmentActivity {
 
 	private void setDateData() {
 		try {
+//					Where<SimpleData, Integer> where = timelineQb.where();
+//			Calendar startC = Calendar.getInstance();
+//			startC.set(2014, 0, 0); // 1 sariin 1nees
+//			Calendar endC = Calendar.getInstance();
+//			endC.set(2014, 11, 31); // 12 sariin 31
+//			where.between("date",startC.getTime() , endC.getTime());
+
 			// Baby
 			baby = new Baby();
 			baby.setFirstName("Аядуу");
