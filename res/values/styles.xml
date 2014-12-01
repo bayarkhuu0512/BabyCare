@@ -16,5 +16,4 @@
         <attr name="cpb_cornerRadius" format="dimension"/>
         <attr name="cpb_paddingProgress" format="dimension"/>
     </declare-styleable>
-
 </resources>

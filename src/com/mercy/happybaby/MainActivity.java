@@ -2,6 +2,7 @@ package com.mercy.happybaby;
 
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 
 import android.app.Activity;
@@ -19,11 +20,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
 import com.github.mikephil.charting.utils.Utils;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
-import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
+import com.mercy.happybaby.entities.Baby;
 import com.mercy.happybaby.entities.Breast;
 import com.mercy.happybaby.entities.Timeline;
 import com.mercy.happybaby.ui.activeoperation.ActiveOperationFragment;
@@ -34,18 +36,20 @@ import com.mercy.happybaby.ui.helpcenter.HelpCenterFragment;
 import com.mercy.happybaby.ui.learn.LearnFragment;
 import com.mercy.happybaby.ui.meal.MealFragment;
 import com.mercy.happybaby.ui.others.AboutFragment;
-import com.mercy.happybaby.ui.others.ProfileFragment;
 import com.mercy.happybaby.ui.others.SettingsFragment;
 import com.mercy.happybaby.ui.purchase.PurchaseFragment;
 import com.mercy.happybaby.ui.timeline.TimelineCreateFragment;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
 import com.mercy.happybaby.ui.tooth.ToothFragment;
+import com.mercy.happybaby.utils.DateRangeInstance;
 import com.mercy.happybaby.utils.crouton.Crouton;
 import com.mercy.happybaby.utils.crouton.CroutonMessage;
 import com.mercy.happybaby.utils.crouton.Style;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements
+		CalendarDatePickerDialog.OnDateSetListener {
 	String LOG_TAG = MainActivity.class.getName();
+	private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
 
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
@@ -58,12 +62,17 @@ public class MainActivity extends Activity {
 
 	private DatabaseHelper databaseHelper = null;
 	private Dao<Timeline, Integer> timelineDAO;
+	private Dao<Baby, Integer> babyDAO;
 
 	private CroutonMessage crtnMsg = null;
 
 	private Context context;
 
 	private int defaultFragment = 0;
+
+	private int selecteCalendarPicker = 0;
+	DateRangeInstance dateRange = DateRangeInstance.getInstance();
+	Calendar dateRangeStart, dateRangeEnd;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +81,7 @@ public class MainActivity extends Activity {
 		context = this;
 		Utils.init(getResources());
 		crtnMsg = new CroutonMessage(this);
+		setDates();
 		mTitles = getResources().getStringArray(R.array.nav_array);
 
 		try {
@@ -130,6 +140,24 @@ public class MainActivity extends Activity {
 				long id) {
 			selectItem(position);
 		}
+	}
+
+	private void setDates() {
+
+		List<Baby> babyList = null;
+		try {
+			babyDAO = getHelper().getBabyDao();
+			babyList = babyDAO.queryForAll();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setStartDate(babyList.get(0).getBirthDate());
+		dateRange.setEndDate(Calendar.getInstance().getTime());
+
+		dateRangeStart = Calendar.getInstance();
+		dateRangeStart.setTime(babyList.get(0).getBirthDate());
+		dateRangeEnd = Calendar.getInstance();
 	}
 
 	public void leftMenuClicked(View v) {
@@ -349,5 +377,65 @@ public class MainActivity extends Activity {
 		Crouton.clearCroutonsForActivity(this);
 		// Must always call the super method at the end.
 		super.onDestroy();
+	}
+
+	@Override
+	public void onResume() {
+		// Example of reattaching to the fragment
+		super.onResume();
+		CalendarDatePickerDialog calendarDatePickerDialog = (CalendarDatePickerDialog) getFragmentManager()
+				.findFragmentByTag(FRAG_TAG_DATE_PICKER);
+		if (calendarDatePickerDialog != null) {
+			calendarDatePickerDialog.setOnDateSetListener(this);
+		}
+	}
+
+	public void startDateOnClick(View v) {
+		Log.d(LOG_TAG, "OnClick");
+		FragmentManager fm = getFragmentManager();
+		Calendar c = Calendar.getInstance();
+		c.setTime(dateRange.getStartDate());
+		CalendarDatePickerDialog calendarDatePickerDialog = CalendarDatePickerDialog
+				.newInstance(MainActivity.this, c.get(Calendar.YEAR),
+						c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+		calendarDatePickerDialog.setYearRange(
+				dateRangeStart.get(Calendar.YEAR),
+				dateRangeEnd.get(Calendar.YEAR) + 1);
+		calendarDatePickerDialog.show(fm, FRAG_TAG_DATE_PICKER);
+		selecteCalendarPicker = 0;
+	}
+
+	public void endDateOnClick(View v) {
+		Log.d(LOG_TAG, "OnClick");
+		FragmentManager fm = getFragmentManager();
+		Calendar c = Calendar.getInstance();
+		c.setTime(dateRange.getEndDate());
+		CalendarDatePickerDialog calendarDatePickerDialog = CalendarDatePickerDialog
+				.newInstance(MainActivity.this, c.get(Calendar.YEAR),
+						c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+		calendarDatePickerDialog.setYearRange(
+				dateRangeStart.get(Calendar.YEAR),
+				dateRangeEnd.get(Calendar.YEAR) + 1);
+		calendarDatePickerDialog.show(fm, FRAG_TAG_DATE_PICKER);
+		selecteCalendarPicker = 1;
+	}
+
+	@Override
+	public void onDateSet(CalendarDatePickerDialog dialog, int year,
+			int monthOfYear, int dayOfMonth) {
+		// TODO Auto-generated method stub
+		Log.d(LOG_TAG, "Year: " + year + "\nMonth: " + monthOfYear + "\nDay: "
+				+ dayOfMonth);
+		if (selecteCalendarPicker == 0) {
+			Calendar c = Calendar.getInstance();
+			c.set(year, monthOfYear, dayOfMonth);
+			dateRange.setStartDate(c.getTime());
+
+		} else {
+			Calendar c = Calendar.getInstance();
+			c.set(year, monthOfYear, dayOfMonth);
+			dateRange.setEndDate(c.getTime());
+		}
+		gotoFragment();
 	}
 }

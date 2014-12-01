@@ -122,13 +122,6 @@ public class SetupActivity extends FragmentActivity {
 
 	private void setDateData() {
 		try {
-//					Where<SimpleData, Integer> where = timelineQb.where();
-//			Calendar startC = Calendar.getInstance();
-//			startC.set(2014, 0, 0); // 1 sariin 1nees
-//			Calendar endC = Calendar.getInstance();
-//			endC.set(2014, 11, 31); // 12 sariin 31
-//			where.between("date",startC.getTime() , endC.getTime());
-
 			// Baby
 			baby = new Baby();
 			baby.setFirstName("Аядуу");
@@ -248,6 +241,19 @@ public class SetupActivity extends FragmentActivity {
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineLearn4);
 
+			Growth growth0 = new Growth();
+			Calendar growthCal0 = Calendar.getInstance();
+			growthCal0.set(2014, 1, 05, 8, 38);
+			growth0.setCreatedDate(growthCal0.getTime());
+			growth0.setBabyHeight(51);
+			growth0.setBabyWeight(3500);
+			growth0.setBabyMonth(0);
+			Timeline growthTimeline0 = new Timeline();
+			growthTimeline0.setGrowth(growth0);
+			growthTimeline0.setCreatedDate(growthCal0.getTime());
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(growthTimeline0);
+			
 			Growth growth1 = new Growth();
 			Calendar growthCal1 = Calendar.getInstance();
 			growthCal1.set(2014, 2, 05, 8, 38);

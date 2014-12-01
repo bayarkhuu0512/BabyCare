@@ -44,5 +44,14 @@
     <color name="fontFirst">#424242</color>
     <color name="fontSecond">#bdbdbd</color>
     <color name="underline">#f3f3f3</color>
+    <!-- Better picker -->
+    <color name="custom_text_color_normal">#ffffffff</color>
+    <color name="custom_text_color_disabled">#ffb2b2b2</color>
+    <color name="custom_divider_color">#ffffffff</color>
+    <color name="custom_button_background">#00000000</color>
+    <color name="custom_button_background_pressed">#ffcc6600</color>
+    <color name="custom_key_background">#00000000</color>
+    <color name="custom_key_background_pressed">#ffcc6600</color>
+    <color name="custom_keyboard_indicator_color">#ffcc6600</color>
 
 </resources>

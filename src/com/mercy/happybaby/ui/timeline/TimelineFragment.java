@@ -1,9 +1,11 @@
 package com.mercy.happybaby.ui.timeline;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 
 import android.app.Fragment;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,14 +14,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.Where;
 import com.melnykov.fab.FloatingActionButton;
 import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Timeline;
+import com.mercy.happybaby.utils.Constants;
+import com.mercy.happybaby.utils.DateRangeInstance;
 
 import dreamers.graphics.RippleDrawable;
 
@@ -29,14 +35,27 @@ public class TimelineFragment extends Fragment {
 	private Dao<Timeline, Integer> timelineDAO;
 	private DatabaseHelper databaseHelper = null;
 	List<Timeline> list;
+	DateRangeInstance dateRange = DateRangeInstance.getInstance();
+	private Typeface roboto_light;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		roboto_light = Typeface.createFromAsset(getActivity().getAssets(),
+				Constants.ROBOTO_LIGHT);
 		try {
+
+			Log.d(LOG_TAG, "start " + dateRange.getStartDate().toString());
+			Log.d(LOG_TAG, "end " + dateRange.getEndDate().toString());
 			timelineDAO = getHelper().getTimelineDao();
 			QueryBuilder<Timeline, Integer> timelineQb = timelineDAO
 					.queryBuilder();
+			Where<Timeline, Integer> where = timelineQb.where();
+			Calendar c = Calendar.getInstance();
+			c.setTime(dateRange.getStartDate());
+			c.set(Calendar.DAY_OF_MONTH, c.get(Calendar.DAY_OF_MONTH) - 1);
+
+			where.between("createdDate", c.getTime(), dateRange.getEndDate());
 			timelineQb.orderBy("createdDate", false);
 			list = timelineQb.query();
 
@@ -60,6 +79,20 @@ public class TimelineFragment extends Fragment {
 		FloatingActionButton fab = (FloatingActionButton) root
 				.findViewById(R.id.fab);
 		fab.attachToRecyclerView(recyclerView);
+
+		TextView startDate = (TextView) root.findViewById(R.id.startDate);
+		startDate.setTypeface(roboto_light);
+		RippleDrawable.createRipple(startDate,
+				getResources().getColor(R.color.mainColor));
+		startDate
+				.setText(Constants.dateFormat.format(dateRange.getStartDate()));
+
+		TextView endDate = (TextView) root.findViewById(R.id.endDate);
+		endDate.setTypeface(roboto_light);
+		RippleDrawable.createRipple(endDate,
+				getResources().getColor(R.color.mainColor));
+		endDate.setText(Constants.dateFormat.format(dateRange.getEndDate()));
+
 		return root;
 	}
 
