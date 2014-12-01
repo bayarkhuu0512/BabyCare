@@ -45,6 +45,10 @@ public class MealFragment extends Fragment {
 		roboto_light = Typeface.createFromAsset(getActivity().getAssets(),
 				Constants.ROBOTO_LIGHT);
 		try {
+			Calendar c = Calendar.getInstance();
+			c.setTime(dateRange.getStartDate());
+			c.set(Calendar.DAY_OF_MONTH, c.get(Calendar.DAY_OF_MONTH) - 1);
+
 			timelineDAO = getHelper().getTimelineDao();
 			QueryBuilder<Timeline, Integer> timelineQb = timelineDAO
 					.queryBuilder();
@@ -57,9 +61,6 @@ public class MealFragment extends Fragment {
 			where.or();
 			where.isNotNull("drink_id");
 			where.and();
-			Calendar c = Calendar.getInstance();
-			c.setTime(dateRange.getStartDate());
-			c.set(Calendar.DAY_OF_MONTH, c.get(Calendar.DAY_OF_MONTH) - 1);
 			where.between("createdDate", c.getTime(), dateRange.getEndDate());
 			timelineQb.orderBy("createdDate", false);
 			list = timelineQb.query();

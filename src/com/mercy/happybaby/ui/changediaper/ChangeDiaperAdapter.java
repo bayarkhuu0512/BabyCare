@@ -64,7 +64,13 @@ public class ChangeDiaperAdapter extends
 		viewHolder.calDay.setText(Constants.rowDayFormat.format(
 				mList.get(position).getCreatedDate()).toString()
 				+ dayOfWeekMN);
-		viewHolder.mFirst.setVisibility(View.VISIBLE);
+
+		viewHolder.mFirst.setTypeface(roboto_light);
+		viewHolder.mSecond.setTypeface(roboto_light);
+		viewHolder.mThird.setTypeface(roboto_light);
+		viewHolder.mFourth.setTypeface(roboto_light);
+		viewHolder.mFifth.setTypeface(roboto_light);
+		viewHolder.mSixth.setTypeface(roboto_light);
 
 		if (timeline.getChangeDiaper() != null) {
 			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
@@ -72,6 +78,7 @@ public class ChangeDiaperAdapter extends
 			viewHolder.icon.setImageDrawable(mContext.getResources()
 					.getDrawable(R.drawable.icon_diaperchange));
 			viewHolder.mFirst.setVisibility(View.VISIBLE);
+
 			viewHolder.mFirst.setText(timeline.getChangeDiaper()
 					.getDiaperType());
 			viewHolder.mSecond.setVisibility(View.VISIBLE);
