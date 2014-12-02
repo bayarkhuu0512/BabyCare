@@ -2,6 +2,13 @@
 <resources>
 
     <string name="app_name">Happy Baby</string>
+    <string name="app_detail">
+        Энэхүү апп нь 0-3 насны хүүхэдтэй бүх эцэг эхчүүдэд зориулсан. Хүүхэд бүхэн 
+        өдөр өдрөөр өсч цаг минут бүрд шинэ зүйлийг сурч мэдэн шинээр сурсан зүйлээ аав 
+        ээждээ харуулан аз жаргал бэлэглэдэг билээ. Тэрхүү аз жаргалтай мөчүүд хэзээ болж
+        өнгөрсөн цаг хугацааг нь тэр бүр бид тэмдэглэн авч амждаггүй. Харин HappyBaby апп
+        энэ боломжийг та бүхэнд олгож байна.                
+    </string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_websearch">Web search</string>

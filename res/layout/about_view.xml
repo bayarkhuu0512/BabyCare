@@ -2,12 +2,61 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/childName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="About" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:padding="40dp" >
+
+            <TextView
+                android:id="@+id/appName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/fontSecond"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/appDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:textColor="@color/fontSecond"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:padding="20dp" >
+
+            <TextView
+                android:id="@+id/developerBayarkhuu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="bayarkhuu"
+                android:textColor="@color/fontSecond"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/developerAltanchimeg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="altanchimegG"
+                android:textColor="@color/fontSecond"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
