@@ -35,7 +35,7 @@ public class ProfileFragment extends Fragment {
 	private TextView latestSkillLabel;
 	private TextView latestSkill;
 	private Typeface roboto_light;
-	
+
 	private Dao<Baby, Integer> babyDAO;
 	private Dao<Growth, Integer> growthDAO;
 	private Dao<Tooth, Integer> toothDAO;
@@ -57,10 +57,10 @@ public class ProfileFragment extends Fragment {
 			Bundle savedInstanceState) {
 		roboto_light = Typeface.createFromAsset(getActivity().getAssets(),
 				Constants.ROBOTO_LIGHT);
-		
+
 		// Inflate the layout for this fragment
 		View root = inflater.inflate(R.layout.profile_view, container, false);
-		
+
 		babyName = (TextView) root.findViewById(R.id.babyName);
 		babyAge = (TextView) root.findViewById(R.id.babyAge);
 		babyHeightLabel = (TextView) root.findViewById(R.id.babyHeightLabel);
@@ -71,7 +71,7 @@ public class ProfileFragment extends Fragment {
 		babyTooth = (TextView) root.findViewById(R.id.babyTooth);
 		latestSkillLabel = (TextView) root.findViewById(R.id.latestSkillLabel);
 		latestSkill = (TextView) root.findViewById(R.id.latestSkill);
-		
+
 		babyName.setTypeface(roboto_light);
 		babyAge.setTypeface(roboto_light);
 		babyHeightLabel.setTypeface(roboto_light);
@@ -82,27 +82,32 @@ public class ProfileFragment extends Fragment {
 		babyTooth.setTypeface(roboto_light);
 		latestSkillLabel.setTypeface(roboto_light);
 		latestSkill.setTypeface(roboto_light);
-		
+
 		try {
 			babyDAO = getHelper().getBabyDao();
 			babyList = babyDAO.queryForAll();
-			
-			babyName.setText(babyList.get(0).getLastName().substring(0, 1)+"."+babyList.get(0).getFirstName());
-			babyAge.setText(babyList.get(0).getBirthDate().toString()+"");
-			
+
+			babyName.setText(babyList.get(0).getLastName().substring(0, 1)
+					+ "." + babyList.get(0).getFirstName());
+			babyAge.setText(Constants.dateFormat.format(babyList.get(0)
+					.getBirthDate()) + "");
+
 			growthDAO = getHelper().getGrowthDao();
 			growthList = growthDAO.queryForAll();
-			babyHeight.setText(growthList.get(growthList.size()-1).getBabyHeight()+"");
-			babyWeight.setText(growthList.get(growthList.size()-1).getBabyWeight()+"");
+			babyHeight.setText(growthList.get(growthList.size() - 1)
+					.getBabyHeight() + "см");
+			babyWeight.setText(growthList.get(growthList.size() - 1)
+					.getBabyWeight() + "гр");
 
 			toothDAO = getHelper().getToothDao();
 			toothList = toothDAO.queryForAll();
-			babyTooth.setText(toothList.size()+"");
+			babyTooth.setText(toothList.size() + "ш");
 
 			learnDAO = getHelper().getLearnDao();
 			learnList = learnDAO.queryForAll();
-			latestSkill.setText(learnList.get(learnList.size()-1).getLearnName()+"");
-			
+			latestSkill.setText(learnList.get(learnList.size() - 1)
+					.getLearnName() + "");
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -110,7 +115,7 @@ public class ProfileFragment extends Fragment {
 
 		return root;
 	}
-	
+
 	private DatabaseHelper getHelper() {
 		if (databaseHelper == null) {
 			databaseHelper = OpenHelperManager.getHelper(getActivity(),
@@ -118,7 +123,6 @@ public class ProfileFragment extends Fragment {
 		}
 		return databaseHelper;
 	}
-
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {

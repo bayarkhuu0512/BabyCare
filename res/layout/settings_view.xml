@@ -27,8 +27,8 @@
 
             <Button
                 android:id="@+id/monthReminderToggle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@drawable/toggle_off" >
@@ -51,8 +51,8 @@
 
             <Button
                 android:id="@+id/vaccineReminderToggle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@drawable/toggle_on" >
@@ -75,8 +75,8 @@
 
             <Button
                 android:id="@+id/monthlyToggle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@drawable/toggle_on" >
@@ -99,8 +99,8 @@
 
             <Button
                 android:id="@+id/isReminderToggle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@drawable/toggle_on" >

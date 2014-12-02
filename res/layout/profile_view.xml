@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainColor"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/mainColor"
         android:gravity="center_horizontal"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:padding="10dp" >
 
         <ImageView
             android:layout_width="wrap_content"
@@ -22,7 +23,8 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="Ayduu"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/babyAge"
@@ -30,7 +32,8 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="9 сар 20 хоногтой"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -52,7 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Өндөр"
-                android:textColor="@color/fontSecond" />
+                android:textColor="@color/fontSecond"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/babyHeight"
@@ -60,7 +64,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="69см"
-                android:textColor="@color/fontFirst" />
+                android:textColor="@color/fontFirst"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -76,7 +81,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Жин"
-                android:textColor="@color/fontSecond" />
+                android:textColor="@color/fontSecond"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/babyWeight"
@@ -84,7 +90,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="8700гр"
-                android:textColor="@color/fontFirst" />
+                android:textColor="@color/fontFirst"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -100,7 +107,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Шүд"
-                android:textColor="@color/fontSecond" />
+                android:textColor="@color/fontSecond"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/babyTooth"
@@ -108,7 +116,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="4ш"
-                android:textColor="@color/fontFirst" />
+                android:textColor="@color/fontFirst"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <RelativeLayout
@@ -123,7 +132,8 @@
                 android:layout_centerHorizontal="true"
                 android:paddingTop="20dp"
                 android:text="Сүүлд үзүүлсэн авъяас"
-                android:textColor="@color/fontSecond" />
+                android:textColor="@color/fontSecond"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/latestSkill"
@@ -133,7 +143,8 @@
                 android:layout_centerHorizontal="true"
                 android:paddingTop="20dp"
                 android:text="Алгаа ташсан"
-                android:textColor="@color/fontFirst" />
+                android:textColor="@color/fontFirst"
+                android:textSize="18sp" />
         </RelativeLayout>
     </LinearLayout>
 

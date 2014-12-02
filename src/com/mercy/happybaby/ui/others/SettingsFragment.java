@@ -26,6 +26,11 @@ public class SettingsFragment extends Fragment {
 
 	private Typeface roboto_light;
 
+	private boolean isMonthReminderOn = false;
+	private boolean isVaccineReminderOn = false;
+	private boolean isMonthlyOn = false;
+	private boolean isReminderOn = false;
+
 	public SettingsFragment() {
 		// Empty constructor required for fragment subclasses
 	}
@@ -61,10 +66,19 @@ public class SettingsFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				monthReminderToggle.setBackground(getActivity().getResources()
-						.getDrawable(R.drawable.toggle_off));
-				monthReminderToggle.setBackground(getActivity().getResources()
-						.getDrawable(R.drawable.toggle_on));
+				if (isMonthReminderOn) {
+					monthReminderToggle.setBackground(getActivity()
+							.getResources().getDrawable(R.drawable.toggle_off));
+					monthReminder.setTextColor(getActivity().getResources()
+							.getColor(R.color.fontSecond));
+					isMonthReminderOn = false;
+				} else {
+					monthReminderToggle.setBackground(getActivity()
+							.getResources().getDrawable(R.drawable.toggle_on));
+					monthReminder.setTextColor(getActivity().getResources()
+							.getColor(R.color.fontFirst));
+					isMonthReminderOn = true;
+				}
 			}
 		});
 
@@ -73,10 +87,19 @@ public class SettingsFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				vaccineReminderToggle.setBackground(getActivity()
-						.getResources().getDrawable(R.drawable.toggle_off));
-				vaccineReminderToggle.setBackground(getActivity()
-						.getResources().getDrawable(R.drawable.toggle_on));
+				if (isVaccineReminderOn) {
+					vaccineReminderToggle.setBackground(getActivity()
+							.getResources().getDrawable(R.drawable.toggle_off));
+					vaccineReminder.setTextColor(getActivity().getResources()
+							.getColor(R.color.fontSecond));
+					isVaccineReminderOn = false;
+				} else {
+					vaccineReminderToggle.setBackground(getActivity()
+							.getResources().getDrawable(R.drawable.toggle_on));
+					vaccineReminder.setTextColor(getActivity().getResources()
+							.getColor(R.color.fontFirst));
+					isVaccineReminderOn = true;
+				}
 			}
 		});
 
@@ -85,10 +108,19 @@ public class SettingsFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				monthlyToggle.setBackground(getActivity().getResources()
-						.getDrawable(R.drawable.toggle_off));
-				monthlyToggle.setBackground(getActivity().getResources()
-						.getDrawable(R.drawable.toggle_on));
+				if (isMonthlyOn) {
+					monthlyToggle.setBackground(getActivity().getResources()
+							.getDrawable(R.drawable.toggle_off));
+					monthlyAdvise.setTextColor(getActivity().getResources()
+							.getColor(R.color.fontSecond));
+					isMonthlyOn = false;
+				} else {
+					monthlyToggle.setBackground(getActivity().getResources()
+							.getDrawable(R.drawable.toggle_on));
+					monthlyAdvise.setTextColor(getActivity().getResources()
+							.getColor(R.color.fontFirst));
+					isMonthlyOn = true;
+				}
 			}
 		});
 
@@ -97,10 +129,20 @@ public class SettingsFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				isReminderToggle.setBackground(getActivity().getResources()
-						.getDrawable(R.drawable.toggle_off));
-				isReminderToggle.setBackground(getActivity().getResources()
-						.getDrawable(R.drawable.toggle_on));
+
+				if (isReminderOn) {
+					isReminderToggle.setBackground(getActivity().getResources()
+							.getDrawable(R.drawable.toggle_off));
+					isReminderSet.setTextColor(getActivity().getResources()
+							.getColor(R.color.fontSecond));
+					isReminderOn = false;
+				} else {
+					isReminderToggle.setBackground(getActivity().getResources()
+							.getDrawable(R.drawable.toggle_on));
+					isReminderSet.setTextColor(getActivity().getResources()
+							.getColor(R.color.fontFirst));
+					isReminderOn = true;
+				}
 			}
 		});
 		return root;

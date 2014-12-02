@@ -480,7 +480,7 @@ public class MainActivity extends Activity implements
 						R.animator.slide_down, R.animator.slide_up,
 						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
-		setTitle("Profle");
+		setTitle("Миний тухай");
 		mDrawerList.setItemChecked(0, true);
 		mDrawerLayout.closeDrawer(drawerll);
 
