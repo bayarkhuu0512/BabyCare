@@ -26,5 +26,9 @@ public interface Constants {
 	public static int ACTIVE_OPERATION_BATH = 0;
 	public static int ACTIVE_OPERATION_PLAY = 1;
 	public static int ACTIVE_OPERATION_SLEEP = 2;
+	public static int ACTIVE_OPERATION_OUT = 3;
+	public static int ACTIVE_OPERATION_MASSAGE = 4;
+	public static int ACTIVE_OPERATION_EAR = 5;
+	public static int ACTIVE_OPERATION_NOSE = 6;
 
 }

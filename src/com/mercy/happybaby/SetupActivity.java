@@ -483,7 +483,7 @@ public class SetupActivity extends FragmentActivity {
 			Hospital hospital1 = new Hospital();
 			Calendar hospitalCal1 = Calendar.getInstance();
 			hospitalCal1.set(2014, 8, 21, 12, 11);
-			hospital1.setCreatedDate(changeDiaperCal1.getTime());
+			hospital1.setCreatedDate(hospitalCal1.getTime());
 			hospital1.setDiagnosis("Хоолой улайсан");
 			hospital1.setPainName("Халуурсан");
 			hospital1.setHealing("Вит С");

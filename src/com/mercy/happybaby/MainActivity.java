@@ -29,9 +29,21 @@ import com.github.mikephil.charting.utils.Utils;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.db.DatabaseHelper;
+import com.mercy.happybaby.entities.ActiveOperation;
 import com.mercy.happybaby.entities.Baby;
 import com.mercy.happybaby.entities.Breast;
+import com.mercy.happybaby.entities.ChangeDiaper;
+import com.mercy.happybaby.entities.Drink;
+import com.mercy.happybaby.entities.Feed;
+import com.mercy.happybaby.entities.Formula;
+import com.mercy.happybaby.entities.Growth;
+import com.mercy.happybaby.entities.Hospital;
+import com.mercy.happybaby.entities.Learn;
+import com.mercy.happybaby.entities.Purchase;
 import com.mercy.happybaby.entities.Timeline;
+import com.mercy.happybaby.entities.Tooth;
+import com.mercy.happybaby.entities.Vaccine;
+import com.mercy.happybaby.entities.Vitamin;
 import com.mercy.happybaby.ui.activeoperation.ActiveOperationFragment;
 import com.mercy.happybaby.ui.changediaper.ChangeDiaperFragment;
 import com.mercy.happybaby.ui.chart.ChartFragment;
@@ -491,6 +503,23 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		Feed feed2 = new Feed();
+		Calendar feedCal2 = Calendar.getInstance();
+		feed2.setCreatedDate(feedCal2.getTime());
+		feed2.setAmount(3);
+		feed2.setFeedName("Жимс");
+
+		Timeline timelineFeed2 = new Timeline();
+		timelineFeed2.setFeed(feed2);
+		timelineFeed2.setCreatedDate(feedCal2.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineFeed2);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(feedCal2.getTime());
 
 		gotoFragment();
 	}
@@ -499,6 +528,24 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		Formula formula1 = new Formula();
+		Calendar formulaCal1 = Calendar.getInstance();
+		formula1.setCreatedDate(formulaCal1.getTime());
+		formula1.setFormulaName("Wakodo");
+		formula1.setMl(300);
+
+		Timeline timelineFormula1 = new Timeline();
+		timelineFormula1.setFormula(formula1);
+		timelineFormula1.setCreatedDate(formulaCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineFormula1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(formulaCal1.getTime());
+
 		gotoFragment();
 	}
 
@@ -506,6 +553,24 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		Drink drink1 = new Drink();
+		Calendar drinkCal1 = Calendar.getInstance();
+		drink1.setCreatedDate(drinkCal1.getTime());
+		drink1.setDrinkName("Ус");
+		drink1.setMl(250);
+
+		Timeline timelineDrink1 = new Timeline();
+		timelineDrink1.setDrink(drink1);
+		timelineDrink1.setCreatedDate(drinkCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineDrink1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(drinkCal1.getTime());
+
 		gotoFragment();
 	}
 
@@ -513,6 +578,24 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		Growth growth10 = new Growth();
+		Calendar growthCal9 = Calendar.getInstance();
+		growth10.setCreatedDate(growthCal9.getTime());
+		growth10.setBabyHeight(70);
+		growth10.setBabyWeight(9000);
+		growth10.setBabyMonth(10);
+		Timeline growthTimeline9 = new Timeline();
+		growthTimeline9.setGrowth(growth10);
+		growthTimeline9.setCreatedDate(growthCal9.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(growthTimeline9);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(growthCal9.getTime());
+
 		gotoFragment();
 
 	}
@@ -521,6 +604,28 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		Hospital hospital1 = new Hospital();
+		Calendar hospitalCal1 = Calendar.getInstance();
+		hospital1.setCreatedDate(hospitalCal1.getTime());
+		hospital1.setDiagnosis("Хоолой улайсан");
+		hospital1.setPainName("Халуурсан");
+		hospital1.setHealing("Вит С");
+		hospital1.setDoctorName("Ганаа");
+		hospital1.setHospitalName("Өрхийн эмнэлэг");
+
+		Timeline timelineHospital1 = new Timeline();
+		timelineHospital1.setHospital(hospital1);
+		timelineHospital1.setCreatedDate(hospitalCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineHospital1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		dateRange.setEndDate(hospitalCal1.getTime());
+
 		gotoFragment();
 
 	}
@@ -529,14 +634,48 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
-		gotoFragment();
+		Vitamin vitamin1 = new Vitamin();
+		Calendar vitaminCal1 = Calendar.getInstance();
+		vitamin1.setCreatedDate(vitaminCal1.getTime());
+		vitamin1.setVitaminName("Д Витамин");
 
+		Timeline timelineVitamin1 = new Timeline();
+		timelineVitamin1.setVitamin(vitamin1);
+		timelineVitamin1.setCreatedDate(vitaminCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineVitamin1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(vitaminCal1.getTime());
+
+		gotoFragment();
 	}
 
 	public void vaccineOnClick(View v) {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		Vaccine vaccine1 = new Vaccine();
+		Calendar vaccineCal1 = Calendar.getInstance();
+		vaccine1.setCreatedDate(vaccineCal1.getTime());
+		vaccine1.setVaccineName("Сүрьэний эсрэг вакцин");
+
+		Timeline timelineVaccine1 = new Timeline();
+		timelineVaccine1.setVaccine(vaccine1);
+		timelineVaccine1.setCreatedDate(vaccineCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineVaccine1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		dateRange.setEndDate(vaccineCal1.getTime());
+
 		gotoFragment();
 
 	}
@@ -545,6 +684,24 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		ActiveOperation ao1 = new ActiveOperation();
+		Calendar aoCal1 = Calendar.getInstance();
+		ao1.setCreatedDate(aoCal1.getTime());
+		ao1.setType(Constants.ACTIVE_OPERATION_BATH);
+		ao1.setActiveName("Усанд орлоо");
+
+		Timeline timelineAo1 = new Timeline();
+		timelineAo1.setActiveOperation(ao1);
+		timelineAo1.setCreatedDate(aoCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineAo1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(aoCal1.getTime());
+
 		gotoFragment();
 
 	}
@@ -553,6 +710,24 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		ActiveOperation ao1 = new ActiveOperation();
+		Calendar aoCal1 = Calendar.getInstance();
+		ao1.setCreatedDate(aoCal1.getTime());
+		ao1.setType(Constants.ACTIVE_OPERATION_SLEEP);
+		ao1.setActiveName("Унтлаа");
+
+		Timeline timelineAo1 = new Timeline();
+		timelineAo1.setActiveOperation(ao1);
+		timelineAo1.setCreatedDate(aoCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineAo1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(aoCal1.getTime());
+
 		gotoFragment();
 
 	}
@@ -561,6 +736,24 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		ActiveOperation ao1 = new ActiveOperation();
+		Calendar aoCal1 = Calendar.getInstance();
+		ao1.setCreatedDate(aoCal1.getTime());
+		ao1.setType(Constants.ACTIVE_OPERATION_PLAY);
+		ao1.setActiveName("Бөмбөгөөр тоголлоо");
+
+		Timeline timelineAo1 = new Timeline();
+		timelineAo1.setActiveOperation(ao1);
+		timelineAo1.setCreatedDate(aoCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineAo1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(aoCal1.getTime());
+
 		gotoFragment();
 
 	}
@@ -569,6 +762,24 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		ActiveOperation ao1 = new ActiveOperation();
+		Calendar aoCal1 = Calendar.getInstance();
+		ao1.setCreatedDate(aoCal1.getTime());
+		ao1.setType(Constants.ACTIVE_OPERATION_OUT);
+		ao1.setActiveName("Гадаа гарлаа");
+
+		Timeline timelineAo1 = new Timeline();
+		timelineAo1.setActiveOperation(ao1);
+		timelineAo1.setCreatedDate(aoCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineAo1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(aoCal1.getTime());
+
 		gotoFragment();
 
 	}
@@ -577,6 +788,24 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		ActiveOperation ao1 = new ActiveOperation();
+		Calendar aoCal1 = Calendar.getInstance();
+		ao1.setCreatedDate(aoCal1.getTime());
+		ao1.setType(Constants.ACTIVE_OPERATION_MASSAGE);
+		ao1.setActiveName("Хөлөндөө массаж хийлгэв");
+
+		Timeline timelineAo1 = new Timeline();
+		timelineAo1.setActiveOperation(ao1);
+		timelineAo1.setCreatedDate(aoCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineAo1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(aoCal1.getTime());
+
 		gotoFragment();
 
 	}
@@ -585,6 +814,25 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+
+		ActiveOperation ao1 = new ActiveOperation();
+		Calendar aoCal1 = Calendar.getInstance();
+		ao1.setCreatedDate(aoCal1.getTime());
+		ao1.setType(Constants.ACTIVE_OPERATION_EAR);
+		ao1.setActiveName("Чихээ цэвэрлүүлэв");
+
+		Timeline timelineAo1 = new Timeline();
+		timelineAo1.setActiveOperation(ao1);
+		timelineAo1.setCreatedDate(aoCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineAo1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(aoCal1.getTime());
+
 		gotoFragment();
 
 	}
@@ -593,6 +841,24 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		ActiveOperation ao1 = new ActiveOperation();
+		Calendar aoCal1 = Calendar.getInstance();
+		ao1.setCreatedDate(aoCal1.getTime());
+		ao1.setType(Constants.ACTIVE_OPERATION_NOSE);
+		ao1.setActiveName("Хамраа цэвэрлүүлэв");
+
+		Timeline timelineAo1 = new Timeline();
+		timelineAo1.setActiveOperation(ao1);
+		timelineAo1.setCreatedDate(aoCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineAo1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(aoCal1.getTime());
+
 		gotoFragment();
 
 	}
@@ -601,6 +867,27 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		ChangeDiaper changeDiaper1 = new ChangeDiaper();
+		Calendar changeDiaperCal1 = Calendar.getInstance();
+		changeDiaper1.setCreatedDate(changeDiaperCal1.getTime());
+		changeDiaper1.setDirty(1);
+		changeDiaper1.setDry(0);
+		changeDiaper1.setMixed(0);
+		changeDiaper1.setWet(0);
+		changeDiaper1.setDiaperType("Хуурай");
+
+		Timeline timelineChangeDiaper1 = new Timeline();
+		timelineChangeDiaper1.setChangeDiaper(changeDiaper1);
+		timelineChangeDiaper1.setCreatedDate(changeDiaperCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineChangeDiaper1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(changeDiaperCal1.getTime());
+
 		gotoFragment();
 
 	}
@@ -609,6 +896,24 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		Growth growth10 = new Growth();
+		Calendar growthCal9 = Calendar.getInstance();
+		growth10.setCreatedDate(growthCal9.getTime());
+		growth10.setBabyHeight(72);
+		growth10.setBabyWeight(9300);
+		growth10.setBabyMonth(12);
+		Timeline growthTimeline9 = new Timeline();
+		growthTimeline9.setGrowth(growth10);
+		growthTimeline9.setCreatedDate(growthCal9.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(growthTimeline9);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(growthCal9.getTime());
+
 		gotoFragment();
 
 	}
@@ -617,6 +922,23 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		Learn learn4 = new Learn();
+		Calendar learnCal4 = Calendar.getInstance();
+		learn4.setCreatedDate(learnCal4.getTime());
+		learn4.setLearnName("Мөлхдөг боллоо");
+
+		Timeline timelineLearn1 = new Timeline();
+		timelineLearn1.setLearn(learn4);
+		timelineLearn1.setCreatedDate(learnCal4.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineLearn1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(learnCal4.getTime());
+
 		gotoFragment();
 
 	}
@@ -625,6 +947,23 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		Tooth tooth2 = new Tooth();
+		Calendar cal2 = Calendar.getInstance();
+		tooth2.setCreatedDate(cal2.getTime());
+		tooth2.setToothNum(5);
+
+		Timeline timelineTooth2 = new Timeline();
+		timelineTooth2.setTooth(tooth2);
+		timelineTooth2.setCreatedDate(cal2.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelineTooth2);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(cal2.getTime());
+
 		gotoFragment();
 
 	}
@@ -633,6 +972,25 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
+		Purchase purchase1 = new Purchase();
+		Calendar purchaseCal1 = Calendar.getInstance();
+		purchase1.setCreatedDate(purchaseCal1.getTime());
+		purchase1.setPurchaseName("Wakodo сүү");
+		purchase1.setPurchaseAmount(1);
+		purchase1.setPurchasePrice(46000);
+
+		Timeline timelinePurchase1 = new Timeline();
+		timelinePurchase1.setPurchase(purchase1);
+		timelinePurchase1.setCreatedDate(purchaseCal1.getTime());
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timelinePurchase1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(purchaseCal1.getTime());
+
 		gotoFragment();
 
 	}
