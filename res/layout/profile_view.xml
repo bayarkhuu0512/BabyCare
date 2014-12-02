@@ -8,20 +8,133 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/mainColor"
-        android:orientation="horizontal" >
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_female" />
 
         <TextView
+            android:id="@+id/babyName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Ayduu" />
+            android:text="Ayduu"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/babyAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="9 сар 20 хоногтой"
+            android:textColor="#fff" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:weightSum="2" >
+
+            <TextView
+                android:id="@+id/babyHeightLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Өндөр"
+                android:textColor="@color/fontSecond" />
+
+            <TextView
+                android:id="@+id/babyHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="69см"
+                android:textColor="@color/fontFirst" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:weightSum="2" >
+
+            <TextView
+                android:id="@+id/babyWeightLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Жин"
+                android:textColor="@color/fontSecond" />
+
+            <TextView
+                android:id="@+id/babyWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="8700гр"
+                android:textColor="@color/fontFirst" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:weightSum="2" >
+
+            <TextView
+                android:id="@+id/babyToothLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Шүд"
+                android:textColor="@color/fontSecond" />
+
+            <TextView
+                android:id="@+id/babyTooth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="4ш"
+                android:textColor="@color/fontFirst" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/latestSkillLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="20dp"
+                android:text="Сүүлд үзүүлсэн авъяас"
+                android:textColor="@color/fontSecond" />
+
+            <TextView
+                android:id="@+id/latestSkill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/latestSkillLabel"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="20dp"
+                android:text="Алгаа ташсан"
+                android:textColor="@color/fontFirst" />
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

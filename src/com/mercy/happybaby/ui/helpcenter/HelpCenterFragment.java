@@ -77,6 +77,7 @@ public class HelpCenterFragment extends Fragment {
 		FloatingActionButton fab = (FloatingActionButton) root
 				.findViewById(R.id.fab);
 		fab.attachToRecyclerView(recyclerView);
+		
 		TextView startDate = (TextView) root.findViewById(R.id.startDate);
 		startDate.setTypeface(roboto_light);
 		RippleDrawable.createRipple(startDate,

@@ -26,11 +26,12 @@
                 android:textSize="16sp" />
 
             <Button
+                android:id="@+id/monthReminderToggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="ok" >
+                android:background="@drawable/toggle_off" >
             </Button>
         </RelativeLayout>
 
@@ -49,11 +50,12 @@
                 android:textSize="16sp" />
 
             <Button
+                android:id="@+id/vaccineReminderToggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="ok" >
+                android:background="@drawable/toggle_on" >
             </Button>
         </RelativeLayout>
 
@@ -72,11 +74,12 @@
                 android:textSize="16sp" />
 
             <Button
+                android:id="@+id/monthlyToggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="ok" >
+                android:background="@drawable/toggle_on" >
             </Button>
         </RelativeLayout>
 
@@ -95,11 +98,12 @@
                 android:textSize="16sp" />
 
             <Button
+                android:id="@+id/isReminderToggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="ok" >
+                android:background="@drawable/toggle_on" >
             </Button>
         </RelativeLayout>
     </LinearLayout>

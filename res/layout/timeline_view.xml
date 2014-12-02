@@ -12,23 +12,57 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/startDate"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="startDateOnClick"
-            android:padding="10dp"
-            android:text="Start" />
+            android:layout_margin="10dp"
+            android:background="@drawable/card_background_selector"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
 
-        <TextView
-            android:id="@+id/endDate"
+            <TextView
+                android:id="@+id/startDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:onClick="startDateOnClick"
+                android:padding="10dp"
+                android:text="Start" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_event_grey600_48dp"
+                android:paddingLeft="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="endDateOnClick"
-            android:padding="10dp"
-            android:text="End" />
+            android:layout_margin="10dp"
+            android:background="@drawable/card_background_selector"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <TextView
+                android:id="@+id/endDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:onClick="endDateOnClick"
+                android:padding="10dp"
+                android:text="End" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_event_grey600_48dp"
+                android:paddingLeft="20dp" />
+        </LinearLayout>
     </LinearLayout>
 
     <FrameLayout
