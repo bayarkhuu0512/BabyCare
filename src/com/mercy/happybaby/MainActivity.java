@@ -10,6 +10,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
@@ -18,7 +19,10 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
 import com.github.mikephil.charting.utils.Utils;
@@ -36,15 +40,19 @@ import com.mercy.happybaby.ui.helpcenter.HelpCenterFragment;
 import com.mercy.happybaby.ui.learn.LearnFragment;
 import com.mercy.happybaby.ui.meal.MealFragment;
 import com.mercy.happybaby.ui.others.AboutFragment;
+import com.mercy.happybaby.ui.others.ProfileFragment;
 import com.mercy.happybaby.ui.others.SettingsFragment;
 import com.mercy.happybaby.ui.purchase.PurchaseFragment;
 import com.mercy.happybaby.ui.timeline.TimelineCreateFragment;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
 import com.mercy.happybaby.ui.tooth.ToothFragment;
+import com.mercy.happybaby.utils.Constants;
 import com.mercy.happybaby.utils.DateRangeInstance;
 import com.mercy.happybaby.utils.crouton.Crouton;
 import com.mercy.happybaby.utils.crouton.CroutonMessage;
 import com.mercy.happybaby.utils.crouton.Style;
+
+import dreamers.graphics.RippleDrawable;
 
 public class MainActivity extends Activity implements
 		CalendarDatePickerDialog.OnDateSetListener {
@@ -53,6 +61,12 @@ public class MainActivity extends Activity implements
 
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
+	private LinearLayout drawerll;
+	private TextView profileName;
+	private TextView profileAge;
+	private ImageView profileImage;
+
+	private Typeface roboto_light;
 
 	private ActionBarDrawerToggle mDrawerToggle;
 
@@ -63,6 +77,7 @@ public class MainActivity extends Activity implements
 	private DatabaseHelper databaseHelper = null;
 	private Dao<Timeline, Integer> timelineDAO;
 	private Dao<Baby, Integer> babyDAO;
+	private List<Baby> babyList = null;
 
 	private CroutonMessage crtnMsg = null;
 
@@ -96,6 +111,7 @@ public class MainActivity extends Activity implements
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
 				GravityCompat.START);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
+		drawerll = (LinearLayout) findViewById(R.id.drawerll);
 
 		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setIcon(getResources().getDrawable(R.drawable.baby67));
@@ -130,6 +146,22 @@ public class MainActivity extends Activity implements
 		if (savedInstanceState == null) {
 			selectItem(0);
 		}
+
+		roboto_light = Typeface.createFromAsset(getAssets(),
+				Constants.ROBOTO_LIGHT);
+		profileImage = (ImageView) findViewById(R.id.profileImage);
+		profileName = (TextView) findViewById(R.id.profileName);
+		profileName.setTypeface(roboto_light);
+		profileAge = (TextView) findViewById(R.id.profileAge);
+		profileAge.setTypeface(roboto_light);
+
+		if (babyList.get(0) != null) {
+			profileName.setText(babyList.get(0).getLastName().substring(0, 1)
+					+ "." + babyList.get(0).getFirstName());
+			profileAge.setText(Constants.dateFormat.format(babyList.get(0)
+					.getBirthDate()) + "");
+		}
+
 	}
 
 	/* The click listner for ListView in the navigation drawer */
@@ -144,7 +176,6 @@ public class MainActivity extends Activity implements
 
 	private void setDates() {
 
-		List<Baby> babyList = null;
 		try {
 			babyDAO = getHelper().getBabyDao();
 			babyList = babyDAO.queryForAll();
@@ -227,7 +258,7 @@ public class MainActivity extends Activity implements
 			FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
 					.replace(R.id.content_frame, fragment).commit();
-			mDrawerLayout.closeDrawer(mDrawerList);
+			mDrawerLayout.closeDrawer(drawerll);
 		} else {
 			crtnMsg.hide();
 			crtnMsg.showCrouton(Style.CONFIRM, context.getResources()
@@ -437,5 +468,21 @@ public class MainActivity extends Activity implements
 			dateRange.setEndDate(c.getTime());
 		}
 		gotoFragment();
+	}
+
+	public void profileOnClick(View v) {
+		Log.d(LOG_TAG, "OnClick");
+		Fragment fragment = new ProfileFragment();
+		FragmentManager fragmentManager = getFragmentManager();
+		fragmentManager
+				.beginTransaction()
+				.setCustomAnimations(R.animator.slide_up,
+						R.animator.slide_down, R.animator.slide_up,
+						R.animator.slide_down)
+				.replace(R.id.content_frame, fragment).commit();
+		setTitle("Profle");
+		mDrawerList.setItemChecked(0, true);
+		mDrawerLayout.closeDrawer(drawerll);
+
 	}
 }
