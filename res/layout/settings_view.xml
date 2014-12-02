@@ -11,7 +11,7 @@
         android:orientation="vertical"
         android:padding="10dp" >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -21,11 +21,20 @@
                 android:id="@+id/monthReminder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:text="@string/monthReminder"
                 android:textSize="16sp" />
-        </LinearLayout>
 
-        <LinearLayout
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="ok" >
+            </Button>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -35,11 +44,20 @@
                 android:id="@+id/vaccineReminder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:text="@string/vaccineReminder"
                 android:textSize="16sp" />
-        </LinearLayout>
 
-        <LinearLayout
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="ok" >
+            </Button>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -49,11 +67,20 @@
                 android:id="@+id/monthlyAdvise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:text="@string/monthlyAdvise"
                 android:textSize="16sp" />
-        </LinearLayout>
 
-        <LinearLayout
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="ok" >
+            </Button>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -63,9 +90,18 @@
                 android:id="@+id/isReminderSet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:text="@string/isReminderSet"
                 android:textSize="16sp" />
-        </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="ok" >
+            </Button>
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>
