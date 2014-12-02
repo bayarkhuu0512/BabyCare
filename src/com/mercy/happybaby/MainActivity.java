@@ -308,29 +308,6 @@ public class MainActivity extends Activity implements
 		gotoFragment();
 	}
 
-	public void addBreastOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		Breast breast = new Breast();
-		breast.setRight(getRandomBoolean());
-		Calendar cal = Calendar.getInstance();
-		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
-		breast.setBreastTime(cal.getTime());
-		breast.setCreatedDate(cal.getTime());
-		Timeline timeline = new Timeline();
-		timeline.setCreatedDate(Calendar.getInstance().getTime());
-		timeline.setBreast(breast);
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timeline);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		gotoFragment();
-	}
-
 	// tmp use for Breast left or right;
 	private Random rnd = new Random();
 
@@ -483,6 +460,181 @@ public class MainActivity extends Activity implements
 		setTitle("Миний тухай");
 		mDrawerList.setItemChecked(0, true);
 		mDrawerLayout.closeDrawer(drawerll);
+	}
+
+	// Add values
+	public void addBreastOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		Breast breast = new Breast();
+		breast.setRight(getRandomBoolean());
+		Calendar cal = Calendar.getInstance();
+		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
+		breast.setBreastTime(cal.getTime());
+		breast.setCreatedDate(cal.getTime());
+		Timeline timeline = new Timeline();
+		timeline.setCreatedDate(Calendar.getInstance().getTime());
+		timeline.setBreast(breast);
+		try {
+			timelineDAO = getHelper().getTimelineDao();
+			timelineDAO.create(timeline);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dateRange.setEndDate(cal.getTime());
+		gotoFragment();
+	}
+
+	public void extraFoodOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+
+		gotoFragment();
+	}
+
+	public void formulaOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+	}
+
+	public void drinkOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+	}
+
+	public void medcheckOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
 
 	}
+
+	public void hospitalOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void vitaminOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void vaccineOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void showerOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void sleepOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void playOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void outOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void massageOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void earOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void noseOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void changeDiaperOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void anniversaryOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void learnOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void toothOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
+	public void purchaseOnClick(View v) {
+		crtnMsg.hide();
+		crtnMsg.showCrouton(Style.INFO,
+				context.getResources().getString(R.string.success));
+		gotoFragment();
+
+	}
+
 }
