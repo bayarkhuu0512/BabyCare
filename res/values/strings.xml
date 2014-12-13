@@ -11,8 +11,6 @@
     </string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-    <string name="action_websearch">Web search</string>
-    <string name="app_not_available">Sorry, there\'s no web browser available</string>
 
     <string-array name="nav_array">
         <item>Happy Baby</item>
@@ -72,4 +70,14 @@
     <string name="vaccineReminder">Вакцин хийх сануулга</string>
     <string name="monthReminder">Сарын ойн сануулга</string>
 
+        <!-- Setup -->
+    <string name="lastName">Овог</string>
+    <string name="firstName">Нэр</string>
+    <string name="birthDate">Төрсөн он сар өдөр</string>
+    <string name="birthWidth">Төрсөн жин</string>
+    <string name="birthHeight">Төрсөн өндөр</string>
+    <string name="birthHeadCirc">Төрсөн толгойн тойрог</string>
+    <string name="birthHospital">Төрсөн эмнэлэг</string>
+    <string name="birthDoctor">Төрүүлсэн эмч</string>
+    
 </resources>

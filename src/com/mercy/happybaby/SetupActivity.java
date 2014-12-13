@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -44,7 +45,15 @@ public class SetupActivity extends FragmentActivity {
 	private Dao<Timeline, Integer> timelineDAO;
 	private Dao<HelpCenter, Integer> helpCenterDAO;
 
-	private TextView initTextView;
+	private EditText lastName;
+	private EditText firstName;
+	private EditText birthDate;
+	private EditText birthHospital;
+	private EditText birthDoctor;
+	private EditText birthWidth;
+	private EditText birthHeigth;
+	private EditText birthHeadCirc;
+	
 	private Typeface roboto_light;
 
 	@Override
@@ -53,15 +62,32 @@ public class SetupActivity extends FragmentActivity {
 		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 		prefManager = new PrefManager(this);
 		if (prefManager.getHasSetup()) {
+			
 			launchMainActivity();
+			
 		} else {
 			setContentView(R.layout.fragment_setup);
-			initTextView = (TextView) findViewById(R.id.initTextView);
 			roboto_light = Typeface.createFromAsset(getAssets(),
-					Constants.ROBOTO_LIGHT);
-			initTextView.setTypeface(roboto_light);
+			Constants.ROBOTO_LIGHT);
+			lastName = (EditText) findViewById(R.id.lastName);
+			lastName.setTypeface(roboto_light);
+			firstName = (EditText) findViewById(R.id.firstName);
+			firstName.setTypeface(roboto_light);
+			birthDate = (EditText) findViewById(R.id.birthDate);
+			birthDate.setTypeface(roboto_light);
+			birthHospital = (EditText) findViewById(R.id.birthHospital);
+			birthHospital.setTypeface(roboto_light);
+			birthDoctor = (EditText) findViewById(R.id.birthDoctor);
+			birthDoctor.setTypeface(roboto_light);
+			birthWidth = (EditText) findViewById(R.id.birthWidth);
+			birthWidth.setTypeface(roboto_light);
+			birthHeigth = (EditText) findViewById(R.id.birthHeigth);
+			birthHeigth.setTypeface(roboto_light);
+			birthHeadCirc = (EditText) findViewById(R.id.birthHeadCirc);
+			birthHeadCirc.setTypeface(roboto_light);
+			
 			// Init UIs
-			new LongOperation().execute("");
+//			new LongOperation().execute("");
 		}
 	}
 
