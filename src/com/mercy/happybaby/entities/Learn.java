@@ -16,7 +16,7 @@ public class Learn implements Serializable {
 	int id;
 	@DatabaseField
 	String learnName;
-
+	
 	@DatabaseField(canBeNull = false)
 	Date createdDate;
 

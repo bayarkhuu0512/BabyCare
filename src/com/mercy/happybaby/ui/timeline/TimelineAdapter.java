@@ -81,6 +81,11 @@ public class TimelineAdapter extends
 					.getDrawable(R.drawable.baby67));
 			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
 					.getDrawable(R.drawable.formula_oval));
+
+			viewHolder.image.setBackgroundDrawable(mContext.getResources()
+					.getDrawable(R.drawable.baby_born));
+			viewHolder.image.setVisibility(View.VISIBLE);
+
 			viewHolder.calMonth.setText(Constants.rowMonthFormat.format(
 					timeline.getBaby().getBirthDate()).toString()
 					+ mContext.getResources().getString(R.string.month));
@@ -147,6 +152,7 @@ public class TimelineAdapter extends
 
 			viewHolder.mFifth.setVisibility(View.GONE);
 			viewHolder.mSixth.setVisibility(View.GONE);
+			viewHolder.image.setVisibility(View.GONE);
 
 		} else if (timeline.getFeed() != null) {
 			int num = 0;
@@ -170,6 +176,8 @@ public class TimelineAdapter extends
 			viewHolder.mFourth.setVisibility(View.GONE);
 			viewHolder.mFifth.setVisibility(View.GONE);
 			viewHolder.mSixth.setVisibility(View.GONE);
+			viewHolder.image.setVisibility(View.GONE);
+
 		} else if (timeline.getFormula() != null) {
 			int num = 0;
 			int total = 0;
@@ -200,6 +208,8 @@ public class TimelineAdapter extends
 			viewHolder.mFourth.setVisibility(View.GONE);
 			viewHolder.mFifth.setVisibility(View.GONE);
 			viewHolder.mSixth.setVisibility(View.GONE);
+			viewHolder.image.setVisibility(View.GONE);
+
 		} else if (timeline.getDrink() != null) {
 			int num = 0;
 			int total = 0;
@@ -230,6 +240,8 @@ public class TimelineAdapter extends
 			viewHolder.mFourth.setVisibility(View.GONE);
 			viewHolder.mFifth.setVisibility(View.GONE);
 			viewHolder.mSixth.setVisibility(View.GONE);
+			viewHolder.image.setVisibility(View.GONE);
+
 		} else if (timeline.getHospital() != null) {
 			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
 					.getDrawable(R.drawable.hospital_oval));
@@ -246,6 +258,8 @@ public class TimelineAdapter extends
 			viewHolder.mFourth.setVisibility(View.GONE);
 			viewHolder.mFifth.setVisibility(View.GONE);
 			viewHolder.mSixth.setVisibility(View.GONE);
+			viewHolder.image.setVisibility(View.GONE);
+
 		} else if (timeline.getVaccine() != null) {
 			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
 					.getDrawable(R.drawable.vaccine_oval));
@@ -262,6 +276,8 @@ public class TimelineAdapter extends
 			viewHolder.mFourth.setVisibility(View.GONE);
 			viewHolder.mFifth.setVisibility(View.GONE);
 			viewHolder.mSixth.setVisibility(View.GONE);
+			viewHolder.image.setVisibility(View.GONE);
+
 		} else if (timeline.getVitamin() != null) {
 			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
 					.getDrawable(R.drawable.vitamin_oval));
@@ -278,6 +294,8 @@ public class TimelineAdapter extends
 			viewHolder.mFourth.setVisibility(View.GONE);
 			viewHolder.mFifth.setVisibility(View.GONE);
 			viewHolder.mSixth.setVisibility(View.GONE);
+			viewHolder.image.setVisibility(View.GONE);
+
 		} else if (timeline.getActiveOperation() != null) {
 			int num = 0;
 			for (int i = 0; i < mList.size(); i++) {
@@ -302,8 +320,10 @@ public class TimelineAdapter extends
 			viewHolder.mFourth.setVisibility(View.GONE);
 			viewHolder.mFifth.setVisibility(View.GONE);
 			viewHolder.mSixth.setVisibility(View.GONE);
+			viewHolder.image.setVisibility(View.GONE);
 
 		} else if (timeline.getChangeDiaper() != null) {
+
 			int num = 0;
 			int dirty = 0;
 			int dry = 0;
@@ -338,36 +358,42 @@ public class TimelineAdapter extends
 			viewHolder.mFifth.setText("Холимог " + mixed);
 			viewHolder.mSixth.setVisibility(View.VISIBLE);
 			viewHolder.mSixth.setText("Хуурай " + dry);
+			viewHolder.image.setVisibility(View.GONE);
 
 		} else if (timeline.getGrowth() != null) {
-			viewHolder.calMonth.setText(Constants.rowMonthFormat.format(
-					timeline.getGrowth().getCreatedDate()).toString()
-					+ mContext.getResources().getString(R.string.month));
-			viewHolder.calDay.setText(Constants.rowDayFormat.format(
-					timeline.getGrowth().getCreatedDate()).toString()
-					+ dayOfWeekMN);
+			if (timeline.getGrowth().getBabyMonth() != 0) {
+				viewHolder.calMonth.setText(Constants.rowMonthFormat.format(
+						timeline.getGrowth().getCreatedDate()).toString()
+						+ mContext.getResources().getString(R.string.month));
+				viewHolder.calDay.setText(Constants.rowDayFormat.format(
+						timeline.getGrowth().getCreatedDate()).toString()
+						+ dayOfWeekMN);
 
-			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
-					.getDrawable(R.drawable.anniversary));
-			viewHolder.icon.setImageDrawable(mContext.getResources()
-					.getDrawable(R.drawable.icon_birthmonth));
+				viewHolder.icon.setBackgroundDrawable(mContext.getResources()
+						.getDrawable(R.drawable.anniversary));
+				viewHolder.icon.setImageDrawable(mContext.getResources()
+						.getDrawable(R.drawable.icon_birthmonth));
+				viewHolder.image.setBackgroundDrawable(mContext.getResources()
+						.getDrawable(R.drawable.congrats));
+				viewHolder.image.setVisibility(View.VISIBLE);
 
-			viewHolder.mFirst.setVisibility(View.VISIBLE);
-			viewHolder.mFirst.setText(timeline.getGrowth().getBabyMonth()
-					+ " сар хүрлээ");
-			viewHolder.mThird.setVisibility(View.VISIBLE);
-			viewHolder.mThird.setText(timeline.getGrowth().getBabyHeight()
-					+ " см");
-			viewHolder.mFourth.setVisibility(View.VISIBLE);
-			viewHolder.mFourth.setText(timeline.getGrowth().getBabyWeight()
-					+ " гр");
+				viewHolder.mFirst.setVisibility(View.VISIBLE);
+				viewHolder.mFirst.setText(timeline.getGrowth().getBabyMonth()
+						+ " сар хүрлээ");
 
-			viewHolder.mFifth.setVisibility(View.VISIBLE);
-			viewHolder.mFifth.setText(mContext.getResources().getString(
-					R.string.congrats));
+				viewHolder.mThird.setVisibility(View.VISIBLE);
+				viewHolder.mThird.setText(timeline.getGrowth().getBabyHeight()
+						+ " см");
+				viewHolder.mFourth.setVisibility(View.VISIBLE);
+				viewHolder.mFourth.setText(timeline.getGrowth().getBabyWeight()
+						+ " гр");
+				viewHolder.mFifth.setVisibility(View.VISIBLE);
+				viewHolder.mFifth.setText(mContext.getResources().getString(
+						R.string.congrats));
+				viewHolder.mSecond.setVisibility(View.GONE);
+				viewHolder.mSixth.setVisibility(View.GONE);
+			}
 
-			viewHolder.mSecond.setVisibility(View.GONE);
-			viewHolder.mSixth.setVisibility(View.GONE);
 		} else if (timeline.getLearn() != null) {
 
 			viewHolder.calMonth.setText(Constants.rowMonthFormat.format(
@@ -381,6 +407,10 @@ public class TimelineAdapter extends
 					.getDrawable(R.drawable.learn_oval));
 			viewHolder.icon.setImageDrawable(mContext.getResources()
 					.getDrawable(R.drawable.icon_learn));
+			viewHolder.image.setBackgroundDrawable(mContext.getResources()
+					.getDrawable(R.drawable.congrats));
+			viewHolder.image.setVisibility(View.VISIBLE);
+
 			viewHolder.mFirst.setVisibility(View.VISIBLE);
 			viewHolder.mFirst.setText(timeline.getLearn().getLearnName());
 			viewHolder.mThird.setVisibility(View.VISIBLE);
@@ -405,6 +435,10 @@ public class TimelineAdapter extends
 			viewHolder.icon.setImageDrawable(mContext.getResources()
 					.getDrawable(R.drawable.icon_teeth));
 
+			viewHolder.image.setBackgroundDrawable(mContext.getResources()
+					.getDrawable(R.drawable.baby_tooth));
+			viewHolder.image.setVisibility(View.VISIBLE);
+
 			viewHolder.mFirst.setVisibility(View.VISIBLE);
 			viewHolder.mFirst.setText(mContext.getResources().getString(
 					R.string.tooth)
@@ -420,6 +454,7 @@ public class TimelineAdapter extends
 			viewHolder.mFourth.setVisibility(View.GONE);
 			viewHolder.mFifth.setVisibility(View.GONE);
 			viewHolder.mSixth.setVisibility(View.GONE);
+
 		} else if (timeline.getPurchase() != null) {
 			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
 					.getDrawable(R.drawable.purchase_oval));
@@ -443,6 +478,8 @@ public class TimelineAdapter extends
 			viewHolder.mSecond.setVisibility(View.GONE);
 			viewHolder.mFourth.setVisibility(View.GONE);
 			viewHolder.mSixth.setVisibility(View.GONE);
+			viewHolder.image.setVisibility(View.GONE);
+
 		}
 
 	}
@@ -462,6 +499,7 @@ public class TimelineAdapter extends
 		public TextView calMonth;
 		public TextView calDay;
 		public ImageView icon;
+		public ImageView image;
 
 		public ViewHolder(View v) {
 			super(v);
@@ -474,6 +512,7 @@ public class TimelineAdapter extends
 			calMonth = (TextView) v.findViewById(R.id.calMonth);
 			calDay = (TextView) v.findViewById(R.id.calDay);
 			icon = (ImageView) v.findViewById(R.id.icon);
+			image = (ImageView) v.findViewById(R.id.image);
 		}
 	}
 }

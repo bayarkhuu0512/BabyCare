@@ -100,6 +100,17 @@
             android:paddingTop="10dp"
             android:textColor="@color/fontSecond"
             android:textSize="18sp" />
+        
+         <ImageButton
+            android:id="@+id/nextButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:layout_margin="10dp"
+            android:onClick="nextButton"
+            android:background="@color/mainColor"
+            android:src="@drawable/ic_close_white_24dp" />
+            
     </LinearLayout>
 
 </RelativeLayout>

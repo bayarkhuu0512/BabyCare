@@ -87,7 +87,7 @@ public class SetupActivity extends FragmentActivity {
 			birthHeadCirc.setTypeface(roboto_light);
 			
 			// Init UIs
-//			new LongOperation().execute("");
+			new LongOperation().execute("");
 		}
 	}
 
@@ -146,6 +146,11 @@ public class SetupActivity extends FragmentActivity {
 		}
 	}
 
+	
+	public void nextButton(View v){
+		launchMainActivity();
+	}
+	
 	private void setDateData() {
 		try {
 			// Baby
