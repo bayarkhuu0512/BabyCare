@@ -47,6 +47,7 @@ import com.mercy.happybaby.entities.Vitamin;
 import com.mercy.happybaby.ui.activeoperation.ActiveOperationFragment;
 import com.mercy.happybaby.ui.changediaper.ChangeDiaperFragment;
 import com.mercy.happybaby.ui.chart.ChartFragment;
+import com.mercy.happybaby.ui.databook.DatabookFragment;
 import com.mercy.happybaby.ui.health.HealthFragment;
 import com.mercy.happybaby.ui.helpcenter.HelpCenterFragment;
 import com.mercy.happybaby.ui.learn.LearnFragment;
@@ -251,12 +252,15 @@ public class MainActivity extends Activity implements
 			fragment = new PurchaseFragment();
 			break;
 		case 9:
-			fragment = new HelpCenterFragment();
+			fragment = new DatabookFragment();
 			break;
 		case 10:
-			fragment = new SettingsFragment();
+			fragment = new HelpCenterFragment();
 			break;
 		case 11:
+			fragment = new SettingsFragment();
+			break;
+		case 12:
 			fragment = new AboutFragment();
 			break;
 		default:
@@ -361,9 +365,12 @@ public class MainActivity extends Activity implements
 			fragment = new HelpCenterFragment();
 			break;
 		case 10:
-			fragment = new SettingsFragment();
+			fragment = new DatabookFragment();
 			break;
 		case 11:
+			fragment = new SettingsFragment();
+			break;
+		case 12:
 			fragment = new AboutFragment();
 			break;
 		default:
