@@ -51,6 +51,7 @@ import com.mercy.happybaby.ui.databook.DatabookFragment;
 import com.mercy.happybaby.ui.health.HealthFragment;
 import com.mercy.happybaby.ui.helpcenter.HelpCenterFragment;
 import com.mercy.happybaby.ui.learn.LearnFragment;
+import com.mercy.happybaby.ui.meal.AddBreastFragment;
 import com.mercy.happybaby.ui.meal.MealFragment;
 import com.mercy.happybaby.ui.others.AboutFragment;
 import com.mercy.happybaby.ui.others.ProfileFragment;
@@ -483,27 +484,15 @@ public class MainActivity extends Activity implements
 
 	// Add values
 	public void addBreastOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		Breast breast = new Breast();
-		breast.setRight(getRandomBoolean());
-		Calendar cal = Calendar.getInstance();
-		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
-		breast.setBreastTime(cal.getTime());
-		breast.setCreatedDate(cal.getTime());
-		Timeline timeline = new Timeline();
-		timeline.setCreatedDate(Calendar.getInstance().getTime());
-		timeline.setBreast(breast);
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timeline);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		dateRange.setEndDate(cal.getTime());
-		gotoFragment();
+		Fragment fragment = new AddBreastFragment();
+		FragmentManager fragmentManager = getFragmentManager();
+		fragmentManager
+				.beginTransaction()
+				.setCustomAnimations(R.animator.slide_up,
+						R.animator.slide_down, R.animator.slide_up,
+						R.animator.slide_down)
+				.replace(R.id.content_frame, fragment).commit();
+		getActionBar().hide();
 	}
 
 	public void extraFoodOnClick(View v) {
@@ -1001,5 +990,6 @@ public class MainActivity extends Activity implements
 		gotoFragment();
 
 	}
+
 
 }
