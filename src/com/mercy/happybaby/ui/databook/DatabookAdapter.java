@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class DatabookAdapter extends
 		roboto_light = Typeface.createFromAsset(mContext.getAssets(),
 				Constants.ROBOTO_LIGHT);
 		mList = list;
+		Log.d(LOG_TAG,"Mlist "+mList.size());
 	}
 
 	@Override

@@ -1,66 +1,58 @@
 {
-    "womenseho": [
+    "databook": [
         {
                 "id": "1",
                 "name": "Гурван гал эмнэлэг",
+                "type": "womenseho",
                 "address": "БГД, 1-р хороо,Эх нялхсын урд талд",
-                "phone": {
-                    "mobile1": "+976 70113344",
-                    "mobile2": "",
-                    "mobile3": ""
-                }
+                "phonenumber1": "+976 70113344",
+                "phonenumber2": "",
+                "phonenumber3": ""
         },
         {
                 "id": "2",
                 "name": "Тод Дэлгэц Эмнэлэг",
+                "type": "womenseho",
                 "address": "БГД, 17-р хороо, 73-р байр, 1 давх, (Эрүүл мэндийн 7-р төвийн урд)",
-                "phone": {
-                    "mobile1": "+976 99860457",
-                    "mobile2": "+976 99082233",
-                    "mobile3": "+976 88302616"
-                }
+                "phonenumber1": "+976 99860457",
+                "phonenumber2": "+976 99082233",
+                "phonenumber3": "+976 88302616"
         },      
         {
                 "id": "3",
                 "name": "Төгс Ялгуун Эмнэлэг",
+                "type": "womenseho",
                 "address": "БГД 25-р ээмийн сангийн автобусны буудлын замын урд",
-                "phone": {
-				    "mobile1": "+976 99040405",
-				    "mobile2": "",
-                    "mobile3": ""
-                }
+				    "phonenumber1": "+976 99040405",
+				    "phonenumber2": "",
+                    "phonenumber3": ""
         },        
         {
                 "id": "4",
                 "name": "Баянгол Эмнэлэг",
+                "type": "womenseho",
                 "address": "БГД, 11-р хороо, 3-р хор-л, Эх нялхасын гуд, (Эх нялхасын төвийн баруун талд)",
-                "phone": {
-                    "mobile1": "+976 305903",
-                    "mobile2": "+976 91013004",
-                    "mobile3": ""
-                }
+                    "phonenumber1": "+976 305903",
+                    "phonenumber2": "+976 91013004",
+                    "phonenumber3": ""
         },
              {
                 "id": "5",
                 "name": "Асэ Эмнэлэг",
+                "type": "womenseho",
                 "address": "БГД, 12-р хороо, 6-р хор-л, Хасбаатарын гуд, 1 давх, (Сайхан төвийн хойно /хуучнаар/ Mass Club-н хойно)",
-                "phone": {
-                    "mobile1": "+976 361643",
-                    "mobile2": "",
-                    "mobile3": ""
-                }
-        }     
-        ],
-          "childrenhospital": [
-           {
+                "phonenumber1": "+976 361643",
+                "phonenumber2": "",
+                "phonenumber3": ""
+        },
+        {
                 "id": "6",
                 "name": "Анхлан Бэби",
+                "type": "childrenhospital",
                 "address": "",
-                "phone": {
-                    "mobile1": "+976 324416",
-                    "mobile2": "",
-                    "mobile3": ""
-                }
+                    "phonenumber1": "+976 324416",
+                    "phonenumber2": "",
+                    "phonenumber3": ""
         }
         ]
 }
