@@ -53,6 +53,7 @@ import com.mercy.happybaby.ui.helpcenter.HelpCenterFragment;
 import com.mercy.happybaby.ui.learn.LearnFragment;
 import com.mercy.happybaby.ui.meal.AddBreastFragment;
 import com.mercy.happybaby.ui.meal.AddFeedFragment;
+import com.mercy.happybaby.ui.meal.AddFormulaFragment;
 import com.mercy.happybaby.ui.meal.MealFragment;
 import com.mercy.happybaby.ui.others.AboutFragment;
 import com.mercy.happybaby.ui.others.ProfileFragment;
@@ -491,31 +492,9 @@ public class MainActivity extends Activity implements
 	public void extraFoodOnClick(View v) {
 		gotoAddFragment(new AddFeedFragment());
 	}
-
 	
 	public void formulaOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		Formula formula1 = new Formula();
-		Calendar formulaCal1 = Calendar.getInstance();
-		formula1.setCreatedDate(formulaCal1.getTime());
-		formula1.setFormulaName("Wakodo");
-		formula1.setMl(300);
-
-		Timeline timelineFormula1 = new Timeline();
-		timelineFormula1.setFormula(formula1);
-		timelineFormula1.setCreatedDate(formulaCal1.getTime());
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timelineFormula1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		dateRange.setEndDate(formulaCal1.getTime());
-
-		gotoFragment();
+		gotoAddFragment(new AddFormulaFragment());
 	}
 
 	public void drinkOnClick(View v) {

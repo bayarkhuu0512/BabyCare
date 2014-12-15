@@ -13,20 +13,23 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Breast;
+import com.mercy.happybaby.entities.Formula;
 import com.mercy.happybaby.entities.Timeline;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
 import com.mercy.happybaby.utils.DateRangeInstance;
 import com.mercy.happybaby.utils.crouton.CroutonMessage;
 import com.mercy.happybaby.utils.crouton.Style;
 
+import dreamers.graphics.RippleDrawable;
+
 public class AddFormulaFragment extends Fragment {
-	Button leftBreast, rightBreast;
 	private CroutonMessage crtnMsg = null;
 	private Dao<Timeline, Integer> timelineDAO;
 	private DatabaseHelper databaseHelper = null;
@@ -45,29 +48,9 @@ public class AddFormulaFragment extends Fragment {
 			e.printStackTrace();
 		}
 
-		Button leftBreast = (Button) root.findViewById(R.id.breastLeft);
-		leftBreast.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Log.d("AddBreast", "left");
-				addBreast(false);
-			}
-		});
-
-		Button rightBreast = (Button) root.findViewById(R.id.breastRight);
-		rightBreast.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Log.d("AddBreast", "right");
-				addBreast(true);
-			}
-		});
-
-		Button close = (Button) root.findViewById(R.id.close);
+		ImageButton close = (ImageButton) root.findViewById(R.id.close);
+		RippleDrawable.createRipple(close,
+				getResources().getColor(R.color.mainColor));
 		close.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -77,7 +60,26 @@ public class AddFormulaFragment extends Fragment {
 				gotoTimeline();
 			}
 		});
-		
+		ImageButton save = (ImageButton) root.findViewById(R.id.save);
+		RippleDrawable.createRipple(save,
+				getResources().getColor(R.color.mainColor));
+		save.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Log.d("AddBreast", "save");
+				// if (isSelectedRight) {
+				// addBreast(true);
+				// } else if (isSelectedLeft) {
+				// addBreast(false);
+				// } else {
+				// crtnMsg.hide();
+				// crtnMsg.showCrouton(Style.CONFIRM, getActivity()
+				// .getResources().getString(R.string.pleaseselect));
+				// }
+			}
+		});
 		return root;
 	}
 
@@ -89,31 +91,31 @@ public class AddFormulaFragment extends Fragment {
 		return databaseHelper;
 	}
 
-	private void addBreast(boolean isRight) {
+	private void addFormula(boolean isRight) {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				getActivity().getResources().getString(R.string.success));
-		Breast breast = new Breast();
-		breast.setRight(isRight);
-		Calendar cal = Calendar.getInstance();
-		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
-		breast.setBreastTime(cal.getTime());
-		breast.setCreatedDate(cal.getTime());
-		Timeline timeline = new Timeline();
-		timeline.setCreatedDate(Calendar.getInstance().getTime());
-		timeline.setBreast(breast);
+		Formula formula1 = new Formula();
+		Calendar formulaCal1 = Calendar.getInstance();
+		formula1.setCreatedDate(formulaCal1.getTime());
+		formula1.setFormulaName("Wakodo");
+		formula1.setMl(300);
+
+		Timeline timelineFormula1 = new Timeline();
+		timelineFormula1.setFormula(formula1);
+		timelineFormula1.setCreatedDate(formulaCal1.getTime());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timeline);
+			timelineDAO.create(timelineFormula1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		dateRange.setEndDate(cal.getTime());
+		dateRange.setEndDate(formulaCal1.getTime());
 		gotoTimeline();
 	}
-	
-	private void gotoTimeline(){
+
+	private void gotoTimeline() {
 		TimelineFragment fragment = new TimelineFragment();
 		FragmentManager fragmentManager = getFragmentManager();
 		fragmentManager

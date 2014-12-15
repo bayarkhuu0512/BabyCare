@@ -51,7 +51,8 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/btn_breast_oval"
                 android:text="@string/breastLeft"
-                android:textColor="#fff" >
+                android:textColor="#fff"
+                android:textSize="20sp" >
             </Button>
 
             <Button
@@ -61,7 +62,8 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/btn_breast_oval"
                 android:text="@string/breastRight"
-                android:textColor="#fff" >
+                android:textColor="#fff"
+                android:textSize="20sp" >
             </Button>
         </LinearLayout>
     </LinearLayout>
