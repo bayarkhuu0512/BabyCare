@@ -59,7 +59,9 @@
 
     <!-- Crouton -->
     <string name="success">Аз жаргалтай мөчийг хадгалан авлаа :)</string>
-    <string name="notavailable">Уучлаарай, Beta хувилбар дээр ажиллах боломжгүй : )</string>
+    <string name="notavailable">Уучлаарай, Энэ хувилбар дээр ажиллах боломжгүй : )</string>
+    <string name="pleaseselect">Аль нэг сонголтоос сонгоно уу : )</string>
+    
     <string name="tooth">Шүд</string>
     <string name="tooth_grow">цухуйлаа</string>
     <string name="congrats">Баяр хүргэе</string>
@@ -80,5 +82,9 @@
     <string name="birthHeadCirc">Төрсөн толгойн тойрог</string>
     <string name="birthHospital">Төрсөн эмнэлэг</string>
     <string name="birthDoctor">Төрүүлсэн эмч</string>
+    
+    <!-- Add -->
+    <string name="breastLeft">Зүүн</string>
+    <string name="breastRight">Баруун</string>
     
 </resources>

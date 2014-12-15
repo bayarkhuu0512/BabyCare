@@ -25,6 +25,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.FileUtils;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -74,7 +75,8 @@ public class ChartFragment extends Fragment {
 			growthDAO = getHelper().getGrowthDao();
 			QueryBuilder<Growth, Integer> growthQb = growthDAO.queryBuilder();
 			Where whereGrowth = growthQb.where();
-			whereGrowth.between("createdDate", c.getTime(), dateRange.getEndDate());
+			whereGrowth.between("createdDate", c.getTime(),
+					dateRange.getEndDate());
 			mGrowthList = growthQb.query();
 
 			// QueryBuilder<Breast, Integer> breastDateQb =
@@ -155,14 +157,109 @@ public class ChartFragment extends Fragment {
 			e1.add(new Entry((int) mGrowthList.get(i).getBabyWeight(), i));
 		}
 
-		LineDataSet d1 = new LineDataSet(e1, "Жингийн өсөлт ");
-		d1.setLineWidth(3f);
-		d1.setCircleSize(5f);
+		// Baby weight
+		LineDataSet d1 = new LineDataSet(e1, "Жин насны");
+		d1.setLineWidth(2f);
+		d1.setCircleSize(3f);
+		d1.setColor(getActivity().getResources().getColor(
+				R.color.mainColor));
 		d1.setHighLightColor(getActivity().getResources().getColor(
 				R.color.mainColor));
+		d1.setCircleColor(getActivity().getResources().getColor(
+				R.color.mainColor));
+
 		ArrayList<LineDataSet> sets = new ArrayList<LineDataSet>();
 		sets.add(d1);
-		LineData cd = new LineData(getMonths(mGrowthList), sets);
+		// 3
+		LineDataSet line3 = new LineDataSet(FileUtils.loadEntriesFromAssets(
+				getActivity().getAssets(), "weight_age_line_3_girl.txt"), "3");
+		line3.setColor(getActivity().getResources().getColor(
+				R.color.entity_ao_shower));
+		line3.setCircleColor(getActivity().getResources().getColor(
+				R.color.entity_ao_shower));
+		line3.setHighLightColor(getActivity().getResources().getColor(
+				R.color.entity_ao_shower));
+		line3.setLineWidth(1f);
+		line3.setCircleSize(0f);
+		sets.add(line3);
+		
+		// 2
+		LineDataSet line2 = new LineDataSet(FileUtils.loadEntriesFromAssets(
+				getActivity().getAssets(), "weight_age_line_2_girl.txt"), "2");
+		line2.setColor(getActivity().getResources().getColor(
+				R.color.entity_breast));
+		line2.setCircleColor(getActivity().getResources().getColor(
+				R.color.entity_breast));
+		line2.setHighLightColor(getActivity().getResources().getColor(
+				R.color.entity_breast));
+		line2.setLineWidth(1f);
+		line2.setCircleSize(0f);
+		sets.add(line2);
+
+		// 1
+		LineDataSet line1 = new LineDataSet(FileUtils.loadEntriesFromAssets(
+				getActivity().getAssets(), "weight_age_line_1_girl.txt"), "1");
+		line1.setColor(getActivity().getResources().getColor(
+				R.color.entity_feed));
+		line1.setCircleColor(getActivity().getResources().getColor(
+				R.color.entity_feed));
+		line1.setHighLightColor(getActivity().getResources().getColor(
+				R.color.entity_feed));
+		line1.setLineWidth(1f);
+		line1.setCircleSize(0f);
+		sets.add(line1);
+		
+
+		// 0
+		LineDataSet line0 = new LineDataSet(FileUtils.loadEntriesFromAssets(
+				getActivity().getAssets(), "weight_age_line_0_girl.txt"), "0");
+		line0.setColor(ColorTemplate.VORDIPLOM_COLORS[0]);
+		line0.setCircleColor(ColorTemplate.VORDIPLOM_COLORS[0]);
+		line0.setHighLightColor(ColorTemplate.VORDIPLOM_COLORS[0]);
+		line0.setLineWidth(1f);
+		line0.setCircleSize(0f);
+		sets.add(line0);
+		
+		// -1
+		LineDataSet lineMinus1 = new LineDataSet(FileUtils.loadEntriesFromAssets(
+				getActivity().getAssets(), "weight_age_line_minus_1_girl.txt"), "-1");
+		lineMinus1.setColor(getActivity().getResources().getColor(
+				R.color.entity_feed));
+		lineMinus1.setCircleColor(getActivity().getResources().getColor(
+				R.color.entity_feed));
+		lineMinus1.setHighLightColor(getActivity().getResources().getColor(
+				R.color.entity_feed));
+		lineMinus1.setLineWidth(1f);
+		lineMinus1.setCircleSize(0f);
+		sets.add(lineMinus1);
+		
+		// -2
+		LineDataSet lineMinus2 = new LineDataSet(FileUtils.loadEntriesFromAssets(
+				getActivity().getAssets(), "weight_age_line_minus_2_girl.txt"), "-2");
+		lineMinus2.setColor(getActivity().getResources().getColor(
+				R.color.entity_breast));
+		lineMinus2.setCircleColor(getActivity().getResources().getColor(
+				R.color.entity_breast));
+		lineMinus2.setHighLightColor(getActivity().getResources().getColor(
+				R.color.entity_breast));
+		lineMinus2.setLineWidth(1f);
+		lineMinus2.setCircleSize(0f);
+		sets.add(lineMinus2);
+		
+		// -3
+		LineDataSet lineMinus3 = new LineDataSet(FileUtils.loadEntriesFromAssets(
+				getActivity().getAssets(), "weight_age_line_minus_3_girl.txt"), "-3");
+		lineMinus3.setColor(getActivity().getResources().getColor(
+				R.color.entity_ao_shower));
+		lineMinus3.setCircleColor(getActivity().getResources().getColor(
+				R.color.entity_ao_shower));
+		lineMinus3.setHighLightColor(getActivity().getResources().getColor(
+				R.color.entity_ao_shower));
+		lineMinus3.setLineWidth(1f);
+		lineMinus3.setCircleSize(0f);
+		sets.add(lineMinus3);
+
+		LineData cd = new LineData(getMonths(), sets);
 		return cd;
 	}
 
@@ -306,18 +403,31 @@ public class ChartFragment extends Fragment {
 	private ArrayList<String> getMonths() {
 
 		ArrayList<String> m = new ArrayList<String>();
-		m.add("Jan");
-		m.add("Feb");
-		m.add("Mar");
-		m.add("Apr");
-		m.add("May");
-		m.add("Jun");
-		m.add("Jul");
-		m.add("Aug");
-		m.add("Sep");
-		m.add("Oct");
-		m.add("Nov");
-		m.add("Dec");
+		m.add("төрсөн");
+		m.add("1");
+		m.add("2");
+		m.add("3");
+		m.add("4");
+		m.add("5");
+		m.add("6");
+		m.add("7");
+		m.add("8");
+		m.add("9");
+		m.add("10");
+		m.add("11");
+		m.add("12");
+		m.add("13");
+		m.add("14");
+		m.add("15");
+		m.add("16");
+		m.add("17");
+		m.add("18");
+		m.add("19");
+		m.add("20");
+		m.add("21");
+		m.add("22");
+		m.add("23");
+		m.add("24");
 
 		return m;
 	}
