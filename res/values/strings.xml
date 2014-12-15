@@ -2,13 +2,11 @@
 <resources>
 
     <string name="app_name">Happy Baby</string>
-    <string name="app_detail">
-        Энэхүү апп нь 0-3 насны хүүхэдтэй бүх эцэг эхчүүдэд зориулсан. Хүүхэд бүхэн 
+    <string name="app_detail">        Энэхүү апп нь 0-3 насны хүүхэдтэй бүх эцэг эхчүүдэд зориулсан. Хүүхэд бүхэн 
         өдөр өдрөөр өсч цаг минут бүрд шинэ зүйлийг сурч мэдэн шинээр сурсан зүйлээ аав 
         ээждээ харуулан аз жаргал бэлэглэдэг билээ. Тэрхүү аз жаргалтай мөчүүд хэзээ болж
         өнгөрсөн цаг хугацааг нь тэр бүр бид тэмдэглэн авч амждаггүй. Харин HappyBaby апп
-        энэ боломжийг та бүхэнд олгож байна.                
-    </string>
+        энэ боломжийг та бүхэнд олгож байна.                </string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
 
@@ -29,7 +27,15 @@
     </string-array>
     <string-array name="feed_array">
         <item>Бантан</item>
+        <item>Төмсний нухаш</item>
         <item>Каш</item>
+        <item>Ногооны зутан</item>
+        <item>Тараг</item>
+             <item>Бантан</item>
+        <item>Төмсний нухаш</item>
+        <item>Каш</item>
+        <item>Ногооны зутан</item>
+        <item>Тараг</item>
     </string-array>
 
     <string name="month">сар</string>
@@ -61,7 +67,6 @@
     <string name="success">Аз жаргалтай мөчийг хадгалан авлаа :)</string>
     <string name="notavailable">Уучлаарай, Энэ хувилбар дээр ажиллах боломжгүй : )</string>
     <string name="pleaseselect">Аль нэг сонголтоос сонгоно уу : )</string>
-    
     <string name="tooth">Шүд</string>
     <string name="tooth_grow">цухуйлаа</string>
     <string name="congrats">Баяр хүргэе</string>
@@ -73,7 +78,7 @@
     <string name="vaccineReminder">Вакцин хийх сануулга</string>
     <string name="monthReminder">Сарын ойн сануулга</string>
 
-        <!-- Setup -->
+    <!-- Setup -->
     <string name="lastName">Овог</string>
     <string name="firstName">Нэр</string>
     <string name="birthDate">Төрсөн он сар өдөр</string>
@@ -82,9 +87,9 @@
     <string name="birthHeadCirc">Төрсөн толгойн тойрог</string>
     <string name="birthHospital">Төрсөн эмнэлэг</string>
     <string name="birthDoctor">Төрүүлсэн эмч</string>
-    
+
     <!-- Add -->
     <string name="breastLeft">Зүүн</string>
     <string name="breastRight">Баруун</string>
-    
+
 </resources>

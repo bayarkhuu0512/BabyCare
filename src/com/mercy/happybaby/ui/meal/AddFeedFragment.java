@@ -5,6 +5,8 @@ import java.util.Calendar;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -12,25 +14,41 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Breast;
+import com.mercy.happybaby.entities.Feed;
 import com.mercy.happybaby.entities.Timeline;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
+import com.mercy.happybaby.utils.Constants;
 import com.mercy.happybaby.utils.DateRangeInstance;
 import com.mercy.happybaby.utils.crouton.CroutonMessage;
 import com.mercy.happybaby.utils.crouton.Style;
 
+import dreamers.graphics.RippleDrawable;
+
 public class AddFeedFragment extends Fragment {
-	Button leftBreast, rightBreast;
+	private TextView timeFeed;
+	private EditText feedML;
+	private ListView feedList;
+	private String[] feedNames;
+
 	private CroutonMessage crtnMsg = null;
 	private Dao<Timeline, Integer> timelineDAO;
 	private DatabaseHelper databaseHelper = null;
-	DateRangeInstance dateRange = DateRangeInstance.getInstance();
+	Calendar cal = Calendar.getInstance();
+	private Typeface roboto_light;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,30 +62,36 @@ public class AddFeedFragment extends Fragment {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		Button leftBreast = (Button) root.findViewById(R.id.breastLeft);
-		leftBreast.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Log.d("AddBreast", "left");
-				addBreast(false);
-			}
-		});
-
-		Button rightBreast = (Button) root.findViewById(R.id.breastRight);
-		rightBreast.setOnClickListener(new OnClickListener() {
+		timeFeed = (TextView) root.findViewById(R.id.timeFeed);
+		timeFeed.setTypeface(roboto_light);
+		timeFeed.setText(Constants.timeFormat.format(cal.getTime()) + "");
+		timeFeed.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Log.d("AddBreast", "right");
-				addBreast(true);
+				Log.d("AddFeed", "timeFeed");
 			}
 		});
 
-		Button close = (Button) root.findViewById(R.id.close);
+		feedML = (EditText) root.findViewById(R.id.feedML);
+		feedML.setTypeface(roboto_light);
+		feedML.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Log.d("AddFeed", "feedML");
+			}
+		});
+
+		feedNames = getResources().getStringArray(R.array.feed_array);
+		feedList = (ListView) root.findViewById(R.id.feedList);
+		feedList.setAdapter(new FeedListAdapter(getActivity(), feedNames));
+
+		ImageButton close = (ImageButton) root.findViewById(R.id.close);
+		RippleDrawable.createRipple(close,
+				getResources().getColor(R.color.mainColor));
 		close.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -77,7 +101,27 @@ public class AddFeedFragment extends Fragment {
 				gotoTimeline();
 			}
 		});
-		
+		ImageButton save = (ImageButton) root.findViewById(R.id.save);
+		RippleDrawable.createRipple(save,
+				getResources().getColor(R.color.mainColor));
+		save.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Log.d("AddFeed", "save");
+				// if (isSelectedRight) {
+				// addBreast(true);
+				// } else if (isSelectedLeft) {
+				// addBreast(false);
+				// } else {
+				// crtnMsg.hide();
+				// crtnMsg.showCrouton(Style.CONFIRM, getActivity()
+				// .getResources().getString(R.string.pleaseselect));
+				// }
+			}
+		});
+
 		return root;
 	}
 
@@ -89,31 +133,31 @@ public class AddFeedFragment extends Fragment {
 		return databaseHelper;
 	}
 
-	private void addBreast(boolean isRight) {
+	private void addFeed() {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				getActivity().getResources().getString(R.string.success));
-		Breast breast = new Breast();
-		breast.setRight(isRight);
-		Calendar cal = Calendar.getInstance();
-		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
-		breast.setBreastTime(cal.getTime());
-		breast.setCreatedDate(cal.getTime());
-		Timeline timeline = new Timeline();
-		timeline.setCreatedDate(Calendar.getInstance().getTime());
-		timeline.setBreast(breast);
+		Feed feed2 = new Feed();
+		Calendar feedCal2 = Calendar.getInstance();
+		feed2.setCreatedDate(feedCal2.getTime());
+		feed2.setAmount(3);
+		feed2.setFeedName("Жимс");
+
+		Timeline timelineFeed2 = new Timeline();
+		timelineFeed2.setFeed(feed2);
+		timelineFeed2.setCreatedDate(feedCal2.getTime());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timeline);
+			timelineDAO.create(timelineFeed2);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		dateRange.setEndDate(cal.getTime());
+		DateRangeInstance.getInstance().setEndDate(feedCal2.getTime());
 		gotoTimeline();
 	}
-	
-	private void gotoTimeline(){
+
+	private void gotoTimeline() {
 		TimelineFragment fragment = new TimelineFragment();
 		FragmentManager fragmentManager = getFragmentManager();
 		fragmentManager
@@ -123,5 +167,28 @@ public class AddFeedFragment extends Fragment {
 						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
 		getActivity().getActionBar().show();
+	}
+
+	public class FeedListAdapter extends ArrayAdapter<String> {
+
+		public FeedListAdapter(Context context, String[] feedNames) {
+			// TODO Auto-generated constructor stub
+			super(context, R.layout.add_feed_item, feedNames);
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			LayoutInflater inflater = LayoutInflater.from(getContext());
+			convertView = inflater.inflate(R.layout.add_feed_item, parent,
+					false);
+			TextView feedName = (TextView) convertView
+					.findViewById(R.id.feedName);
+			ImageView feedIcon = (ImageView) convertView
+					.findViewById(R.id.feedIcon);
+			feedName.setText(feedNames[position] + "");
+			return convertView;
+
+		}
+
 	}
 }

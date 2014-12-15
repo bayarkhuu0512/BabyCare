@@ -52,6 +52,7 @@ import com.mercy.happybaby.ui.health.HealthFragment;
 import com.mercy.happybaby.ui.helpcenter.HelpCenterFragment;
 import com.mercy.happybaby.ui.learn.LearnFragment;
 import com.mercy.happybaby.ui.meal.AddBreastFragment;
+import com.mercy.happybaby.ui.meal.AddFeedFragment;
 import com.mercy.happybaby.ui.meal.MealFragment;
 import com.mercy.happybaby.ui.others.AboutFragment;
 import com.mercy.happybaby.ui.others.ProfileFragment;
@@ -484,42 +485,14 @@ public class MainActivity extends Activity implements
 
 	// Add values
 	public void addBreastOnClick(View v) {
-		Fragment fragment = new AddBreastFragment();
-		FragmentManager fragmentManager = getFragmentManager();
-		fragmentManager
-				.beginTransaction()
-				.setCustomAnimations(R.animator.slide_up,
-						R.animator.slide_down, R.animator.slide_up,
-						R.animator.slide_down)
-				.replace(R.id.content_frame, fragment).commit();
-		getActionBar().hide();
+		gotoAddFragment(new AddBreastFragment());
 	}
 
 	public void extraFoodOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		Feed feed2 = new Feed();
-		Calendar feedCal2 = Calendar.getInstance();
-		feed2.setCreatedDate(feedCal2.getTime());
-		feed2.setAmount(3);
-		feed2.setFeedName("Жимс");
-
-		Timeline timelineFeed2 = new Timeline();
-		timelineFeed2.setFeed(feed2);
-		timelineFeed2.setCreatedDate(feedCal2.getTime());
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timelineFeed2);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		dateRange.setEndDate(feedCal2.getTime());
-
-		gotoFragment();
+		gotoAddFragment(new AddFeedFragment());
 	}
 
+	
 	public void formulaOnClick(View v) {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
@@ -988,6 +961,18 @@ public class MainActivity extends Activity implements
 		dateRange.setEndDate(purchaseCal1.getTime());
 
 		gotoFragment();
+
+	}
+	
+	private void gotoAddFragment(Fragment fragment){
+		FragmentManager fragmentManager = getFragmentManager();
+		fragmentManager
+				.beginTransaction()
+				.setCustomAnimations(R.animator.slide_up,
+						R.animator.slide_down, R.animator.slide_up,
+						R.animator.slide_down)
+				.replace(R.id.content_frame, fragment).commit();
+		getActionBar().hide();
 
 	}
 

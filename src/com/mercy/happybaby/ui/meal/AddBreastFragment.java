@@ -193,6 +193,7 @@ public class AddBreastFragment extends Fragment {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		DateRangeInstance.getInstance().setEndDate(cal.getTime());
 		gotoTimeline();
 	}
 
