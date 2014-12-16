@@ -36,7 +36,24 @@
                 android:textColor="#fff"
                 android:textSize="24sp" />
         </LinearLayout>
+      <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingTop="20dp" >
 
+            <EditText
+                android:id="@+id/tooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:inputType="numberDecimal"
+                android:maxLength="4"
+                android:text="100"
+                android:textColor="#fff"
+                android:textSize="42sp" />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:paddingBottom="50dp" >
+            android:padding="40dp" >
 
             <ImageView
                 android:id="@+id/timeIcon"
@@ -42,29 +42,14 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:paddingBottom="50dp" >
+            android:paddingBottom="80dp"
+            android:paddingTop="20dp" >
 
-            <Button
-                android:id="@+id/breastLeft"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/btn_breast_oval"
-                android:text="@string/breastLeft"
-                android:textColor="#fff"
-                android:textSize="20sp" >
-            </Button>
-
-            <Button
-                android:id="@+id/breastRight"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/btn_breast_oval"
-                android:text="@string/breastRight"
-                android:textColor="#fff"
-                android:textSize="20sp" >
-            </Button>
+            <ListView
+                android:id="@+id/purchaseList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </ListView>
         </LinearLayout>
     </LinearLayout>
 
