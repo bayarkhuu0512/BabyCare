@@ -19,6 +19,7 @@ import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Breast;
+import com.mercy.happybaby.entities.Learn;
 import com.mercy.happybaby.entities.Timeline;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
 import com.mercy.happybaby.utils.DateRangeInstance;
@@ -36,7 +37,7 @@ public class AddLearnFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		View root = inflater.inflate(R.layout.add_breast, container, false);
+		View root = inflater.inflate(R.layout.add_learn, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
@@ -52,7 +53,7 @@ public class AddLearnFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "left");
-				addBreast(false);
+				addLearn(false);
 			}
 		});
 
@@ -63,7 +64,7 @@ public class AddLearnFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "right");
-				addBreast(true);
+				addLearn(true);
 			}
 		});
 
@@ -89,27 +90,26 @@ public class AddLearnFragment extends Fragment {
 		return databaseHelper;
 	}
 
-	private void addBreast(boolean isRight) {
+	private void addLearn(boolean isRight) {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				getActivity().getResources().getString(R.string.success));
-		Breast breast = new Breast();
-		breast.setRight(isRight);
-		Calendar cal = Calendar.getInstance();
-		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
-		breast.setBreastTime(cal.getTime());
-		breast.setCreatedDate(cal.getTime());
-		Timeline timeline = new Timeline();
-		timeline.setCreatedDate(Calendar.getInstance().getTime());
-		timeline.setBreast(breast);
+		Learn learn4 = new Learn();
+		Calendar learnCal4 = Calendar.getInstance();
+		learn4.setCreatedDate(learnCal4.getTime());
+		learn4.setLearnName("Мөлхдөг боллоо");
+
+		Timeline timelineLearn1 = new Timeline();
+		timelineLearn1.setLearn(learn4);
+		timelineLearn1.setCreatedDate(learnCal4.getTime());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timeline);
+			timelineDAO.create(timelineLearn1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		dateRange.setEndDate(cal.getTime());
+		dateRange.setEndDate(learnCal4.getTime());
 		gotoTimeline();
 	}
 	

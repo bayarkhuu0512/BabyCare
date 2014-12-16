@@ -45,22 +45,30 @@ import com.mercy.happybaby.entities.Tooth;
 import com.mercy.happybaby.entities.Vaccine;
 import com.mercy.happybaby.entities.Vitamin;
 import com.mercy.happybaby.ui.activeoperation.ActiveOperationFragment;
+import com.mercy.happybaby.ui.changediaper.AddChangeDiaperFragment;
 import com.mercy.happybaby.ui.changediaper.ChangeDiaperFragment;
 import com.mercy.happybaby.ui.chart.ChartFragment;
 import com.mercy.happybaby.ui.databook.DatabookFragment;
+import com.mercy.happybaby.ui.health.AddHospitalFragment;
+import com.mercy.happybaby.ui.health.AddVaccineFragment;
+import com.mercy.happybaby.ui.health.AddVitaminFragment;
 import com.mercy.happybaby.ui.health.HealthFragment;
 import com.mercy.happybaby.ui.helpcenter.HelpCenterFragment;
+import com.mercy.happybaby.ui.learn.AddLearnFragment;
 import com.mercy.happybaby.ui.learn.LearnFragment;
 import com.mercy.happybaby.ui.meal.AddBreastFragment;
+import com.mercy.happybaby.ui.meal.AddDrinkFragment;
 import com.mercy.happybaby.ui.meal.AddFeedFragment;
 import com.mercy.happybaby.ui.meal.AddFormulaFragment;
 import com.mercy.happybaby.ui.meal.MealFragment;
 import com.mercy.happybaby.ui.others.AboutFragment;
 import com.mercy.happybaby.ui.others.ProfileFragment;
 import com.mercy.happybaby.ui.others.SettingsFragment;
+import com.mercy.happybaby.ui.purchase.AddPurchaseFragment;
 import com.mercy.happybaby.ui.purchase.PurchaseFragment;
 import com.mercy.happybaby.ui.timeline.TimelineCreateFragment;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
+import com.mercy.happybaby.ui.tooth.AddToothFragment;
 import com.mercy.happybaby.ui.tooth.ToothFragment;
 import com.mercy.happybaby.utils.Constants;
 import com.mercy.happybaby.utils.DateRangeInstance;
@@ -492,34 +500,13 @@ public class MainActivity extends Activity implements
 	public void extraFoodOnClick(View v) {
 		gotoAddFragment(new AddFeedFragment());
 	}
-	
+
 	public void formulaOnClick(View v) {
 		gotoAddFragment(new AddFormulaFragment());
 	}
 
 	public void drinkOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		Drink drink1 = new Drink();
-		Calendar drinkCal1 = Calendar.getInstance();
-		drink1.setCreatedDate(drinkCal1.getTime());
-		drink1.setDrinkName("Ус");
-		drink1.setMl(250);
-
-		Timeline timelineDrink1 = new Timeline();
-		timelineDrink1.setDrink(drink1);
-		timelineDrink1.setCreatedDate(drinkCal1.getTime());
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timelineDrink1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		dateRange.setEndDate(drinkCal1.getTime());
-
-		gotoFragment();
+		gotoAddFragment(new AddDrinkFragment());
 	}
 
 	public void medcheckOnClick(View v) {
@@ -549,83 +536,15 @@ public class MainActivity extends Activity implements
 	}
 
 	public void hospitalOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		Hospital hospital1 = new Hospital();
-		Calendar hospitalCal1 = Calendar.getInstance();
-		hospital1.setCreatedDate(hospitalCal1.getTime());
-		hospital1.setDiagnosis("Хоолой улайсан");
-		hospital1.setPainName("Халуурсан");
-		hospital1.setHealing("Вит С");
-		hospital1.setDoctorName("Ганаа");
-		hospital1.setHospitalName("Өрхийн эмнэлэг");
-
-		Timeline timelineHospital1 = new Timeline();
-		timelineHospital1.setHospital(hospital1);
-		timelineHospital1.setCreatedDate(hospitalCal1.getTime());
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timelineHospital1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		dateRange.setEndDate(hospitalCal1.getTime());
-
-		gotoFragment();
-
+		gotoAddFragment(new AddHospitalFragment());
 	}
 
 	public void vitaminOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		Vitamin vitamin1 = new Vitamin();
-		Calendar vitaminCal1 = Calendar.getInstance();
-		vitamin1.setCreatedDate(vitaminCal1.getTime());
-		vitamin1.setVitaminName("Д Витамин");
-
-		Timeline timelineVitamin1 = new Timeline();
-		timelineVitamin1.setVitamin(vitamin1);
-		timelineVitamin1.setCreatedDate(vitaminCal1.getTime());
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timelineVitamin1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		dateRange.setEndDate(vitaminCal1.getTime());
-
-		gotoFragment();
+		gotoAddFragment(new AddVitaminFragment());
 	}
 
 	public void vaccineOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		Vaccine vaccine1 = new Vaccine();
-		Calendar vaccineCal1 = Calendar.getInstance();
-		vaccine1.setCreatedDate(vaccineCal1.getTime());
-		vaccine1.setVaccineName("Сүрьэний эсрэг вакцин");
-
-		Timeline timelineVaccine1 = new Timeline();
-		timelineVaccine1.setVaccine(vaccine1);
-		timelineVaccine1.setCreatedDate(vaccineCal1.getTime());
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timelineVaccine1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		dateRange.setEndDate(vaccineCal1.getTime());
-
-		gotoFragment();
-
+		gotoAddFragment(new AddVaccineFragment());
 	}
 
 	public void showerOnClick(View v) {
@@ -812,30 +731,7 @@ public class MainActivity extends Activity implements
 	}
 
 	public void changeDiaperOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		ChangeDiaper changeDiaper1 = new ChangeDiaper();
-		Calendar changeDiaperCal1 = Calendar.getInstance();
-		changeDiaper1.setCreatedDate(changeDiaperCal1.getTime());
-		changeDiaper1.setDirty(1);
-		changeDiaper1.setDry(0);
-		changeDiaper1.setMixed(0);
-		changeDiaper1.setWet(0);
-		changeDiaper1.setDiaperType("Хуурай");
-
-		Timeline timelineChangeDiaper1 = new Timeline();
-		timelineChangeDiaper1.setChangeDiaper(changeDiaper1);
-		timelineChangeDiaper1.setCreatedDate(changeDiaperCal1.getTime());
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timelineChangeDiaper1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		dateRange.setEndDate(changeDiaperCal1.getTime());
-
+		gotoAddFragment(new AddChangeDiaperFragment());
 		gotoFragment();
 
 	}
@@ -867,83 +763,18 @@ public class MainActivity extends Activity implements
 	}
 
 	public void learnOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		Learn learn4 = new Learn();
-		Calendar learnCal4 = Calendar.getInstance();
-		learn4.setCreatedDate(learnCal4.getTime());
-		learn4.setLearnName("Мөлхдөг боллоо");
-
-		Timeline timelineLearn1 = new Timeline();
-		timelineLearn1.setLearn(learn4);
-		timelineLearn1.setCreatedDate(learnCal4.getTime());
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timelineLearn1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		dateRange.setEndDate(learnCal4.getTime());
-
-		gotoFragment();
-
+		gotoAddFragment(new AddLearnFragment());
 	}
 
 	public void toothOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		Tooth tooth2 = new Tooth();
-		Calendar cal2 = Calendar.getInstance();
-		tooth2.setCreatedDate(cal2.getTime());
-		tooth2.setToothNum(5);
-
-		Timeline timelineTooth2 = new Timeline();
-		timelineTooth2.setTooth(tooth2);
-		timelineTooth2.setCreatedDate(cal2.getTime());
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timelineTooth2);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		dateRange.setEndDate(cal2.getTime());
-
-		gotoFragment();
-
+		gotoAddFragment(new AddToothFragment());
 	}
 
 	public void purchaseOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		Purchase purchase1 = new Purchase();
-		Calendar purchaseCal1 = Calendar.getInstance();
-		purchase1.setCreatedDate(purchaseCal1.getTime());
-		purchase1.setPurchaseName("Wakodo сүү");
-		purchase1.setPurchaseAmount(1);
-		purchase1.setPurchasePrice(46000);
-
-		Timeline timelinePurchase1 = new Timeline();
-		timelinePurchase1.setPurchase(purchase1);
-		timelinePurchase1.setCreatedDate(purchaseCal1.getTime());
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timelinePurchase1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		dateRange.setEndDate(purchaseCal1.getTime());
-
-		gotoFragment();
-
+		gotoAddFragment(new AddPurchaseFragment());
 	}
-	
-	private void gotoAddFragment(Fragment fragment){
+
+	private void gotoAddFragment(Fragment fragment) {
 		FragmentManager fragmentManager = getFragmentManager();
 		fragmentManager
 				.beginTransaction()
@@ -954,6 +785,5 @@ public class MainActivity extends Activity implements
 		getActionBar().hide();
 
 	}
-
 
 }

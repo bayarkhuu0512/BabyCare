@@ -20,6 +20,7 @@ import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Breast;
 import com.mercy.happybaby.entities.Timeline;
+import com.mercy.happybaby.entities.Tooth;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
 import com.mercy.happybaby.utils.DateRangeInstance;
 import com.mercy.happybaby.utils.crouton.CroutonMessage;
@@ -36,7 +37,7 @@ public class AddToothFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		View root = inflater.inflate(R.layout.add_breast, container, false);
+		View root = inflater.inflate(R.layout.add_tooth, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
@@ -52,7 +53,7 @@ public class AddToothFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "left");
-				addBreast(false);
+				addTooth(false);
 			}
 		});
 
@@ -63,7 +64,7 @@ public class AddToothFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "right");
-				addBreast(true);
+				addTooth(true);
 			}
 		});
 
@@ -89,27 +90,26 @@ public class AddToothFragment extends Fragment {
 		return databaseHelper;
 	}
 
-	private void addBreast(boolean isRight) {
+	private void addTooth(boolean isRight) {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				getActivity().getResources().getString(R.string.success));
-		Breast breast = new Breast();
-		breast.setRight(isRight);
-		Calendar cal = Calendar.getInstance();
-		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
-		breast.setBreastTime(cal.getTime());
-		breast.setCreatedDate(cal.getTime());
-		Timeline timeline = new Timeline();
-		timeline.setCreatedDate(Calendar.getInstance().getTime());
-		timeline.setBreast(breast);
+		Tooth tooth2 = new Tooth();
+		Calendar cal2 = Calendar.getInstance();
+		tooth2.setCreatedDate(cal2.getTime());
+		tooth2.setToothNum(5);
+
+		Timeline timelineTooth2 = new Timeline();
+		timelineTooth2.setTooth(tooth2);
+		timelineTooth2.setCreatedDate(cal2.getTime());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timeline);
+			timelineDAO.create(timelineTooth2);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		dateRange.setEndDate(cal.getTime());
+		dateRange.setEndDate(cal2.getTime());
 		gotoTimeline();
 	}
 	

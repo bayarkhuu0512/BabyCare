@@ -20,6 +20,8 @@ import android.widget.TextView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
+import com.mercy.happybaby.CalendarDatePickerDialog;
+import com.mercy.happybaby.MainActivity;
 import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Breast;
@@ -32,7 +34,12 @@ import com.mercy.happybaby.utils.crouton.Style;
 
 import dreamers.graphics.RippleDrawable;
 
-public class AddBreastFragment extends Fragment {
+public class AddBreastFragment extends Fragment implements
+		CalendarDatePickerDialog.OnDateSetListener {
+	String LOG_TAG = AddBreastFragment.class.getName();
+
+	private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
+
 	private Button leftBreast, rightBreast;
 	private TextView timeBreast;
 	private CroutonMessage crtnMsg = null;
@@ -51,6 +58,7 @@ public class AddBreastFragment extends Fragment {
 		// Inflate the layout for this fragment
 		View root = inflater.inflate(R.layout.add_breast, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
+
 		try {
 			timelineDAO = getHelper().getTimelineDao();
 		} catch (SQLException e) {
@@ -67,6 +75,13 @@ public class AddBreastFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "timeBreast");
+				FragmentManager fm = getFragmentManager();
+				Calendar c = Calendar.getInstance();
+				CalendarDatePickerDialog calendarDatePickerDialog = CalendarDatePickerDialog
+						.newInstance(getActivity(), c.get(Calendar.YEAR),
+								c.get(Calendar.MONTH),
+								c.get(Calendar.DAY_OF_MONTH));
+				calendarDatePickerDialog.show(fm, FRAG_TAG_DATE_PICKER);
 			}
 		});
 
@@ -164,6 +179,28 @@ public class AddBreastFragment extends Fragment {
 		});
 
 		return root;
+	}
+
+	@Override
+	public void onDateSet(CalendarDatePickerDialog dialog, int year,
+			int monthOfYear, int dayOfMonth) {
+		// TODO Auto-generated method stub
+		Log.d(LOG_TAG, "Year: " + year + "\nMonth: " + monthOfYear + "\nDay: "
+				+ dayOfMonth);
+		Calendar c = Calendar.getInstance();
+		c.set(year, monthOfYear, dayOfMonth);
+		dateRange.setStartDate(c.getTime());
+	}
+
+	@Override
+	public void onResume() {
+		// Example of reattaching to the fragment
+		super.onResume();
+		CalendarDatePickerDialog calendarDatePickerDialog = (CalendarDatePickerDialog) getFragmentManager()
+				.findFragmentByTag(FRAG_TAG_DATE_PICKER);
+		if (calendarDatePickerDialog != null) {
+			calendarDatePickerDialog.setOnDateSetListener(this);
+		}
 	}
 
 	private DatabaseHelper getHelper() {

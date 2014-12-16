@@ -1,33 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/entity_breast"
+    android:background="@color/entity_tooth"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/timeBreast"
-        android:layout_width="wrap_content"
-        android:text="Change Date"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/breastLeft"
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingBottom="50dp" >
+
+            <ImageView
+                android:id="@+id/timeIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/ic_access_time_white_24dp" />
+
+            <TextView
+                android:id="@+id/timeTooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:clickable="true"
+                android:paddingLeft="5dp"
+                android:text="Change Date"
+                android:textColor="#fff"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingBottom="50dp" >
+
+            <Button
+                android:id="@+id/breastLeft"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_breast_oval"
+                android:text="@string/breastLeft"
+                android:textColor="#fff"
+                android:textSize="20sp" >
+            </Button>
+
+            <Button
+                android:id="@+id/breastRight"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_breast_oval"
+                android:text="@string/breastRight"
+                android:textColor="#fff"
+                android:textSize="20sp" >
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Left" >
-    </Button>
-    <Button
-        android:id="@+id/breastRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Right" >
-    </Button>
-    <Button
-        android:id="@+id/close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Close" >
-    </Button>
-    
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="2" >
+
+        <ImageButton
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/entity_tooth"
+            android:padding="10dp"
+            android:src="@drawable/ic_close_white_36dp" >
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/entity_tooth"
+            android:padding="10dp"
+            android:src="@drawable/ic_check_white_36dp" >
+        </ImageButton>
+    </LinearLayout>
+
+</RelativeLayout>

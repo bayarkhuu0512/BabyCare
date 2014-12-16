@@ -19,6 +19,7 @@ import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Breast;
+import com.mercy.happybaby.entities.Hospital;
 import com.mercy.happybaby.entities.Timeline;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
 import com.mercy.happybaby.utils.DateRangeInstance;
@@ -36,7 +37,7 @@ public class AddHospitalFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		View root = inflater.inflate(R.layout.add_formula, container, false);
+		View root = inflater.inflate(R.layout.add_hospital, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
@@ -52,7 +53,7 @@ public class AddHospitalFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "left");
-				addBreast(false);
+				addHospital(false);
 			}
 		});
 
@@ -63,7 +64,7 @@ public class AddHospitalFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "right");
-				addBreast(true);
+				addHospital(true);
 			}
 		});
 
@@ -89,27 +90,31 @@ public class AddHospitalFragment extends Fragment {
 		return databaseHelper;
 	}
 
-	private void addBreast(boolean isRight) {
+	private void addHospital(boolean isRight) {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				getActivity().getResources().getString(R.string.success));
-		Breast breast = new Breast();
-		breast.setRight(isRight);
-		Calendar cal = Calendar.getInstance();
-		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
-		breast.setBreastTime(cal.getTime());
-		breast.setCreatedDate(cal.getTime());
-		Timeline timeline = new Timeline();
-		timeline.setCreatedDate(Calendar.getInstance().getTime());
-		timeline.setBreast(breast);
+		Hospital hospital1 = new Hospital();
+		Calendar hospitalCal1 = Calendar.getInstance();
+		hospital1.setCreatedDate(hospitalCal1.getTime());
+		hospital1.setDiagnosis("Хоолой улайсан");
+		hospital1.setPainName("Халуурсан");
+		hospital1.setHealing("Вит С");
+		hospital1.setDoctorName("Ганаа");
+		hospital1.setHospitalName("Өрхийн эмнэлэг");
+
+		Timeline timelineHospital1 = new Timeline();
+		timelineHospital1.setHospital(hospital1);
+		timelineHospital1.setCreatedDate(hospitalCal1.getTime());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timeline);
+			timelineDAO.create(timelineHospital1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		dateRange.setEndDate(cal.getTime());
+
+		dateRange.setEndDate(hospitalCal1.getTime());
 		gotoTimeline();
 	}
 	

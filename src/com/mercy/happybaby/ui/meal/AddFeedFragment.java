@@ -189,6 +189,5 @@ public class AddFeedFragment extends Fragment {
 			return convertView;
 
 		}
-
 	}
 }

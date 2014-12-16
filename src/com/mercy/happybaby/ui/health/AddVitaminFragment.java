@@ -20,6 +20,7 @@ import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Breast;
 import com.mercy.happybaby.entities.Timeline;
+import com.mercy.happybaby.entities.Vitamin;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
 import com.mercy.happybaby.utils.DateRangeInstance;
 import com.mercy.happybaby.utils.crouton.CroutonMessage;
@@ -36,7 +37,7 @@ public class AddVitaminFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		View root = inflater.inflate(R.layout.add_formula, container, false);
+		View root = inflater.inflate(R.layout.add_vitamin, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
@@ -52,7 +53,7 @@ public class AddVitaminFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "left");
-				addBreast(false);
+				addVitamin(false);
 			}
 		});
 
@@ -63,7 +64,7 @@ public class AddVitaminFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "right");
-				addBreast(true);
+				addVitamin(true);
 			}
 		});
 
@@ -89,27 +90,26 @@ public class AddVitaminFragment extends Fragment {
 		return databaseHelper;
 	}
 
-	private void addBreast(boolean isRight) {
+	private void addVitamin(boolean isRight) {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				getActivity().getResources().getString(R.string.success));
-		Breast breast = new Breast();
-		breast.setRight(isRight);
-		Calendar cal = Calendar.getInstance();
-		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
-		breast.setBreastTime(cal.getTime());
-		breast.setCreatedDate(cal.getTime());
-		Timeline timeline = new Timeline();
-		timeline.setCreatedDate(Calendar.getInstance().getTime());
-		timeline.setBreast(breast);
+		Vitamin vitamin1 = new Vitamin();
+		Calendar vitaminCal1 = Calendar.getInstance();
+		vitamin1.setCreatedDate(vitaminCal1.getTime());
+		vitamin1.setVitaminName("Д Витамин");
+
+		Timeline timelineVitamin1 = new Timeline();
+		timelineVitamin1.setVitamin(vitamin1);
+		timelineVitamin1.setCreatedDate(vitaminCal1.getTime());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timeline);
+			timelineDAO.create(timelineVitamin1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		dateRange.setEndDate(cal.getTime());
+		dateRange.setEndDate(vitaminCal1.getTime());
 		gotoTimeline();
 	}
 	

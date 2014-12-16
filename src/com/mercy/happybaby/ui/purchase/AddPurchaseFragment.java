@@ -19,6 +19,7 @@ import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Breast;
+import com.mercy.happybaby.entities.Purchase;
 import com.mercy.happybaby.entities.Timeline;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
 import com.mercy.happybaby.utils.DateRangeInstance;
@@ -36,7 +37,7 @@ public class AddPurchaseFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		View root = inflater.inflate(R.layout.add_breast, container, false);
+		View root = inflater.inflate(R.layout.add_purchase, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
@@ -52,7 +53,7 @@ public class AddPurchaseFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "left");
-				addBreast(false);
+				addPurchase(false);
 			}
 		});
 
@@ -63,7 +64,7 @@ public class AddPurchaseFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "right");
-				addBreast(true);
+				addPurchase(true);
 			}
 		});
 
@@ -89,27 +90,28 @@ public class AddPurchaseFragment extends Fragment {
 		return databaseHelper;
 	}
 
-	private void addBreast(boolean isRight) {
+	private void addPurchase(boolean isRight) {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				getActivity().getResources().getString(R.string.success));
-		Breast breast = new Breast();
-		breast.setRight(isRight);
-		Calendar cal = Calendar.getInstance();
-		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
-		breast.setBreastTime(cal.getTime());
-		breast.setCreatedDate(cal.getTime());
-		Timeline timeline = new Timeline();
-		timeline.setCreatedDate(Calendar.getInstance().getTime());
-		timeline.setBreast(breast);
+		Purchase purchase1 = new Purchase();
+		Calendar purchaseCal1 = Calendar.getInstance();
+		purchase1.setCreatedDate(purchaseCal1.getTime());
+		purchase1.setPurchaseName("Wakodo сүү");
+		purchase1.setPurchaseAmount(1);
+		purchase1.setPurchasePrice(46000);
+
+		Timeline timelinePurchase1 = new Timeline();
+		timelinePurchase1.setPurchase(purchase1);
+		timelinePurchase1.setCreatedDate(purchaseCal1.getTime());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timeline);
+			timelineDAO.create(timelinePurchase1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		dateRange.setEndDate(cal.getTime());
+		dateRange.setEndDate(purchaseCal1.getTime());
 		gotoTimeline();
 	}
 	

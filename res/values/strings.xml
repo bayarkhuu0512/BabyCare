@@ -31,11 +31,23 @@
         <item>Каш</item>
         <item>Ногооны зутан</item>
         <item>Тараг</item>
-             <item>Бантан</item>
+        <item>Бантан</item>
         <item>Төмсний нухаш</item>
         <item>Каш</item>
         <item>Ногооны зутан</item>
         <item>Тараг</item>
+    </string-array>
+    <string-array name="drink_array">
+        <item>Цэвэр ус</item>
+        <item>Сүү</item>
+        <item>Ундаа</item>
+        <item>Цай</item>
+        <item>Жимсний шүүс</item>
+        <item>Цэвэр ус</item>
+        <item>Сүү</item>
+        <item>Ундаа</item>
+        <item>Цай</item>
+        <item>Жимсний шүүс</item>
     </string-array>
 
     <string name="month">сар</string>
@@ -91,5 +103,12 @@
     <!-- Add -->
     <string name="breastLeft">Зүүн</string>
     <string name="breastRight">Баруун</string>
+    
+    <!-- Chart -->
+    <string name="feedNum">Хооллолтын тоо</string>
+    <string name="weightHeightLine">Жин өндрийн</string>
+    <string name="heightAgeLine">Өндөр насны</string>
+    <string name="weightAgeLine">Жин насны</string>
+    
 
 </resources>

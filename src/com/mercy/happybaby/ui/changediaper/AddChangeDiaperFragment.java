@@ -19,6 +19,7 @@ import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Breast;
+import com.mercy.happybaby.entities.ChangeDiaper;
 import com.mercy.happybaby.entities.Timeline;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
 import com.mercy.happybaby.utils.DateRangeInstance;
@@ -36,7 +37,7 @@ public class AddChangeDiaperFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		View root = inflater.inflate(R.layout.add_breast, container, false);
+		View root = inflater.inflate(R.layout.add_changediaper, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
@@ -93,23 +94,27 @@ public class AddChangeDiaperFragment extends Fragment {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				getActivity().getResources().getString(R.string.success));
-		Breast breast = new Breast();
-		breast.setRight(isRight);
-		Calendar cal = Calendar.getInstance();
-		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
-		breast.setBreastTime(cal.getTime());
-		breast.setCreatedDate(cal.getTime());
-		Timeline timeline = new Timeline();
-		timeline.setCreatedDate(Calendar.getInstance().getTime());
-		timeline.setBreast(breast);
+		ChangeDiaper changeDiaper1 = new ChangeDiaper();
+		Calendar changeDiaperCal1 = Calendar.getInstance();
+		changeDiaper1.setCreatedDate(changeDiaperCal1.getTime());
+		changeDiaper1.setDirty(1);
+		changeDiaper1.setDry(0);
+		changeDiaper1.setMixed(0);
+		changeDiaper1.setWet(0);
+		changeDiaper1.setDiaperType("Хуурай");
+
+		Timeline timelineChangeDiaper1 = new Timeline();
+		timelineChangeDiaper1.setChangeDiaper(changeDiaper1);
+		timelineChangeDiaper1.setCreatedDate(changeDiaperCal1.getTime());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timeline);
+			timelineDAO.create(timelineChangeDiaper1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		dateRange.setEndDate(cal.getTime());
+		dateRange.setEndDate(changeDiaperCal1.getTime());
+
 		gotoTimeline();
 	}
 	

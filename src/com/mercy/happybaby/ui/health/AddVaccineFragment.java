@@ -20,6 +20,7 @@ import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Breast;
 import com.mercy.happybaby.entities.Timeline;
+import com.mercy.happybaby.entities.Vaccine;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
 import com.mercy.happybaby.utils.DateRangeInstance;
 import com.mercy.happybaby.utils.crouton.CroutonMessage;
@@ -36,7 +37,7 @@ public class AddVaccineFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		View root = inflater.inflate(R.layout.add_formula, container, false);
+		View root = inflater.inflate(R.layout.add_vaccine, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
@@ -52,7 +53,7 @@ public class AddVaccineFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "left");
-				addBreast(false);
+				addVaccine(false);
 			}
 		});
 
@@ -63,7 +64,7 @@ public class AddVaccineFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "right");
-				addBreast(true);
+				addVaccine(true);
 			}
 		});
 
@@ -89,27 +90,27 @@ public class AddVaccineFragment extends Fragment {
 		return databaseHelper;
 	}
 
-	private void addBreast(boolean isRight) {
+	private void addVaccine(boolean isRight) {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				getActivity().getResources().getString(R.string.success));
-		Breast breast = new Breast();
-		breast.setRight(isRight);
-		Calendar cal = Calendar.getInstance();
-		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
-		breast.setBreastTime(cal.getTime());
-		breast.setCreatedDate(cal.getTime());
-		Timeline timeline = new Timeline();
-		timeline.setCreatedDate(Calendar.getInstance().getTime());
-		timeline.setBreast(breast);
+		Vaccine vaccine1 = new Vaccine();
+		Calendar vaccineCal1 = Calendar.getInstance();
+		vaccine1.setCreatedDate(vaccineCal1.getTime());
+		vaccine1.setVaccineName("Сүрьэний эсрэг вакцин");
+
+		Timeline timelineVaccine1 = new Timeline();
+		timelineVaccine1.setVaccine(vaccine1);
+		timelineVaccine1.setCreatedDate(vaccineCal1.getTime());
 		try {
 			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timeline);
+			timelineDAO.create(timelineVaccine1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		dateRange.setEndDate(cal.getTime());
+
+		dateRange.setEndDate(vaccineCal1.getTime());
 		gotoTimeline();
 	}
 	
