@@ -732,8 +732,6 @@ public class MainActivity extends Activity implements
 
 	public void changeDiaperOnClick(View v) {
 		gotoAddFragment(new AddChangeDiaperFragment());
-		gotoFragment();
-
 	}
 
 	public void anniversaryOnClick(View v) {

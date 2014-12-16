@@ -396,10 +396,6 @@ public class ChartFragment extends Fragment {
 		d1.setCircleColor(ColorTemplate.VORDIPLOM_COLORS[0]);
 		ArrayList<LineDataSet> sets = new ArrayList<LineDataSet>();
 		sets.add(d1);
-		
-
-		ArrayList<LineDataSet> sets = new ArrayList<LineDataSet>();
-		sets.add(d1);
 		// 3
 		LineDataSet line3 = new LineDataSet(FileUtils.loadEntriesFromAssets(
 				getActivity().getAssets(), "weight_height_line_3_girl.txt"), "3");
@@ -489,8 +485,7 @@ public class ChartFragment extends Fragment {
 		lineMinus3.setCircleSize(0f);
 		sets.add(lineMinus3);
 		
-		
-		LineData cd = new LineData(getMonths(mGrowthList), sets);
+		LineData cd = new LineData(getMonths(), sets);
 		return cd;
 	}
 	private PieData generateDataBreastPie() {

@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -16,17 +16,17 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:paddingBottom="50dp" >
+            android:padding="40dp" >
 
             <ImageView
-                android:id="@+id/timeIcon"
+                android:id="@+id/dateIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/ic_access_time_white_24dp" />
 
             <TextView
-                android:id="@+id/timeLearn"
+                android:id="@+id/dateLearn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -42,29 +42,14 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:paddingBottom="50dp" >
+            android:paddingBottom="80dp"
+            android:paddingTop="20dp" >
 
-            <Button
-                android:id="@+id/breastLeft"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/btn_breast_oval"
-                android:text="@string/breastLeft"
-                android:textColor="#fff"
-                android:textSize="20sp" >
-            </Button>
-
-            <Button
-                android:id="@+id/breastRight"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/btn_breast_oval"
-                android:text="@string/breastRight"
-                android:textColor="#fff"
-                android:textSize="20sp" >
-            </Button>
+            <ListView
+                android:id="@+id/learnList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </ListView>
         </LinearLayout>
     </LinearLayout>
 

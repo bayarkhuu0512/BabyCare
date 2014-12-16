@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:paddingTop="40dp" >
+            android:padding="40dp" >
 
             <ImageView
                 android:id="@+id/timeIcon"
@@ -42,38 +42,11 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:paddingTop="20dp" >
-
-            <EditText
-                android:id="@+id/drinkML"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:inputType="numberDecimal"
-                android:maxLength="4"
-                android:text="100"
-                android:textColor="#fff"
-                android:textSize="42sp" />
-
-            <TextView
-                android:id="@+id/drinkMLLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="мл"
-                android:textColor="#fff"
-                android:textSize="32sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
             android:paddingBottom="80dp"
             android:paddingTop="20dp" >
 
             <ListView
-                android:id="@+id/drinkList"
+                android:id="@+id/vitaminList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
             </ListView>

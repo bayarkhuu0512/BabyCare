@@ -27,12 +27,12 @@
     <color name="entity_medcheck">#259b24</color>
     <color name="entity_hospital">#8bc34a</color>
     <color name="entity_vitamin">#cddc39</color>
-    <color name="entity_vaccine">#b2ff59</color>
+    <color name="entity_vaccine">#DCE775</color>
     <color name="entity_ao_shower">#3f51b5</color>
     <color name="entity_ao_sleep">#5677fc</color>
     <color name="entity_ao_play">#03a9f4</color>
     <color name="entity_ao_out">#00bcd4</color>
-    <color name="entity_ao_massage">#18ffff</color>
+    <color name="entity_ao_massage">#40c4ff</color>
     <color name="entity_ao_ear">#00bcd4</color>
     <color name="entity_ao_nose">#5677fc</color>
     <color name="entity_changediaper">#7c4dff</color>

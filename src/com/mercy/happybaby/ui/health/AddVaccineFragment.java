@@ -5,37 +5,52 @@ import java.util.Calendar;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
-import com.mercy.happybaby.entities.Breast;
 import com.mercy.happybaby.entities.Timeline;
 import com.mercy.happybaby.entities.Vaccine;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
-import com.mercy.happybaby.utils.DateRangeInstance;
+import com.mercy.happybaby.utils.Constants;
 import com.mercy.happybaby.utils.crouton.CroutonMessage;
 import com.mercy.happybaby.utils.crouton.Style;
 
+import dreamers.graphics.RippleDrawable;
+
 public class AddVaccineFragment extends Fragment {
-	Button leftBreast, rightBreast;
+	String LOG_TAG = AddVaccineFragment.class.getName();
+
+	private TextView dateVaccine;
+	private ListView vaccineList;
+	private String[] vaccineNames;
+
 	private CroutonMessage crtnMsg = null;
 	private Dao<Timeline, Integer> timelineDAO;
 	private DatabaseHelper databaseHelper = null;
-	DateRangeInstance dateRange = DateRangeInstance.getInstance();
+	Calendar cal = Calendar.getInstance();
+	private Typeface roboto_light;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		roboto_light = Typeface.createFromAsset(getActivity().getAssets(),
+				Constants.ROBOTO_LIGHT);
+		
 		// Inflate the layout for this fragment
 		View root = inflater.inflate(R.layout.add_vaccine, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
@@ -45,40 +60,55 @@ public class AddVaccineFragment extends Fragment {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		Button leftBreast = (Button) root.findViewById(R.id.breastLeft);
-		leftBreast.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Log.d("AddBreast", "left");
-				addVaccine(false);
-			}
-		});
-
-		Button rightBreast = (Button) root.findViewById(R.id.breastRight);
-		rightBreast.setOnClickListener(new OnClickListener() {
+		dateVaccine = (TextView) root.findViewById(R.id.dateVaccine);
+		dateVaccine.setTypeface(roboto_light);
+		dateVaccine.setText(Constants.timeFormat.format(cal.getTime()) + "");
+		dateVaccine.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Log.d("AddBreast", "right");
-				addVaccine(true);
+				Log.d(LOG_TAG, "timeFeed");
 			}
 		});
 
-		Button close = (Button) root.findViewById(R.id.close);
+		vaccineNames = getResources().getStringArray(R.array.vaccine_array);
+		vaccineList = (ListView) root.findViewById(R.id.vaccineList);
+		vaccineList.setAdapter(new VaccineListAdapter(getActivity(), vaccineNames));
+
+		ImageButton close = (ImageButton) root.findViewById(R.id.close);
+		RippleDrawable.createRipple(close,
+				getResources().getColor(R.color.mainColor));
 		close.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Log.d("AddBreast", "close");
+				Log.d(LOG_TAG, "close");
 				gotoTimeline();
 			}
 		});
-		
+		ImageButton save = (ImageButton) root.findViewById(R.id.save);
+		RippleDrawable.createRipple(save,
+				getResources().getColor(R.color.mainColor));
+		save.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Log.d(LOG_TAG, "save");
+				// if (isSelectedRight) {
+				// addBreast(true);
+				// } else if (isSelectedLeft) {
+				// addBreast(false);
+				// } else {
+				// crtnMsg.hide();
+				// crtnMsg.showCrouton(Style.CONFIRM, getActivity()
+				// .getResources().getString(R.string.pleaseselect));
+				// }
+			}
+		});
+
 		return root;
 	}
 
@@ -89,7 +119,7 @@ public class AddVaccineFragment extends Fragment {
 		}
 		return databaseHelper;
 	}
-
+	
 	private void addVaccine(boolean isRight) {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
@@ -110,11 +140,11 @@ public class AddVaccineFragment extends Fragment {
 			e.printStackTrace();
 		}
 
-		dateRange.setEndDate(vaccineCal1.getTime());
+		//dateRange.setEndDate(vaccineCal1.getTime());
 		gotoTimeline();
 	}
-	
-	private void gotoTimeline(){
+
+	private void gotoTimeline() {
 		TimelineFragment fragment = new TimelineFragment();
 		FragmentManager fragmentManager = getFragmentManager();
 		fragmentManager
@@ -124,5 +154,27 @@ public class AddVaccineFragment extends Fragment {
 						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
 		getActivity().getActionBar().show();
+	}
+
+	public class VaccineListAdapter extends ArrayAdapter<String> {
+
+		public VaccineListAdapter(Context context, String[] vaccineNames) {
+			// TODO Auto-generated constructor stub
+			super(context, R.layout.add_vaccine_item, vaccineNames);
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			LayoutInflater inflater = LayoutInflater.from(getContext());
+			convertView = inflater.inflate(R.layout.add_vaccine_item, parent,
+					false);
+			TextView vaccineName = (TextView) convertView
+					.findViewById(R.id.vaccineName);
+			ImageView vaccineIcon = (ImageView) convertView
+					.findViewById(R.id.vaccineIcon);
+			vaccineName.setText(vaccineNames[position] + "");
+			return convertView;
+
+		}
 	}
 }

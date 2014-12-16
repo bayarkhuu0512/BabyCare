@@ -18,9 +18,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
-import com.mercy.happybaby.CalendarDatePickerDialog;
 import com.mercy.happybaby.MainActivity;
 import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
@@ -78,8 +78,8 @@ public class AddBreastFragment extends Fragment implements
 				FragmentManager fm = getFragmentManager();
 				Calendar c = Calendar.getInstance();
 				CalendarDatePickerDialog calendarDatePickerDialog = CalendarDatePickerDialog
-						.newInstance(getActivity(), c.get(Calendar.YEAR),
-								c.get(Calendar.MONTH),
+						.newInstance(AddBreastFragment.this,
+								c.get(Calendar.YEAR), c.get(Calendar.MONTH),
 								c.get(Calendar.DAY_OF_MONTH));
 				calendarDatePickerDialog.show(fm, FRAG_TAG_DATE_PICKER);
 			}
@@ -189,7 +189,7 @@ public class AddBreastFragment extends Fragment implements
 				+ dayOfMonth);
 		Calendar c = Calendar.getInstance();
 		c.set(year, monthOfYear, dayOfMonth);
-		dateRange.setStartDate(c.getTime());
+		// dateRange.setStartDate(c.getTime());
 	}
 
 	@Override

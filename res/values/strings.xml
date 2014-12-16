@@ -31,11 +31,6 @@
         <item>Каш</item>
         <item>Ногооны зутан</item>
         <item>Тараг</item>
-        <item>Бантан</item>
-        <item>Төмсний нухаш</item>
-        <item>Каш</item>
-        <item>Ногооны зутан</item>
-        <item>Тараг</item>
     </string-array>
     <string-array name="drink_array">
         <item>Цэвэр ус</item>
@@ -43,11 +38,27 @@
         <item>Ундаа</item>
         <item>Цай</item>
         <item>Жимсний шүүс</item>
-        <item>Цэвэр ус</item>
-        <item>Сүү</item>
-        <item>Ундаа</item>
-        <item>Цай</item>
-        <item>Жимсний шүүс</item>
+    </string-array>
+    <string-array name="vitamin_array">
+        <item>Д витамин</item>
+        <item>А витамин</item>
+        <item>Мульти витамин</item>
+        <item>Кальц</item>
+        <item>Бусад</item>
+    </string-array>
+    <string-array name="vaccine_array">
+        <item>0 сартайд</item>
+        <item>2 сартайд</item>
+        <item>3 сартайд</item>
+        <item>4 сартайд</item>
+        <item>9 сартайд</item>
+    </string-array>
+    <string-array name="learn_array">
+        <item>Гэртээ ирлээ</item>
+        <item>Анхны инээд</item>
+        <item>Алгаа ташлаа</item>
+        <item>Эргэж хөрвөөлөө</item>
+        <item>Суудаг боллоо</item>
     </string-array>
 
     <string name="month">сар</string>
@@ -103,12 +114,17 @@
     <!-- Add -->
     <string name="breastLeft">Зүүн</string>
     <string name="breastRight">Баруун</string>
-    
+
     <!-- Chart -->
     <string name="feedNum">Хооллолтын тоо</string>
     <string name="weightHeightLine">Жин өндрийн</string>
     <string name="heightAgeLine">Өндөр насны</string>
     <string name="weightAgeLine">Жин насны</string>
     
-
+    <!-- Diaper -->
+    <string name="dirty">Баастай</string>
+    <string name="wet">Шээстэй</string>
+    <string name="mixed">Холимог</string>
+    <string name="dry">Хуурай</string>
+    
 </resources>
