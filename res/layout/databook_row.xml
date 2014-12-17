@@ -6,106 +6,115 @@
     android:descendantFocusability="beforeDescendants"
     android:padding="5dp" >
 
-    <com.andexert.library.RippleView
+    <!--
+         <com.andexert.library.RippleView
         android:id="@+id/rippleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        ripple:rv_centered="true" >
+        ripple:rv_centered="true" >    -->
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_background_selector"
+            android:descendantFocusability="afterDescendants"
+            android:orientation="horizontal"
+            android:padding="10dp" >
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/card_background_selector"
-                android:descendantFocusability="afterDescendants"
-                android:orientation="horizontal"
-                android:padding="10dp" >
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                                            android:padding="10dp"
+                    
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="name"
+                        android:textColor="@color/fontFirst"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="type"
+                        android:textColor="@color/fontSecond"
+                        android:textSize="12sp"
+                        android:visibility="visible" />
+                </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:orientation="vertical" >
+                    android:orientation="horizontal" >
 
-                    <RelativeLayout
+                    <TextView
+                        android:id="@+id/address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:id="@+id/first"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:text="First"
-                            android:textColor="@color/fontFirst"
-                            android:textSize="16sp"
-                            android:visibility="gone" />
-
-                        <TextView
-                            android:id="@+id/second"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:padding="10dp"
-                            android:text="Second"
-                            android:textColor="@color/fontSecond"
-                            android:visibility="gone" />
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:id="@+id/third"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:text="Third"
-                            android:textColor="@color/fontSecond"
-                            android:visibility="gone" />
-
-                        <TextView
-                            android:id="@+id/fourth"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:text="Fourth"
-                            android:textColor="@color/fontSecond"
-                            android:visibility="gone" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:id="@+id/fifth"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:text="Fifth"
-                            android:textColor="@color/fontSecond"
-                            android:visibility="gone" />
-
-                        <TextView
-                            android:id="@+id/sixth"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:text="Sixth"
-                            android:textColor="@color/fontSecond"
-                            android:visibility="gone" />
-                    </LinearLayout>
+                        android:padding="10dp"
+                        android:textColor="@color/fontSecond"
+                        android:visibility="gone" />
                 </LinearLayout>
-            </RelativeLayout>
-        </LinearLayout>
-    </com.andexert.library.RippleView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/phone3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:padding="10dp"
+                        android:textColor="@color/fontFirst"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/phone2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:padding="10dp"
+                        android:textColor="@color/fontFirst"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/phone1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:padding="10dp"
+                        android:textColor="@color/fontFirst"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+<!--      </com.andexert.library.RippleView> -->
 
 </LinearLayout>

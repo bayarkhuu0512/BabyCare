@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:paddingBottom="50dp" >
+            android:paddingTop="50dp" >
 
             <ImageView
                 android:id="@+id/timeIcon"
@@ -36,7 +36,8 @@
                 android:textColor="#fff"
                 android:textSize="24sp" />
         </LinearLayout>
-      <LinearLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -49,39 +50,25 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:inputType="numberDecimal"
-                android:maxLength="4"
-                android:text="100"
+                android:maxLength="2"
+                android:text="5"
                 android:textColor="#fff"
                 android:textSize="42sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:paddingBottom="50dp" >
+            android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/breastLeft"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+            <ImageView
+                android:id="@+id/toothChart"
+                android:layout_width="250dp"
+                android:layout_height="260dp"
                 android:layout_margin="10dp"
-                android:background="@drawable/btn_breast_oval"
-                android:text="@string/breastLeft"
-                android:textColor="#fff"
-                android:textSize="20sp" >
-            </Button>
-
-            <Button
-                android:id="@+id/breastRight"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/btn_breast_oval"
-                android:text="@string/breastRight"
-                android:textColor="#fff"
-                android:textSize="20sp" >
-            </Button>
+                android:background="@drawable/teeth_chart" >
+            </ImageView>
         </LinearLayout>
     </LinearLayout>
 

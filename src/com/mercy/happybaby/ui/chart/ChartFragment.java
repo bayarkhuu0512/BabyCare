@@ -89,23 +89,19 @@ public class ChartFragment extends Fragment {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		ArrayList<ChartItem> list = new ArrayList<ChartItem>();
 		if (mBreastList != null) {
 			list.add(new PieChartItem(generateDataBreastPie(), getActivity()));
 		}
-		list.add(new BarChartItem(generateDataBar(), getActivity()));
 
 		if (mGrowthList != null) {
-			list.add(new LineChartItem(weightAgeLine(),
-					getActivity()));
-			list.add(new LineChartItem(heightAgeLine(),
-			getActivity()));
-			list.add(new LineChartItem(weightHeightLine(),
-					getActivity()));
+			list.add(new LineChartItem(weightAgeLine(), getActivity()));
+			list.add(new LineChartItem(heightAgeLine(), getActivity()));
+			// list.add(new LineChartItem(weightHeightLine(),
+			// getActivity()));
 		}
-		
 
+		list.add(new BarChartItem(generateDataBar(), getActivity()));
 		// for (int i = 0; i < 3; i++) {
 		//
 		// if (i % 3 == 0) {
@@ -153,20 +149,21 @@ public class ChartFragment extends Fragment {
 	private LineData weightAgeLine() {
 
 		ArrayList<Entry> e1 = new ArrayList<Entry>();
-
+		Log.d(LOG_TAG,"mGrowthList.size() "+mGrowthList.size());
 		for (int i = 0; i < mGrowthList.size(); i++) {
+			Log.d(LOG_TAG,"mGrowthList i "+mGrowthList.get(i));
 			e1.add(new Entry((int) mGrowthList.get(i).getBabyWeight(), i));
 		}
 		// Baby weight
-		LineDataSet d1 = new LineDataSet(e1, getActivity().getResources().getString(R.string.weightAgeLine));
+		LineDataSet d1 = new LineDataSet(e1, getActivity().getResources()
+				.getString(R.string.weightAgeLine));
 		d1.setLineWidth(2f);
-		d1.setCircleSize(3f);
-		d1.setColor(getActivity().getResources().getColor(
-				R.color.mainColor));
+		d1.setCircleSize(4f);
+		d1.setColor(getActivity().getResources().getColor(R.color.entity_ao_massage));
 		d1.setHighLightColor(getActivity().getResources().getColor(
-				R.color.mainColor));
+				R.color.entity_ao_massage));
 		d1.setCircleColor(getActivity().getResources().getColor(
-				R.color.mainColor));
+				R.color.entity_ao_massage));
 
 		ArrayList<LineDataSet> sets = new ArrayList<LineDataSet>();
 		sets.add(d1);
@@ -174,24 +171,25 @@ public class ChartFragment extends Fragment {
 		LineDataSet line3 = new LineDataSet(FileUtils.loadEntriesFromAssets(
 				getActivity().getAssets(), "weight_age_line_3_girl.txt"), "3");
 		line3.setColor(getActivity().getResources().getColor(
-				R.color.entity_ao_shower));
+				R.color.entity_ao_shower_trns));
 		line3.setCircleColor(getActivity().getResources().getColor(
-				R.color.entity_ao_shower));
+				R.color.entity_ao_shower_trns));
 		line3.setHighLightColor(getActivity().getResources().getColor(
-				R.color.entity_ao_shower));
+				R.color.entity_ao_shower_trns));
+
 		line3.setLineWidth(1f);
 		line3.setCircleSize(0f);
 		sets.add(line3);
-		
+
 		// 2
 		LineDataSet line2 = new LineDataSet(FileUtils.loadEntriesFromAssets(
 				getActivity().getAssets(), "weight_age_line_2_girl.txt"), "2");
 		line2.setColor(getActivity().getResources().getColor(
-				R.color.entity_breast));
+				R.color.entity_breast_trns));
 		line2.setCircleColor(getActivity().getResources().getColor(
-				R.color.entity_breast));
+				R.color.entity_breast_trns));
 		line2.setHighLightColor(getActivity().getResources().getColor(
-				R.color.entity_breast));
+				R.color.entity_breast_trns));
 		line2.setLineWidth(1f);
 		line2.setCircleSize(0f);
 		sets.add(line2);
@@ -200,15 +198,14 @@ public class ChartFragment extends Fragment {
 		LineDataSet line1 = new LineDataSet(FileUtils.loadEntriesFromAssets(
 				getActivity().getAssets(), "weight_age_line_1_girl.txt"), "1");
 		line1.setColor(getActivity().getResources().getColor(
-				R.color.entity_feed));
+				R.color.entity_feed_trns));
 		line1.setCircleColor(getActivity().getResources().getColor(
-				R.color.entity_feed));
+				R.color.entity_feed_trns));
 		line1.setHighLightColor(getActivity().getResources().getColor(
-				R.color.entity_feed));
+				R.color.entity_feed_trns));
 		line1.setLineWidth(1f);
 		line1.setCircleSize(0f);
 		sets.add(line1);
-		
 
 		// 0
 		LineDataSet line0 = new LineDataSet(FileUtils.loadEntriesFromAssets(
@@ -219,42 +216,45 @@ public class ChartFragment extends Fragment {
 		line0.setLineWidth(1f);
 		line0.setCircleSize(0f);
 		sets.add(line0);
-		
+
 		// -1
-		LineDataSet lineMinus1 = new LineDataSet(FileUtils.loadEntriesFromAssets(
-				getActivity().getAssets(), "weight_age_line_minus_1_girl.txt"), "-1");
+		LineDataSet lineMinus1 = new LineDataSet(
+				FileUtils.loadEntriesFromAssets(getActivity().getAssets(),
+						"weight_age_line_minus_1_girl.txt"), "-1");
 		lineMinus1.setColor(getActivity().getResources().getColor(
-				R.color.entity_feed));
+				R.color.entity_feed_trns));
 		lineMinus1.setCircleColor(getActivity().getResources().getColor(
-				R.color.entity_feed));
+				R.color.entity_feed_trns));
 		lineMinus1.setHighLightColor(getActivity().getResources().getColor(
-				R.color.entity_feed));
+				R.color.entity_feed_trns));
 		lineMinus1.setLineWidth(1f);
 		lineMinus1.setCircleSize(0f);
 		sets.add(lineMinus1);
-		
+
 		// -2
-		LineDataSet lineMinus2 = new LineDataSet(FileUtils.loadEntriesFromAssets(
-				getActivity().getAssets(), "weight_age_line_minus_2_girl.txt"), "-2");
+		LineDataSet lineMinus2 = new LineDataSet(
+				FileUtils.loadEntriesFromAssets(getActivity().getAssets(),
+						"weight_age_line_minus_2_girl.txt"), "-2");
 		lineMinus2.setColor(getActivity().getResources().getColor(
-				R.color.entity_breast));
+				R.color.entity_breast_trns));
 		lineMinus2.setCircleColor(getActivity().getResources().getColor(
-				R.color.entity_breast));
+				R.color.entity_breast_trns));
 		lineMinus2.setHighLightColor(getActivity().getResources().getColor(
-				R.color.entity_breast));
+				R.color.entity_breast_trns));
 		lineMinus2.setLineWidth(1f);
 		lineMinus2.setCircleSize(0f);
 		sets.add(lineMinus2);
-		
+
 		// -3
-		LineDataSet lineMinus3 = new LineDataSet(FileUtils.loadEntriesFromAssets(
-				getActivity().getAssets(), "weight_age_line_minus_3_girl.txt"), "-3");
+		LineDataSet lineMinus3 = new LineDataSet(
+				FileUtils.loadEntriesFromAssets(getActivity().getAssets(),
+						"weight_age_line_minus_3_girl.txt"), "-3");
 		lineMinus3.setColor(getActivity().getResources().getColor(
-				R.color.entity_ao_shower));
+				R.color.entity_ao_shower_trns));
 		lineMinus3.setCircleColor(getActivity().getResources().getColor(
-				R.color.entity_ao_shower));
+				R.color.entity_ao_shower_trns));
 		lineMinus3.setHighLightColor(getActivity().getResources().getColor(
-				R.color.entity_ao_shower));
+				R.color.entity_ao_shower_trns));
 		lineMinus3.setLineWidth(1f);
 		lineMinus3.setCircleSize(0f);
 		sets.add(lineMinus3);
@@ -271,15 +271,14 @@ public class ChartFragment extends Fragment {
 			e1.add(new Entry((int) mGrowthList.get(i).getBabyHeight(), i));
 		}
 		// Baby weight
-		LineDataSet d1 = new LineDataSet(e1, getActivity().getResources().getString(R.string.heightAgeLine));
+		LineDataSet d1 = new LineDataSet(e1, getActivity().getResources()
+				.getString(R.string.heightAgeLine));
 		d1.setLineWidth(2f);
-		d1.setCircleSize(3f);
-		d1.setColor(getActivity().getResources().getColor(
-				R.color.mainColor));
+		d1.setCircleSize(4f);
+		d1.setColor(getActivity().getResources().getColor(R.color.entity_anniversary));
 		d1.setHighLightColor(getActivity().getResources().getColor(
-				R.color.mainColor));
-		d1.setCircleColor(getActivity().getResources().getColor(
-				R.color.mainColor));
+				R.color.entity_anniversary));
+		d1.setCircleColor(getActivity().getResources().getColor(R.color.entity_anniversary));
 
 		ArrayList<LineDataSet> sets = new ArrayList<LineDataSet>();
 		sets.add(d1);
@@ -287,24 +286,24 @@ public class ChartFragment extends Fragment {
 		LineDataSet line3 = new LineDataSet(FileUtils.loadEntriesFromAssets(
 				getActivity().getAssets(), "height_age_line_3_girl.txt"), "3");
 		line3.setColor(getActivity().getResources().getColor(
-				R.color.entity_ao_shower));
+				R.color.entity_ao_shower_trns));
 		line3.setCircleColor(getActivity().getResources().getColor(
-				R.color.entity_ao_shower));
+				R.color.entity_ao_shower_trns));
 		line3.setHighLightColor(getActivity().getResources().getColor(
-				R.color.entity_ao_shower));
+				R.color.entity_ao_shower_trns));
 		line3.setLineWidth(1f);
 		line3.setCircleSize(0f);
 		sets.add(line3);
-		
+
 		// 2
 		LineDataSet line2 = new LineDataSet(FileUtils.loadEntriesFromAssets(
 				getActivity().getAssets(), "height_age_line_2_girl.txt"), "2");
 		line2.setColor(getActivity().getResources().getColor(
-				R.color.entity_breast));
+				R.color.entity_breast_trns));
 		line2.setCircleColor(getActivity().getResources().getColor(
-				R.color.entity_breast));
+				R.color.entity_breast_trns));
 		line2.setHighLightColor(getActivity().getResources().getColor(
-				R.color.entity_breast));
+				R.color.entity_breast_trns));
 		line2.setLineWidth(1f);
 		line2.setCircleSize(0f);
 		sets.add(line2);
@@ -313,15 +312,14 @@ public class ChartFragment extends Fragment {
 		LineDataSet line1 = new LineDataSet(FileUtils.loadEntriesFromAssets(
 				getActivity().getAssets(), "height_age_line_1_girl.txt"), "1");
 		line1.setColor(getActivity().getResources().getColor(
-				R.color.entity_feed));
+				R.color.entity_feed_trns));
 		line1.setCircleColor(getActivity().getResources().getColor(
-				R.color.entity_feed));
+				R.color.entity_feed_trns));
 		line1.setHighLightColor(getActivity().getResources().getColor(
-				R.color.entity_feed));
+				R.color.entity_feed_trns));
 		line1.setLineWidth(1f);
 		line1.setCircleSize(0f);
 		sets.add(line1);
-		
 
 		// 0
 		LineDataSet line0 = new LineDataSet(FileUtils.loadEntriesFromAssets(
@@ -332,42 +330,45 @@ public class ChartFragment extends Fragment {
 		line0.setLineWidth(1f);
 		line0.setCircleSize(0f);
 		sets.add(line0);
-		
+
 		// -1
-		LineDataSet lineMinus1 = new LineDataSet(FileUtils.loadEntriesFromAssets(
-				getActivity().getAssets(), "height_age_line_minus_1_girl.txt"), "-1");
+		LineDataSet lineMinus1 = new LineDataSet(
+				FileUtils.loadEntriesFromAssets(getActivity().getAssets(),
+						"height_age_line_minus_1_girl.txt"), "-1");
 		lineMinus1.setColor(getActivity().getResources().getColor(
-				R.color.entity_feed));
+				R.color.entity_feed_trns));
 		lineMinus1.setCircleColor(getActivity().getResources().getColor(
-				R.color.entity_feed));
+				R.color.entity_feed_trns));
 		lineMinus1.setHighLightColor(getActivity().getResources().getColor(
-				R.color.entity_feed));
+				R.color.entity_feed_trns));
 		lineMinus1.setLineWidth(1f);
 		lineMinus1.setCircleSize(0f);
 		sets.add(lineMinus1);
-		
+
 		// -2
-		LineDataSet lineMinus2 = new LineDataSet(FileUtils.loadEntriesFromAssets(
-				getActivity().getAssets(), "height_age_line_minus_2_girl.txt"), "-2");
+		LineDataSet lineMinus2 = new LineDataSet(
+				FileUtils.loadEntriesFromAssets(getActivity().getAssets(),
+						"height_age_line_minus_2_girl.txt"), "-2");
 		lineMinus2.setColor(getActivity().getResources().getColor(
-				R.color.entity_breast));
+				R.color.entity_breast_trns));
 		lineMinus2.setCircleColor(getActivity().getResources().getColor(
-				R.color.entity_breast));
+				R.color.entity_breast_trns));
 		lineMinus2.setHighLightColor(getActivity().getResources().getColor(
-				R.color.entity_breast));
+				R.color.entity_breast_trns));
 		lineMinus2.setLineWidth(1f);
 		lineMinus2.setCircleSize(0f);
 		sets.add(lineMinus2);
-		
+
 		// -3
-		LineDataSet lineMinus3 = new LineDataSet(FileUtils.loadEntriesFromAssets(
-				getActivity().getAssets(), "height_age_line_minus_3_girl.txt"), "-3");
+		LineDataSet lineMinus3 = new LineDataSet(
+				FileUtils.loadEntriesFromAssets(getActivity().getAssets(),
+						"height_age_line_minus_3_girl.txt"), "-3");
 		lineMinus3.setColor(getActivity().getResources().getColor(
-				R.color.entity_ao_shower));
+				R.color.entity_ao_shower_trns));
 		lineMinus3.setCircleColor(getActivity().getResources().getColor(
-				R.color.entity_ao_shower));
+				R.color.entity_ao_shower_trns));
 		lineMinus3.setHighLightColor(getActivity().getResources().getColor(
-				R.color.entity_ao_shower));
+				R.color.entity_ao_shower_trns));
 		lineMinus3.setLineWidth(1f);
 		lineMinus3.setCircleSize(0f);
 		sets.add(lineMinus3);
@@ -376,9 +377,6 @@ public class ChartFragment extends Fragment {
 		return cd;
 	}
 
-	
-
-
 	private LineData weightHeightLine() {
 
 		ArrayList<Entry> e1 = new ArrayList<Entry>();
@@ -386,8 +384,9 @@ public class ChartFragment extends Fragment {
 		for (int i = 0; i < mGrowthList.size(); i++) {
 			e1.add(new Entry((int) mGrowthList.get(i).getBabyHeight(), i));
 		}
-		
-		LineDataSet d1 = new LineDataSet(e1, getActivity().getResources().getString(R.string.weightHeightLine));
+
+		LineDataSet d1 = new LineDataSet(e1, getActivity().getResources()
+				.getString(R.string.weightHeightLine));
 		d1.setLineWidth(3f);
 		d1.setCircleSize(5f);
 		d1.setHighLightColor(getActivity().getResources().getColor(
@@ -398,7 +397,8 @@ public class ChartFragment extends Fragment {
 		sets.add(d1);
 		// 3
 		LineDataSet line3 = new LineDataSet(FileUtils.loadEntriesFromAssets(
-				getActivity().getAssets(), "weight_height_line_3_girl.txt"), "3");
+				getActivity().getAssets(), "weight_height_line_3_girl.txt"),
+				"3");
 		line3.setColor(getActivity().getResources().getColor(
 				R.color.entity_ao_shower));
 		line3.setCircleColor(getActivity().getResources().getColor(
@@ -408,10 +408,11 @@ public class ChartFragment extends Fragment {
 		line3.setLineWidth(1f);
 		line3.setCircleSize(0f);
 		sets.add(line3);
-		
+
 		// 2
 		LineDataSet line2 = new LineDataSet(FileUtils.loadEntriesFromAssets(
-				getActivity().getAssets(), "weight_height_line_2_girl.txt"), "2");
+				getActivity().getAssets(), "weight_height_line_2_girl.txt"),
+				"2");
 		line2.setColor(getActivity().getResources().getColor(
 				R.color.entity_breast));
 		line2.setCircleColor(getActivity().getResources().getColor(
@@ -424,7 +425,8 @@ public class ChartFragment extends Fragment {
 
 		// 1
 		LineDataSet line1 = new LineDataSet(FileUtils.loadEntriesFromAssets(
-				getActivity().getAssets(), "weight_height_line_1_girl.txt"), "1");
+				getActivity().getAssets(), "weight_height_line_1_girl.txt"),
+				"1");
 		line1.setColor(getActivity().getResources().getColor(
 				R.color.entity_feed));
 		line1.setCircleColor(getActivity().getResources().getColor(
@@ -434,21 +436,22 @@ public class ChartFragment extends Fragment {
 		line1.setLineWidth(1f);
 		line1.setCircleSize(0f);
 		sets.add(line1);
-		
 
 		// 0
 		LineDataSet line0 = new LineDataSet(FileUtils.loadEntriesFromAssets(
-				getActivity().getAssets(), "weight_height_line_0_girl.txt"), "0");
+				getActivity().getAssets(), "weight_height_line_0_girl.txt"),
+				"0");
 		line0.setColor(ColorTemplate.VORDIPLOM_COLORS[0]);
 		line0.setCircleColor(ColorTemplate.VORDIPLOM_COLORS[0]);
 		line0.setHighLightColor(ColorTemplate.VORDIPLOM_COLORS[0]);
 		line0.setLineWidth(1f);
 		line0.setCircleSize(0f);
 		sets.add(line0);
-		
+
 		// -1
-		LineDataSet lineMinus1 = new LineDataSet(FileUtils.loadEntriesFromAssets(
-				getActivity().getAssets(), "weight_height_line_minus_1_girl.txt"), "-1");
+		LineDataSet lineMinus1 = new LineDataSet(
+				FileUtils.loadEntriesFromAssets(getActivity().getAssets(),
+						"weight_height_line_minus_1_girl.txt"), "-1");
 		lineMinus1.setColor(getActivity().getResources().getColor(
 				R.color.entity_feed));
 		lineMinus1.setCircleColor(getActivity().getResources().getColor(
@@ -458,10 +461,11 @@ public class ChartFragment extends Fragment {
 		lineMinus1.setLineWidth(1f);
 		lineMinus1.setCircleSize(0f);
 		sets.add(lineMinus1);
-		
+
 		// -2
-		LineDataSet lineMinus2 = new LineDataSet(FileUtils.loadEntriesFromAssets(
-				getActivity().getAssets(), "weight_height_line_minus_2_girl.txt"), "-2");
+		LineDataSet lineMinus2 = new LineDataSet(
+				FileUtils.loadEntriesFromAssets(getActivity().getAssets(),
+						"weight_height_line_minus_2_girl.txt"), "-2");
 		lineMinus2.setColor(getActivity().getResources().getColor(
 				R.color.entity_breast));
 		lineMinus2.setCircleColor(getActivity().getResources().getColor(
@@ -471,10 +475,11 @@ public class ChartFragment extends Fragment {
 		lineMinus2.setLineWidth(1f);
 		lineMinus2.setCircleSize(0f);
 		sets.add(lineMinus2);
-		
+
 		// -3
-		LineDataSet lineMinus3 = new LineDataSet(FileUtils.loadEntriesFromAssets(
-				getActivity().getAssets(), "weight_height_line_minus_3_girl.txt"), "-3");
+		LineDataSet lineMinus3 = new LineDataSet(
+				FileUtils.loadEntriesFromAssets(getActivity().getAssets(),
+						"weight_height_line_minus_3_girl.txt"), "-3");
 		lineMinus3.setColor(getActivity().getResources().getColor(
 				R.color.entity_ao_shower));
 		lineMinus3.setCircleColor(getActivity().getResources().getColor(
@@ -484,10 +489,11 @@ public class ChartFragment extends Fragment {
 		lineMinus3.setLineWidth(1f);
 		lineMinus3.setCircleSize(0f);
 		sets.add(lineMinus3);
-		
+
 		LineData cd = new LineData(getMonths(), sets);
 		return cd;
 	}
+
 	private PieData generateDataBreastPie() {
 
 		ArrayList<Entry> entries = new ArrayList<Entry>();
@@ -530,8 +536,9 @@ public class ChartFragment extends Fragment {
 		for (int i = 0; i < 12; i++) {
 			entries.add(new BarEntry((int) (Math.random() * 70) + 30, i));
 		}
-		
-		BarDataSet d = new BarDataSet(entries, getActivity().getResources().getString(R.string.feedNum));
+
+		BarDataSet d = new BarDataSet(entries, getActivity().getResources()
+				.getString(R.string.feedNum));
 		d.setBarSpacePercent(20f);
 		int[] VORDIPLOM_COLORS = {
 				getActivity().getResources().getColor(R.color.entity_breast),

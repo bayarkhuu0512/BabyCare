@@ -147,7 +147,7 @@ public class AddBreastFragment extends Fragment implements
 
 		ImageButton close = (ImageButton) root.findViewById(R.id.close);
 		RippleDrawable.createRipple(close,
-				getResources().getColor(R.color.mainColor));
+				getResources().getColor(android.R.color.white));
 		close.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -159,7 +159,7 @@ public class AddBreastFragment extends Fragment implements
 		});
 		ImageButton save = (ImageButton) root.findViewById(R.id.save);
 		RippleDrawable.createRipple(save,
-				getResources().getColor(R.color.mainColor));
+				getResources().getColor(android.R.color.white));
 		save.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -243,6 +243,7 @@ public class AddBreastFragment extends Fragment implements
 						R.animator.slide_down, R.animator.slide_up,
 						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
+		getActivity().setTitle(getActivity().getTitle());
 		getActivity().getActionBar().show();
 	}
 }

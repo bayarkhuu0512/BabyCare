@@ -2,55 +2,73 @@
     "databook": [
         {
                 "id": "1",
-                "name": "Гурван гал эмнэлэг",
-                "type": "womenseho",
+                "name": "Гурван гал Эмнэлэг",
+                "type": "Эмэгтэйчүүд эхо",
                 "address": "БГД, 1-р хороо,Эх нялхсын урд талд",
-                "phonenumber1": "+976 70113344",
+                "phonenumber1": "70113344",
                 "phonenumber2": "",
                 "phonenumber3": ""
         },
         {
                 "id": "2",
                 "name": "Тод Дэлгэц Эмнэлэг",
-                "type": "womenseho",
+                "type": "Эмэгтэйчүүд эхо",
                 "address": "БГД, 17-р хороо, 73-р байр, 1 давх, (Эрүүл мэндийн 7-р төвийн урд)",
-                "phonenumber1": "+976 99860457",
-                "phonenumber2": "+976 99082233",
-                "phonenumber3": "+976 88302616"
+                "phonenumber1": "99860457",
+                "phonenumber2": "99082233",
+                "phonenumber3": "88302616"
         },      
         {
                 "id": "3",
                 "name": "Төгс Ялгуун Эмнэлэг",
-                "type": "womenseho",
+                "type": "Эмэгтэйчүүд эхо",
                 "address": "БГД 25-р ээмийн сангийн автобусны буудлын замын урд",
-				    "phonenumber1": "+976 99040405",
+				    "phonenumber1": "99040405",
 				    "phonenumber2": "",
                     "phonenumber3": ""
         },        
         {
                 "id": "4",
                 "name": "Баянгол Эмнэлэг",
-                "type": "womenseho",
+                "type": "Эмэгтэйчүүд эхо",
                 "address": "БГД, 11-р хороо, 3-р хор-л, Эх нялхасын гуд, (Эх нялхасын төвийн баруун талд)",
-                    "phonenumber1": "+976 305903",
-                    "phonenumber2": "+976 91013004",
+                    "phonenumber1": "305903",
+                    "phonenumber2": "91013004",
                     "phonenumber3": ""
         },
              {
                 "id": "5",
                 "name": "Асэ Эмнэлэг",
-                "type": "womenseho",
+                "type": "Эмэгтэйчүүд эхо",
                 "address": "БГД, 12-р хороо, 6-р хор-л, Хасбаатарын гуд, 1 давх, (Сайхан төвийн хойно /хуучнаар/ Mass Club-н хойно)",
-                "phonenumber1": "+976 361643",
+                "phonenumber1": "361643",
                 "phonenumber2": "",
                 "phonenumber3": ""
         },
         {
                 "id": "6",
                 "name": "Анхлан Бэби",
-                "type": "childrenhospital",
+                "type": "Хүүхдийн эмнэлэг",
                 "address": "",
-                    "phonenumber1": "+976 324416",
+                    "phonenumber1": "324416",
+                    "phonenumber2": "",
+                    "phonenumber3": ""
+        },
+        {
+                "id": "7",
+                "name": "Дамдинсүрэн",
+                "type": "Бариач",
+                "address": "Төмөр замд байдаг бариач",
+                    "phonenumber1": "21-245036",
+                    "phonenumber2": "21-252566",
+                    "phonenumber3": ""
+        },
+        {
+                "id": "8",
+                "name": "Гавьяат Эмч Баяраа",
+                "type": "Хүүхдийн эмч",
+                "address": "Сансар Кабель телезийн хажууд Монзакура эмнэлгийн 2 давхарт",
+                    "phonenumber1": "99732813",
                     "phonenumber2": "",
                     "phonenumber3": ""
         }

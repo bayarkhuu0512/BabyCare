@@ -63,20 +63,20 @@
                 android:orientation="horizontal" >
 
                 <ImageButton
-                    android:id="@+id/medcheck"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:background="@color/entity_medcheck"
-                    android:onClick="medcheckOnClick"
-                    android:src="@drawable/icon_medcheck" />
-
-                <ImageButton
                     android:id="@+id/hospital"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:background="@color/entity_hospital"
                     android:onClick="hospitalOnClick"
                     android:src="@drawable/icon_gohospital" />
+
+                <ImageButton
+                    android:id="@+id/medcheck"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_medcheck"
+                    android:onClick="medcheckOnClick"
+                    android:src="@drawable/icon_medcheck" />
 
                 <ImageButton
                     android:id="@+id/vitamin"

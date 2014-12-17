@@ -24,8 +24,8 @@
     <color name="entity_feed">#ff9800</color>
     <color name="entity_formula">#ffc107</color>
     <color name="entity_drink">#ffeb3b</color>
-    <color name="entity_medcheck">#259b24</color>
-    <color name="entity_hospital">#8bc34a</color>
+    <color name="entity_medcheck">#8bc34a</color>
+    <color name="entity_hospital">#259b24</color>
     <color name="entity_vitamin">#cddc39</color>
     <color name="entity_vaccine">#DCE775</color>
     <color name="entity_ao_shower">#3f51b5</color>
@@ -53,5 +53,10 @@
     <color name="custom_key_background">#00000000</color>
     <color name="custom_key_background_pressed">#ffcc6600</color>
     <color name="custom_keyboard_indicator_color">#ffcc6600</color>
+
+    <!-- Transparent Chart colors -->
+    <color name="entity_ao_shower_trns">#663f51b5</color>
+    <color name="entity_breast_trns">#66ff5722</color>
+    <color name="entity_feed_trns">#66ff9800</color>
 
 </resources>

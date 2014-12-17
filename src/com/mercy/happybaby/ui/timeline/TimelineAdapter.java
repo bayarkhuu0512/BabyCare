@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -297,25 +298,64 @@ public class TimelineAdapter extends
 			viewHolder.image.setVisibility(View.GONE);
 
 		} else if (timeline.getActiveOperation() != null) {
-			int num = 0;
-			for (int i = 0; i < mList.size(); i++) {
-				if (timeline.getActiveOperation() != null) {
-					num++;
-				}
-			}
+			// int num = 0;
+			// for (int i = 0; i < mList.size(); i++) {
+			// if (timeline.getActiveOperation() != null) {
+			// num++;
+			// }
+			// }
 
-			viewHolder.icon.setBackgroundDrawable(mContext.getResources()
-					.getDrawable(R.drawable.ao_oval));
-			viewHolder.icon.setImageDrawable(mContext.getResources()
-					.getDrawable(R.drawable.icon_bath));
+			Drawable drawIcon = null;
+			Drawable bgIcon = null;
+
+			if (timeline.getActiveOperation().getType() == Constants.ACTIVE_OPERATION_BATH) {
+				drawIcon = mContext.getResources().getDrawable(
+						R.drawable.icon_bath);
+				bgIcon = mContext.getResources()
+						.getDrawable(R.drawable.ao_bath);
+
+			} else if (timeline.getActiveOperation().getType() == Constants.ACTIVE_OPERATION_SLEEP) {
+				drawIcon = mContext.getResources().getDrawable(
+						R.drawable.icon_sleep);
+				bgIcon = mContext.getResources().getDrawable(
+						R.drawable.ao_sleep);
+
+			} else if (timeline.getActiveOperation().getType() == Constants.ACTIVE_OPERATION_PLAY) {
+				drawIcon = mContext.getResources().getDrawable(
+						R.drawable.icon_toy);
+				bgIcon = mContext.getResources().getDrawable(R.drawable.ao_toy);
+
+			} else if (timeline.getActiveOperation().getType() == Constants.ACTIVE_OPERATION_OUT) {
+				drawIcon = mContext.getResources().getDrawable(
+						R.drawable.icon_out);
+				bgIcon = mContext.getResources().getDrawable(R.drawable.ao_out);
+
+			} else if (timeline.getActiveOperation().getType() == Constants.ACTIVE_OPERATION_MASSAGE) {
+				drawIcon = mContext.getResources().getDrawable(
+						R.drawable.icon_massage);
+				bgIcon = mContext.getResources().getDrawable(
+						R.drawable.ao_massage);
+
+			} else if (timeline.getActiveOperation().getType() == Constants.ACTIVE_OPERATION_EAR) {
+				drawIcon = mContext.getResources().getDrawable(
+						R.drawable.icon_ear);
+				bgIcon = mContext.getResources().getDrawable(R.drawable.ao_ear);
+
+			} else {
+				drawIcon = mContext.getResources().getDrawable(
+						R.drawable.icon_nose);
+				bgIcon = mContext.getResources()
+						.getDrawable(R.drawable.ao_nose);
+
+			}
+			viewHolder.icon.setBackgroundDrawable(bgIcon);
+			viewHolder.icon.setImageDrawable(drawIcon);
 
 			viewHolder.mFirst.setVisibility(View.VISIBLE);
 			viewHolder.mFirst.setText(timeline.getActiveOperation()
 					.getActiveName());
-			viewHolder.mSecond.setVisibility(View.VISIBLE);
-			viewHolder.mSecond.setText(num + " "
-					+ mContext.getResources().getString(R.string.num));
 
+			viewHolder.mSecond.setVisibility(View.GONE);
 			viewHolder.mThird.setVisibility(View.GONE);
 			viewHolder.mFourth.setVisibility(View.GONE);
 			viewHolder.mFifth.setVisibility(View.GONE);
@@ -435,10 +475,6 @@ public class TimelineAdapter extends
 			viewHolder.icon.setImageDrawable(mContext.getResources()
 					.getDrawable(R.drawable.icon_teeth));
 
-			viewHolder.image.setBackgroundDrawable(mContext.getResources()
-					.getDrawable(R.drawable.baby_tooth));
-			viewHolder.image.setVisibility(View.VISIBLE);
-
 			viewHolder.mFirst.setVisibility(View.VISIBLE);
 			viewHolder.mFirst.setText(mContext.getResources().getString(
 					R.string.tooth)
@@ -450,6 +486,7 @@ public class TimelineAdapter extends
 			viewHolder.mThird.setText(mContext.getResources().getString(
 					R.string.hooray));
 
+			viewHolder.image.setVisibility(View.GONE);
 			viewHolder.mSecond.setVisibility(View.GONE);
 			viewHolder.mFourth.setVisibility(View.GONE);
 			viewHolder.mFifth.setVisibility(View.GONE);

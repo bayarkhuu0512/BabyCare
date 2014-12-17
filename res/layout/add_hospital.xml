@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:paddingBottom="50dp" >
+            android:paddingTop="50dp" >
 
             <ImageView
                 android:id="@+id/timeIcon"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingBottom="50dp" >
+            android:paddingTop="20dp" >
 
             <EditText
                 android:id="@+id/hospitalName"
@@ -52,7 +52,7 @@
                 android:inputType="text"
                 android:maxLength="40"
                 android:padding="10dp"
-                android:text="Hospital"
+                android:text="@string/hospitalName"
                 android:textColor="#fff"
                 android:textSize="32sp" />
 
@@ -64,7 +64,43 @@
                 android:inputType="text"
                 android:maxLength="40"
                 android:padding="10dp"
-                android:text="Doctor"
+                android:text="@string/doctorName"
+                android:textColor="#fff"
+                android:textSize="32sp" />
+
+            <EditText
+                android:id="@+id/pain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:inputType="text"
+                android:maxLength="40"
+                android:padding="10dp"
+                android:text="@string/pain"
+                android:textColor="#fff"
+                android:textSize="32sp" />
+
+            <EditText
+                android:id="@+id/diagnosis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:inputType="text"
+                android:maxLength="40"
+                android:padding="10dp"
+                android:text="@string/diagnosis"
+                android:textColor="#fff"
+                android:textSize="32sp" />
+
+            <EditText
+                android:id="@+id/healing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:inputType="text"
+                android:maxLength="40"
+                android:padding="10dp"
+                android:text="@string/healing"
                 android:textColor="#fff"
                 android:textSize="32sp" />
         </LinearLayout>

@@ -60,6 +60,11 @@
         <item>Эргэж хөрвөөлөө</item>
         <item>Суудаг боллоо</item>
     </string-array>
+    <string-array name="purchase_array">
+        <item>Нэмэлт сүү</item>
+        <item>Живх</item>
+        <item>Каш</item>
+    </string-array>
 
     <string name="month">сар</string>
     <string name="mon">да</string>
@@ -120,11 +125,21 @@
     <string name="weightHeightLine">Жин өндрийн</string>
     <string name="heightAgeLine">Өндөр насны</string>
     <string name="weightAgeLine">Жин насны</string>
-    
+
     <!-- Diaper -->
     <string name="dirty">Баастай</string>
     <string name="wet">Шээстэй</string>
     <string name="mixed">Холимог</string>
     <string name="dry">Хуурай</string>
-    
+
+    <!-- Hospital -->
+    <string name="hospitalName">Эмнэлэгийн нэр</string>
+    <string name="doctorName">Эмчийн нэр</string>
+    <string name="pain">Зовиур</string>
+    <string name="diagnosis">Онош</string>
+    <string name="healing">Эмчилгээ</string>
+    <!-- Anniversary -->
+    <string name="takePhoto">Зураг авах</string>
+    <string name="choosePhoto">Галлерейгаас Сонгох</string>
+
 </resources>

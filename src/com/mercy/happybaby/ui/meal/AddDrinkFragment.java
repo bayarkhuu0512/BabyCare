@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
@@ -35,7 +36,8 @@ import com.mercy.happybaby.utils.crouton.Style;
 
 import dreamers.graphics.RippleDrawable;
 
-public class AddDrinkFragment extends Fragment {
+public class AddDrinkFragment extends Fragment implements
+		CalendarDatePickerDialog.OnDateSetListener {
 	String LOG_TAG = AddDrinkFragment.class.getName();
 
 	private TextView timeDrink;
@@ -90,7 +92,7 @@ public class AddDrinkFragment extends Fragment {
 
 		ImageButton close = (ImageButton) root.findViewById(R.id.close);
 		RippleDrawable.createRipple(close,
-				getResources().getColor(R.color.mainColor));
+				getResources().getColor(android.R.color.white));
 		close.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -102,7 +104,7 @@ public class AddDrinkFragment extends Fragment {
 		});
 		ImageButton save = (ImageButton) root.findViewById(R.id.save);
 		RippleDrawable.createRipple(save,
-				getResources().getColor(R.color.mainColor));
+				getResources().getColor(android.R.color.white));
 		save.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -165,6 +167,7 @@ public class AddDrinkFragment extends Fragment {
 						R.animator.slide_down, R.animator.slide_up,
 						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
+		getActivity().setTitle(getActivity().getTitle());
 		getActivity().getActionBar().show();
 	}
 

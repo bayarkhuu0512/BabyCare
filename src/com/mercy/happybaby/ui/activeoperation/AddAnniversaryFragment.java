@@ -1,26 +1,30 @@
-package com.mercy.happybaby.ui.changediaper;
+package com.mercy.happybaby.ui.activeoperation;
 
 import java.sql.SQLException;
 import java.util.Calendar;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
+import com.mercy.happybaby.MainActivity;
 import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
-import com.mercy.happybaby.entities.ChangeDiaper;
+import com.mercy.happybaby.entities.Breast;
 import com.mercy.happybaby.entities.Timeline;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
 import com.mercy.happybaby.utils.Constants;
@@ -30,13 +34,13 @@ import com.mercy.happybaby.utils.crouton.Style;
 
 import dreamers.graphics.RippleDrawable;
 
-public class AddChangeDiaperFragment extends Fragment implements
+public class AddAnniversaryFragment extends Fragment implements
 		CalendarDatePickerDialog.OnDateSetListener {
-	String LOG_TAG = AddChangeDiaperFragment.class.getName();
+	String LOG_TAG = AddAnniversaryFragment.class.getName();
 
 	private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
 
-	private TextView timeChangeDiaper;
+	private TextView takePhoto, choosePhoto;
 	private CroutonMessage crtnMsg = null;
 	private Dao<Timeline, Integer> timelineDAO;
 	private DatabaseHelper databaseHelper = null;
@@ -51,8 +55,8 @@ public class AddChangeDiaperFragment extends Fragment implements
 				Constants.ROBOTO_LIGHT);
 
 		// Inflate the layout for this fragment
-		View root = inflater.inflate(R.layout.add_changediaper, container,
-				false);
+		View root = inflater
+				.inflate(R.layout.add_anniversary, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
 
 		try {
@@ -62,23 +66,63 @@ public class AddChangeDiaperFragment extends Fragment implements
 			e.printStackTrace();
 		}
 
-		timeChangeDiaper = (TextView) root.findViewById(R.id.timeChangeDiaper);
-		timeChangeDiaper.setTypeface(roboto_light);
-		timeChangeDiaper.setText(Constants.timeFormat.format(cal.getTime())
-				+ "");
-		timeChangeDiaper.setOnClickListener(new OnClickListener() {
+		takePhoto = (TextView) root.findViewById(R.id.takePhoto);
+		takePhoto.setTypeface(roboto_light);
+		takePhoto.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Log.d("AddBreast", "timeBreast");
-				FragmentManager fm = getFragmentManager();
-				Calendar c = Calendar.getInstance();
-				CalendarDatePickerDialog calendarDatePickerDialog = CalendarDatePickerDialog
-						.newInstance(AddChangeDiaperFragment.this,
-								c.get(Calendar.YEAR), c.get(Calendar.MONTH),
-								c.get(Calendar.DAY_OF_MONTH));
-				calendarDatePickerDialog.show(fm, FRAG_TAG_DATE_PICKER);
+				Log.d("AddBreast", "left");
+				if (isSelectedLeft) {
+					takePhoto.setBackground(getActivity().getResources()
+							.getDrawable(R.drawable.btn_breast_oval));
+					takePhoto.setTextColor(Color.WHITE);
+					isSelectedLeft = false;
+				} else {
+					takePhoto.setBackground(getActivity().getResources()
+							.getDrawable(R.drawable.btn_breast_oval_selected));
+					takePhoto.setTextColor(getActivity().getResources()
+							.getColor(R.color.entity_breast));
+					isSelectedLeft = true;
+
+					isSelectedRight = false;
+					choosePhoto.setBackground(getActivity().getResources()
+							.getDrawable(R.drawable.btn_breast_oval));
+					choosePhoto.setTextColor(Color.WHITE);
+				}
+				// addBreast(false);
+			}
+		});
+
+		choosePhoto = (TextView) root.findViewById(R.id.choosePhoto);
+		choosePhoto.setTypeface(roboto_light);
+		choosePhoto.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Log.d("AddBreast", "right");
+				if (isSelectedRight) {
+					choosePhoto.setBackground(getActivity().getResources()
+							.getDrawable(R.drawable.btn_breast_oval));
+					choosePhoto.setTextColor(Color.WHITE);
+					isSelectedRight = false;
+
+				} else {
+					choosePhoto.setBackground(getActivity().getResources()
+							.getDrawable(R.drawable.btn_breast_oval_selected));
+					choosePhoto.setTextColor(getActivity().getResources()
+							.getColor(R.color.entity_breast));
+					isSelectedRight = true;
+
+					isSelectedLeft = false;
+					takePhoto.setBackground(getActivity().getResources()
+							.getDrawable(R.drawable.btn_breast_oval));
+					takePhoto.setTextColor(Color.WHITE);
+
+				}
+				// addBreast(true);
 			}
 		});
 
@@ -152,21 +196,17 @@ public class AddChangeDiaperFragment extends Fragment implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				getActivity().getResources().getString(R.string.success));
-		ChangeDiaper changeDiaper1 = new ChangeDiaper();
-		Calendar changeDiaperCal1 = Calendar.getInstance();
-		changeDiaper1.setCreatedDate(changeDiaperCal1.getTime());
-		changeDiaper1.setDirty(1);
-		changeDiaper1.setDry(0);
-		changeDiaper1.setMixed(0);
-		changeDiaper1.setWet(0);
-		changeDiaper1.setDiaperType("Хуурай");
-
-		Timeline timelineChangeDiaper1 = new Timeline();
-		timelineChangeDiaper1.setChangeDiaper(changeDiaper1);
-		timelineChangeDiaper1.setCreatedDate(changeDiaperCal1.getTime());
+		Breast breast = new Breast();
+		breast.setRight(isRight);
+		// cal.set(Calendar.MONTH, cal.getTime().getMonth()-1);
+		breast.setBreastTime(cal.getTime());
+		breast.setCreatedDate(cal.getTime());
+		Timeline timeline = new Timeline();
+		timeline.setCreatedDate(Calendar.getInstance().getTime());
+		timeline.setBreast(breast);
 		try {
 			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timelineChangeDiaper1);
+			timelineDAO.create(timeline);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

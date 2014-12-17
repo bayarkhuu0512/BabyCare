@@ -1,4 +1,4 @@
-package com.mercy.happybaby.ui.meal;
+package com.mercy.happybaby.ui.health;
 
 import java.sql.SQLException;
 import java.util.Calendar;
@@ -36,7 +36,7 @@ import com.mercy.happybaby.utils.crouton.Style;
 import dreamers.graphics.RippleDrawable;
 
 public class AddHospitalFragment extends Fragment implements
-		CalendarDatePickerDialog.OnDateSetListener {
+		CalendarTimePicker.OnDateSetListener {
 	String LOG_TAG = AddHospitalFragment.class.getName();
 
 	private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
@@ -77,7 +77,7 @@ public class AddHospitalFragment extends Fragment implements
 				FragmentManager fm = getFragmentManager();
 				Calendar c = Calendar.getInstance();
 				CalendarDatePickerDialog calendarDatePickerDialog = CalendarDatePickerDialog
-						.newInstance(AddBreastFragment.this,
+						.newInstance(AddHospitalFragment.this,
 								c.get(Calendar.YEAR), c.get(Calendar.MONTH),
 								c.get(Calendar.DAY_OF_MONTH));
 				calendarDatePickerDialog.show(fm, FRAG_TAG_DATE_PICKER);
@@ -88,7 +88,7 @@ public class AddHospitalFragment extends Fragment implements
 
 		ImageButton close = (ImageButton) root.findViewById(R.id.close);
 		RippleDrawable.createRipple(close,
-				getResources().getColor(R.color.mainColor));
+				getResources().getColor(android.R.color.white));
 		close.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -100,22 +100,16 @@ public class AddHospitalFragment extends Fragment implements
 		});
 		ImageButton save = (ImageButton) root.findViewById(R.id.save);
 		RippleDrawable.createRipple(save,
-				getResources().getColor(R.color.mainColor));
+				getResources().getColor(android.R.color.white));
 		save.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "save");
-				if (isSelectedRight) {
-					addBreast(true);
-				} else if (isSelectedLeft) {
-					addBreast(false);
-				} else {
 					crtnMsg.hide();
 					crtnMsg.showCrouton(Style.CONFIRM, getActivity()
 							.getResources().getString(R.string.pleaseselect));
-				}
 			}
 		});
 
@@ -189,6 +183,7 @@ public class AddHospitalFragment extends Fragment implements
 						R.animator.slide_down, R.animator.slide_up,
 						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
+		getActivity().setTitle(getActivity().getTitle());
 		getActivity().getActionBar().show();
 	}
 }

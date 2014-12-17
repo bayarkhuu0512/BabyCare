@@ -45,6 +45,7 @@ import com.mercy.happybaby.entities.Tooth;
 import com.mercy.happybaby.entities.Vaccine;
 import com.mercy.happybaby.entities.Vitamin;
 import com.mercy.happybaby.ui.activeoperation.ActiveOperationFragment;
+import com.mercy.happybaby.ui.activeoperation.AddAnniversaryFragment;
 import com.mercy.happybaby.ui.changediaper.AddChangeDiaperFragment;
 import com.mercy.happybaby.ui.changediaper.ChangeDiaperFragment;
 import com.mercy.happybaby.ui.chart.ChartFragment;
@@ -734,28 +735,29 @@ public class MainActivity extends Activity implements
 	}
 
 	public void anniversaryOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		Growth growth10 = new Growth();
-		Calendar growthCal9 = Calendar.getInstance();
-		growth10.setCreatedDate(growthCal9.getTime());
-		growth10.setBabyHeight(72);
-		growth10.setBabyWeight(9300);
-		growth10.setBabyMonth(12);
-		Timeline growthTimeline9 = new Timeline();
-		growthTimeline9.setGrowth(growth10);
-		growthTimeline9.setCreatedDate(growthCal9.getTime());
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(growthTimeline9);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		dateRange.setEndDate(growthCal9.getTime());
+		gotoAddFragment(new AddAnniversaryFragment());
 
-		gotoFragment();
+		// crtnMsg.hide();
+		// crtnMsg.showCrouton(Style.INFO,
+		// context.getResources().getString(R.string.success));
+		// Growth growth10 = new Growth();
+		// Calendar growthCal9 = Calendar.getInstance();
+		// growth10.setCreatedDate(growthCal9.getTime());
+		// growth10.setBabyHeight(72);
+		// growth10.setBabyWeight(9300);
+		// growth10.setBabyMonth(12);
+		// Timeline growthTimeline9 = new Timeline();
+		// growthTimeline9.setGrowth(growth10);
+		// growthTimeline9.setCreatedDate(growthCal9.getTime());
+		// try {
+		// timelineDAO = getHelper().getTimelineDao();
+		// timelineDAO.create(growthTimeline9);
+		// } catch (SQLException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// dateRange.setEndDate(growthCal9.getTime());
+		// gotoFragment();
 
 	}
 

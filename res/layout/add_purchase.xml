@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:inputType="numberDecimal"
-                android:maxLength="4"
+                android:maxLength="7"
                 android:text="40"
                 android:textColor="#fff"
                 android:textSize="42sp" />
@@ -59,7 +59,7 @@
                 android:id="@+id/purchaseLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ш"
+                android:text="₮"
                 android:textColor="#fff"
                 android:textSize="32sp" />
         </LinearLayout>
