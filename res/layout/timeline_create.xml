@@ -54,7 +54,6 @@
                     android:background="@color/entity_drink"
                     android:onClick="drinkOnClick"
                     android:src="@drawable/icon_drink" />
-
             </LinearLayout>
             <!-- Second Row -->
 
@@ -67,32 +66,32 @@
                     android:id="@+id/medcheck"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="medcheckOnClick"
                     android:background="@color/entity_medcheck"
-                    android:src="@drawable/icon_gohospital" />
+                    android:onClick="medcheckOnClick"
+                    android:src="@drawable/icon_medcheck" />
 
                 <ImageButton
                     android:id="@+id/hospital"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="hospitalOnClick"
                     android:background="@color/entity_hospital"
-                    android:src="@drawable/icon_medcheck" />
+                    android:onClick="hospitalOnClick"
+                    android:src="@drawable/icon_gohospital" />
 
                 <ImageButton
                     android:id="@+id/vitamin"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="vitaminOnClick"
                     android:background="@color/entity_vitamin"
+                    android:onClick="vitaminOnClick"
                     android:src="@drawable/icon_vitamin" />
 
                 <ImageButton
                     android:id="@+id/vaccine"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="vaccineOnClick"
                     android:background="@color/entity_vaccine"
+                    android:onClick="vaccineOnClick"
                     android:src="@drawable/icon_vaccine" />
             </LinearLayout>
             <!-- Third Row -->
@@ -106,32 +105,32 @@
                     android:id="@+id/shower"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="showerOnClick"
                     android:background="@color/entity_ao_shower"
+                    android:onClick="showerOnClick"
                     android:src="@drawable/icon_bath" />
 
                 <ImageButton
                     android:id="@+id/sleep"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="sleepOnClick"
                     android:background="@color/entity_ao_sleep"
+                    android:onClick="sleepOnClick"
                     android:src="@drawable/icon_sleep" />
 
                 <ImageButton
                     android:id="@+id/play"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="playOnClick"
                     android:background="@color/entity_ao_play"
+                    android:onClick="playOnClick"
                     android:src="@drawable/icon_toy" />
 
                 <ImageButton
                     android:id="@+id/out"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="outOnClick"
                     android:background="@color/entity_ao_out"
+                    android:onClick="outOnClick"
                     android:src="@drawable/icon_out" />
             </LinearLayout>
             <!-- Fourth Row -->
@@ -145,32 +144,32 @@
                     android:id="@+id/massage"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="massageOnClick"
                     android:background="@color/entity_ao_massage"
+                    android:onClick="massageOnClick"
                     android:src="@drawable/icon_massage" />
 
                 <ImageButton
                     android:id="@+id/ear"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="earOnClick"
                     android:background="@color/entity_ao_ear"
+                    android:onClick="earOnClick"
                     android:src="@drawable/icon_ear" />
 
                 <ImageButton
                     android:id="@+id/nose"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="noseOnClick"
                     android:background="@color/entity_ao_nose"
+                    android:onClick="noseOnClick"
                     android:src="@drawable/icon_nose" />
 
                 <ImageButton
                     android:id="@+id/changediaper"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="changeDiaperOnClick"
                     android:background="@color/entity_changediaper"
+                    android:onClick="changeDiaperOnClick"
                     android:src="@drawable/icon_diaperchange" />
             </LinearLayout>
             <!-- Fifth Row -->
@@ -184,8 +183,8 @@
                     android:id="@+id/anniversary"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="anniversaryOnClick"
                     android:background="@color/entity_anniversary"
+                    android:onClick="anniversaryOnClick"
                     android:src="@drawable/icon_birthmonth" />
 
                 <ImageButton
@@ -200,16 +199,16 @@
                     android:id="@+id/tooth"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="toothOnClick"
                     android:background="@color/entity_tooth"
+                    android:onClick="toothOnClick"
                     android:src="@drawable/icon_teeth" />
 
                 <ImageButton
                     android:id="@+id/purchase"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:onClick="purchaseOnClick"
                     android:background="@color/entity_purchase"
+                    android:onClick="purchaseOnClick"
                     android:src="@drawable/icon_purchase" />
             </LinearLayout>
         </LinearLayout>

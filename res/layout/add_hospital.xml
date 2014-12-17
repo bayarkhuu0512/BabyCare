@@ -41,30 +41,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:paddingBottom="50dp" >
 
-            <Button
-                android:id="@+id/breastLeft"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/btn_breast_oval"
-                android:text="@string/breastLeft"
+            <EditText
+                android:id="@+id/hospitalName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:inputType="text"
+                android:maxLength="40"
+                android:padding="10dp"
+                android:text="Hospital"
                 android:textColor="#fff"
-                android:textSize="20sp" >
-            </Button>
+                android:textSize="32sp" />
 
-            <Button
-                android:id="@+id/breastRight"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/btn_breast_oval"
-                android:text="@string/breastRight"
+            <EditText
+                android:id="@+id/doctorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:inputType="text"
+                android:maxLength="40"
+                android:padding="10dp"
+                android:text="Doctor"
                 android:textColor="#fff"
-                android:textSize="20sp" >
-            </Button>
+                android:textSize="32sp" />
         </LinearLayout>
     </LinearLayout>
 

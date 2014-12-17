@@ -99,9 +99,9 @@ public class ChartFragment extends Fragment {
 		if (mGrowthList != null) {
 			list.add(new LineChartItem(weightAgeLine(),
 					getActivity()));
-			list.add(new LineChartItem(weightHeightLine(),
-					getActivity()));
 			list.add(new LineChartItem(heightAgeLine(),
+			getActivity()));
+			list.add(new LineChartItem(weightHeightLine(),
 					getActivity()));
 		}
 		
