@@ -532,7 +532,6 @@ public class MainActivity extends Activity implements
 		dateRange.setEndDate(growthCal9.getTime());
 
 		gotoFragment();
-
 	}
 
 	public void hospitalOnClick(View v) {

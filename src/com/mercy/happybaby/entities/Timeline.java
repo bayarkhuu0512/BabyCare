@@ -19,6 +19,9 @@ public class Timeline implements Serializable {
 	int id;
 
 	@DatabaseField(canBeNull = false)
+	int type;
+	
+	@DatabaseField(canBeNull = false)
 	Date createdDate;
 
 	@DatabaseField(foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
@@ -77,6 +80,15 @@ public class Timeline implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
 	public Baby getBaby() {

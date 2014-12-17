@@ -51,6 +51,7 @@ public class TimelineFragment extends Fragment {
 			QueryBuilder<Timeline, Integer> timelineQb = timelineDAO
 					.queryBuilder();
 			Where<Timeline, Integer> where = timelineQb.where();
+			
 			Calendar c = Calendar.getInstance();
 			c.setTime(dateRange.getStartDate());
 			c.set(Calendar.DAY_OF_MONTH, c.get(Calendar.DAY_OF_MONTH) - 1);

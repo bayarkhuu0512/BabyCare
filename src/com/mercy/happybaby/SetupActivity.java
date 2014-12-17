@@ -172,6 +172,7 @@ public class SetupActivity extends FragmentActivity {
 			timeline = new Timeline();
 			timeline.setBaby(baby);
 			timeline.setCreatedDate(cal.getTime());
+			timeline.setType(Constants.TYPE_BABY);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timeline);
 
@@ -185,6 +186,8 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelineTooth1 = new Timeline();
 			timelineTooth1.setTooth(tooth1);
 			timelineTooth1.setCreatedDate(cal1.getTime());
+			timelineTooth1.setType(Constants.TYPE_TOOTH);
+
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineTooth1);
 
@@ -197,6 +200,8 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelineTooth2 = new Timeline();
 			timelineTooth2.setTooth(tooth2);
 			timelineTooth2.setCreatedDate(cal2.getTime());
+			timelineTooth2.setType(Constants.TYPE_TOOTH);
+
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineTooth2);
 
@@ -209,6 +214,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelineTooth3 = new Timeline();
 			timelineTooth3.setTooth(tooth3);
 			timelineTooth3.setCreatedDate(cal3.getTime());
+			timelineTooth3.setType(Constants.TYPE_TOOTH);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineTooth3);
 
@@ -221,6 +227,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelineTooth4 = new Timeline();
 			timelineTooth4.setTooth(tooth4);
 			timelineTooth4.setCreatedDate(cal4.getTime());
+			timelineTooth4.setType(Constants.TYPE_TOOTH);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineTooth4);
 
@@ -251,24 +258,28 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelineLearn1 = new Timeline();
 			timelineLearn1.setLearn(learn1);
 			timelineLearn1.setCreatedDate(learnCal1.getTime());
+			timelineLearn1.setType(Constants.TYPE_LEARN);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineLearn1);
 
 			Timeline timelineLearn2 = new Timeline();
 			timelineLearn2.setLearn(learn2);
 			timelineLearn2.setCreatedDate(learnCal2.getTime());
+			timelineLearn2.setType(Constants.TYPE_LEARN);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineLearn2);
 
 			Timeline timelineLearn3 = new Timeline();
 			timelineLearn3.setLearn(learn3);
 			timelineLearn3.setCreatedDate(learnCal3.getTime());
+			timelineLearn3.setType(Constants.TYPE_LEARN);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineLearn3);
 
 			Timeline timelineLearn4 = new Timeline();
 			timelineLearn4.setLearn(learn4);
 			timelineLearn4.setCreatedDate(learnCal4.getTime());
+			timelineLearn4.setType(Constants.TYPE_LEARN);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineLearn4);
 
@@ -282,6 +293,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline growthTimeline0 = new Timeline();
 			growthTimeline0.setGrowth(growth0);
 			growthTimeline0.setCreatedDate(growthCal0.getTime());
+			growthTimeline0.setType(Constants.TYPE_GROWTH);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(growthTimeline0);
 			
@@ -295,6 +307,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline growthTimeline1 = new Timeline();
 			growthTimeline1.setGrowth(growth1);
 			growthTimeline1.setCreatedDate(growthCal1.getTime());
+			growthTimeline1.setType(Constants.TYPE_GROWTH);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(growthTimeline1);
 
@@ -308,6 +321,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline growthTimeline2 = new Timeline();
 			growthTimeline2.setGrowth(growth2);
 			growthTimeline2.setCreatedDate(growthCal2.getTime());
+			growthTimeline2.setType(Constants.TYPE_GROWTH);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(growthTimeline2);
 
@@ -321,6 +335,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline growthTimeline3 = new Timeline();
 			growthTimeline3.setGrowth(growth3);
 			growthTimeline3.setCreatedDate(growthCal3.getTime());
+			growthTimeline3.setType(Constants.TYPE_GROWTH);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(growthTimeline3);
 
@@ -334,6 +349,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline growthTimeline4 = new Timeline();
 			growthTimeline4.setGrowth(growth4);
 			growthTimeline4.setCreatedDate(growthCal4.getTime());
+			growthTimeline4.setType(Constants.TYPE_GROWTH);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(growthTimeline4);
 
@@ -347,6 +363,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline growthTimeline5 = new Timeline();
 			growthTimeline5.setGrowth(growth5);
 			growthTimeline5.setCreatedDate(growthCal5.getTime());
+			growthTimeline5.setType(Constants.TYPE_GROWTH);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(growthTimeline5);
 
@@ -360,6 +377,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline growthTimeline6 = new Timeline();
 			growthTimeline6.setGrowth(growth6);
 			growthTimeline6.setCreatedDate(growthCal6.getTime());
+			growthTimeline6.setType(Constants.TYPE_GROWTH);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(growthTimeline6);
 
@@ -373,6 +391,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline growthTimeline7 = new Timeline();
 			growthTimeline7.setGrowth(growth7);
 			growthTimeline7.setCreatedDate(growthCal7.getTime());
+			growthTimeline7.setType(Constants.TYPE_GROWTH);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(growthTimeline7);
 
@@ -386,6 +405,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline growthTimeline8 = new Timeline();
 			growthTimeline8.setGrowth(growth8);
 			growthTimeline8.setCreatedDate(growthCal8.getTime());
+			growthTimeline8.setType(Constants.TYPE_GROWTH);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(growthTimeline8);
 
@@ -399,6 +419,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline growthTimeline9 = new Timeline();
 			growthTimeline9.setGrowth(growth9);
 			growthTimeline9.setCreatedDate(growthCal9.getTime());
+			growthTimeline9.setType(Constants.TYPE_GROWTH);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(growthTimeline9);
 
@@ -427,18 +448,21 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelineBreast1 = new Timeline();
 			timelineBreast1.setBreast(breast1);
 			timelineBreast1.setCreatedDate(breastCal1.getTime());
+			timelineBreast1.setType(Constants.TYPE_BREAST);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineBreast1);
 
 			Timeline timelineBreast2 = new Timeline();
 			timelineBreast2.setBreast(breast2);
 			timelineBreast2.setCreatedDate(breastCal2.getTime());
+			timelineBreast2.setType(Constants.TYPE_BREAST);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineBreast2);
 
 			Timeline timelineBreast3 = new Timeline();
 			timelineBreast3.setBreast(breast3);
 			timelineBreast3.setCreatedDate(breastCal3.getTime());
+			timelineBreast3.setType(Constants.TYPE_BREAST);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineBreast3);
 
@@ -452,6 +476,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelineFeed1 = new Timeline();
 			timelineFeed1.setFeed(feed1);
 			timelineFeed1.setCreatedDate(feedCal1.getTime());
+			timelineFeed1.setType(Constants.TYPE_FEED);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineFeed1);
 
@@ -465,6 +490,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelineFeed2 = new Timeline();
 			timelineFeed2.setFeed(feed2);
 			timelineFeed2.setCreatedDate(feedCal2.getTime());
+			timelineFeed2.setType(Constants.TYPE_FEED);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineFeed2);
 
@@ -478,6 +504,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelineFormula1 = new Timeline();
 			timelineFormula1.setFormula(formula1);
 			timelineFormula1.setCreatedDate(formulaCal1.getTime());
+			timelineFormula1.setType(Constants.TYPE_FORMULA);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineFormula1);
 
@@ -491,6 +518,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelineDrink1 = new Timeline();
 			timelineDrink1.setDrink(drink1);
 			timelineDrink1.setCreatedDate(drinkCal1.getTime());
+			timelineDrink1.setType(Constants.TYPE_DRINK);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineDrink1);
 
@@ -507,6 +535,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelineChangeDiaper1 = new Timeline();
 			timelineChangeDiaper1.setChangeDiaper(changeDiaper1);
 			timelineChangeDiaper1.setCreatedDate(changeDiaperCal1.getTime());
+			timelineChangeDiaper1.setType(Constants.TYPE_CHANGEDIAPER);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineChangeDiaper1);
 
@@ -524,6 +553,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelineHospital1 = new Timeline();
 			timelineHospital1.setHospital(hospital1);
 			timelineHospital1.setCreatedDate(hospitalCal1.getTime());
+			timelineHospital1.setType(Constants.TYPE_HOSPITAL);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineHospital1);
 
@@ -538,6 +568,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelinePurchase1 = new Timeline();
 			timelinePurchase1.setPurchase(purchase1);
 			timelinePurchase1.setCreatedDate(purchaseCal1.getTime());
+			timelinePurchase1.setType(Constants.TYPE_PURCHASE);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelinePurchase1);
 
@@ -551,6 +582,7 @@ public class SetupActivity extends FragmentActivity {
 			Timeline timelineAo1 = new Timeline();
 			timelineAo1.setActiveOperation(ao1);
 			timelineAo1.setCreatedDate(aoCal1.getTime());
+			timelineAo1.setType(Constants.TYPE_ACTIVEOPERATION);
 			timelineDAO = getHelper().getTimelineDao();
 			timelineDAO.create(timelineAo1);
 
