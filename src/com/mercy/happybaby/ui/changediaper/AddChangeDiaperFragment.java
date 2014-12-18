@@ -15,7 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
+import com.doomonafireball.betterpickers.timepicker.TimePickerBuilder;
+import com.doomonafireball.betterpickers.timepicker.TimePickerDialogFragment;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
@@ -31,10 +32,8 @@ import com.mercy.happybaby.utils.crouton.Style;
 import dreamers.graphics.RippleDrawable;
 
 public class AddChangeDiaperFragment extends Fragment implements
-TimePickerDialogFragment.TimePickerDialogHandler {
+		TimePickerDialogFragment.TimePickerDialogHandler {
 	String LOG_TAG = AddChangeDiaperFragment.class.getName();
-
-	private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
 
 	private TextView timeChangeDiaper;
 	private CroutonMessage crtnMsg = null;
@@ -72,13 +71,11 @@ TimePickerDialogFragment.TimePickerDialogHandler {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "timeBreast");
-				FragmentManager fm = getFragmentManager();
 				Calendar c = Calendar.getInstance();
-				CalendarDatePickerDialog calendarDatePickerDialog = CalendarDatePickerDialog
-						.newInstance(AddChangeDiaperFragment.this,
-								c.get(Calendar.YEAR), c.get(Calendar.MONTH),
-								c.get(Calendar.DAY_OF_MONTH));
-				calendarDatePickerDialog.show(fm, FRAG_TAG_DATE_PICKER);
+				TimePickerBuilder tpb = new TimePickerBuilder()
+						.setFragmentManager(getFragmentManager()).setStyleResId(
+								R.style.BetterPickersDialogFragment);
+				tpb.show();
 			}
 		});
 
@@ -118,27 +115,15 @@ TimePickerDialogFragment.TimePickerDialogHandler {
 		return root;
 	}
 
-	@Override
-	public void onDateSet(CalendarDatePickerDialog dialog, int year,
-			int monthOfYear, int dayOfMonth) {
-		// TODO Auto-generated method stub
-		Log.d(LOG_TAG, "Year: " + year + "\nMonth: " + monthOfYear + "\nDay: "
-				+ dayOfMonth);
-		Calendar c = Calendar.getInstance();
-		c.set(year, monthOfYear, dayOfMonth);
-		// dateRange.setStartDate(c.getTime());
-	}
-
-	@Override
-	public void onResume() {
-		// Example of reattaching to the fragment
-		super.onResume();
-		CalendarDatePickerDialog calendarDatePickerDialog = (CalendarDatePickerDialog) getFragmentManager()
-				.findFragmentByTag(FRAG_TAG_DATE_PICKER);
-		if (calendarDatePickerDialog != null) {
-			calendarDatePickerDialog.setOnDateSetListener(this);
-		}
-	}
+	// public void onDateSet(CalendarDatePickerDialog dialog, int year,
+	// int monthOfYear, int dayOfMonth) {
+	// // TODO Auto-generated method stub
+	// Log.d(LOG_TAG, "Year: " + year + "\nMonth: " + monthOfYear + "\nDay: "
+	// + dayOfMonth);
+	// Calendar c = Calendar.getInstance();
+	// c.set(year, monthOfYear, dayOfMonth);
+	// // dateRange.setStartDate(c.getTime());
+	// }
 
 	private DatabaseHelper getHelper() {
 		if (databaseHelper == null) {
@@ -187,8 +172,9 @@ TimePickerDialogFragment.TimePickerDialogHandler {
 		getActivity().setTitle(getActivity().getTitle());
 		getActivity().getActionBar().show();
 	}
-	   @Override
-	    public void onDialogTimeSet(int reference, int hourOfDay, int minute) {
-	        text.setText("" + hourOfDay + ":" + minute);
-	    }
+
+	@Override
+	public void onDialogTimeSet(int reference, int hourOfDay, int minute) {
+		Log.d(LOG_TAG, hourOfDay + ":" + minute);
+	}
 }

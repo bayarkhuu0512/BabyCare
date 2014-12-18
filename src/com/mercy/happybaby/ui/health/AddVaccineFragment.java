@@ -33,8 +33,8 @@ import com.mercy.happybaby.utils.crouton.Style;
 
 import dreamers.graphics.RippleDrawable;
 
-public class AddVaccineFragment extends Fragment  implements
-CalendarDatePickerDialog.OnDateSetListener {
+public class AddVaccineFragment extends Fragment implements
+		CalendarDatePickerDialog.OnDateSetListener {
 	String LOG_TAG = AddVaccineFragment.class.getName();
 
 	private TextView dateVaccine;
@@ -52,7 +52,7 @@ CalendarDatePickerDialog.OnDateSetListener {
 			Bundle savedInstanceState) {
 		roboto_light = Typeface.createFromAsset(getActivity().getAssets(),
 				Constants.ROBOTO_LIGHT);
-		
+
 		// Inflate the layout for this fragment
 		View root = inflater.inflate(R.layout.add_vaccine, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
@@ -64,7 +64,7 @@ CalendarDatePickerDialog.OnDateSetListener {
 		}
 		dateVaccine = (TextView) root.findViewById(R.id.dateVaccine);
 		dateVaccine.setTypeface(roboto_light);
-		dateVaccine.setText(Constants.timeFormat.format(cal.getTime()) + "");
+		dateVaccine.setText(Constants.dateFormat.format(cal.getTime()) + "");
 		dateVaccine.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -76,7 +76,8 @@ CalendarDatePickerDialog.OnDateSetListener {
 
 		vaccineNames = getResources().getStringArray(R.array.vaccine_array);
 		vaccineList = (ListView) root.findViewById(R.id.vaccineList);
-		vaccineList.setAdapter(new VaccineListAdapter(getActivity(), vaccineNames));
+		vaccineList.setAdapter(new VaccineListAdapter(getActivity(),
+				vaccineNames));
 
 		ImageButton close = (ImageButton) root.findViewById(R.id.close);
 		RippleDrawable.createRipple(close,
@@ -121,7 +122,7 @@ CalendarDatePickerDialog.OnDateSetListener {
 		}
 		return databaseHelper;
 	}
-	
+
 	private void addVaccine(boolean isRight) {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
@@ -142,7 +143,7 @@ CalendarDatePickerDialog.OnDateSetListener {
 			e.printStackTrace();
 		}
 
-		//dateRange.setEndDate(vaccineCal1.getTime());
+		// dateRange.setEndDate(vaccineCal1.getTime());
 		gotoTimeline();
 	}
 
@@ -179,5 +180,13 @@ CalendarDatePickerDialog.OnDateSetListener {
 			return convertView;
 
 		}
+	}
+
+	@Override
+	public void onDateSet(CalendarDatePickerDialog dialog, int year,
+			int monthOfYear, int dayOfMonth) {
+		// TODO Auto-generated method stub
+		Log.d(LOG_TAG, "Year: " + year + "\nMonth: " + monthOfYear + "\nDay: "
+				+ dayOfMonth);
 	}
 }

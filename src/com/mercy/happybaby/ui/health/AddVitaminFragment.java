@@ -21,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
+import com.doomonafireball.betterpickers.timepicker.TimePickerDialogFragment;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
@@ -38,7 +39,7 @@ import com.mercy.happybaby.utils.crouton.Style;
 import dreamers.graphics.RippleDrawable;
 
 public class AddVitaminFragment extends Fragment  implements
-CalendarDatePickerDialog.OnDateSetListener {
+TimePickerDialogFragment.TimePickerDialogHandler {
 	String LOG_TAG = AddVitaminFragment.class.getName();
 
 	private TextView timeDrink;
@@ -180,7 +181,10 @@ CalendarDatePickerDialog.OnDateSetListener {
 					.findViewById(R.id.vitaminIcon);
 			vitaminName.setText(vitaminNames[position] + "");
 			return convertView;
-
 		}
 	}
+	@Override
+    public void onDialogTimeSet(int reference, int hourOfDay, int minute) {
+		Log.d(LOG_TAG, hourOfDay + ":" + minute);
+    }
 }

@@ -161,7 +161,13 @@
     <string name="born">төрлөө</string>
     <!-- Growth timeline -->
     <string name="babymonth">сар хүрлээ</string>
+    <string name="headCirc">Толгойн тойрог</string>
+    <string name="weight">Жин</string>
+    <string name="height">Өндөр</string>
+    
     <!-- Help Center -->
     <string name="helpCenter">Зөвлөгөө</string>
+    
+    
 
 </resources>

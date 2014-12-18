@@ -23,7 +23,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
+import com.doomonafireball.betterpickers.timepicker.TimePickerDialogFragment;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
@@ -31,6 +31,7 @@ import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Breast;
 import com.mercy.happybaby.entities.Feed;
 import com.mercy.happybaby.entities.Timeline;
+import com.mercy.happybaby.ui.changediaper.AddChangeDiaperFragment;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
 import com.mercy.happybaby.utils.Constants;
 import com.mercy.happybaby.utils.DateRangeInstance;
@@ -41,6 +42,8 @@ import dreamers.graphics.RippleDrawable;
 
 public class AddFeedFragment extends Fragment  implements
 TimePickerDialogFragment.TimePickerDialogHandler {
+	String LOG_TAG = AddFeedFragment.class.getName();
+
 	private TextView timeFeed;
 	private EditText feedML;
 	private ListView feedList;
@@ -55,6 +58,7 @@ TimePickerDialogFragment.TimePickerDialogHandler {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+
 		roboto_light = Typeface.createFromAsset(getActivity().getAssets(),
 				Constants.ROBOTO_LIGHT);
 		// Inflate the layout for this fragment
@@ -197,6 +201,6 @@ TimePickerDialogFragment.TimePickerDialogHandler {
 	}
 	   @Override
 	    public void onDialogTimeSet(int reference, int hourOfDay, int minute) {
-	        text.setText("" + hourOfDay + ":" + minute);
+			Log.d(LOG_TAG, hourOfDay + ":" + minute);
 	    }
 }

@@ -30,9 +30,8 @@
 
             <ImageView
                 android:id="@+id/profileImage"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:background="@drawable/profile_oval"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:paddingLeft="20dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/baby_profile" />

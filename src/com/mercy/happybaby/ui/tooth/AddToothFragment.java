@@ -68,7 +68,7 @@ public class AddToothFragment extends Fragment implements
 
 		timeTooth = (TextView) root.findViewById(R.id.timeTooth);
 		timeTooth.setTypeface(roboto_light);
-		timeTooth.setText(Constants.timeFormat.format(cal.getTime()) + "");
+		timeTooth.setText(Constants.dateFormat.format(cal.getTime()) + "");
 		timeTooth.setOnClickListener(new OnClickListener() {
 
 			@Override

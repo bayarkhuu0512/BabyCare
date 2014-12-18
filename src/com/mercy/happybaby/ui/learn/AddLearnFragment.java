@@ -64,7 +64,7 @@ CalendarDatePickerDialog.OnDateSetListener {
 		}
 		dateLearn = (TextView) root.findViewById(R.id.dateLearn);
 		dateLearn.setTypeface(roboto_light);
-		dateLearn.setText(Constants.timeFormat.format(cal.getTime()) + "");
+		dateLearn.setText(Constants.dateFormat.format(cal.getTime()) + "");
 		dateLearn.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -178,5 +178,12 @@ CalendarDatePickerDialog.OnDateSetListener {
 			return convertView;
 
 		}
+	}
+
+	@Override
+	public void onDateSet(CalendarDatePickerDialog dialog, int year,
+			int monthOfYear, int dayOfMonth) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -52,11 +52,12 @@
                 android:orientation="horizontal"
                 android:padding="10dp" >
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/dirtyIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icon_diaperchange" />
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/diaper_oval"
+                    android:src="@drawable/icon_dirty" />
 
                 <TextView
                     android:id="@+id/dirty"
@@ -76,11 +77,12 @@
                 android:orientation="horizontal"
                 android:padding="10dp" >
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/wetIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icon_diaperchange" />
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/diaper_oval"
+                    android:src="@drawable/icon_wet" />
 
                 <TextView
                     android:id="@+id/wet"
@@ -100,11 +102,12 @@
                 android:orientation="horizontal"
                 android:padding="10dp" >
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/mixedIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icon_diaperchange" />
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/diaper_oval"
+                    android:src="@drawable/icon_mixed" />
 
                 <TextView
                     android:id="@+id/mixed"
@@ -124,11 +127,11 @@
                 android:orientation="horizontal"
                 android:padding="10dp" >
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/dryIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icon_diaperchange" />
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/diaper_oval" />
 
                 <TextView
                     android:id="@+id/dry"

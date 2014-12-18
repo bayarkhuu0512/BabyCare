@@ -12,18 +12,11 @@
         android:orientation="vertical"
         android:padding="10dp" >
 
-        <RelativeLayout
+        <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@drawable/profile_oval" >
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:scaleType="centerCrop"
-                android:layout_centerInParent="true"
-                android:src="@drawable/baby_profile" />
-        </RelativeLayout>
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile" />
 
         <TextView
             android:id="@+id/babyName"

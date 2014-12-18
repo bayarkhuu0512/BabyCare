@@ -64,7 +64,7 @@ CalendarDatePickerDialog.OnDateSetListener {
 		}
 		timePurchase = (TextView) root.findViewById(R.id.timePurchase);
 		timePurchase.setTypeface(roboto_light);
-		timePurchase.setText(Constants.timeFormat.format(cal.getTime()) + "");
+		timePurchase.setText(Constants.dateFormat.format(cal.getTime()) + "");
 		timePurchase.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -181,5 +181,12 @@ CalendarDatePickerDialog.OnDateSetListener {
 			return convertView;
 
 		}
+	}
+
+	@Override
+	public void onDateSet(CalendarDatePickerDialog dialog, int year,
+			int monthOfYear, int dayOfMonth) {
+		// TODO Auto-generated method stub
+		
 	}
 }

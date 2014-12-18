@@ -56,9 +56,11 @@ public class DatabookAdapter extends
 		viewHolder.name.setVisibility(View.VISIBLE);
 		viewHolder.name.setText(databook.getName());
 
-		if (databook.getAddress().length() > 0)
+		if (databook.getAddress().length() > 0){
 			viewHolder.address.setVisibility(View.VISIBLE);
-
+		} else {
+			viewHolder.address.setVisibility(View.GONE);
+		}
 		viewHolder.address.setText(databook.getAddress());
 
 		viewHolder.type.setVisibility(View.VISIBLE);

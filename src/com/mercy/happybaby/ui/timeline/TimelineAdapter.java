@@ -84,7 +84,7 @@ public class TimelineAdapter extends
 					.getDrawable(R.drawable.formula_oval));
 
 			viewHolder.image.setBackgroundDrawable(mContext.getResources()
-					.getDrawable(R.drawable.baby_born));
+					.getDrawable(R.drawable.profile));
 			viewHolder.image.setVisibility(View.VISIBLE);
 
 			viewHolder.calMonth.setText(Constants.rowMonthFormat.format(
@@ -111,7 +111,8 @@ public class TimelineAdapter extends
 			viewHolder.mFifth.setText(timeline.getBaby().getGender());
 
 			viewHolder.mSixth.setVisibility(View.VISIBLE);
-			viewHolder.mSixth.setText(mContext.getResources().getString(R.string.born));
+			viewHolder.mSixth.setText(mContext.getResources().getString(
+					R.string.born));
 
 		} else if (timeline.getBreast() != null) {
 			int num = 0;
@@ -386,18 +387,27 @@ public class TimelineAdapter extends
 			viewHolder.icon.setImageDrawable(mContext.getResources()
 					.getDrawable(R.drawable.icon_diaperchange));
 			viewHolder.mFirst.setVisibility(View.VISIBLE);
-			viewHolder.mFirst.setText(mContext.getResources().getString(R.string.changeDiaper));
+			viewHolder.mFirst.setText(mContext.getResources().getString(
+					R.string.changeDiaper));
 			viewHolder.mSecond.setVisibility(View.VISIBLE);
 			viewHolder.mSecond.setText(num + " "
 					+ mContext.getResources().getString(R.string.num));
 			viewHolder.mThird.setVisibility(View.VISIBLE);
-			viewHolder.mThird.setText(mContext.getResources().getString(R.string.dirty)+" " + dirty);
+			viewHolder.mThird.setText(mContext.getResources().getString(
+					R.string.dirty)
+					+ " " + dirty);
 			viewHolder.mFourth.setVisibility(View.VISIBLE);
-			viewHolder.mFourth.setText(mContext.getResources().getString(R.string.wet)+" " + wet);
+			viewHolder.mFourth.setText(mContext.getResources().getString(
+					R.string.wet)
+					+ " " + wet);
 			viewHolder.mFifth.setVisibility(View.VISIBLE);
-			viewHolder.mFifth.setText(mContext.getResources().getString(R.string.mixed)+" " + mixed);
+			viewHolder.mFifth.setText(mContext.getResources().getString(
+					R.string.mixed)
+					+ " " + mixed);
 			viewHolder.mSixth.setVisibility(View.VISIBLE);
-			viewHolder.mSixth.setText(mContext.getResources().getString(R.string.dry)+" " + dry);
+			viewHolder.mSixth.setText(mContext.getResources().getString(
+					R.string.dry)
+					+ " " + dry);
 			viewHolder.image.setVisibility(View.GONE);
 
 		} else if (timeline.getGrowth() != null) {
@@ -413,20 +423,68 @@ public class TimelineAdapter extends
 						.getDrawable(R.drawable.anniversary));
 				viewHolder.icon.setImageDrawable(mContext.getResources()
 						.getDrawable(R.drawable.icon_birthmonth));
-				viewHolder.image.setBackgroundDrawable(mContext.getResources()
-						.getDrawable(R.drawable.congrats));
+				Drawable babyDrawable = null;
+				int babyMonth = timeline.getGrowth().getBabyMonth();
+				switch (babyMonth) {
+				case 1:
+					babyDrawable = mContext.getResources().getDrawable(
+							R.drawable.baby1);
+					break;
+				case 2:
+					babyDrawable = mContext.getResources().getDrawable(
+							R.drawable.baby2);
+					break;
+				case 3:
+					babyDrawable = mContext.getResources().getDrawable(
+							R.drawable.baby3);
+					break;
+				case 4:
+					babyDrawable = mContext.getResources().getDrawable(
+							R.drawable.baby4);
+					break;
+				case 5:
+					babyDrawable = mContext.getResources().getDrawable(
+							R.drawable.baby5);
+					break;
+				case 6:
+					babyDrawable = mContext.getResources().getDrawable(
+							R.drawable.baby6);
+					break;
+				case 7:
+					babyDrawable = mContext.getResources().getDrawable(
+							R.drawable.baby7);
+					break;
+				case 8:
+					babyDrawable = mContext.getResources().getDrawable(
+							R.drawable.baby8);
+					break;
+				case 9:
+					babyDrawable = mContext.getResources().getDrawable(
+							R.drawable.baby9);
+					break;
+
+				default:
+					babyDrawable = mContext.getResources().getDrawable(
+							R.drawable.profile);
+					break;
+				}
+
+				viewHolder.image.setBackgroundDrawable(babyDrawable);
 				viewHolder.image.setVisibility(View.VISIBLE);
 
 				viewHolder.mFirst.setVisibility(View.VISIBLE);
-				viewHolder.mFirst.setText(timeline.getGrowth().getBabyMonth()
-						+ " "+mContext.getResources().getString(R.string.babymonth));
+				viewHolder.mFirst
+						.setText(timeline.getGrowth().getBabyMonth()
+								+ " "
+								+ mContext.getResources().getString(
+										R.string.babymonth));
 
 				viewHolder.mThird.setVisibility(View.VISIBLE);
 				viewHolder.mThird.setText(timeline.getGrowth().getBabyHeight()
-						+ " "+mContext.getResources().getString(R.string.sm));
+						+ " " + mContext.getResources().getString(R.string.sm));
 				viewHolder.mFourth.setVisibility(View.VISIBLE);
 				viewHolder.mFourth.setText(timeline.getGrowth().getBabyWeight()
-						+ " "+mContext.getResources().getString(R.string.gr));
+						+ " " + mContext.getResources().getString(R.string.gr));
 				viewHolder.mFifth.setVisibility(View.VISIBLE);
 				viewHolder.mFifth.setText(mContext.getResources().getString(
 						R.string.congrats));
@@ -447,9 +505,9 @@ public class TimelineAdapter extends
 					.getDrawable(R.drawable.learn_oval));
 			viewHolder.icon.setImageDrawable(mContext.getResources()
 					.getDrawable(R.drawable.icon_learn));
-			viewHolder.image.setBackgroundDrawable(mContext.getResources()
-					.getDrawable(R.drawable.congrats));
-			viewHolder.image.setVisibility(View.VISIBLE);
+			// viewHolder.image.setBackgroundDrawable(mContext.getResources()
+			// .getDrawable(R.drawable.congrats));
+			 viewHolder.image.setVisibility(View.GONE);
 
 			viewHolder.mFirst.setVisibility(View.VISIBLE);
 			viewHolder.mFirst.setText(timeline.getLearn().getLearnName());

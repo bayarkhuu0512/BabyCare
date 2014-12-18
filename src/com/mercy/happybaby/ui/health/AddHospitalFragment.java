@@ -19,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
+
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.MainActivity;
@@ -36,7 +37,7 @@ import com.mercy.happybaby.utils.crouton.Style;
 import dreamers.graphics.RippleDrawable;
 
 public class AddHospitalFragment extends Fragment implements
-		CalendarTimePicker.OnDateSetListener {
+		CalendarDatePickerDialog.OnDateSetListener {
 	String LOG_TAG = AddHospitalFragment.class.getName();
 
 	private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
@@ -67,7 +68,7 @@ public class AddHospitalFragment extends Fragment implements
 
 		timeHospital = (TextView) root.findViewById(R.id.timeHospital);
 		timeHospital.setTypeface(roboto_light);
-		timeHospital.setText(Constants.timeFormat.format(cal.getTime()) + "");
+		timeHospital.setText(Constants.dateFormat.format(cal.getTime()) + "");
 		timeHospital.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -83,8 +84,6 @@ public class AddHospitalFragment extends Fragment implements
 				calendarDatePickerDialog.show(fm, FRAG_TAG_DATE_PICKER);
 			}
 		});
-
-	
 
 		ImageButton close = (ImageButton) root.findViewById(R.id.close);
 		RippleDrawable.createRipple(close,
@@ -107,9 +106,9 @@ public class AddHospitalFragment extends Fragment implements
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "save");
-					crtnMsg.hide();
-					crtnMsg.showCrouton(Style.CONFIRM, getActivity()
-							.getResources().getString(R.string.pleaseselect));
+				crtnMsg.hide();
+				crtnMsg.showCrouton(Style.CONFIRM, getActivity().getResources()
+						.getString(R.string.pleaseselect));
 			}
 		});
 

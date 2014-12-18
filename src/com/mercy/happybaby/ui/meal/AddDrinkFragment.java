@@ -20,14 +20,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
 import com.doomonafireball.betterpickers.timepicker.TimePickerDialogFragment;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.Drink;
-import com.mercy.happybaby.entities.Feed;
 import com.mercy.happybaby.entities.Timeline;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
 import com.mercy.happybaby.utils.Constants;
@@ -197,6 +195,6 @@ TimePickerDialogFragment.TimePickerDialogHandler {
 	}
 	   @Override
 	    public void onDialogTimeSet(int reference, int hourOfDay, int minute) {
-	        text.setText("" + hourOfDay + ":" + minute);
+			Log.d(LOG_TAG, hourOfDay + ":" + minute);
 	    }
 }

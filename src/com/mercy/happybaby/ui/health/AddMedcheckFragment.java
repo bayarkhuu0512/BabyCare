@@ -37,7 +37,7 @@ import com.mercy.happybaby.utils.crouton.Style;
 import dreamers.graphics.RippleDrawable;
 
 public class AddMedcheckFragment extends Fragment implements
-		CalendarTimePicker.OnDateSetListener {
+CalendarDatePickerDialog.OnDateSetListener  {
 	String LOG_TAG = AddMedcheckFragment.class.getName();
 
 	private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
@@ -68,7 +68,7 @@ public class AddMedcheckFragment extends Fragment implements
 
 		timeMedcheck = (TextView) root.findViewById(R.id.timeMedcheck);
 		timeMedcheck.setTypeface(roboto_light);
-		timeMedcheck.setText(Constants.timeFormat.format(cal.getTime()) + "");
+		timeMedcheck.setText(Constants.dateFormat.format(cal.getTime()) + "");
 		timeMedcheck.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -150,7 +150,7 @@ public class AddMedcheckFragment extends Fragment implements
 	private void addBreast(boolean isRight) {
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
+				getActivity().getResources().getString(R.string.success));
 		Growth growth10 = new Growth();
 		Calendar growthCal9 = Calendar.getInstance();
 		growth10.setCreatedDate(growthCal9.getTime());

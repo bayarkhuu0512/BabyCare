@@ -19,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
+import com.doomonafireball.betterpickers.timepicker.TimePickerDialogFragment;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
@@ -34,8 +35,10 @@ import com.mercy.happybaby.utils.crouton.Style;
 
 import dreamers.graphics.RippleDrawable;
 
-public class AddFormulaFragment extends Fragment  implements
-CalendarDatePickerDialog.OnDateSetListener {
+public class AddFormulaFragment extends Fragment implements
+TimePickerDialogFragment.TimePickerDialogHandler {
+	String LOG_TAG = AddBreastFragment.class.getName();
+
 	private CroutonMessage crtnMsg = null;
 	private Dao<Timeline, Integer> timelineDAO;
 	private DatabaseHelper databaseHelper = null;
@@ -43,6 +46,7 @@ CalendarDatePickerDialog.OnDateSetListener {
 	private EditText formulaML;
 	private Typeface roboto_light;
 	private TextView timeFormula;
+	Calendar cal = Calendar.getInstance();
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,7 +62,7 @@ CalendarDatePickerDialog.OnDateSetListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		timeFormula = (TextView) root.findViewById(R.id.timeFormula);
 		timeFormula.setTypeface(roboto_light);
 		timeFormula.setText(Constants.timeFormat.format(cal.getTime()) + "");
@@ -70,10 +74,10 @@ CalendarDatePickerDialog.OnDateSetListener {
 				Log.d("AddFeed", "timeFeed");
 			}
 		});
-		
+
 		formulaML = (EditText) root.findViewById(R.id.formulaML);
 		formulaML.setTypeface(roboto_light);
-		
+
 		ImageButton close = (ImageButton) root.findViewById(R.id.close);
 		RippleDrawable.createRipple(close,
 				getResources().getColor(android.R.color.white));
@@ -150,8 +154,13 @@ CalendarDatePickerDialog.OnDateSetListener {
 						R.animator.slide_down, R.animator.slide_up,
 						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
-		
+
 		getActivity().setTitle(getActivity().getTitle());
 		getActivity().getActionBar().show();
+	}
+
+	@Override
+	public void onDialogTimeSet(int reference, int hourOfDay, int minute) {
+		Log.d(LOG_TAG, hourOfDay + ":" + minute);
 	}
 }

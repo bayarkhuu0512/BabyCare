@@ -31,19 +31,7 @@ import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.db.DatabaseHelper;
 import com.mercy.happybaby.entities.ActiveOperation;
 import com.mercy.happybaby.entities.Baby;
-import com.mercy.happybaby.entities.Breast;
-import com.mercy.happybaby.entities.ChangeDiaper;
-import com.mercy.happybaby.entities.Drink;
-import com.mercy.happybaby.entities.Feed;
-import com.mercy.happybaby.entities.Formula;
-import com.mercy.happybaby.entities.Growth;
-import com.mercy.happybaby.entities.Hospital;
-import com.mercy.happybaby.entities.Learn;
-import com.mercy.happybaby.entities.Purchase;
 import com.mercy.happybaby.entities.Timeline;
-import com.mercy.happybaby.entities.Tooth;
-import com.mercy.happybaby.entities.Vaccine;
-import com.mercy.happybaby.entities.Vitamin;
 import com.mercy.happybaby.ui.activeoperation.ActiveOperationFragment;
 import com.mercy.happybaby.ui.activeoperation.AddAnniversaryFragment;
 import com.mercy.happybaby.ui.changediaper.AddChangeDiaperFragment;
@@ -51,6 +39,7 @@ import com.mercy.happybaby.ui.changediaper.ChangeDiaperFragment;
 import com.mercy.happybaby.ui.chart.ChartFragment;
 import com.mercy.happybaby.ui.databook.DatabookFragment;
 import com.mercy.happybaby.ui.health.AddHospitalFragment;
+import com.mercy.happybaby.ui.health.AddMedcheckFragment;
 import com.mercy.happybaby.ui.health.AddVaccineFragment;
 import com.mercy.happybaby.ui.health.AddVitaminFragment;
 import com.mercy.happybaby.ui.health.HealthFragment;
@@ -76,8 +65,6 @@ import com.mercy.happybaby.utils.DateRangeInstance;
 import com.mercy.happybaby.utils.crouton.Crouton;
 import com.mercy.happybaby.utils.crouton.CroutonMessage;
 import com.mercy.happybaby.utils.crouton.Style;
-
-import dreamers.graphics.RippleDrawable;
 
 public class MainActivity extends Activity implements
 		CalendarDatePickerDialog.OnDateSetListener {
@@ -511,7 +498,7 @@ public class MainActivity extends Activity implements
 	}
 
 	public void medcheckOnClick(View v) {
-		
+		gotoAddFragment(new AddMedcheckFragment());
 	}
 
 	public void hospitalOnClick(View v) {
