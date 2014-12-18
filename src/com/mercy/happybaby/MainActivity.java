@@ -488,7 +488,7 @@ public class MainActivity extends Activity implements
 						R.animator.slide_down, R.animator.slide_up,
 						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
-		setTitle("Миний тухай");
+		setTitle(getResources().getString(R.string.profile));
 		mDrawerList.setItemChecked(0, true);
 		mDrawerLayout.closeDrawer(drawerll);
 	}
@@ -511,28 +511,7 @@ public class MainActivity extends Activity implements
 	}
 
 	public void medcheckOnClick(View v) {
-		crtnMsg.hide();
-		crtnMsg.showCrouton(Style.INFO,
-				context.getResources().getString(R.string.success));
-		Growth growth10 = new Growth();
-		Calendar growthCal9 = Calendar.getInstance();
-		growth10.setCreatedDate(growthCal9.getTime());
-		growth10.setBabyHeight(70);
-		growth10.setBabyWeight(9000);
-		growth10.setBabyMonth(10);
-		Timeline growthTimeline9 = new Timeline();
-		growthTimeline9.setGrowth(growth10);
-		growthTimeline9.setCreatedDate(growthCal9.getTime());
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(growthTimeline9);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		dateRange.setEndDate(growthCal9.getTime());
-
-		gotoFragment();
+		
 	}
 
 	public void hospitalOnClick(View v) {
@@ -555,7 +534,7 @@ public class MainActivity extends Activity implements
 		Calendar aoCal1 = Calendar.getInstance();
 		ao1.setCreatedDate(aoCal1.getTime());
 		ao1.setType(Constants.ACTIVE_OPERATION_BATH);
-		ao1.setActiveName("Усанд орлоо");
+		ao1.setActiveName(getResources().getString(R.string.shower));
 
 		Timeline timelineAo1 = new Timeline();
 		timelineAo1.setActiveOperation(ao1);
@@ -581,7 +560,7 @@ public class MainActivity extends Activity implements
 		Calendar aoCal1 = Calendar.getInstance();
 		ao1.setCreatedDate(aoCal1.getTime());
 		ao1.setType(Constants.ACTIVE_OPERATION_SLEEP);
-		ao1.setActiveName("Унтлаа");
+		ao1.setActiveName(getResources().getString(R.string.sleep));
 
 		Timeline timelineAo1 = new Timeline();
 		timelineAo1.setActiveOperation(ao1);
@@ -607,7 +586,7 @@ public class MainActivity extends Activity implements
 		Calendar aoCal1 = Calendar.getInstance();
 		ao1.setCreatedDate(aoCal1.getTime());
 		ao1.setType(Constants.ACTIVE_OPERATION_PLAY);
-		ao1.setActiveName("Бөмбөгөөр тоголлоо");
+		ao1.setActiveName(getResources().getString(R.string.play));
 
 		Timeline timelineAo1 = new Timeline();
 		timelineAo1.setActiveOperation(ao1);
@@ -633,7 +612,7 @@ public class MainActivity extends Activity implements
 		Calendar aoCal1 = Calendar.getInstance();
 		ao1.setCreatedDate(aoCal1.getTime());
 		ao1.setType(Constants.ACTIVE_OPERATION_OUT);
-		ao1.setActiveName("Гадаа гарлаа");
+		ao1.setActiveName(getResources().getString(R.string.out));
 
 		Timeline timelineAo1 = new Timeline();
 		timelineAo1.setActiveOperation(ao1);
@@ -659,7 +638,7 @@ public class MainActivity extends Activity implements
 		Calendar aoCal1 = Calendar.getInstance();
 		ao1.setCreatedDate(aoCal1.getTime());
 		ao1.setType(Constants.ACTIVE_OPERATION_MASSAGE);
-		ao1.setActiveName("Хөлөндөө массаж хийлгэв");
+		ao1.setActiveName(getResources().getString(R.string.massage));
 
 		Timeline timelineAo1 = new Timeline();
 		timelineAo1.setActiveOperation(ao1);
@@ -686,7 +665,7 @@ public class MainActivity extends Activity implements
 		Calendar aoCal1 = Calendar.getInstance();
 		ao1.setCreatedDate(aoCal1.getTime());
 		ao1.setType(Constants.ACTIVE_OPERATION_EAR);
-		ao1.setActiveName("Чихээ цэвэрлүүлэв");
+		ao1.setActiveName(getResources().getString(R.string.ear));
 
 		Timeline timelineAo1 = new Timeline();
 		timelineAo1.setActiveOperation(ao1);
@@ -712,7 +691,7 @@ public class MainActivity extends Activity implements
 		Calendar aoCal1 = Calendar.getInstance();
 		ao1.setCreatedDate(aoCal1.getTime());
 		ao1.setType(Constants.ACTIVE_OPERATION_NOSE);
-		ao1.setActiveName("Хамраа цэвэрлүүлэв");
+		ao1.setActiveName(getResources().getString(R.string.nose));
 
 		Timeline timelineAo1 = new Timeline();
 		timelineAo1.setActiveOperation(ao1);
@@ -736,29 +715,6 @@ public class MainActivity extends Activity implements
 
 	public void anniversaryOnClick(View v) {
 		gotoAddFragment(new AddAnniversaryFragment());
-
-		// crtnMsg.hide();
-		// crtnMsg.showCrouton(Style.INFO,
-		// context.getResources().getString(R.string.success));
-		// Growth growth10 = new Growth();
-		// Calendar growthCal9 = Calendar.getInstance();
-		// growth10.setCreatedDate(growthCal9.getTime());
-		// growth10.setBabyHeight(72);
-		// growth10.setBabyWeight(9300);
-		// growth10.setBabyMonth(12);
-		// Timeline growthTimeline9 = new Timeline();
-		// growthTimeline9.setGrowth(growth10);
-		// growthTimeline9.setCreatedDate(growthCal9.getTime());
-		// try {
-		// timelineDAO = getHelper().getTimelineDao();
-		// timelineDAO.create(growthTimeline9);
-		// } catch (SQLException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// dateRange.setEndDate(growthCal9.getTime());
-		// gotoFragment();
-
 	}
 
 	public void learnOnClick(View v) {

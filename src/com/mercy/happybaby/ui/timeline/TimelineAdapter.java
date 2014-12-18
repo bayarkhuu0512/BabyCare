@@ -111,7 +111,7 @@ public class TimelineAdapter extends
 			viewHolder.mFifth.setText(timeline.getBaby().getGender());
 
 			viewHolder.mSixth.setVisibility(View.VISIBLE);
-			viewHolder.mSixth.setText("төрлөө");
+			viewHolder.mSixth.setText(mContext.getResources().getString(R.string.born));
 
 		} else if (timeline.getBreast() != null) {
 			int num = 0;
@@ -386,18 +386,18 @@ public class TimelineAdapter extends
 			viewHolder.icon.setImageDrawable(mContext.getResources()
 					.getDrawable(R.drawable.icon_diaperchange));
 			viewHolder.mFirst.setVisibility(View.VISIBLE);
-			viewHolder.mFirst.setText("Живхээ солилоо");
+			viewHolder.mFirst.setText(mContext.getResources().getString(R.string.changeDiaper));
 			viewHolder.mSecond.setVisibility(View.VISIBLE);
 			viewHolder.mSecond.setText(num + " "
 					+ mContext.getResources().getString(R.string.num));
 			viewHolder.mThird.setVisibility(View.VISIBLE);
-			viewHolder.mThird.setText("Баастай " + dirty);
+			viewHolder.mThird.setText(mContext.getResources().getString(R.string.dirty)+" " + dirty);
 			viewHolder.mFourth.setVisibility(View.VISIBLE);
-			viewHolder.mFourth.setText("Шээстэй " + wet);
+			viewHolder.mFourth.setText(mContext.getResources().getString(R.string.wet)+" " + wet);
 			viewHolder.mFifth.setVisibility(View.VISIBLE);
-			viewHolder.mFifth.setText("Холимог " + mixed);
+			viewHolder.mFifth.setText(mContext.getResources().getString(R.string.mixed)+" " + mixed);
 			viewHolder.mSixth.setVisibility(View.VISIBLE);
-			viewHolder.mSixth.setText("Хуурай " + dry);
+			viewHolder.mSixth.setText(mContext.getResources().getString(R.string.dry)+" " + dry);
 			viewHolder.image.setVisibility(View.GONE);
 
 		} else if (timeline.getGrowth() != null) {
@@ -419,14 +419,14 @@ public class TimelineAdapter extends
 
 				viewHolder.mFirst.setVisibility(View.VISIBLE);
 				viewHolder.mFirst.setText(timeline.getGrowth().getBabyMonth()
-						+ " сар хүрлээ");
+						+ " "+mContext.getResources().getString(R.string.babymonth));
 
 				viewHolder.mThird.setVisibility(View.VISIBLE);
 				viewHolder.mThird.setText(timeline.getGrowth().getBabyHeight()
-						+ " см");
+						+ " "+mContext.getResources().getString(R.string.sm));
 				viewHolder.mFourth.setVisibility(View.VISIBLE);
 				viewHolder.mFourth.setText(timeline.getGrowth().getBabyWeight()
-						+ " гр");
+						+ " "+mContext.getResources().getString(R.string.gr));
 				viewHolder.mFifth.setVisibility(View.VISIBLE);
 				viewHolder.mFifth.setText(mContext.getResources().getString(
 						R.string.congrats));

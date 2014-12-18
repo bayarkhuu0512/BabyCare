@@ -10,6 +10,7 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
 
+    <string name="profile">Миний тухай</string>
     <string-array name="nav_array">
         <item>Happy Baby</item>
         <item>График</item>
@@ -88,6 +89,8 @@
     <string name="tugrug">төгрөг</string>
     <string name="ml">мл</string>
     <string name="total">нийт</string>
+    <string name="sm">см</string>
+    <string name="gr">гр</string>
     <string name="hospital">Эмчид үзүүлсэн</string>
     <string name="purchase">авлаа</string>
 
@@ -127,6 +130,7 @@
     <string name="weightAgeLine">Жин насны</string>
 
     <!-- Diaper -->
+    <string name="changeDiaper">Живхээ солилоо</string>
     <string name="dirty">Баастай</string>
     <string name="wet">Шээстэй</string>
     <string name="mixed">Холимог</string>
@@ -142,4 +146,18 @@
     <string name="takePhoto">Зураг авах</string>
     <string name="choosePhoto">Галлерейгаас Сонгох</string>
 
+    <!-- Active Operations -->
+    <string name="shower">Усанд орлоо</string>
+    <string name="sleep">Унтлаа</string>
+    <string name="play">Тоголлоо</string>
+    <string name="out">Гадаа гарлаа</string>
+    <string name="massage">Массаж хийлгэв</string>
+    <string name="ear">Чихээ цэвэрлүүлэв</string>
+    <string name="nose">Хамраа цэвэрлүүлэв</string>
+    
+    <!-- Baby timeline -->
+    <string name="born">төрлөө</string>
+	<!-- Growth timeline -->
+    <string name="babymonth">сар хүрлээ</string>
+	
 </resources>
