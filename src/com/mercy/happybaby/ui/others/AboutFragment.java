@@ -33,7 +33,7 @@ public class AboutFragment extends Fragment {
 		appName.setTypeface(roboto_light);
 		appName.setText(getActivity().getResources().getString(
 				R.string.app_name)
-				+ " v1.0");
+				+ " v2.0");
 		appDetail = (TextView) root.findViewById(R.id.appDetail);
 		appDetail.setTypeface(roboto_light);
 		appDetail.setText(getActivity().getResources().getString(

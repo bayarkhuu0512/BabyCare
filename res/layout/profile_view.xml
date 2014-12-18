@@ -15,8 +15,7 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile" />
+            android:src="@drawable/baby_profile" />
 
         <TextView
             android:id="@+id/babyName"
@@ -131,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:paddingTop="20dp"
+                android:paddingTop="10dp"
                 android:text="Сүүлд үзүүлсэн авъяас"
                 android:textColor="@color/fontSecond"
                 android:textSize="18sp" />
