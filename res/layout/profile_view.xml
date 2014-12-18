@@ -12,10 +12,18 @@
         android:orientation="vertical"
         android:padding="10dp" >
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_female" />
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/profile_oval" >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="centerCrop"
+                android:layout_centerInParent="true"
+                android:src="@drawable/baby_profile" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/babyName"

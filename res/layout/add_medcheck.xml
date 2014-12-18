@@ -44,65 +44,106 @@
             android:orientation="vertical"
             android:paddingTop="20dp" >
 
-            <EditText
-                android:id="@+id/hospitalName"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:inputType="text"
-                android:maxLength="40"
-                android:padding="10dp"
-                android:text="@string/hospitalName"
-                android:textColor="#fff"
-                android:textSize="32sp" />
+                android:orientation="horizontal" >
 
-            <EditText
-                android:id="@+id/doctorName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:inputType="text"
-                android:maxLength="40"
-                android:padding="10dp"
-                android:text="@string/doctorName"
-                android:textColor="#fff"
-                android:textSize="32sp" />
+                <TextView
+                    android:id="@+id/heightLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="true"
+                    android:paddingLeft="5dp"
+                    android:text="Height"
+                    android:textColor="#fff"
+                    android:textSize="24sp" />
 
-            <EditText
-                android:id="@+id/pain"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:inputType="text"
-                android:maxLength="40"
-                android:padding="10dp"
-                android:text="@string/pain"
-                android:textColor="#fff"
-                android:textSize="32sp" />
+                <EditText
+                    android:id="@+id/height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:padding="10dp"
+                    android:text="@string/hospitalName"
+                    android:textColor="#fff"
+                    android:textSize="32sp" />
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/diagnosis"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:inputType="text"
-                android:maxLength="40"
-                android:padding="10dp"
-                android:text="@string/diagnosis"
-                android:textColor="#fff"
-                android:textSize="32sp" />
+                android:orientation="horizontal" >
 
-            <EditText
-                android:id="@+id/healing"
+                <EditText
+                    android:id="@+id/doctorName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:inputType="text"
+                    android:maxLength="4"
+                    android:padding="10dp"
+                    android:text="@string/doctorName"
+                    android:textColor="#fff"
+                    android:textSize="32sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:inputType="text"
-                android:maxLength="40"
-                android:padding="10dp"
-                android:text="@string/healing"
-                android:textColor="#fff"
-                android:textSize="32sp" />
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/pain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:inputType="text"
+                    android:maxLength="40"
+                    android:padding="10dp"
+                    android:text="@string/pain"
+                    android:textColor="#fff"
+                    android:textSize="32sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/diagnosis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:inputType="text"
+                    android:maxLength="40"
+                    android:padding="10dp"
+                    android:text="@string/diagnosis"
+                    android:textColor="#fff"
+                    android:textSize="32sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/healing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:inputType="text"
+                    android:maxLength="40"
+                    android:padding="10dp"
+                    android:text="@string/healing"
+                    android:textColor="#fff"
+                    android:textSize="32sp" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

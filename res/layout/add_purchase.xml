@@ -59,7 +59,7 @@
                 android:id="@+id/purchaseLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="₮"
+                android:text="@string/tug"
                 android:textColor="#fff"
                 android:textSize="32sp" />
         </LinearLayout>

@@ -40,7 +40,7 @@ import com.mercy.happybaby.utils.crouton.Style;
 import dreamers.graphics.RippleDrawable;
 
 public class AddFeedFragment extends Fragment  implements
-CalendarDatePickerDialog.OnDateSetListener {
+TimePickerDialogFragment.TimePickerDialogHandler {
 	private TextView timeFeed;
 	private EditText feedML;
 	private ListView feedList;
@@ -55,6 +55,8 @@ CalendarDatePickerDialog.OnDateSetListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		roboto_light = Typeface.createFromAsset(getActivity().getAssets(),
+				Constants.ROBOTO_LIGHT);
 		// Inflate the layout for this fragment
 		View root = inflater.inflate(R.layout.add_feed, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
@@ -193,4 +195,8 @@ CalendarDatePickerDialog.OnDateSetListener {
 
 		}
 	}
+	   @Override
+	    public void onDialogTimeSet(int reference, int hourOfDay, int minute) {
+	        text.setText("" + hourOfDay + ":" + minute);
+	    }
 }

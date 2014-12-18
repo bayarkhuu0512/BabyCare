@@ -32,8 +32,10 @@
                 android:id="@+id/profileImage"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:background="@drawable/profile_oval"
                 android:paddingLeft="20dp"
-                android:src="@drawable/icon_female" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/baby_profile" />
 
             <LinearLayout
                 android:id="@+id/profileContainer"

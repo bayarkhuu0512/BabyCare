@@ -21,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
+import com.doomonafireball.betterpickers.timepicker.TimePickerDialogFragment;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.mercy.happybaby.R;
@@ -37,7 +38,7 @@ import com.mercy.happybaby.utils.crouton.Style;
 import dreamers.graphics.RippleDrawable;
 
 public class AddDrinkFragment extends Fragment implements
-		CalendarDatePickerDialog.OnDateSetListener {
+TimePickerDialogFragment.TimePickerDialogHandler {
 	String LOG_TAG = AddDrinkFragment.class.getName();
 
 	private TextView timeDrink;
@@ -54,6 +55,8 @@ public class AddDrinkFragment extends Fragment implements
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		roboto_light = Typeface.createFromAsset(getActivity().getAssets(),
+				Constants.ROBOTO_LIGHT);
 		// Inflate the layout for this fragment
 		View root = inflater.inflate(R.layout.add_drink, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
@@ -192,4 +195,8 @@ public class AddDrinkFragment extends Fragment implements
 
 		}
 	}
+	   @Override
+	    public void onDialogTimeSet(int reference, int hourOfDay, int minute) {
+	        text.setText("" + hourOfDay + ":" + minute);
+	    }
 }

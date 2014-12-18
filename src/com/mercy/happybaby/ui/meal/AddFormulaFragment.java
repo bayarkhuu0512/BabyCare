@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -13,7 +14,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -24,6 +27,7 @@ import com.mercy.happybaby.entities.Breast;
 import com.mercy.happybaby.entities.Formula;
 import com.mercy.happybaby.entities.Timeline;
 import com.mercy.happybaby.ui.timeline.TimelineFragment;
+import com.mercy.happybaby.utils.Constants;
 import com.mercy.happybaby.utils.DateRangeInstance;
 import com.mercy.happybaby.utils.crouton.CroutonMessage;
 import com.mercy.happybaby.utils.crouton.Style;
@@ -36,10 +40,15 @@ CalendarDatePickerDialog.OnDateSetListener {
 	private Dao<Timeline, Integer> timelineDAO;
 	private DatabaseHelper databaseHelper = null;
 	DateRangeInstance dateRange = DateRangeInstance.getInstance();
+	private EditText formulaML;
+	private Typeface roboto_light;
+	private TextView timeFormula;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		roboto_light = Typeface.createFromAsset(getActivity().getAssets(),
+				Constants.ROBOTO_LIGHT);
 		// Inflate the layout for this fragment
 		View root = inflater.inflate(R.layout.add_formula, container, false);
 		crtnMsg = new CroutonMessage(getActivity());
@@ -49,7 +58,22 @@ CalendarDatePickerDialog.OnDateSetListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		timeFormula = (TextView) root.findViewById(R.id.timeFormula);
+		timeFormula.setTypeface(roboto_light);
+		timeFormula.setText(Constants.timeFormat.format(cal.getTime()) + "");
+		timeFormula.setOnClickListener(new OnClickListener() {
 
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Log.d("AddFeed", "timeFeed");
+			}
+		});
+		
+		formulaML = (EditText) root.findViewById(R.id.formulaML);
+		formulaML.setTypeface(roboto_light);
+		
 		ImageButton close = (ImageButton) root.findViewById(R.id.close);
 		RippleDrawable.createRipple(close,
 				getResources().getColor(android.R.color.white));

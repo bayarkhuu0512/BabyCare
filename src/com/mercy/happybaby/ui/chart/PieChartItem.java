@@ -53,7 +53,7 @@ public class PieChartItem extends ChartItem {
         holder.chart.setDescription("");
         holder.chart.setHoleRadius(60f);
         holder.chart.setTransparentCircleRadius(65f);
-        holder.chart.setCenterText("Мээмээ");
+        holder.chart.setCenterText(c.getResources().getString(R.string.breastPieChart));
         holder.chart.setCenterTextTypeface(mTf);
         holder.chart.setCenterTextSize(18f);
         holder.chart.setDrawXValues(false);

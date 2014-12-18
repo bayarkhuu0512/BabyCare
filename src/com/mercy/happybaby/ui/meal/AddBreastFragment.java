@@ -35,7 +35,7 @@ import com.mercy.happybaby.utils.crouton.Style;
 import dreamers.graphics.RippleDrawable;
 
 public class AddBreastFragment extends Fragment implements
-		CalendarDatePickerDialog.OnDateSetListener {
+TimePickerDialogFragment.TimePickerDialogHandler{
 	String LOG_TAG = AddBreastFragment.class.getName();
 
 	private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
@@ -246,4 +246,8 @@ public class AddBreastFragment extends Fragment implements
 		getActivity().setTitle(getActivity().getTitle());
 		getActivity().getActionBar().show();
 	}
+	   @Override
+	    public void onDialogTimeSet(int reference, int hourOfDay, int minute) {
+	        text.setText("" + hourOfDay + ":" + minute);
+	    }
 }

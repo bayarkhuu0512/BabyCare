@@ -41,7 +41,7 @@ public class HelpCenterAdapter extends
 		viewHolder.helpCenter.setTypeface(roboto_light);
 		viewHolder.title.setTypeface(roboto_light);
 		viewHolder.content.setTypeface(roboto_light);
-		viewHolder.helpCenter.setText("Зөвлөгөө" + " " + helpCenter.getId());
+		viewHolder.helpCenter.setText(mContext.getResources().getString(R.string.helpCenter) + " " + helpCenter.getId());
 		viewHolder.title.setText(helpCenter.getHelpCenterTitle());
 		viewHolder.content.setText(helpCenter.getHelpCenterContent());
 	}

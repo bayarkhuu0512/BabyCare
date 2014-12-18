@@ -9,8 +9,8 @@
         энэ боломжийг та бүхэнд олгож байна.                </string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-
     <string name="profile">Миний тухай</string>
+
     <string-array name="nav_array">
         <item>Happy Baby</item>
         <item>График</item>
@@ -91,6 +91,7 @@
     <string name="total">нийт</string>
     <string name="sm">см</string>
     <string name="gr">гр</string>
+    <string name="tug">₮</string>
     <string name="hospital">Эмчид үзүүлсэн</string>
     <string name="purchase">авлаа</string>
 
@@ -128,6 +129,7 @@
     <string name="weightHeightLine">Жин өндрийн</string>
     <string name="heightAgeLine">Өндөр насны</string>
     <string name="weightAgeLine">Жин насны</string>
+    <string name="breastPieChart">Мээмээ</string>
 
     <!-- Diaper -->
     <string name="changeDiaper">Живхээ солилоо</string>
@@ -154,10 +156,12 @@
     <string name="massage">Массаж хийлгэв</string>
     <string name="ear">Чихээ цэвэрлүүлэв</string>
     <string name="nose">Хамраа цэвэрлүүлэв</string>
-    
+
     <!-- Baby timeline -->
     <string name="born">төрлөө</string>
-	<!-- Growth timeline -->
+    <!-- Growth timeline -->
     <string name="babymonth">сар хүрлээ</string>
-	
+    <!-- Help Center -->
+    <string name="helpCenter">Зөвлөгөө</string>
+
 </resources>

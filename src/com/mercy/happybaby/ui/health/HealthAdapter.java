@@ -103,10 +103,10 @@ public class HealthAdapter extends
 					+ " сарын үзлэг");
 			viewHolder.mThird.setVisibility(View.VISIBLE);
 			viewHolder.mThird.setText(timeline.getGrowth().getBabyHeight()
-					+ "см");
+					+ mContext.getResources().getString(R.string.sm));
 			viewHolder.mFourth.setVisibility(View.VISIBLE);
 			viewHolder.mFourth.setText(timeline.getGrowth().getBabyWeight()
-					+ "гр");
+					+ mContext.getResources().getString(R.string.gr));
 
 			viewHolder.mSecond.setVisibility(View.GONE);
 			viewHolder.mFifth.setVisibility(View.GONE);
