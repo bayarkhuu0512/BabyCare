@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/setup_fragment"
-        android:name="com.mercy.happybaby.ui.setup.SetupFragment"
+        android:name="com.apu.maamuu.ui.setup.SetupFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

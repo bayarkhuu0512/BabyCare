@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Happy Baby</string>
+    <string name="app_name">Маамуу</string>
     <string name="app_detail">        Энэхүү апп нь 0-3 насны хүүхэдтэй бүх эцэг эхчүүдэд зориулсан. Хүүхэд бүхэн 
         өдөр өдрөөр өсч цаг минут бүрд шинэ зүйлийг сурч мэдэн шинээр сурсан зүйлээ аав 
         ээждээ харуулан аз жаргал бэлэглэдэг билээ. Тэрхүү аз жаргалтай мөчүүд хэзээ болж
@@ -12,19 +12,12 @@
     <string name="profile">Миний тухай</string>
 
     <string-array name="nav_array">
-        <item>Happy Baby</item>
+        <item>Маамуу</item>
         <item>График</item>
-        <item>Хоолондоо</item>
-        <item>Живхээ солъё</item>
-        <item>Эрүүл байя</item>
-        <item>Миний хэмнэл</item>
-        <item>Би чадна</item>
-        <item>Миний шүд</item>
-        <item>Хэд вэ?</item>
-        <item>Бяцхан лавлах</item>
-        <item>ХэХэЯа?</item>
-        <item>Яах уу ээжээ?</item>
-        <item>Happy Baby бол..</item>
+        <item>Уусан зүйлс</item>
+        <item>Сурсан зүйлс</item>
+        <item>Зөвлөгөө</item>
+        <item>Тухай</item>
     </string-array>
     <string-array name="feed_array">
         <item>Бантан</item>

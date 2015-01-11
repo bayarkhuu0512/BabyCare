@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mercy.happybaby"
-    android:versionCode="2"
-    android:versionName="2.0" >
+    package="com.apu.maamuu"
+    android:versionCode="1"
+    android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="15"
         android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -16,7 +16,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="com.mercy.happybaby.SetupActivity"
+            android:name="com.apu.maamuu.SetupActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
             <intent-filter>
@@ -26,11 +26,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.mercy.happybaby.MainActivity"
+            android:name="com.apu.maamuu.MainActivity"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
-            android:name="com.mercy.happybaby.SplashScreen"
+            android:name="com.apu.maamuu.SplashScreen"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
     </application>
