@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.apu.maamuu"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="com.mercy.happybaby"
+    android:versionCode="2"
+    android:versionName="2.0" >
 
     <uses-sdk
         android:minSdkVersion="15"
@@ -16,7 +16,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="com.apu.maamuu.SetupActivity"
+            android:name="com.mercy.happybaby.SetupActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
             <intent-filter>
@@ -26,11 +26,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.apu.maamuu.MainActivity"
+            android:name="com.mercy.happybaby.MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
-            android:name="com.apu.maamuu.SplashScreen"
+            android:name="com.mercy.happybaby.SplashScreen"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
     </application>

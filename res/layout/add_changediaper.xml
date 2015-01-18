@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:paddingBottom="50dp" >
+            android:paddingBottom="40dp" >
 
             <ImageView
                 android:id="@+id/timeIcon"

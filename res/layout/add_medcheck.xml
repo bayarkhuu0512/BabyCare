@@ -62,13 +62,12 @@
 
                 <EditText
                     android:id="@+id/headCirc"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:inputType="number"
                     android:maxLength="2"
                     android:padding="10dp"
-                    android:text="70"
                     android:textColor="#fff"
                     android:textSize="32sp" />
 
@@ -102,13 +101,12 @@
 
                 <EditText
                     android:id="@+id/weight"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:inputType="number"
-                    android:maxLength="4"
+                    android:maxLength="5"
                     android:padding="10dp"
-                    android:text="9000"
                     android:textColor="#fff"
                     android:textSize="32sp" />
 
@@ -147,13 +145,12 @@
 
                     <EditText
                         android:id="@+id/height"
-                        android:layout_width="wrap_content"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:clickable="true"
                         android:inputType="number"
                         android:maxLength="2"
                         android:padding="10dp"
-                        android:text="45"
                         android:textColor="#fff"
                         android:textSize="32sp" />
 

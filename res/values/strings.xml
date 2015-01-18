@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Маамуу</string>
-    <string name="app_detail">        Энэхүү апп нь 0-3 насны хүүхэдтэй бүх эцэг эхчүүдэд зориулсан. Хүүхэд бүхэн 
+    <string name="app_name">Happy Baby</string>
+    <string name="app_detail">Энэхүү апп нь 0-3 насны хүүхэдтэй бүх эцэг эхчүүдэд зориулсан. Хүүхэд бүхэн 
         өдөр өдрөөр өсч цаг минут бүрд шинэ зүйлийг сурч мэдэн шинээр сурсан зүйлээ аав 
         ээждээ харуулан аз жаргал бэлэглэдэг билээ. Тэрхүү аз жаргалтай мөчүүд хэзээ болж
         өнгөрсөн цаг хугацааг нь тэр бүр бид тэмдэглэн авч амждаггүй. Харин HappyBaby апп
-        энэ боломжийг та бүхэнд олгож байна.                </string>
+        энэ боломжийг та бүхэнд олгож байна.</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="profile">Миний тухай</string>
 
     <string-array name="nav_array">
-        <item>Маамуу</item>
+        <item>Happy Baby</item>
         <item>График</item>
-        <item>Уусан зүйлс</item>
-        <item>Сурсан зүйлс</item>
-        <item>Зөвлөгөө</item>
-        <item>Тухай</item>
+        <item>Хоолондоо</item>
+        <item>Живхээ солъё</item>
+        <item>Эрүүл байя</item>
+        <item>Миний хэмнэл</item>
+        <item>Би чадна</item>
+        <item>Миний шүд</item>
+        <item>Бяцхан лавлах</item>
+        <item>ХэХэЯа?</item>
+        <item>Яах уу ээжээ?</item>
+        <item>Happy Baby бол..</item>
     </string-array>
     <string-array name="feed_array">
         <item>Бантан</item>
@@ -157,10 +163,8 @@
     <string name="headCirc">Толгойн тойрог</string>
     <string name="weight">Жин</string>
     <string name="height">Өндөр</string>
-    
+
     <!-- Help Center -->
     <string name="helpCenter">Зөвлөгөө</string>
-    
-    
 
 </resources>
