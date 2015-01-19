@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff" >
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="375dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:orientation="vertical" >
+
+            <!-- First Row -->
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="75dp"
+                android:orientation="horizontal" >
+
+                <ImageButton
+                    android:id="@+id/addBreast"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_breast"
+                    android:onClick="addBreastOnClick"
+                    android:src="@drawable/icon_breast" >
+                </ImageButton>
+
+                <ImageButton
+                    android:id="@+id/extraFood"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_feed"
+                    android:onClick="extraFoodOnClick"
+                    android:src="@drawable/icon_extrafood" />
+
+                <ImageButton
+                    android:id="@+id/formula"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_formula"
+                    android:onClick="formulaOnClick"
+                    android:src="@drawable/icon_formula" />
+
+                <ImageButton
+                    android:id="@+id/drink"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_drink"
+                    android:onClick="drinkOnClick"
+                    android:src="@drawable/icon_drink" />
+            </LinearLayout>
+            <!-- Second Row -->
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="75dp"
+                android:orientation="horizontal" >
+
+                <ImageButton
+                    android:id="@+id/hospital"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_hospital"
+                    android:onClick="hospitalOnClick"
+                    android:src="@drawable/icon_gohospital" />
+
+                <ImageButton
+                    android:id="@+id/medcheck"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_medcheck"
+                    android:onClick="medcheckOnClick"
+                    android:src="@drawable/icon_medcheck" />
+
+                <ImageButton
+                    android:id="@+id/vitamin"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_vitamin"
+                    android:onClick="vitaminOnClick"
+                    android:src="@drawable/icon_vitamin" />
+
+                <ImageButton
+                    android:id="@+id/vaccine"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_vaccine"
+                    android:onClick="vaccineOnClick"
+                    android:src="@drawable/icon_vaccine" />
+            </LinearLayout>
+            <!-- Third Row -->
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="75dp"
+                android:orientation="horizontal" >
+
+                <ImageButton
+                    android:id="@+id/shower"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_ao_shower"
+                    android:onClick="showerOnClick"
+                    android:src="@drawable/icon_bath" />
+
+                <ImageButton
+                    android:id="@+id/sleep"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_ao_sleep"
+                    android:onClick="sleepOnClick"
+                    android:src="@drawable/icon_sleep" />
+
+                <ImageButton
+                    android:id="@+id/play"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_ao_play"
+                    android:onClick="playOnClick"
+                    android:src="@drawable/icon_toy" />
+
+                <ImageButton
+                    android:id="@+id/out"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_ao_out"
+                    android:onClick="outOnClick"
+                    android:src="@drawable/icon_out" />
+            </LinearLayout>
+            <!-- Fourth Row -->
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="75dp"
+                android:orientation="horizontal" >
+
+                <ImageButton
+                    android:id="@+id/massage"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_ao_massage"
+                    android:onClick="massageOnClick"
+                    android:src="@drawable/icon_massage" />
+
+                <ImageButton
+                    android:id="@+id/ear"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_ao_ear"
+                    android:onClick="earOnClick"
+                    android:src="@drawable/icon_ear" />
+
+                <ImageButton
+                    android:id="@+id/nose"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_ao_nose"
+                    android:onClick="noseOnClick"
+                    android:src="@drawable/icon_nose" />
+
+                <ImageButton
+                    android:id="@+id/changediaper"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_changediaper"
+                    android:onClick="changeDiaperOnClick"
+                    android:src="@drawable/icon_diaperchange" />
+            </LinearLayout>
+            <!-- Fifth Row -->
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="75dp"
+                android:orientation="horizontal" >
+
+                <ImageButton
+                    android:id="@+id/anniversary"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_anniversary"
+                    android:onClick="anniversaryOnClick"
+                    android:src="@drawable/icon_birthmonth" />
+
+                <ImageButton
+                    android:id="@+id/learn"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_learn"
+                    android:onClick="learnOnClick"
+                    android:src="@drawable/icon_learn" />
+
+                <ImageButton
+                    android:id="@+id/tooth"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_tooth"
+                    android:onClick="toothOnClick"
+                    android:src="@drawable/icon_teeth" />
+
+                <ImageButton
+                    android:id="@+id/purchase"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@color/entity_purchase"
+                    android:onClick="purchaseOnClick"
+                    android:src="@drawable/icon_purchase" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/cancelButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:layout_margin="10dp"
+            android:background="@color/mainColor"
+            android:src="@drawable/ic_close_white_24dp" />
+
+</FrameLayout>
