@@ -45,15 +45,17 @@
                     android:paddingRight="10dp" >
 
                     <TextView
+                        android:id="@+id/breastDir"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Баруун мээм"
                         android:textColor="#fff" />
 
                     <TextView
+                        android:id="@+id/breastTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="00:10 мин өмнө"
+                        android:text="0ц 10м өмнө"
                         android:textColor="#fff" />
                 </LinearLayout>
             </LinearLayout>
@@ -82,15 +84,17 @@
                     android:paddingRight="10dp" >
 
                     <TextView
+                        android:id="@+id/extraFoodName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Баруун мээм"
+                        android:text="Төмсний нухаш"
                         android:textColor="#fff" />
 
                     <TextView
+                        android:id="@+id/extraFoodTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="00:10 мин өмнө"
+                        android:text="1ц 12м өмнө"
                         android:textColor="#fff" />
                 </LinearLayout>
             </LinearLayout>
@@ -131,15 +135,17 @@
                         android:paddingRight="10dp" >
 
                         <TextView
+                            android:id="@+id/formulaName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Баруун мээм"
+                            android:text="Нэмэлт сүү"
                             android:textColor="#fff" />
 
                         <TextView
+                            android:id="@+id/formulaTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="00:10 мин өмнө"
+                            android:text="1ц 12м өмнө"
                             android:textColor="#fff" />
                     </LinearLayout>
                 </LinearLayout>
@@ -168,15 +174,17 @@
                         android:paddingRight="10dp" >
 
                         <TextView
+                            android:id="@+id/drinkName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Баруун мээм"
+                            android:text="Хярам"
                             android:textColor="#fff" />
 
                         <TextView
+                            android:id="@+id/drinkTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="00:10 мин өмнө"
+                            android:text="1ц 12м өмнө"
                             android:textColor="#fff" />
                     </LinearLayout>
                 </LinearLayout>
@@ -219,9 +227,10 @@
                         android:paddingRight="10dp" >
 
                         <TextView
+                            android:id="@+id/hospitalName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Баруун мээм"
+                            android:text="Эмчийн үзлэг"
                             android:textColor="#fff" />
                     </LinearLayout>
                 </LinearLayout>
@@ -250,15 +259,17 @@
                         android:paddingRight="10dp" >
 
                         <TextView
+                            android:id="@+id/medcheckName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Баруун мээм"
+                            android:text="Ээлжит үзлэг"
                             android:textColor="#fff" />
 
                         <TextView
+                            android:id="@+id/medcheckTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="00:10 мин өмнө"
+                            android:text="1ц 12м өмнө"
                             android:textColor="#fff" />
                     </LinearLayout>
                 </LinearLayout>
@@ -300,9 +311,10 @@
                         android:paddingRight="10dp" >
 
                         <TextView
+                            android:id="@+id/vitaminName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Баруун мээм"
+                            android:text="Витамин"
                             android:textColor="#fff" />
                     </LinearLayout>
                 </LinearLayout>
@@ -331,9 +343,10 @@
                         android:paddingRight="10dp" >
 
                         <TextView
+                            android:id="@+id/vaccineName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Баруун мээм"
+                            android:text="Вакцин"
                             android:textColor="#fff" />
                     </LinearLayout>
                 </LinearLayout>
@@ -359,44 +372,7 @@
                     android:background="@color/entity_ao_ear" >
 
                     <ImageButton
-                        android:id="@+id/changediaper"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:background="@android:color/transparent"
-                        android:onClick="changeDiaperOnClick"
-                        android:padding="10dp"
-                        android:src="@drawable/icon_diaperchange" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:paddingRight="10dp" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Баруун мээм"
-                            android:textColor="#fff" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="00:10 мин өмнө"
-                            android:textColor="#fff" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:layout_weight="1"
-                    android:background="@color/entity_ao_sleep" >
-
-                    <ImageButton
-                        android:id="@+id/anniversary"
+                        android:id="@+id/learn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -413,15 +389,56 @@
                         android:paddingRight="10dp" >
 
                         <TextView
+                            android:id="@+id/learnName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Баруун мээм"
+                            android:text="Би чадна"
                             android:textColor="#fff" />
 
                         <TextView
+                            android:id="@+id/learnValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="00:10 мин өмнө"
+                            android:text="Мөлхдөг болсон"
+                            android:textColor="#fff" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    android:background="@color/entity_ao_sleep" >
+
+                    <ImageButton
+                        android:id="@+id/tooth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@android:color/transparent"
+                        android:onClick="toothOnClick"
+                        android:padding="10dp"
+                        android:src="@drawable/icon_teeth" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingRight="10dp" >
+
+                        <TextView
+                            android:id="@+id/toothName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Шинэ шүд"
+                            android:textColor="#fff" />
+
+                        <TextView
+                            android:id="@+id/toothValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="6 шүдтэй"
                             android:textColor="#fff" />
                     </LinearLayout>
                 </LinearLayout>
@@ -447,14 +464,14 @@
                     android:background="@color/entity_ao_shower" >
 
                     <ImageButton
-                        android:id="@+id/tooth"
+                        android:id="@+id/changediaper"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@android:color/transparent"
-                        android:onClick="toothOnClick"
+                        android:onClick="changeDiaperOnClick"
                         android:padding="10dp"
-                        android:src="@drawable/icon_teeth" />
+                        android:src="@drawable/icon_diaperchange" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -466,13 +483,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Баруун мээм"
+                            android:text="Баастай живх"
                             android:textColor="#fff" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="00:10 мин өмнө"
+                            android:text="1ц 12м өмнө"
                             android:textColor="#fff" />
                     </LinearLayout>
                 </LinearLayout>
@@ -491,7 +508,7 @@
                         android:background="@android:color/transparent"
                         android:onClick="purchaseOnClick"
                         android:padding="10dp"
-                        android:src="@drawable/icon_purchase" />
+                        android:src="@drawable/icon_bath" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -503,9 +520,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Баруун мээм"
+                            android:text="Усанд орсон"
                             android:textColor="#fff" />
-
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

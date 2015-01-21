@@ -23,7 +23,7 @@
     <color name="entity_breast">#ff5722</color>
     <color name="entity_feed">#ff9800</color>
     <color name="entity_formula">#ffc107</color>
-    <color name="entity_drink">#ffeb3b</color>
+    <color name="entity_drink">#ffab40</color>
     <color name="entity_medcheck">#8bc34a</color>
     <color name="entity_hospital">#259b24</color>
     <color name="entity_vitamin">#cddc39</color>
