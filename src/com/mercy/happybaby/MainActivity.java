@@ -111,6 +111,15 @@ public class MainActivity extends Activity implements
 		setDates();
 		mTitles = getResources().getStringArray(R.array.nav_array);
 
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+			boolean isInit = extras.getBoolean("isInit");
+			if (isInit) {
+				crtnMsg.showCrouton(Style.CONFIRM, context.getResources()
+						.getString(R.string.demoversion));
+
+			}
+		}
 		try {
 			timelineDAO = getHelper().getTimelineDao();
 		} catch (SQLException e) {
@@ -511,25 +520,25 @@ public class MainActivity extends Activity implements
 		crtnMsg.hide();
 		crtnMsg.showCrouton(Style.INFO,
 				context.getResources().getString(R.string.success));
-		ActiveOperation ao1 = new ActiveOperation();
-		Calendar aoCal1 = Calendar.getInstance();
-		ao1.setCreatedDate(aoCal1.getTime());
-		ao1.setType(Constants.ACTIVE_OPERATION_BATH);
-		ao1.setActiveName(getResources().getString(R.string.shower));
-
-		Timeline timelineAo1 = new Timeline();
-		timelineAo1.setActiveOperation(ao1);
-		timelineAo1.setCreatedDate(aoCal1.getTime());
-		try {
-			timelineDAO = getHelper().getTimelineDao();
-			timelineDAO.create(timelineAo1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		dateRange.setEndDate(aoCal1.getTime());
-
-		gotoFragment();
+		// ActiveOperation ao1 = new ActiveOperation();
+		// Calendar aoCal1 = Calendar.getInstance();
+		// ao1.setCreatedDate(aoCal1.getTime());
+		// ao1.setType(Constants.ACTIVE_OPERATION_BATH);
+		// ao1.setActiveName(getResources().getString(R.string.shower));
+		//
+		// Timeline timelineAo1 = new Timeline();
+		// timelineAo1.setActiveOperation(ao1);
+		// timelineAo1.setCreatedDate(aoCal1.getTime());
+		// try {
+		// timelineDAO = getHelper().getTimelineDao();
+		// timelineDAO.create(timelineAo1);
+		// } catch (SQLException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// dateRange.setEndDate(aoCal1.getTime());
+		//
+		// gotoFragment();
 	}
 
 	public void sleepOnClick(View v) {
@@ -713,8 +722,6 @@ public class MainActivity extends Activity implements
 						R.animator.slide_down, R.animator.slide_up,
 						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
-		getActionBar().hide();
-
+		// getActionBar().hide();
 	}
-
 }

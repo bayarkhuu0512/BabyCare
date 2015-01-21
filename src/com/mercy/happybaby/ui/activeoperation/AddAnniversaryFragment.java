@@ -103,25 +103,24 @@ public class AddAnniversaryFragment extends Fragment implements
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "right");
-				if (isSelectedRight) {
-					choosePhoto.setBackground(getActivity().getResources()
-							.getDrawable(R.drawable.btn_breast_oval));
-					choosePhoto.setTextColor(Color.WHITE);
-					isSelectedRight = false;
-
-				} else {
-					choosePhoto.setBackground(getActivity().getResources()
-							.getDrawable(R.drawable.btn_breast_oval_selected));
-					choosePhoto.setTextColor(getActivity().getResources()
-							.getColor(R.color.entity_breast));
-					isSelectedRight = true;
-
-					isSelectedLeft = false;
-					takePhoto.setBackground(getActivity().getResources()
-							.getDrawable(R.drawable.btn_breast_oval));
-					takePhoto.setTextColor(Color.WHITE);
-
-				}
+//				if (isSelectedRight) {
+//					choosePhoto.setBackground(getActivity().getResources()
+//							.getDrawable(R.drawable.btn_breast_oval));
+//					choosePhoto.setTextColor(Color.WHITE);
+//					isSelectedRight = false;
+//
+//				} else {
+//					choosePhoto.setBackground(getActivity().getResources()
+//							.getDrawable(R.drawable.btn_breast_oval_selected));
+//					choosePhoto.setTextColor(getActivity().getResources()
+//							.getColor(R.color.entity_breast));
+//					isSelectedRight = true;
+//
+//					isSelectedLeft = false;
+//					takePhoto.setBackground(getActivity().getResources()
+//							.getDrawable(R.drawable.btn_breast_oval));
+//					takePhoto.setTextColor(Color.WHITE);
+//				}
 				// addBreast(true);
 			}
 		});

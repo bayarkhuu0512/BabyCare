@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff" >
@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="5dp"
+        android:padding="5dp"
         android:orientation="vertical" >
 
         <!-- First Row -->
@@ -24,6 +24,8 @@
                 android:layout_height="75dp"
                 android:layout_weight="1"
                 android:background="@color/entity_breast"
+                android:clickable="true"
+                android:onClick="addBreastOnClick"
                 android:orientation="horizontal" >
 
                 <ImageButton
@@ -64,7 +66,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:layout_weight="1"
-                android:background="@color/entity_feed" >
+                android:background="@color/entity_feed"
+                android:clickable="true"
+                android:onClick="extraFoodOnClick" >
 
                 <ImageButton
                     android:id="@+id/extraFood"
@@ -72,6 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:background="@android:color/transparent"
+                    android:clickable="true"
                     android:onClick="extraFoodOnClick"
                     android:padding="10dp"
                     android:src="@drawable/icon_extrafood" />
@@ -115,7 +120,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:background="@color/entity_formula" >
+                    android:background="@color/entity_formula"
+                    android:clickable="true"
+                    android:onClick="formulaOnClick" >
 
                     <ImageButton
                         android:id="@+id/formula"
@@ -123,6 +130,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@android:color/transparent"
+                        android:clickable="true"
                         android:onClick="formulaOnClick"
                         android:padding="10dp"
                         android:src="@drawable/icon_formula" />
@@ -154,7 +162,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:background="@color/entity_drink" >
+                    android:background="@color/entity_drink"
+                    android:clickable="true"
+                    android:onClick="drinkOnClick" >
 
                     <ImageButton
                         android:id="@+id/drink"
@@ -162,6 +172,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@android:color/transparent"
+                        android:clickable="true"
                         android:onClick="drinkOnClick"
                         android:padding="10dp"
                         android:src="@drawable/icon_drink" />
@@ -207,7 +218,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:background="@color/entity_anniversary" >
+                    android:background="@color/entity_anniversary"
+                    android:clickable="true"
+                    android:onClick="hospitalOnClick" >
 
                     <ImageButton
                         android:id="@+id/hospital"
@@ -215,6 +228,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@android:color/transparent"
+                        android:clickable="true"
                         android:onClick="hospitalOnClick"
                         android:padding="10dp"
                         android:src="@drawable/icon_gohospital" />
@@ -239,7 +253,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:background="@color/entity_learn" >
+                    android:background="@color/entity_learn"
+                    android:clickable="true"
+                    android:onClick="medcheckOnClick" >
 
                     <ImageButton
                         android:id="@+id/medcheck"
@@ -247,6 +263,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@android:color/transparent"
+                        android:clickable="true"
                         android:onClick="medcheckOnClick"
                         android:padding="10dp"
                         android:src="@drawable/icon_medcheck" />
@@ -291,7 +308,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:background="@color/entity_purchase" >
+                    android:background="@color/entity_purchase"
+                    android:clickable="true"
+                    android:onClick="vitaminOnClick" >
 
                     <ImageButton
                         android:id="@+id/vitamin"
@@ -299,6 +318,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@android:color/transparent"
+                        android:clickable="true"
                         android:onClick="vitaminOnClick"
                         android:padding="10dp"
                         android:src="@drawable/icon_vitamin" />
@@ -323,7 +343,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:background="@color/entity_tooth" >
+                    android:background="@color/entity_tooth"
+                    android:clickable="true"
+                    android:onClick="vaccineOnClick" >
 
                     <ImageButton
                         android:id="@+id/vaccine"
@@ -331,6 +353,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@android:color/transparent"
+                        android:clickable="true"
                         android:onClick="vaccineOnClick"
                         android:padding="10dp"
                         android:src="@drawable/icon_vaccine" />
@@ -369,7 +392,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:background="@color/entity_ao_ear" >
+                    android:background="@color/entity_ao_ear"
+                    android:clickable="true"
+                    android:onClick="anniversaryOnClick" >
 
                     <ImageButton
                         android:id="@+id/learn"
@@ -377,6 +402,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@android:color/transparent"
+                        android:clickable="true"
                         android:onClick="anniversaryOnClick"
                         android:padding="10dp"
                         android:src="@drawable/icon_birthmonth" />
@@ -408,7 +434,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:background="@color/entity_ao_sleep" >
+                    android:background="@color/entity_ao_sleep"
+                    android:clickable="true"
+                    android:onClick="toothOnClick" >
 
                     <ImageButton
                         android:id="@+id/tooth"
@@ -416,6 +444,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@android:color/transparent"
+                        android:clickable="true"
                         android:onClick="toothOnClick"
                         android:padding="10dp"
                         android:src="@drawable/icon_teeth" />
@@ -461,7 +490,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:background="@color/entity_ao_shower" >
+                    android:background="@color/entity_ao_shower"
+                    android:clickable="true"
+                    android:onClick="changeDiaperOnClick" >
 
                     <ImageButton
                         android:id="@+id/changediaper"
@@ -469,6 +500,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@android:color/transparent"
+                        android:clickable="true"
                         android:onClick="changeDiaperOnClick"
                         android:padding="10dp"
                         android:src="@drawable/icon_diaperchange" />
@@ -481,12 +513,14 @@
                         android:paddingRight="10dp" >
 
                         <TextView
+                            android:id="@+id/changediaperName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Баастай живх"
                             android:textColor="#fff" />
 
                         <TextView
+                            android:id="@+id/changediaperLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1ц 12м өмнө"
@@ -498,15 +532,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:background="@color/entity_changediaper" >
+                    android:background="@color/entity_changediaper"
+                    android:clickable="true"
+                    android:onClick="showerOnClick" >
 
                     <ImageButton
-                        android:id="@+id/purchase"
+                        android:id="@+id/activeOperation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@android:color/transparent"
-                        android:onClick="purchaseOnClick"
+                        android:clickable="true"
+                        android:onClick="showerOnClick"
                         android:padding="10dp"
                         android:src="@drawable/icon_bath" />
 
@@ -518,6 +555,7 @@
                         android:paddingRight="10dp" >
 
                         <TextView
+                            android:id="@+id/activeOperationName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Усанд орсон"
@@ -528,4 +566,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</FrameLayout>
+</ScrollView>

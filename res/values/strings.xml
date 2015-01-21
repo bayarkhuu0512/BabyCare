@@ -13,7 +13,7 @@
 
     <string-array name="nav_array">
         <item>Happy Baby</item>
-        <item>График</item>
+        <item>График чарт</item>
         <item>Хоолондоо</item>
         <item>Живхээ солъё</item>
         <item>Эрүүл байя</item>
@@ -21,9 +21,9 @@
         <item>Би чадна</item>
         <item>Миний шүд</item>
         <item>Бяцхан лавлах</item>
-        <item>ХэХэЯа?</item>
-        <item>Яах уу ээжээ?</item>
-        <item>Happy Baby бол..</item>
+        <item>Зөвлөгөө</item>
+        <item>Тохиргоо</item>
+        <item>Апп-н тухай</item>
     </string-array>
     <string-array name="feed_array">
         <item>Бантан</item>
@@ -97,6 +97,7 @@
     <!-- Crouton -->
     <string name="success">Аз жаргалтай мөчийг хадгалан авлаа :)</string>
     <string name="notavailable">Уучлаарай, Энэ хувилбар дээр ажиллах боломжгүй : )</string>
+        <string name="demoversion">Hi! Demo хувилбарт зориулж, бэлэн дата орууллаа</string>
     <string name="pleaseselect">Аль нэг сонголтоос сонгоно уу : )</string>
     <string name="tooth">Шүд</string>
     <string name="tooth_grow">цухуйлаа</string>

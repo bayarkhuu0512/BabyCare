@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/entity_tooth"
+    android:background="@color/entity_ao_sleep"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/entity_tooth"
+            android:background="@color/entity_ao_sleep"
             android:padding="10dp"
             android:src="@drawable/ic_close_white_36dp" >
         </ImageButton>
@@ -95,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/entity_tooth"
+            android:background="@color/entity_ao_sleep"
             android:padding="10dp"
             android:src="@drawable/ic_check_white_36dp" >
         </ImageButton>

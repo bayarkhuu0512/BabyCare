@@ -68,7 +68,7 @@ public class LeftNavAdapter extends BaseAdapter {
 		viewHolder.mMenu.setText(mMenus[position]);
 		viewHolder.container.setId(position);
 
-		if (position == 1 || position == 8) {
+		if (position == 1 || position == 9 || position == 7) {
 			viewHolder.underline.setVisibility(View.VISIBLE);
 		} else {
 			viewHolder.underline.setVisibility(View.GONE);

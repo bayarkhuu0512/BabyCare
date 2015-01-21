@@ -212,7 +212,7 @@ public class AddBreastFragment extends Fragment implements
 						R.animator.slide_down)
 				.replace(R.id.content_frame, fragment).commit();
 		getActivity().setTitle(getActivity().getTitle());
-		getActivity().getActionBar().show();
+		//getActivity().getActionBar().show();
 	}
 
 	@Override
