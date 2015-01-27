@@ -77,10 +77,10 @@ public class AddChangeDiaperFragment extends Fragment implements
 				// TODO Auto-generated method stub
 				Log.d("AddBreast", "timeBreast");
 				Calendar c = Calendar.getInstance();
-				TimePickerBuilder tpb = new TimePickerBuilder()
-						.setFragmentManager(getFragmentManager())
-						.setStyleResId(R.style.BetterPickersDialogFragment);
-				tpb.show();
+//				TimePickerBuilder tpb = new TimePickerBuilder()
+//						.setFragmentManager(getFragmentManager())
+//						.setStyleResId(R.style.BetterPickersDialogFragment);
+//				tpb.show();
 			}
 		});
 
