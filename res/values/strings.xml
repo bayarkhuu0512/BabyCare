@@ -97,7 +97,7 @@
     <!-- Crouton -->
     <string name="success">Аз жаргалтай мөчийг хадгалан авлаа :)</string>
     <string name="notavailable">Уучлаарай, Энэ хувилбар дээр ажиллах боломжгүй : )</string>
-        <string name="demoversion">Hi! Demo хувилбарт зориулж, бэлэн дата орууллаа</string>
+    <string name="demoversion">Hi! Demo хувилбарт зориулж, бэлэн дата орууллаа</string>
     <string name="pleaseselect">Аль нэг сонголтоос сонгоно уу : )</string>
     <string name="tooth">Шүд</string>
     <string name="tooth_grow">цухуйлаа</string>
@@ -167,5 +167,27 @@
 
     <!-- Help Center -->
     <string name="helpCenter">Зөвлөгөө</string>
+
+    <!-- Intro -->
+    <string name="skip">Шууд эхлэе</string>
+    <string name="start">Эхлэе</string>
+
+    <string-array name="intro_title_array">
+        <item>Хяналтын хэсэг</item>
+        <item>Өсөлтийн мэдээлэл</item>
+        <item>Вакцин, ээлжит үзлэг</item>
+        <item>Аз жаргалтай мөчүүд</item>
+        <item>Дотны зөвлөгч</item>
+        <item>Бяцхан лавлах</item>
+    </string-array>
+        <string-array name="intro_desc_array">
+        <item>Хүүхдийн хооллолт, живх солих, унтах зэрэг өдөр тутмын хэмнэлийг бүртгэж хянах</item>
+        <item>Өндөр, жин, толгойн тойрог биеийн хөгжлийг хэвийн хэмжээнд байгаа эсэхийг шалгах</item>
+        <item>Хүүхдийнхээ хэмжилт болон вакцинаа хугацаанд нь хийлгэх</item>
+        <item>Бяцхан үрсийн шинэхэн авъяас чадварууд</item>
+        <item>Мэргэжлийн эмч нарын зөвлөгөө</item>
+        <item>Эмнэлэг, эмч, бариач нарын хаяг, утасны дугаарууд</item>
+    </string-array>
+    
 
 </resources>

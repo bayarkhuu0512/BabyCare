@@ -17,10 +17,9 @@ public class WalkthroughActivity extends FragmentActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //The look of this sample is set via a style in the manifest
-        setContentView(R.layout.walkthrough);
+        setContentView(R.layout.walkthroughviewpager);
 
-        mAdapter = new WalkthroughFragmentAdapter(getSupportFragmentManager());
+        mAdapter = new WalkthroughFragmentAdapter(this,getSupportFragmentManager());
 
         mPager = (ViewPager)findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);

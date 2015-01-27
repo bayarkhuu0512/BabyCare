@@ -1,5 +1,9 @@
 package com.mercy.happybaby.walkthrough;
 
+import com.mercy.happybaby.R;
+import com.mercy.happybaby.utils.Constants;
+
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
@@ -11,51 +15,50 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 public final class WalkthroughFragment extends Fragment {
-    private static final String KEY_CONTENT = "TestFragment:Content";
+	private static final String KEY_CONTENT = "TestFragment:Content";
+	private Typeface roboto_light;
 
-    public static WalkthroughFragment newInstance(String content) {
-        WalkthroughFragment fragment = new WalkthroughFragment();
+	public static WalkthroughFragment newInstance(String title, String desc) {
+		WalkthroughFragment fragment = new WalkthroughFragment();
+		fragment.mTitle = title;
+		fragment.mDesc = desc;
 
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < 20; i++) {
-            builder.append(content).append(" ");
-        }
-        builder.deleteCharAt(builder.length() - 1);
-        fragment.mContent = builder.toString();
+		return fragment;
+	}
 
-        return fragment;
-    }
+	private String mTitle = "";
+	private String mDesc = "";
 
-    private String mContent = "???";
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+		if ((savedInstanceState != null)
+				&& savedInstanceState.containsKey(KEY_CONTENT)) {
+			mTitle = savedInstanceState.getString(KEY_CONTENT);
+		}
+		roboto_light = Typeface.createFromAsset(getActivity().getAssets(),
+				Constants.ROBOTO_LIGHT);
+	}
 
-        if ((savedInstanceState != null) && savedInstanceState.containsKey(KEY_CONTENT)) {
-            mContent = savedInstanceState.getString(KEY_CONTENT);
-        }
-    }
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View root = inflater.inflate(R.layout.walkthrough, container, false);
+		TextView title = (TextView) root.findViewById(R.id.title);
+		title.setTypeface(roboto_light);
+		title.setText(mTitle);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        TextView text = new TextView(getActivity());
-        text.setGravity(Gravity.CENTER);
-        text.setText(mContent);
-        text.setTextSize(20 * getResources().getDisplayMetrics().density);
-        text.setPadding(20, 20, 20, 20);
+		TextView desc = (TextView) root.findViewById(R.id.desc);
+		desc.setTypeface(roboto_light);
+		desc.setText(mDesc);
 
-        LinearLayout layout = new LinearLayout(getActivity());
-        layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-        layout.setGravity(Gravity.CENTER);
-        layout.addView(text);
+		return root;
+	}
 
-        return layout;
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString(KEY_CONTENT, mContent);
-    }
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putString(KEY_CONTENT, mTitle);
+	}
 }
